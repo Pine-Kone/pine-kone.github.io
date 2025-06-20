@@ -129,3 +129,13 @@ footer {
   text-decoration: underline;
   font-size: 0.95rem;
 }
+
+.card p {
+  margin: 0.25rem 0;
+}
+
+.card a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
