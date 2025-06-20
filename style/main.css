@@ -113,3 +113,19 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
 }
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.3rem;
+}
+
+.card p {
+  margin-bottom: 0.75rem;
+}
+
+.card a {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 0.95rem;
+}
