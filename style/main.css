@@ -3,6 +3,7 @@ body.dark-mode {
   --accent-color: #ffa94d;
   --background-color: #1e1e1e;
   --text-color: #f0f0f0;
+  --section-background-color: #2a2a2a;
 }
 
 :root {
@@ -10,6 +11,7 @@ body.dark-mode {
   --accent-color: #f07c00; /* Orange */
   --background-color: #f9f9f9;
   --text-color: #333;
+  --section-background-color: #f0f0f0;
 }
 
 body {
@@ -81,7 +83,7 @@ nav a:hover {
 .explore {
   padding: 2rem 1rem;
   text-align: center;
-  background: var(--background-color);
+  background: var(--section-background-color);
 }
 
 .card-grid {
