@@ -54,7 +54,7 @@ nav a:hover {
 .hero {
   padding: 3rem 1rem;
   text-align: center;
-  background: white;
+  background: var(--background-color);
 }
 
 .hero h2 {
@@ -81,7 +81,7 @@ nav a:hover {
 .explore {
   padding: 2rem 1rem;
   text-align: center;
-  background: #f0f0f0;
+  background: var(--background-color);
 }
 
 .card-grid {
@@ -109,7 +109,7 @@ nav a:hover {
 
 .about {
   padding: 2rem 1rem;
-  background: white;
+  background: var(--background-color);
   text-align: center;
 }
 
@@ -151,7 +151,7 @@ footer {
   display: flex;
   flex-direction: row;
   gap: 1rem;
-  background: white;
+  background: var(--background-color);
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
