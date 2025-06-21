@@ -205,3 +205,27 @@ footer {
 #theme-toggle:hover {
   background: var(--accent-color);
 }
+
+body.dark-mode .hero,
+body.dark-mode .explore,
+body.dark-mode .about,
+body.dark-mode .book-card,
+body.dark-mode .card {
+  background-color: #2a2a2a;
+  color: var(--text-color);
+}
+
+body.dark-mode .hero .button,
+body.dark-mode .card a,
+body.dark-mode .book-details a {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+body.dark-mode .hero .button:hover {
+  background-color: #cc6300;
+}
+
+body.dark-mode .card:hover {
+  background-color: #f07c00;
+}
