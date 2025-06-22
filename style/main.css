@@ -109,6 +109,39 @@ nav a:hover {
   background: var(--accent-color);
 }
 
+.card-with-image {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  align-items: flex-start;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 800px;
+  margin: auto;
+}
+
+.card-with-image img {
+  max-width: 100px;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+.card-with-image .card-content {
+  flex: 1;
+}
+
+.card-with-image a {
+  color: white;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.card-with-image:hover {
+  background: var(--accent-color);
+}
+
 .about {
   padding: 2rem 1rem;
   background: var(--background-color);
