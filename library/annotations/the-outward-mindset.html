@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Book Title] | Notes & Annotations</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    .annotation-wrapper {
+      max-width: 750px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      line-height: 1.6;
+    }
+
+    .annotation-wrapper h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .annotation-wrapper h3 {
+      margin-top: 2rem;
+      color: var(--accent-color);
+    }
+
+    .annotation-wrapper ul {
+      margin-left: 1rem;
+    }
+
+    .annotation-wrapper p,
+    .annotation-wrapper li {
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>[Book Title]</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/library/">Back to Library</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="annotation-wrapper">
+    <h2>Notes & Annotations</h2>
+
+    <h3>Overview</h3>
+    <p>[Insert a short summary or your thoughts on the book]</p>
+
+    <h3>Key Takeaways</h3>
+    <ul>
+      <li>Example note or takeaway #1</li>
+      <li>Example note or takeaway #2</li>
+    </ul>
+
+    <h3>Favorite Quotes</h3>
+    <ul>
+      <li>"Discipline equals freedom." — Jocko Willink</li>
+    </ul>
+
+    <h3>Application</h3>
+    <p>[Write how you plan to apply the insights from this book in your life or work]</p>
+  </section>
+
+  <footer>
+    <p>© 2025 Hans M. Haroldsen</p>
+  </footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+</body>
+</html>
