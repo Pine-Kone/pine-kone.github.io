@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Doctrine and Covenants Memorization</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    .controls {
+      max-width: 800px;
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .search-box {
+      padding: 0.5rem;
+      width: 60%;
+      max-width: 400px;
+      font-size: 1rem;
+    }
+
+    .progress-container {
+      background-color: #eee;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 20px;
+      margin: 1rem auto;
+      width: 80%;
+      max-width: 600px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      transition: width 0.5s;
+    }
+
+    .memorized {
+      background-color: #d4edda;
+    }
+
+    .in-progress {
+      background-color: #fff3cd;
+    }
+
+    .verse {
+      padding: 1rem;
+      margin: 1rem auto;
+      max-width: 800px;
+      border-left: 4px solid transparent;
+      background: white;
+      line-height: 1.6;
+      border-radius: 0.5rem;
+    }
+
+    .highlight {
+      background-color: yellow;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Doctrine & Covenants Memorization</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/hobbies/">Hobbies</a></li>
+        <li><a href="/hobby/memorize/">Back to Memorize Index</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>Track Your Memorization Progress</h2>
+    <p>Use the search bar to find scripture phrases. Green = memorized, Yellow = in progress.</p>
+  </section>
+
+  <div class="controls">
+    <input type="text" class="search-box" id="search" placeholder="Search scripture..." />
+    <div class="progress-container">
+      <div id="progress-bar" class="progress-bar memorized" style="width: 0%"></div>
+    </div>
+    <p id="progress-text"></p>
+  </div>
+
+  <section id="scripture-text">
+    <div class="verse memorized">Doctrine & Covenants 4:2 - Therefore, O ye that embark in the service of God, see that ye serve him with all your heart, might, mind and strength, that ye may stand blameless before God at the last day.</div>
+    <div class="verse in-progress">Doctrine & Covenants 6:36 - Look unto me in every thought; doubt not, fear not.</div>
+    <div class="verse">Doctrine & Covenants 6:37 - Behold the wounds which pierced my side...</div>
+    <!-- Add more .verse elements as needed -->
+  </section>
+
+  <footer>
+    <p>© 2025 Hans M. Haroldsen</p>
+  </footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script>
+    const verses = document.querySelectorAll(".verse");
+    const progressBar = document.getElementById("progress-bar");
+    const progressText = document.getElementById("progress-text");
+
+    function updateProgress() {
+      const total = verses.length;
+      const memorized = document.querySelectorAll(".verse.memorized").length;
+      const inProgress = document.querySelectorAll(".verse.in-progress").length;
+      const percent = Math.round(((memorized + inProgress * 0.5) / total) * 100);
+
+      progressBar.style.width = percent + "%";
+      progressText.textContent = `Progress: ${percent}% complete (${memorized} memorized, ${inProgress} in progress)`;
+    }
+
+    function highlightMatches(query) {
+      verses.forEach(v => {
+        v.innerHTML = v.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, "$1"); // remove old highlights
+        if (query) {
+          const regex = new RegExp(`(${query})`, "gi");
+          v.innerHTML = v.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+        }
+      });
+    }
+
+    document.getElementById("search").addEventListener("input", (e) => {
+      const query = e.target.value.trim();
+      highlightMatches(query);
+    });
+
+    updateProgress();
+  </script>
+</body>
+</html>
