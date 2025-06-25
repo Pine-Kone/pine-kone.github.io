@@ -95,37 +95,6 @@
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
-  <script>
-    const verses = document.querySelectorAll(".verse");
-    const progressBar = document.getElementById("progress-bar");
-    const progressText = document.getElementById("progress-text");
-
-    function updateProgress() {
-      const total = verses.length;
-      const memorized = document.querySelectorAll(".verse.memorized").length;
-      const inProgress = document.querySelectorAll(".verse.in-progress").length;
-      const percent = Math.round(((memorized + inProgress * 0.5) / total) * 100);
-
-      progressBar.style.width = percent + "%";
-      progressText.textContent = `Progress: ${percent}% complete (${memorized} memorized, ${inProgress} in progress)`;
-    }
-
-    function highlightMatches(query) {
-      verses.forEach(v => {
-        v.innerHTML = v.innerHTML.replace(/<span class="highlight">(.*?)<\/span>/g, "$1"); // remove old highlights
-        if (query) {
-          const regex = new RegExp(`(${query})`, "gi");
-          v.innerHTML = v.innerHTML.replace(regex, '<span class="highlight">$1</span>');
-        }
-      });
-    }
-
-    document.getElementById("search").addEventListener("input", (e) => {
-      const query = e.target.value.trim();
-      highlightMatches(query);
-    });
-
-    updateProgress();
-  </script>
+  <script src="/scripts/memorize.js"></script>
 </body>
 </html>
