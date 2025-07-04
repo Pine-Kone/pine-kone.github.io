@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Roman Numerals</title>
+<script type="text/javascript">
+"use strict";
+
+/*Input: four digit Arabic number less than 4000.
+*Processing: a bunch of if statements to convert from Arabic numbers to Roman numerals.
+*Output: Roman numeral
+*/
+function numbers() {
+	var arabic = parseInt(document.getElementById('arabic').value);
+	var roman = "";
+	
+	//Compute the 1000's digit.
+	if (arabic >= 3000) {
+		roman += "MMM";
+		arabic -= 3000;
+	}
+	else if (arabic >= 2000) {
+		roman += "MM";
+		arabic -= 2000;
+	}
+	else if (arabic >= 1000) {
+		roman += "M";
+		arabic -= 1000;
+	}
+	
+	//Compute the 100's digit.
+	if (arabic >= 900) {
+		roman += "CM";
+		arabic -= 900;
+	}
+	else if (arabic >= 800) {
+		roman += "DCCC";
+		arabic -= 800;
+	}
+	else if (arabic >= 700) {
+		roman += "DCC";
+		arabic -= 700;
+	}
+	else if (arabic >= 600) {
+		roman += "DC";
+		arabic -= 600;
+	}
+	else if (arabic >= 500) {
+		roman += "D";
+		arabic -= 500;
+	}
+	else if (arabic >= 400) {
+		roman += "CD";
+		arabic -= 400;
+	}
+	else if (arabic >= 300) {
+		roman += "CCC";
+		arabic -= 300;
+	}
+	else if (arabic >= 200) {
+		roman += "CC";
+		arabic -= 200;
+	}
+	else if (arabic >= 100) {
+		roman += "C";
+		arabic -= 100;
+	}
+	
+	//Compute the 10's digit.
+	if (arabic >= 90) {
+		roman += "XC";
+		arabic -= 90;
+	}
+	else if (arabic >= 80) {
+		roman += "LXXX";
+		arabic -= 80;
+	}
+	else if (arabic >= 70) {
+		roman += "LXX";
+		arabic -= 70;
+	}
+	else if (arabic >= 60) {
+		roman += "LX";
+		arabic -= 60;
+	}
+	else if (arabic >= 50) {
+		roman += "L";
+		arabic -= 50;
+	}
+	else if (arabic >= 40) {
+		roman += "XL";
+		arabic -= 40;
+	}
+	else if (arabic >= 30) {
+		roman += "XXX";
+		arabic -= 30;
+	}
+	else if (arabic >= 20) {
+		roman += "XX";
+		arabic -= 20;
+	}
+	else if (arabic >= 10) {
+		roman += "X";
+		arabic -= 10;
+	}
+	
+	//Compute the 1's digit.
+	if (arabic >= 9) {
+		roman += "IX";
+		arabic -= 9;
+	}
+	else if (arabic >= 8) {
+		roman += "VIII";
+		arabic -= 8;
+	}
+	else if (arabic >= 7) {
+		roman += "VII";
+		arabic -= 7;
+	}
+	else if (arabic >= 6) {
+		roman += "VI";
+		arabic -= 6;
+	}
+	else if (arabic >= 5) {
+		roman += "V";
+		arabic -= 5;
+	}
+	else if (arabic >= 4) {
+		roman += "IV";
+		arabic -= 4;
+	}
+	else if (arabic >= 3) {
+		roman += "III";
+		arabic -= 3;
+	}
+	else if (arabic >= 2) {
+		roman += "II";
+		arabic -= 2;
+	}
+	else if (arabic >= 1) {
+		roman += "I";
+		arabic -= 1;
+	}
+	document.getElementById('output').innerHTML = roman;
+}
+</script>
+</head>
+
+<body>
+Enter an integer less than 4000: <input type="text" id="arabic">
+<button type="button" onclick="numbers()">Click</button>
+<div id="output"></div>
+</body>
+</html>
