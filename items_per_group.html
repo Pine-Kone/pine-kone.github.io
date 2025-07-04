@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Team Recommendations</title>
+<script type="text/javascript">
+"use strict";
+
+/*Input: Total number of students, number of teams
+*Processing:
+*	smallTeamSize = floor(total/teams)
+*	largeTeamSize = smallTeamSize + 1
+*	largeTeams = total students % teams
+*	smallTeams = Teams - largeTeams
+*Output:
+*		___ teams with ___ members and
+*		___ teams with ___ members
+*/
+
+function calcTeams() {
+var studs = parseInt(document.getElementById('Students').value);
+var teams = parseInt(document.getElementById('Teams').value);
+
+var smallTeamSize = Math.floor(studs/teams);
+var largeTeamSize = smallTeamSize + 1;
+var largeTeams = studs % teams;
+var smallTeams = teams - largeTeams;
+
+document.getElementById('output').innerHTML = largeTeams + " teams with " + largeTeamSize + " students and " + smallTeams + " teams with " + smallTeamSize + " students.";
+}
+</script>
+</head>
+
+<body>
+Number of students <input type="text" id="Students"><br>
+Number of teams <input type="text" id="Teams"><br>
+<button type="button" onclick="calcTeams()">Teams</button>
+<div id="output"></div>
+</body>
+</html>
