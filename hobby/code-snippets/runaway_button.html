@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Runaway Button</title>
+<script type="text/javascript">
+"use strict";
+
+/*Input:
+*Processing:
+*Output:
+*/
+function moveButton() {
+	var button = document.getElementById('run');
+	
+	var x = Math.round(Math.random() * 800);
+	var y = Math.round(Math.random() * 600);
+	
+	button.style.left = x + "px";
+	button.style.top = y + "px";
+}
+function ohNo() {
+	alert("Cheater! ;-)");
+}
+</script>
+</head>
+
+<body>
+<button type="button" id="run" onclick="ohNo()" onmouseenter="moveButton()" style="position:absolute">Click Me!</button>
+<div id="output"></div>
+</body>
+</html>
