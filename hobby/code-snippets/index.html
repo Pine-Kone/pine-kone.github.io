@@ -1,1 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Runaway Button | Hobbies</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    body {
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
 
+    .runaway-wrapper {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    #run {
+      position: absolute;
+      padding: 1rem 2rem;
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    #run:hover {
+      background: #cc6300;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Runaway Button</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/hobbies/">Back to Hobbies</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="runaway-wrapper">
+    <p>Try clicking the button... if you can!</p>
+    <button id="run" onclick="ohNo()" onmouseenter="moveButton()">Click Me!</button>
+  </main>
+
+  <footer>
+    <p>© 2025 Hans M. Haroldsen</p>
+  </footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script>
+    "use strict";
+
+    function moveButton() {
+      const button = document.getElementById("run");
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
+
+    function ohNo() {
+      alert("Cheater! ;-)");
+    }
+  </script>
+</body>
+</html>
