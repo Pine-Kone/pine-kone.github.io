@@ -36,45 +36,44 @@ function ohNo() {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Runaway Button | Code Snippets</title>
-  <link rel="stylesheet" href="/style/main.css">
+  <link rel="stylesheet" href="/style/main.css" />
   <style>
-    #button-container {
+    main {
+      min-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       position: relative;
-      width: 100%;
-      height: calc(100vh - 8rem); /* Account for header/footer padding */
-      overflow: hidden;
+    }
+
+    #instruction {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
     }
 
     #run {
       position: absolute;
-      padding: 0.5rem 1rem;
+      padding: 0.75rem 1.5rem;
       font-size: 1rem;
-      border-radius: 8px;
-      background-color: var(--accent-color);
-      color: var(--button-text-color);
+      background: var(--accent-color);
+      color: white;
       border: none;
+      border-radius: 0.5rem;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: background 0.3s;
+      z-index: 2;
     }
 
-    #run:hover {
-      background-color: var(--accent-color-hover);
-    }
-
-    .missed-message {
+    .missed {
       position: absolute;
-      color: red;
+      color: var(--text-color);
       font-weight: bold;
       pointer-events: none;
-    }
-
-    .instructions {
-      text-align: center;
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
+      z-index: 1;
     }
   </style>
 </head>
@@ -85,66 +84,69 @@ function ohNo() {
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/hobbies/">Back to Hobbies</a></li>
-        <li><a href="/hobbies/code-snippets/">More Code Snippets</a></li>
+        <li><a href="/hobbies/code/">More Code Snippets</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <div class="instructions">Try clicking the button... if you can!</div>
-    <div id="button-container">
-      <button id="run" onclick="ohNo()" onmouseenter="moveButton()">Click Me!</button>
-    </div>
+    <div id="instruction">Try clicking the button for a confetti celebration... if you can!</div>
+    <button id="run">Click Me!</button>
   </main>
 
   <footer>
     <p>© 2025 Hans M. Haroldsen</p>
   </footer>
 
-  <script>
-    function moveButton() {
-      const button = document.getElementById("run");
-      const container = document.getElementById("button-container");
-
-      // Remove previous "You missed!" message
-      const oldMiss = document.getElementById("missed");
-      if (oldMiss) oldMiss.remove();
-
-      // Capture the button's current position
-      const buttonX = button.offsetLeft;
-      const buttonY = button.offsetTop;
-
-      // Place a "You missed!" message at the current button position
-      const missMsg = document.createElement("div");
-      missMsg.id = "missed";
-      missMsg.className = "missed-message";
-      missMsg.innerText = "You missed!";
-      missMsg.style.left = `${buttonX}px`;
-      missMsg.style.top = `${buttonY}px`;
-      container.appendChild(missMsg);
-
-      // Calculate available screen space (with padding)
-      const buttonWidth = button.offsetWidth;
-      const buttonHeight = button.offsetHeight;
-      const padding = 40; // px
-
-      const maxX = window.innerWidth - buttonWidth - padding;
-      const maxY = container.offsetHeight - buttonHeight - padding;
-
-      const newX = Math.random() * maxX + padding / 2;
-      const newY = Math.random() * maxY + padding / 2;
-
-      button.style.left = `${newX}px`;
-      button.style.top = `${newY}px`;
-    }
-
-    function ohNo() {
-      alert("You got it! 🎉
-        ...
-        Cheater!! 😉");
-    }
-  </script>
-  <script src="/scripts/light-dark-toggle.js"></script>
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+
+  <script>
+    const button = document.getElementById('run');
+    const main = document.querySelector('main');
+    let lastMissed = null;
+
+    function moveButton() {
+      // Remove previous missed message
+      if (lastMissed && lastMissed.parentNode) {
+        lastMissed.parentNode.removeChild(lastMissed);
+        lastMissed = null;
+      }
+
+      const rect = button.getBoundingClientRect();
+      const buttonWidth = rect.width;
+      const buttonHeight = rect.height;
+
+      const padding = 20;
+      const maxX = window.innerWidth - buttonWidth - padding;
+      const maxY = window.innerHeight - buttonHeight - padding;
+
+      const x = Math.floor(Math.random() * maxX);
+      const y = Math.floor(Math.random() * maxY);
+
+      // Create "You missed!" where the button was
+      const missed = document.createElement('div');
+      missed.textContent = "You missed!";
+      missed.className = "missed";
+      missed.style.left = rect.left + "px";
+      missed.style.top = rect.top + "px";
+      main.appendChild(missed);
+      lastMissed = missed;
+
+      // Move button to new location
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    }
+
+    // Hook into hover/mouseenter to trigger move
+    button.addEventListener('mouseenter', () => {
+      setTimeout(() => moveButton(), 100); // slight delay allows mobile users a chance to tap
+    });
+
+    // Real click success
+    button.addEventListener('click', () => {
+      alert("You actually clicked it! 😄");
+    });
+  </script>
 </body>
 </html>
