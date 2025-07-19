@@ -37,137 +37,95 @@ function ohNo() {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Runaway Button | Code Snippets</title>
+  <title>Runaway Button</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="/style/main.css" />
   <style>
-    main {
-      min-height: 80vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
+    body {
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
       position: relative;
-    }
-
-    #instruction {
-      font-size: 1.25rem;
-      margin-bottom: 2rem;
-    }
-
-    #run {
-      position: absolute;
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
-      background: var(--accent-color);
-      color: white;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      transition: background 0.3s;
-      z-index: 2;
-    }
-
-    .missed {
-      position: absolute;
+      background-color: var(--background-color);
       color: var(--text-color);
-      font-weight: bold;
-      pointer-events: none;
-      z-index: 1;
     }
-    
-    #button-container {
-  position: relative;
-  width: 100%;
-  height: 80vh;
-}
 
-#run {
-  position: absolute;
-  /* any additional styles */
-}
+    .container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
 
-.missed-message {
-  position: absolute;
-  font-weight: bold;
-  pointer-events: none;
-}
+    .runaway-button {
+      position: absolute;
+      padding: 0.75rem 1.25rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .missed-message {
+      position: absolute;
+      font-weight: bold;
+      color: #d9534f;
+      font-size: 1rem;
+    }
+
+    .instructions {
+      padding: 1rem;
+      text-align: center;
+      font-size: 1.2rem;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Runaway Button</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/hobbies/">Back to Hobbies</a></li>
-        <li><a href="/hobbies/code/">More Code Snippets</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <div id="instruction">Try clicking the button... if you can!</div>
-    <button id="run">Click Me!</button>
-  </main>
-
-  <footer>
-    <p>© 2025 Hans M. Haroldsen</p>
-  </footer>
-
-  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
-  <script src="/scripts/light-dark-toggle.js"></script>
+  <div class="instructions">Try clicking the button for a surprise… if you can!</div>
+  <div class="container" id="button-container">
+    <button
+      id="run"
+      class="runaway-button"
+      onclick="ohNo()"
+      onmouseenter="moveButton()"
+      style="top: 40%; left: 45%;">
+      Click Me!
+    </button>
+  </div>
 
   <script>
-    const button = document.getElementById('run');
-    const main = document.querySelector('main');
-    let lastMissed = null;
+    "use strict";
 
     function moveButton() {
-  const button = document.getElementById("run");
-  const container = document.getElementById("button-container");
+      const button = document.getElementById("run");
+      const container = document.getElementById("button-container");
 
-  // Remove old missed message
-  const oldMiss = document.getElementById("missed");
-  if (oldMiss) oldMiss.remove();
+      // Remove old missed message
+      const oldMiss = document.getElementById("missed");
+      if (oldMiss) oldMiss.remove();
 
-  // Get current button position
-  const buttonX = button.offsetLeft;
-  const buttonY = button.offsetTop;
+      // Get current button position
+      const buttonX = button.offsetLeft;
+      const buttonY = button.offsetTop;
 
-  // Place a new missed message
-  const missMsg = document.createElement("div");
-  missMsg.id = "missed";
-  missMsg.className = "missed-message";
-  missMsg.innerText = "You missed!";
-  missMsg.style.left = `${buttonX}px`;
-  missMsg.style.top = `${buttonY}px`;
-  container.appendChild(missMsg);
+      // Place a new missed message
+      const missMsg = document.createElement("div");
+      missMsg.id = "missed";
+      missMsg.className = "missed-message";
+      missMsg.innerText = "You missed!";
+      missMsg.style.left = `${buttonX}px`;
+      missMsg.style.top = `${buttonY}px`;
+      container.appendChild(missMsg);
 
-  // Get viewable area with padding
-  const padding = 24;
-  const maxX = window.innerWidth - button.offsetWidth - padding;
-  const maxY = window.innerHeight - button.offsetHeight - padding;
-  const minX = padding;
-  const minY = padding;
+      // Reposition the button
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+      const newX = Math.random() * maxX;
+      const newY = Math.random() * maxY;
+      button.style.left = `${newX}px`;
+      button.style.top = `${newY}px`;
+    }
 
-  // Reposition the button
-  const newX = Math.random() * (maxX - minX) + minX;
-  const newY = Math.random() * (maxY - minY) + minY;
-
-  button.style.left = `${newX}px`;
-  button.style.top = `${newY}px`;
-}
-
-    // Hook into hover/mouseenter to trigger move
-    button.addEventListener('mouseenter', () => {
-      setTimeout(() => moveButton(), 100); // slight delay allows mobile users a chance to tap
-    });
-
-    // Real click success
-    button.addEventListener('click', () => {
-      alert("You actually clicked it! 😄");
-    });
+    function ohNo() {
+      alert("You got it! 🎉");
+    }
   </script>
 </body>
 </html>
