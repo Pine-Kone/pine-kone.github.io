@@ -94,34 +94,42 @@ function ohNo() {
     "use strict";
 
     function moveButton() {
-      const button = document.getElementById("run");
-      const container = document.getElementById("button-container");
+  const button = document.getElementById("run");
+  const container = document.getElementById("button-container");
 
-      // Remove old missed message
-      const oldMiss = document.getElementById("missed");
-      if (oldMiss) oldMiss.remove();
+  // Remove previous "You missed!" message
+  const oldMiss = document.getElementById("missed");
+  if (oldMiss) oldMiss.remove();
 
-      // Get current button position
-      const buttonX = button.offsetLeft;
-      const buttonY = button.offsetTop;
+  // Capture the button's current position
+  const buttonX = button.offsetLeft;
+  const buttonY = button.offsetTop;
 
-      // Place a new missed message
-      const missMsg = document.createElement("div");
-      missMsg.id = "missed";
-      missMsg.className = "missed-message";
-      missMsg.innerText = "You missed!";
-      missMsg.style.left = `${buttonX}px`;
-      missMsg.style.top = `${buttonY}px`;
-      container.appendChild(missMsg);
+  // Place a "You missed!" message at the current button position
+  const missMsg = document.createElement("div");
+  missMsg.id = "missed";
+  missMsg.className = "missed-message";
+  missMsg.innerText = "You missed!";
+  missMsg.style.left = `${buttonX}px`;
+  missMsg.style.top = `${buttonY}px`;
+  container.appendChild(missMsg);
 
-      // Reposition the button
-      const maxX = window.innerWidth - button.offsetWidth;
-      const maxY = window.innerHeight - button.offsetHeight;
-      const newX = Math.random() * maxX;
-      const newY = Math.random() * maxY;
-      button.style.left = `${newX}px`;
-      button.style.top = `${newY}px`;
-    }
+  // Calculate available screen space
+  const buttonWidth = button.offsetWidth;
+  const buttonHeight = button.offsetHeight;
+  const containerWidth = window.innerWidth;
+  const containerHeight = window.innerHeight;
+
+  const maxX = containerWidth - buttonWidth;
+  const maxY = containerHeight - buttonHeight;
+
+  // Generate new position within screen bounds
+  const newX = Math.random() * maxX;
+  const newY = Math.random() * maxY;
+
+  button.style.left = `${newX}px`;
+  button.style.top = `${newY}px`;
+}
 
     function ohNo() {
       alert("You got it, cheater! 🎉");
