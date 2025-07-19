@@ -3,47 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Runaway Button | Hobbies</title>
+  <title>Code Snippets | Hobbies</title>
   <link rel="stylesheet" href="/style/main.css" />
   <style>
-    body {
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .runaway-wrapper {
-      text-align: center;
+    .snippet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
       margin-top: 2rem;
     }
 
-    #run {
-      position: absolute;
-      padding: 1rem 2rem;
-      background: var(--accent-color);
+    .snippet-card {
+      background: var(--primary-color);
       color: white;
-      border: none;
+      padding: 1.5rem;
       border-radius: 0.5rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-
-    #run:hover {
-      background: #cc6300;
-    }
-
-    footer {
-      position: absolute;
-      bottom: 0;
+      max-width: 320px;
       width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .snippet-card:hover {
+      background: var(--accent-color);
+    }
+
+    .snippet-card h3 {
+      margin-top: 0;
+    }
+
+    .snippet-card p {
+      margin-bottom: 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Runaway Button</h1>
+    <h1>Code Snippets</h1>
     <nav>
       <ul>
         <li><a href="/">Home</a></li>
@@ -52,9 +50,21 @@
     </nav>
   </header>
 
-  <main class="runaway-wrapper">
-    <p>Try clicking the button... if you can!</p>
-    <button id="run" onclick="ohNo()" onmouseenter="moveButton()">Click Me!</button>
+  <main class="snippet-grid">
+    <a href="/hobbies/code-snippets/runaway_button.html" class="snippet-card">
+      <h3>Runaway Button</h3>
+      <p>A playful snippet where the button avoids your mouse. Originally built for a college assignment.</p>
+    </a>
+
+    <a href="/hobbies/code-snippets/items_per_group.html" class="snippet-card">
+      <h3>Items per Group Calculator</h3>
+      <p>A handy utility to divide items into even groups. Useful for inventory or teaching planning.</p>
+    </a>
+
+    <a href="/hobbies/code-snippets/roman_numerals.html" class="snippet-card">
+      <h3>Roman Numeral Converter</h3>
+      <p>Convert between integers and Roman numerals. Great for logic and regex practice.</p>
+    </a>
   </main>
 
   <footer>
@@ -63,24 +73,5 @@
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
-  <script>
-    "use strict";
-
-    function moveButton() {
-      const button = document.getElementById("run");
-      const maxX = window.innerWidth - button.offsetWidth;
-      const maxY = window.innerHeight - button.offsetHeight;
-
-      const x = Math.floor(Math.random() * maxX);
-      const y = Math.floor(Math.random() * maxY);
-
-      button.style.left = x + "px";
-      button.style.top = y + "px";
-    }
-
-    function ohNo() {
-      alert("Cheater! ;-)");
-    }
-  </script>
 </body>
 </html>
