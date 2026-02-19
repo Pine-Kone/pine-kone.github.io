@@ -1,0 +1,30 @@
+let
+    // Load JSON (top level: record of Dates)
+    Source = Json.Document(File.Contents("S:\Personal Folders\Personal Management Helps\2026-02-19 Check-In.json")),
+
+    // Turn top-level record into rows: [Name]=DateText, [Value]=Record(of times)
+    DatesTable = Record.ToTable(Source),
+    RenamedDates = Table.RenameColumns(DatesTable, {{"Name", "DateText"}, {"Value", "TimesRecord"}}),
+
+    // For each Date, turn its TimesRecord into rows: [Name]=TimeText, [Value]=Note
+    AddTimesTable = Table.AddColumn(
+        RenamedDates,
+        "TimesTable",
+        each Table.RenameColumns(Record.ToTable([TimesRecord]), {{"Name","Time"}, {"Value","Note"}}),
+        type table [Time=text, Note=text]
+    ),
+
+    // Expand the nested tables into rows
+    ExpandedTimes = Table.ExpandTableColumn(AddTimesTable, "TimesTable", {"Time", "Note"}, {"Time", "Note"}),
+
+    // Convert DateText to a real date (optional, but recommended)
+    AddDate = Table.TransformColumns(ExpandedTimes, {{"DateText", each Date.FromText(_), type date}}),
+    RenameDate = Table.RenameColumns(AddDate, {{"DateText", "Date"}}),
+
+    // Optional: convert Time text to a time type (keeps sorting sane)
+    AddTimeType = Table.TransformColumns(RenameDate, {{"Time", each Time.FromText(_), type time}}),
+
+    // Optional: sort by Date then Time
+    Sorted = Table.Sort(AddTimeType, {{"Date", Order.Ascending}, {"Time", Order.Ascending}})
+in
+    Sorted
