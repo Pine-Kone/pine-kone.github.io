@@ -400,7 +400,7 @@ const jolteonCards = [
     name: "Jolteon ex",
     set: "Prismatic Evolutions",
     number: "30 / 131",
-    image: "/images/pokemon/jolteon/prismatic-evolutions-030.jpg",
+    image: "/images/pokemon/jolteon/prismatic-evolutions-030.jpeg",
     obtained: true,
     obtainedDate: null,
     obtainedLocation: null
