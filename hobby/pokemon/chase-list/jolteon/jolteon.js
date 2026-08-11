@@ -21,9 +21,9 @@ const jolteonCards = [
     set: "Jungle",
     number: "4 / 64",
     image: "/images/pokemon/jolteon/jungle-004.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: "Idaho Falls, Idaho"
   },
 
   {
@@ -141,7 +141,7 @@ const jolteonCards = [
     set: "POP Series 3",
     number: "3 / 17",
     image: "/images/pokemon/jolteon/pop-series-3-003.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
     obtainedLocation: null
   },
@@ -241,7 +241,7 @@ const jolteonCards = [
     set: "Generations",
     number: "28 / 83",
     image: "/images/pokemon/jolteon/generations-028.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
     obtainedLocation: null
   },
@@ -309,11 +309,11 @@ const jolteonCards = [
   {
     name: "Jolteon VMAX",
     set: "Evolving Skies",
-    number: "51 / 225",
+    number: "51 / 203",
     image: "/images/pokemon/jolteon/evolving-skies-051.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: "Lynden, Washington"
   },
 
   {
@@ -391,9 +391,9 @@ const jolteonCards = [
     set: "Prismatic Evolutions",
     number: "29 / 131",
     image: "/images/pokemon/jolteon/prismatic-evolutions-029.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: "Lynden, Washington"
   },
 
   {
@@ -401,7 +401,7 @@ const jolteonCards = [
     set: "Prismatic Evolutions",
     number: "30 / 131",
     image: "/images/pokemon/jolteon/prismatic-evolutions-030.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
     obtainedLocation: null
   },
@@ -421,9 +421,9 @@ const jolteonCards = [
     set: "SV Promos",
     number: "169",
     image: "/images/pokemon/jolteon/sv-promos-169.jpg",
-    obtained: false,
+    obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: "Bellingham, Washington"
   },
 
   {
