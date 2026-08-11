@@ -1,1 +1,221 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokémon | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
+
+  <style>
+    .pokemon-hero {
+      padding: 3rem 1rem;
+      text-align: center;
+      background: var(--background-color);
+    }
+
+    .pokemon-hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pokemon-section {
+      padding: 2rem 1rem;
+      background: #f0f0f0;
+      text-align: center;
+    }
+
+    body.dark-mode .pokemon-section {
+      background: #2a2a2a;
+    }
+
+    .pokemon-section h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .pokemon-section-intro {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .pokemon-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .pokemon-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 220px;
+      min-height: 150px;
+      padding: 1.5rem;
+      box-sizing: border-box;
+
+      background: var(--primary-color);
+      color: white;
+      border-radius: 0.75rem;
+      text-decoration: none;
+
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      transition:
+        transform 0.2s,
+        background-color 0.3s,
+        box-shadow 0.2s;
+    }
+
+    .pokemon-card:hover {
+      background: var(--accent-color);
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .pokemon-card .pokemon-name {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+    }
+
+    .pokemon-card .pokemon-description {
+      font-size: 0.95rem;
+      opacity: 0.9;
+    }
+
+    .pokemon-card .pokemon-arrow {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      text-align: right;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>Pokémon</h1>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/hobbies/">Back to Hobbies</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="pokemon-hero">
+      <h2>Gotta Catch 'Em All</h2>
+      <p>
+        A place for my Pokémon-related projects, collections, goals,
+        and other PokéNonsense.
+      </p>
+    </section>
+
+    <section class="pokemon-section">
+      <h3>Current Chase List</h3>
+
+      <p class="pokemon-section-intro">
+        Pokémon I'm currently hunting, collecting, or otherwise
+        keeping an eye out for.
+      </p>
+
+      <div class="pokemon-grid">
+
+        <a href="/hobby/pokemon/chase-list/jolteon/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Jolteon</div>
+            <div class="pokemon-description">
+              Current chase
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/rhyhorn-rhydon/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Rhyhorn / Rhydon</div>
+            <div class="pokemon-description">
+              Evolution line
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/pineco-forretress/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Pineco / Forretress</div>
+            <div class="pokemon-description">
+              Evolution line
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/maushold/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Maushold</div>
+            <div class="pokemon-description">
+              Current chase
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/turtwig-grotle-torterra/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Turtwig / Grotle / Torterra</div>
+            <div class="pokemon-description">
+              Evolution line
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/zapdos/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Zapdos</div>
+            <div class="pokemon-description">
+              Current chase
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+        <a href="/hobby/pokemon/chase-list/rare-candy/" class="pokemon-card">
+          <div>
+            <div class="pokemon-name">Rare Candy</div>
+            <div class="pokemon-description">
+              Special chase
+            </div>
+          </div>
+
+          <div class="pokemon-arrow">→</div>
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>© 2026 Hans M. Haroldsen</p>
+  </footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+
+  <script src="/scripts/light-dark-toggle.js"></script>
+
+</body>
+</html>
