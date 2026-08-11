@@ -493,7 +493,7 @@ const jolteonCards = [
     image: "/images/pokemon/chase-list/jolteon/prismatic-evolutions-030.jpeg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: null,
+    obtainedLocation: "Lynden, Washington",
     features: [
       "Play! Pokémon logo"
     ],
