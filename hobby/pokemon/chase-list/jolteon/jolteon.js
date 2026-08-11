@@ -12,6 +12,20 @@
  *
  * obtainedLocation:
  *   Where I obtained the card
+ *
+ * features:
+ *   Structured characteristics of the physical card
+ *   Examples:
+ *     "First Edition"
+ *     "Reverse Holo"
+ *     "Play! Pokémon logo"
+ *     "Poké Ball logo"
+ *     "Great Ball logo"
+ *     "Ultra Ball logo"
+ *     "Master Ball logo"
+ *
+ * notes:
+ *   Free-form notes about the specific card
  */
 
 const jolteonCards = [
@@ -23,7 +37,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/jungle-004.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: "Idaho Falls, Idaho"
+    obtainedLocation: "Idaho Falls, Idaho",
+    features: [],
+    notes: []
   },
 
   {
@@ -33,7 +49,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/jungle-020.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -43,7 +61,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/team-rocket-038.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -53,7 +73,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/gym-challenge-028.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -63,7 +85,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/neo-destiny-048.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -73,7 +97,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/vs-030.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -83,7 +109,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/promo-1998.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -93,7 +121,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/skyridge-013.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -103,7 +133,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ex-sandstorm-006.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -113,7 +145,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ex-unseen-forces-008.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -123,7 +157,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ex-delta-species-007.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -133,7 +169,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ex-delta-species-109.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -143,7 +181,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/pop-series-3-003.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -153,7 +193,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ex-power-keepers-101.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -163,7 +205,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/majestic-dawn-023.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -173,7 +217,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/rising-rivals-026.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -183,7 +229,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/undaunted-028.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -193,7 +241,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/call-of-legends-045.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -203,7 +253,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/dark-explorers-037.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -213,7 +265,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/plasma-freeze-034.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -223,7 +277,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/bw-promos-bw91.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -233,7 +289,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/ancient-origins-026.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -243,7 +301,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/generations-028.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -253,7 +313,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/generations-028a.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -263,7 +325,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/hidden-fates-023.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -273,7 +337,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/cosmic-eclipse-070.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -283,7 +349,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/tag-all-stars-042.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -293,7 +361,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/sm-promos-sm173.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -303,7 +373,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/vivid-voltage-047.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -313,7 +385,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/evolving-skies-051.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: "Lynden, Washington"
+    obtainedLocation: "Lynden, Washington",
+    features: [],
+    notes: []
   },
 
   {
@@ -323,7 +397,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/evolving-skies-177.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -333,7 +409,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/brilliant-stars-tg4.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -343,7 +421,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/swsh-promos-094.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -353,7 +433,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/swsh-promos-151.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -363,7 +445,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/swsh-promos-183.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -373,7 +457,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/swsh-promos-184.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -383,7 +469,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/151-135.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -393,7 +481,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/prismatic-evolutions-029.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: "Lynden, Washington"
+    obtainedLocation: "Lynden, Washington",
+    features: [],
+    notes: []
   },
 
   {
@@ -403,7 +493,11 @@ const jolteonCards = [
     image: "/images/pokemon/chase-list/jolteon/prismatic-evolutions-030.jpeg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [
+      "Play! Pokémon logo"
+    ],
+    notes: []
   },
 
   {
@@ -413,7 +507,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/prismatic-evolutions-153.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -423,7 +519,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/sv-promos-169.jpg",
     obtained: true,
     obtainedDate: null,
-    obtainedLocation: "Bellingham, Washington"
+    obtainedLocation: "Bellingham, Washington",
+    features: [],
+    notes: []
   },
 
   {
@@ -433,7 +531,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/sv-promo-064.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   },
 
   {
@@ -443,7 +543,9 @@ const jolteonCards = [
     image: "/images/pokemon/jolteon/starter-set-eevee-ex-001.jpg",
     obtained: false,
     obtainedDate: null,
-    obtainedLocation: null
+    obtainedLocation: null,
+    features: [],
+    notes: []
   }
 
 ];
@@ -516,6 +618,54 @@ function renderCollection() {
     }
 
 
+    let featuresHTML = "";
+
+    if (card.features && card.features.length > 0) {
+
+      featuresHTML = `
+        <div class="card-features">
+
+          <p class="features-label">
+            Features:
+          </p>
+
+          <ul class="features-list">
+
+            ${card.features
+              .map(feature => `<li>${feature}</li>`)
+              .join("")}
+
+          </ul>
+
+        </div>
+      `;
+    }
+
+
+    let notesHTML = "";
+
+    if (card.notes && card.notes.length > 0) {
+
+      notesHTML = `
+        <div class="card-notes">
+
+          <p class="notes-label">
+            Notes:
+          </p>
+
+          <ul class="notes-list">
+
+            ${card.notes
+              .map(note => `<li>${note}</li>`)
+              .join("")}
+
+          </ul>
+
+        </div>
+      `;
+    }
+
+
     cardElement.innerHTML = `
 
       <div class="card-image-wrapper">
@@ -558,6 +708,10 @@ function renderCollection() {
 
 
         ${acquisitionHTML}
+
+        ${featuresHTML}
+
+        ${notesHTML}
 
       </div>
     `;
