@@ -481,7 +481,7 @@ const jolteonCards = [
     variants: [
         {
           type: "Standard",
-          image: "images/pokemon/chase-list/jolteon/prismatic-evolutions-29-131-standard.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/prismatic-evolutions-29-131-standard.jpeg",
           features: [],
           obtained: true,
           obtainedDate: "2026-08-11",
@@ -499,7 +499,7 @@ const jolteonCards = [
         },
         {
           type: "Masterball",
-          image: "images/pokemon/chase-list/jolteon/prismatic-evolutions-29-131-masterball.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/prismatic-evolutions-29-131-masterball.jpeg",
           features: ["Masterball Mark"],
           obtained: true,
           obtainedDate: null,
