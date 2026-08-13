@@ -482,28 +482,29 @@ const jolteonCards = [
         {
           type: "Standard",
           image: null,
-          features: null,
+          features: [],
           obtained: true,
-          obtainedDate: 2026-08-11,
+          obtainedDate: "2026-08-11",
           obtainedLocation: "Lynden, Washington (Gems & Games)",
-          notes: null
+          notes: []
         },
         {
           type: "Pokeball",
           image: null,
-          features: null,
+          features: ["Pokeball Mark"],
           obtained: false,
           obtainedDate: null,
           obtainedLocation: null,
-          notes: null
+          notes: []
         },
         {
           type: "Masterball",
           image: null,
-          features: null,
+          features: ["Masterball Mark"],
           obtained: true,
-          obtainedDate: null
-          obtainedLocation: "Lynden, Washington (Meeple Manor)"
+          obtainedDate: null,
+          obtainedLocation: "Lynden, Washington (Meeple Manor)",
+          notes: []
         }
       ]
   },
@@ -582,177 +583,267 @@ function renderCollection() {
   const grid = document.getElementById("card-grid");
 
   let obtainedCount = 0;
+  let totalCount = 0;
 
   grid.innerHTML = "";
 
 
   jolteonCards.forEach((card) => {
 
-    if (card.obtained) {
-      obtainedCount++;
-    }
+    /*
+     * Determine whether this card uses the new
+     * variants[] structure or the original structure.
+     */
+
+    const variants = card.variants || [
+      {
+        type: "Standard",
+        image: card.image,
+        features: card.features || [],
+        obtained: card.obtained,
+        obtainedDate: card.obtainedDate,
+        obtainedLocation: card.obtainedLocation,
+        notes: card.notes || []
+      }
+    ];
 
 
-    const cardElement = document.createElement("article");
+    /*
+     * Count each variant individually.
+     */
 
-    cardElement.className =
-      `tcg-card ${card.obtained ? "obtained" : "not-obtained"}`;
+    variants.forEach((variant) => {
 
+      totalCount++;
 
-    const statusText =
-      card.obtained
-        ? "✓ Obtained"
-        : "○ Still Chasing";
-
-
-    const statusClass =
-      card.obtained
-        ? "status-obtained"
-        : "status-not-obtained";
+      if (variant.obtained) {
+        obtainedCount++;
+      }
 
 
-    let acquisitionHTML = "";
+      const cardElement = document.createElement("article");
+
+      cardElement.className =
+        `tcg-card ${variant.obtained ? "obtained" : "not-obtained"}`;
 
 
-    if (card.obtained) {
+      /*
+       * Ownership status
+       */
 
-      acquisitionHTML = `
-        <div class="acquisition-info">
+      const statusText =
+        variant.obtained
+          ? "✓ Obtained"
+          : "○ Still Chasing";
 
-          <p>
-            <span class="acquisition-label">
-              Date:
-            </span>
 
-            ${card.obtainedDate || "Not recorded"}
-          </p>
+      const statusClass =
+        variant.obtained
+          ? "status-obtained"
+          : "status-not-obtained";
 
-          <p>
-            <span class="acquisition-label">
-              Location:
-            </span>
 
-            ${card.obtainedLocation || "Not recorded"}
-          </p>
+      /*
+       * Image
+       */
+
+      let imageHTML = "";
+
+      if (variant.image) {
+
+        imageHTML = `
+          <img
+            src="${variant.image}"
+            alt="${card.name} — ${variant.type} — ${card.set} ${card.number}"
+            loading="lazy"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+          >
+
+          <div
+            class="card-image-placeholder"
+            style="display: none;"
+          >
+            Card image not added yet.
+          </div>
+        `;
+
+      } else {
+
+        imageHTML = `
+          <div class="card-image-placeholder">
+            Card image not added yet.
+          </div>
+        `;
+
+      }
+
+
+      /*
+       * Acquisition information
+       */
+
+      let acquisitionHTML = "";
+
+      if (variant.obtained) {
+
+        acquisitionHTML = `
+          <div class="acquisition-info">
+
+            <p>
+              <span class="acquisition-label">
+                Date:
+              </span>
+
+              ${variant.obtainedDate || "Not recorded"}
+            </p>
+
+            <p>
+              <span class="acquisition-label">
+                Location:
+              </span>
+
+              ${variant.obtainedLocation || "Not recorded"}
+            </p>
+
+          </div>
+        `;
+
+      }
+
+
+      /*
+       * Features
+       */
+
+      let featuresHTML = "";
+
+      if (
+        Array.isArray(variant.features) &&
+        variant.features.length > 0
+      ) {
+
+        featuresHTML = `
+          <div class="card-features">
+
+            <p class="features-label">
+              Features:
+            </p>
+
+            <ul class="features-list">
+
+              ${variant.features
+                .map(feature => `<li>${feature}</li>`)
+                .join("")}
+
+            </ul>
+
+          </div>
+        `;
+
+      }
+
+
+      /*
+       * Notes
+       */
+
+      let notesHTML = "";
+
+      if (
+        Array.isArray(variant.notes) &&
+        variant.notes.length > 0
+      ) {
+
+        notesHTML = `
+          <div class="card-notes">
+
+            <p class="notes-label">
+              Notes:
+            </p>
+
+            <ul class="notes-list">
+
+              ${variant.notes
+                .map(note => `<li>${note}</li>`)
+                .join("")}
+
+            </ul>
+
+          </div>
+        `;
+
+      }
+
+
+      /*
+       * Build the card
+       */
+
+      cardElement.innerHTML = `
+
+        <div class="card-image-wrapper">
+
+          ${imageHTML}
 
         </div>
+
+
+        <div class="card-info">
+
+          <h3 class="card-name">
+            ${card.name}
+          </h3>
+
+          <p class="card-variant">
+            ${variant.type}
+          </p>
+
+          <p class="card-set">
+            ${card.set}
+          </p>
+
+          <p class="card-number">
+            ${card.number}
+          </p>
+
+
+          <span class="ownership-status ${statusClass}">
+            ${statusText}
+          </span>
+
+
+          ${acquisitionHTML}
+
+          ${featuresHTML}
+
+          ${notesHTML}
+
+        </div>
+
       `;
-    }
 
 
-    let featuresHTML = "";
+      grid.appendChild(cardElement);
 
-    if (card.features && card.features.length > 0) {
-
-      featuresHTML = `
-        <div class="card-features">
-
-          <p class="features-label">
-            Features:
-          </p>
-
-          <ul class="features-list">
-
-            ${card.features
-              .map(feature => `<li>${feature}</li>`)
-              .join("")}
-
-          </ul>
-
-        </div>
-      `;
-    }
-
-
-    let notesHTML = "";
-
-    if (card.notes && card.notes.length > 0) {
-
-      notesHTML = `
-        <div class="card-notes">
-
-          <p class="notes-label">
-            Notes:
-          </p>
-
-          <ul class="notes-list">
-
-            ${card.notes
-              .map(note => `<li>${note}</li>`)
-              .join("")}
-
-          </ul>
-
-        </div>
-      `;
-    }
-
-
-    cardElement.innerHTML = `
-
-      <div class="card-image-wrapper">
-
-        <img
-          src="${card.image}"
-          alt="${card.name} — ${card.set} ${card.number}"
-          loading="lazy"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
-        >
-
-        <div
-          class="card-image-placeholder"
-          style="display: none;"
-        >
-          Card image not added yet.
-        </div>
-
-      </div>
-
-
-      <div class="card-info">
-
-        <h3 class="card-name">
-          ${card.name}
-        </h3>
-
-        <p class="card-set">
-          ${card.set}
-        </p>
-
-        <p class="card-number">
-          ${card.number}
-        </p>
-
-
-        <span class="ownership-status ${statusClass}">
-          ${statusText}
-        </span>
-
-
-        ${acquisitionHTML}
-
-        ${featuresHTML}
-
-        ${notesHTML}
-
-      </div>
-    `;
-
-
-    grid.appendChild(cardElement);
+    });
 
   });
 
 
-  const totalCount = jolteonCards.length;
+  /*
+   * Collection statistics
+   */
 
   const remainingCount =
     totalCount - obtainedCount;
 
+
   const completion =
     totalCount === 0
       ? 0
-      : Math.round((obtainedCount / totalCount) * 100);
+      : Math.round(
+          (obtainedCount / totalCount) * 100
+        );
 
 
   document.getElementById("total-cards").textContent =
