@@ -218,7 +218,7 @@ const jolteonCards = [
     name: "Jolteon",
     set: "POP Series 3",
     number: "3 / 17",
-    image: "/images/pokemon/chase-list/jolteon/pop-series-3-003.jpeg",
+    image: "/images/pokemon/chase-list/jolteon/jolteon-3-17.jpeg",
     obtained: true,
     obtainedDate: null,
     obtainedLocation: null,
