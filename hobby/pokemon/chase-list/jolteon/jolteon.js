@@ -46,10 +46,10 @@ const jolteonCards = [
     name: "Jolteon",
     set: "Jungle",
     number: "20 / 64",
-    image: "/images/pokemon/jolteon/jungle-020.jpg",
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
+    image: "/images/pokemon/chase-list/jolteon/jungle-020-standard.jpg",
+    obtained: true,
+    obtainedDate: "2026-08-12",
+    obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
     features: [],
     notes: []
   },
@@ -58,12 +58,26 @@ const jolteonCards = [
     name: "Dark Jolteon",
     set: "Team Rocket",
     number: "38 / 82",
-    image: "/images/pokemon/jolteon/team-rocket-038.jpg",
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-    features: [],
-    notes: []
+    variants: [
+        {
+          type: "Standard",
+          image: "/images/pokemon/chase-list/jolteon/team-rocket-038-standard.jpeg",
+          features: [],
+          obtained: true,
+          obtainedDate: "2026-08-12",
+          obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
+          notes: []
+        },
+        {
+          type: "First Edition",
+          image: null,
+          features: ["First Edition"],
+          obtained: false,
+          obtainedDate: null,
+          obtainedLocation: null,
+          notes: []
+        }
+      ]
   },
 
   {
