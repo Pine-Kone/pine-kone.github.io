@@ -478,12 +478,34 @@ const jolteonCards = [
     name: "Jolteon",
     set: "Prismatic Evolutions",
     number: "29 / 131",
-    image: "/images/pokemon/jolteon/prismatic-evolutions-029.jpg",
-    obtained: true,
-    obtainedDate: null,
-    obtainedLocation: "Lynden, Washington",
-    features: [],
-    notes: []
+    variants: [
+        {
+          type: "Standard",
+          image: null,
+          features: null,
+          obtained: true,
+          obtainedDate: 2026-08-11,
+          obtainedLocation: "Lynden, Washington (Gems & Games)",
+          notes: null
+        },
+        {
+          type: "Pokeball",
+          image: null,
+          features: null,
+          obtained: false,
+          obtainedDate: null,
+          obtainedLocation: null,
+          notes: null
+        },
+        {
+          type: "Masterball",
+          image: null,
+          features: null,
+          obtained: true,
+          obtainedDate: null
+          obtainedLocation: "Lynden, Washington (Meeple Manor)"
+        }
+      ]
   },
 
   {
