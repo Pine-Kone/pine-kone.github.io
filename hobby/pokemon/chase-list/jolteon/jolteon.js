@@ -338,7 +338,7 @@ const jolteonCards = [
         },
         {
           type: "Reverse Holo",
-          image: "/images/pokemon/chase-list/jolteon/jolteon-26-98-reverse-holo.jpg",
+          image: "/images/pokemon/chase-list/jolteon/jolteon-26-98-reverse-holo.jpeg",
           features: ["Reverse Holo"],
           obtained: true,
           obtainedDate: "2026-08-12",
