@@ -352,7 +352,7 @@ const jolteonCards = [
     name: "Jolteon EX",
     set: "Generations",
     number: "28 / 83",
-    image: "/images/pokemon/chase-list/jolteon/jolteon-28-83.jpeg",
+    image: "/images/pokemon/chase-list/jolteon/jolteon-ex-28-83.jpeg",
     obtained: true,
     obtainedDate: null,
     obtainedLocation: null,
