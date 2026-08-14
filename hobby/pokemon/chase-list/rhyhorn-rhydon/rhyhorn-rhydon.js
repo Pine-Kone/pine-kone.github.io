@@ -36,6 +36,26 @@ const rhyhornCards = [
     name: "Rhyhorn",
     set: "Jungle",
     number: "61 / 64",
+    variants: [
+        {
+          type: "Standard",
+          image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-61-64-standard.jpeg",
+          features: ["Holo"],
+          obtained: true,
+          obtainedDate: null,
+          obtainedLocation: "Ammon, Idaho (Silver Slugger Coins & Cards)",
+          notes: []
+        },
+        {
+          type: "1st Edition",
+          image: null,
+          features: ["1st Edition", "Holo"],
+          obtained: false,
+          obtainedDate: null,
+          obtainedLocation: null,
+          notes: []
+        }
+      ]
     image: "/images/pokemon/rhyhorn-rhydon/jungle-061.jpg",
     obtained: false,
     obtainedDate: null,
