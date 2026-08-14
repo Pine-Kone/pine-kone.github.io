@@ -46,10 +46,10 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
-        obtainedDate: null,
-        obtainedLocation: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-103-130.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-12",
+        obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
         features: [],
         notes: []
       }
@@ -136,6 +136,15 @@ const turtwigGrotleTorterraCards = [
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
+        notes: []
+      },
+      {
+        type: "Reverse Holo",
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-101-127-reverse-holo.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-12",
+        obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
+        features: ["Reverse Holo"],
         notes: []
       }
     ]
@@ -284,11 +293,20 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-6-172.jpeg",
+        obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
+        notes: []
+      },
+      {
+        type: "Reverse Holo",
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-6-172-reverse-holo.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: ["Reverse Holo"],
         notes: []
       }
     ]
@@ -318,8 +336,8 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-10-162.jpeg",
+        obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
@@ -476,7 +494,7 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-7-172.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -532,12 +550,12 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-17-130.jpeg",
+        obtained: true,
         obtainedDate: null,
-        obtainedLocation: null,
+        obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
         features: [],
-        notes: []
+        notes: ["This thing is in really rough shape. If I find a new one, I'm picking it up for sure!"]
       }
     ]
   },
@@ -685,10 +703,10 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-58-131.jpeg",
+        obtained: true,
         obtainedDate: null,
-        obtainedLocation: null,
+        obtainedLocation: "Lynden, Washington (Meeple Manor)",
         features: [],
         notes: []
       }
@@ -702,8 +720,8 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-8-172.jpeg",
+        obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
@@ -719,8 +737,8 @@ const turtwigGrotleTorterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
-        obtained: false,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-ex-12-162.jpeg",
+        obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
