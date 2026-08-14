@@ -436,7 +436,7 @@ const jolteonCards = [
     name: "Jolteon VMAX",
     set: "Evolving Skies",
     number: "51 / 203",
-    image: "/images/pokemon/chase-list/jolteon/jolteon-51-203.jpeg",
+    image: "/images/pokemon/chase-list/jolteon/jolteon-vmax-51-203.jpeg",
     obtained: true,
     obtainedDate: null,
     obtainedLocation: "Lynden, Washington",
@@ -579,7 +579,7 @@ const jolteonCards = [
         },
         {
           type: "Play! Pokemon Logo",
-          image: "/images/pokemon/chase-list/jolteon/jolteon-30-131-play-pokemon.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/jolteon-ex-30-131-play-pokemon.jpeg",
           features: ["Play! Pokemon Logo"],
           obtained: true,
           obtainedDate: null,
