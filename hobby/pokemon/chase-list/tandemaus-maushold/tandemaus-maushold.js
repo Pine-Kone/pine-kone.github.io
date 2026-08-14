@@ -3,26 +3,19 @@
 /*
  * Tandemaus & Maushold Collection Data
  *
- * obtained:
- *   true  = card is in my collection
- *   false = card is still on my chase list
+ * Each card contains a variants array.
  *
- * obtainedDate:
- *   YYYY-MM-DD
+ * The first variant should always be:
+ *   "Standard"
  *
- * obtainedLocation:
- *   Where I obtained the card
+ * Additional variants can be added as they are discovered.
  *
- * variants:
- *   Use this when the same numbered card has additional
- *   physical variations that you want to track separately.
- *
- *   Examples:
- *     - Poké Ball
- *     - Master Ball
- *     - Reverse Holo
- *     - First Edition
- *     - Play! Pokémon logo
+ * Examples:
+ *   - Poké Ball
+ *   - Master Ball
+ *   - Reverse Holo
+ *   - First Edition
+ *   - Play! Pokémon logo
  *
  * Each variant can have its own:
  *   type
@@ -33,8 +26,19 @@
  *   features
  *   notes
  *
- * notes:
- *   Free-form notes about the specific card.
+ * Image naming convention:
+ *
+ *   card-name-#-#.jpeg
+ *
+ * Examples:
+ *   tandemaus-154-182.jpeg
+ *   maushold-161-198.jpeg
+ *   maushold-ex-155-182.jpeg
+ *
+ * If an image is not yet available:
+ *   image: null
+ *
+ * The page will automatically display a placeholder.
  */
 
 
@@ -52,16 +56,18 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Scarlet & Violet",
     number: "159 / 198",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-159-198.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-159-198.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -69,50 +75,64 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Scarlet & Violet",
     number: "160 / 198",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-160-198.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-160-198.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
   {
     name: "Tandemaus",
     set: "Paldea Evolved",
-    number: "166 / 198",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-166-198.jpeg",
+    number: "166 / 193",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-166-193.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
   {
     name: "Tandemaus",
     set: "Paldea Evolved",
-    number: "167 / 198",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-167-198.jpeg",
-
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    number: "167 / 193",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-167-193.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      },
+       {
+        type: "Reverse Holo",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-167-193-reverse-holo.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: ["Reverse Holo"],
+        notes: []
+      }
+    ]
   },
 
 
@@ -120,16 +140,18 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Paradox Rift",
     number: "153 / 182",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-153-182.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-153-182.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -137,16 +159,26 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Paradox Rift",
     number: "154 / 182",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-154-182.jpeg",
-
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-154-182.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: [],
+        notes: []
+      },
+       {
+        type: "Reverse Holo",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-154-182-reverse-holo.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: ["Reverse Holo"],
+        notes: []
+      }
+    ]
   },
 
 
@@ -154,16 +186,18 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Paldean Fates",
     number: "73 / 91",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-73-91.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-73-91.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -171,16 +205,18 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Paldean Fates",
     number: "209 / 91",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-209-91.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-209-91.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -188,16 +224,18 @@ const tandemausMausholdCards = [
     name: "Tandemaus",
     set: "Surging Sparks",
     number: "157 / 191",
-    image: "/images/pokemon/tandemaus-maushold/tandemaus-157-191.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/tandemaus-157-191.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -209,33 +247,46 @@ const tandemausMausholdCards = [
     name: "Maushold",
     set: "Scarlet & Violet",
     number: "161 / 198",
-    image: "/images/pokemon/tandemaus-maushold/maushold-161-198.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-161-198.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      },
+       {
+        type: "Reverse Holo",
+        image: "/images/pokemon/tandemaus-maushold/maushold-161-198-reverse-holo.jpeg",
+        obtained: true,
+        obtainedDate: "2026-08-11",
+        obtainedLocation: "Lynden, Washington (Gems & Games)",
+        features: ["Reverse Holo"],
+        notes: []
+      }
+    ]
   },
 
 
   {
     name: "Maushold",
     set: "Paldea Evolved",
-    number: "168 / 198",
-    image: "/images/pokemon/tandemaus-maushold/maushold-168-198.jpeg",
+    number: "168 / 193",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-168-193.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -243,16 +294,18 @@ const tandemausMausholdCards = [
     name: "Maushold",
     set: "Paldea Evolved",
     number: "226 / 198",
-    image: "/images/pokemon/tandemaus-maushold/maushold-226-198.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-226-198.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -260,16 +313,18 @@ const tandemausMausholdCards = [
     name: "Maushold ex",
     set: "Paradox Rift",
     number: "155 / 182",
-    image: "/images/pokemon/tandemaus-maushold/maushold-ex-155-182.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-ex-155-182.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -277,16 +332,18 @@ const tandemausMausholdCards = [
     name: "Maushold ex",
     set: "Paradox Rift",
     number: "233 / 182",
-    image: "/images/pokemon/tandemaus-maushold/maushold-ex-233-182.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-ex-233-182.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -294,16 +351,18 @@ const tandemausMausholdCards = [
     name: "Maushold",
     set: "Paldean Fates",
     number: "74 / 91",
-    image: "/images/pokemon/tandemaus-maushold/maushold-74-91.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-74-91.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -311,16 +370,18 @@ const tandemausMausholdCards = [
     name: "Maushold",
     set: "Paldean Fates",
     number: "210 / 91",
-    image: "/images/pokemon/tandemaus-maushold/maushold-210-91.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-210-91-shiny.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: ["Shiny"],
+        notes: []
+      }
+    ]
   },
 
 
@@ -328,16 +389,18 @@ const tandemausMausholdCards = [
     name: "Maushold",
     set: "Surging Sparks",
     number: "158 / 191",
-    image: "/images/pokemon/tandemaus-maushold/maushold-158-191.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [],
-    notes: []
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/maushold-158-191.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   },
 
 
@@ -349,24 +412,51 @@ const tandemausMausholdCards = [
     name: "Pikachu",
     set: "SV Black Star Promos",
     number: "088",
-    image: "/images/pokemon/tandemaus-maushold/pikachu-088.jpeg",
 
-    obtained: false,
-    obtainedDate: null,
-    obtainedLocation: null,
-
-    variants: [],
-
-    features: [
-      "Full Art"
-    ],
-
-    notes: [
-      "Features Maushold in the artwork."
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/tandemaus-maushold/pikachu-088.jpeg",
+        obtained: true,
+        obtainedDate: null,
+        obtainedLocation: "Ammon, Idaho (Wal-Mart)",
+        features: [
+          "Full Art"
+        ],
+        notes: [
+          "Features Maushold in the artwork."
+        ]
+      }
     ]
   }
 
 ];
+
+
+/* ====================================
+   Helper Functions
+   ==================================== */
+
+/*
+ * A card is considered "obtained" if at least
+ * one of its variants has been obtained.
+ *
+ * This means a card can eventually look like:
+ *
+ * Standard   → Obtained
+ * Poké Ball  → Obtained
+ * Master Ball → Still Chasing
+ *
+ * and the card itself will still count as obtained.
+ */
+
+function cardHasObtainedVariant(card) {
+
+  return card.variants.some(
+    variant => variant.obtained
+  );
+
+}
 
 
 /* ====================================
@@ -375,7 +465,8 @@ const tandemausMausholdCards = [
 
 function renderCollection(filter = "all") {
 
-  const grid = document.getElementById("card-grid");
+  const grid =
+    document.getElementById("card-grid");
 
   let obtainedCount = 0;
 
@@ -384,7 +475,11 @@ function renderCollection(filter = "all") {
 
   tandemausMausholdCards.forEach((card) => {
 
-    if (card.obtained) {
+    const cardObtained =
+      cardHasObtainedVariant(card);
+
+
+    if (cardObtained) {
       obtainedCount++;
     }
 
@@ -395,14 +490,15 @@ function renderCollection(filter = "all") {
 
     if (
       filter === "obtained" &&
-      !card.obtained
+      !cardObtained
     ) {
       return;
     }
 
+
     if (
       filter === "chasing" &&
-      card.obtained
+      cardObtained
     ) {
       return;
     }
@@ -418,7 +514,7 @@ function renderCollection(filter = "all") {
 
     cardElement.className =
       `tcg-card ${
-        card.obtained
+        cardObtained
           ? "obtained"
           : "not-obtained"
       }`;
@@ -429,118 +525,15 @@ function renderCollection(filter = "all") {
        ----------------------------- */
 
     const statusText =
-      card.obtained
+      cardObtained
         ? "✓ Obtained"
         : "○ Still Chasing";
 
 
     const statusClass =
-      card.obtained
+      cardObtained
         ? "status-obtained"
         : "status-not-obtained";
-
-
-    /* -----------------------------
-       Acquisition Information
-       ----------------------------- */
-
-    let acquisitionHTML = "";
-
-
-    if (card.obtained) {
-
-      acquisitionHTML = `
-        <div class="acquisition-info">
-
-          <p>
-            <span class="acquisition-label">
-              Date:
-            </span>
-
-            ${card.obtainedDate || "Not recorded"}
-          </p>
-
-          <p>
-            <span class="acquisition-label">
-              Location:
-            </span>
-
-            ${card.obtainedLocation || "Not recorded"}
-          </p>
-
-        </div>
-      `;
-    }
-
-
-    /* -----------------------------
-       Features
-       ----------------------------- */
-
-    let featuresHTML = "";
-
-
-    if (
-      card.features &&
-      card.features.length > 0
-    ) {
-
-      featuresHTML = `
-        <div class="card-features">
-
-          <p class="features-label">
-            Features:
-          </p>
-
-          <ul class="features-list">
-
-            ${card.features
-              .map(
-                feature =>
-                  `<li>${feature}</li>`
-              )
-              .join("")}
-
-          </ul>
-
-        </div>
-      `;
-    }
-
-
-    /* -----------------------------
-       Notes
-       ----------------------------- */
-
-    let notesHTML = "";
-
-
-    if (
-      card.notes &&
-      card.notes.length > 0
-    ) {
-
-      notesHTML = `
-        <div class="card-notes">
-
-          <p class="notes-label">
-            Notes:
-          </p>
-
-          <ul class="notes-list">
-
-            ${card.notes
-              .map(
-                note =>
-                  `<li>${note}</li>`
-              )
-              .join("")}
-
-          </ul>
-
-        </div>
-      `;
-    }
 
 
     /* -----------------------------
@@ -573,39 +566,170 @@ function renderCollection(filter = "all") {
                     : "○ Still Chasing";
 
 
+                const variantStatusClass =
+                  variant.obtained
+                    ? "status-obtained"
+                    : "status-not-obtained";
+
+
+                /* -----------------------------
+                   Variant Image
+                   ----------------------------- */
+
+                const imageHTML =
+                  variant.image
+                    ? `
+                      <img
+                        src="${variant.image}"
+                        alt="${card.name} — ${variant.type}"
+                        loading="lazy"
+                        onerror="
+                          this.style.display='none';
+                          this.nextElementSibling.style.display='block';
+                        "
+                      >
+                    `
+                    : "";
+
+
+                const placeholderDisplay =
+                  variant.image
+                    ? "display:none;"
+                    : "display:block;";
+
+
+                /* -----------------------------
+                   Variant Acquisition
+                   ----------------------------- */
+
+                let variantAcquisitionHTML = "";
+
+
+                if (variant.obtained) {
+
+                  variantAcquisitionHTML = `
+                    <div class="acquisition-info">
+
+                      <p>
+                        <span class="acquisition-label">
+                          Date:
+                        </span>
+
+                        ${
+                          variant.obtainedDate ||
+                          "Not recorded"
+                        }
+                      </p>
+
+                      <p>
+                        <span class="acquisition-label">
+                          Location:
+                        </span>
+
+                        ${
+                          variant.obtainedLocation ||
+                          "Not recorded"
+                        }
+                      </p>
+
+                    </div>
+                  `;
+
+                }
+
+
+                /* -----------------------------
+                   Variant Features
+                   ----------------------------- */
+
+                let variantFeaturesHTML = "";
+
+
+                if (
+                  variant.features &&
+                  variant.features.length > 0
+                ) {
+
+                  variantFeaturesHTML = `
+                    <div class="card-features">
+
+                      <p class="features-label">
+                        Features:
+                      </p>
+
+                      <ul class="features-list">
+
+                        ${variant.features
+                          .map(
+                            feature =>
+                              `<li>${feature}</li>`
+                          )
+                          .join("")}
+
+                      </ul>
+
+                    </div>
+                  `;
+
+                }
+
+
+                /* -----------------------------
+                   Variant Notes
+                   ----------------------------- */
+
+                let variantNotesHTML = "";
+
+
+                if (
+                  variant.notes &&
+                  variant.notes.length > 0
+                ) {
+
+                  variantNotesHTML = `
+                    <div class="card-notes">
+
+                      <p class="notes-label">
+                        Notes:
+                      </p>
+
+                      <ul class="notes-list">
+
+                        ${variant.notes
+                          .map(
+                            note =>
+                              `<li>${note}</li>`
+                          )
+                          .join("")}
+
+                      </ul>
+
+                    </div>
+                  `;
+
+                }
+
+
+                /* -----------------------------
+                   Return Variant HTML
+                   ----------------------------- */
+
                 return `
                   <div class="variant-item">
 
                     <div class="variant-image-wrapper">
 
-                      ${
-                        variant.image
-                          ? `
-                            <img
-                              src="${variant.image}"
-                              alt="${card.name} — ${variant.type}"
-                              loading="lazy"
-                              onerror="
-                                this.style.display='none';
-                                this.nextElementSibling.style.display='block';
-                              "
-                            >
-                          `
-                          : ""
-                      }
+                      ${imageHTML}
 
                       <div
                         class="card-image-placeholder"
-                        style="${
-                          variant.image
-                            ? "display:none;"
-                            : "display:block;"
-                        }"
+                        style="${placeholderDisplay}"
                       >
                         Image not added yet.
                       </div>
 
                     </div>
+
 
                     <div class="variant-info">
 
@@ -613,34 +737,24 @@ function renderCollection(filter = "all") {
                         ${variant.type}
                       </strong>
 
-                      <span>
+                      <span
+                        class="ownership-status ${variantStatusClass}"
+                      >
                         ${variantStatus}
                       </span>
 
-                      ${
-                        variant.obtained
-                          ? `
-                            <small>
-                              ${
-                                variant.obtainedDate ||
-                                "Date not recorded"
-                              }
-                            </small>
 
-                            <small>
-                              ${
-                                variant.obtainedLocation ||
-                                "Location not recorded"
-                              }
-                            </small>
-                          `
-                          : ""
-                      }
+                      ${variantAcquisitionHTML}
+
+                      ${variantFeaturesHTML}
+
+                      ${variantNotesHTML}
 
                     </div>
 
                   </div>
                 `;
+
               })
               .join("")}
 
@@ -648,6 +762,7 @@ function renderCollection(filter = "all") {
 
         </div>
       `;
+
     }
 
 
@@ -656,28 +771,6 @@ function renderCollection(filter = "all") {
        ----------------------------- */
 
     cardElement.innerHTML = `
-
-      <div class="card-image-wrapper">
-
-        <img
-          src="${card.image}"
-          alt="${card.name} — ${card.set} ${card.number}"
-          loading="lazy"
-          onerror="
-            this.style.display='none';
-            this.nextElementSibling.style.display='block';
-          "
-        >
-
-        <div
-          class="card-image-placeholder"
-          style="display:none;"
-        >
-          Card image not added yet.
-        </div>
-
-      </div>
-
 
       <div class="card-info">
 
@@ -700,13 +793,7 @@ function renderCollection(filter = "all") {
         </span>
 
 
-        ${acquisitionHTML}
-
-        ${featuresHTML}
-
         ${variantsHTML}
-
-        ${notesHTML}
 
       </div>
 
