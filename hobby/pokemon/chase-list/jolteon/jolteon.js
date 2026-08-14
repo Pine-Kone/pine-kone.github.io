@@ -35,7 +35,7 @@ const jolteonCards = [
     variants: [
         {
           type: "Standard",
-          image: "/images/pokemon/chase-list/jolteon/jolteon-4-64-standard.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/jolteon-4-64.jpeg",
           features: ["Holo"],
           obtained: true,
           obtainedDate: null,
@@ -61,7 +61,7 @@ const jolteonCards = [
     variants: [
         {
           type: "Standard",
-          image: "/images/pokemon/chase-list/jolteon/jolteon-20-64-standard.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/jolteon-20-64.jpeg",
           features: [],
           obtained: true,
           obtainedDate: "2026-08-12",
@@ -87,7 +87,7 @@ const jolteonCards = [
     variants: [
         {
           type: "Standard",
-          image: "/images/pokemon/chase-list/jolteon/dark-jolteon-38-82-standard.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/dark-jolteon-38-82.jpeg",
           features: [],
           obtained: true,
           obtainedDate: "2026-08-12",
@@ -535,7 +535,7 @@ const jolteonCards = [
     variants: [
         {
           type: "Standard",
-          image: "/images/pokemon/chase-list/jolteon/jolteon-29-131-standard.jpeg",
+          image: "/images/pokemon/chase-list/jolteon/jolteon-29-131.jpeg",
           features: [],
           obtained: true,
           obtainedDate: "2026-08-11",
