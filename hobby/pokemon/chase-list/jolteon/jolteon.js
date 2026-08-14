@@ -223,7 +223,7 @@ const jolteonCards = [
     obtainedDate: null,
     obtainedLocation: null,
     features: [],
-    notes: []
+    notes: ["My copy has a bend in the top left corner, so I'll keep an eye out for one in better condition."]
   },
 
   {
