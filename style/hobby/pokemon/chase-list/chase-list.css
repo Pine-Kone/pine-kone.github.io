@@ -1,247 +1,372 @@
-/* ================================       Page Header       ================================ */
-
-    .collection-hero {
-      padding: 3rem 1rem 2rem;
-      text-align: center;
-      background: var(--background-color);
-    }
-
-    .collection-hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .collection-hero p {
-      max-width: 700px;
-      margin: 0 auto;
-    }
+/* ============================================================
+   Chase List — Shared Styles
+   Used by every /hobby/pokemon/chase-list/<group>/ page.
+   Depends on the CSS variables already defined in /style/main.css
+   (--background-color, --primary-color, --accent-color) and on
+   the body.dark-mode class toggled by light-dark-toggle.js.
+   ============================================================ */
 
 
-    /* ================================       Collection Summary       ================================ */
+/* ================================
+   Page Header / Hero
+   ================================ */
 
-    .collection-summary {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      padding: 1rem;
-      background: #f0f0f0;
-    }
+.collection-hero {
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+  background: var(--background-color);
+}
 
-    body.dark-mode .collection-summary {
-      background: #2a2a2a;
-    }
+.collection-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
 
-    .summary-card {
-      min-width: 150px;
-      padding: 1rem 1.5rem;
-      background: var(--background-color);
-      border-radius: 0.75rem;
-      text-align: center;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    .summary-number {
-      display: block;
-      font-size: 1.8rem;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
-
-    body.dark-mode .summary-number {
-      color: var(--accent-color);
-    }
-
-    .summary-label {
-      font-size: 0.9rem;
-    }
+.collection-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+}
 
 
-    /* ================================       Card Collection       ================================ */
+/* ================================
+   Collection Stats
+   ================================ */
 
-    .collection-section {
-      padding: 2rem 1rem 4rem;
-      background: #f0f0f0;
-    }
+.collection-stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f0f0f0;
+}
 
-    body.dark-mode .collection-section {
-      background: #2a2a2a;
-    }
+body.dark-mode .collection-stats {
+  background: #2a2a2a;
+}
 
-    .collection-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.5rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.stat-card {
+  min-width: 150px;
+  padding: 1rem 1.5rem;
+  background: var(--background-color);
+  border-radius: 0.75rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
 
+.stat-card h3,
+.stat-label {
+  margin: 0;
+  font-size: 0.9rem;
+}
 
-    /* ================================       Individual Card       ================================ */
+.stat-card p,
+.stat-value {
+  display: block;
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
 
-    .tcg-card {
-      background: var(--background-color);
-      border-radius: 0.75rem;
-      padding: 1rem;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
-      transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
-    }
-
-    .tcg-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.18);
-    }
-
-    .tcg-card.obtained {
-      border: 3px solid #4caf50;
-    }
-
-    .tcg-card.not-obtained {
-      border: 3px solid #d9534f;
-    }
-
-
-    /* ================================       Card Image       ================================ */
-
-    .card-image-wrapper {
-      width: 100%;
-      aspect-ratio: 2.5 / 3.5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #eeeeee;
-      border-radius: 0.5rem;
-      overflow: hidden;
-    }
-
-    body.dark-mode .card-image-wrapper {
-      background: #1e1e1e;
-    }
-
-    .card-image-wrapper img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .card-image-placeholder {
-      text-align: center;
-      padding: 1rem;
-      color: #777;
-    }
+body.dark-mode .stat-card p,
+body.dark-mode .stat-value {
+  color: var(--accent-color);
+}
 
 
-    /* ================================       Card Information       ================================ */
+/* ================================
+   Filter Controls
+   ================================ */
 
-    .card-info {
-      padding-top: 1rem;
-    }
+.collection-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--background-color);
+}
 
-    .card-name {
-      margin: 0;
-      font-size: 1.25rem;
-    }
+.collection-controls label {
+  font-weight: bold;
+}
 
-    .card-set {
-      margin: 0.25rem 0;
-      font-weight: bold;
-      color: var(--primary-color);
-    }
+.collection-controls select {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  background: var(--background-color);
+  font-size: 0.95rem;
+}
 
-    body.dark-mode .card-set {
-      color: var(--accent-color);
-    }
-
-    .card-number {
-      margin: 0.25rem 0;
-      font-size: 0.95rem;
-    }
-
-
-    /* ================================       Ownership Status       ================================ */
-
-    .ownership-status {
-      display: inline-block;
-      margin-top: 0.75rem;
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: bold;
-    }
-
-    .status-obtained {
-      background: #d9f2dc;
-      color: #236b2c;
-    }
-
-    .status-not-obtained {
-      background: #f8dddd;
-      color: #8a2525;
-    }
-
-    body.dark-mode .status-obtained {
-      background: #244d2a;
-      color: #b9efc0;
-    }
-
-    body.dark-mode .status-not-obtained {
-      background: #542727;
-      color: #ffbcbc;
-    }
+body.dark-mode .collection-controls select {
+  border-color: #555;
+  color: inherit;
+}
 
 
-    /* ================================       Acquisition Information       ================================ */
+/* ================================
+   Species Section (used when a page
+   groups multiple species, e.g.
+   Rhyhorn & Rhydon on one page)
+   ================================ */
 
-    .acquisition-info {
-      margin-top: 1rem;
-      padding-top: 0.75rem;
-      border-top: 1px solid #ddd;
-      font-size: 0.9rem;
-    }
+.species-section {
+  padding: 1rem 1rem 0;
+}
 
-    body.dark-mode .acquisition-info {
-      border-top-color: #555;
-    }
-
-    .acquisition-info p {
-      margin: 0.3rem 0;
-    }
-
-    .acquisition-label {
-      font-weight: bold;
-    }
+.species-section h2 {
+  max-width: 1200px;
+  margin: 0 auto 1rem;
+  text-align: center;
+}
 
 
-    /* ================================       Mobile Adjustments       ================================ */
+/* ================================
+   Card Grid
+   ================================ */
 
-    @media (max-width: 600px) {
+.collection-section {
+  padding: 2rem 1rem 4rem;
+  background: #f0f0f0;
+}
 
-      .collection-hero h2 {
-        font-size: 2rem;
-      }
+body.dark-mode .collection-section {
+  background: #2a2a2a;
+}
 
-      .collection-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0.75rem;
-      }
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-      .tcg-card {
-        padding: 0.6rem;
-      }
 
-      .card-name {
-        font-size: 1rem;
-      }
+/* ================================
+   Individual Card
+   (a name + set + number, possibly
+   holding several variants)
+   ================================ */
 
-      .card-set,
-      .card-number {
-        font-size: 0.85rem;
-      }
+.tcg-card {
+  background: var(--background-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
-      .ownership-status {
-        font-size: 0.75rem;
-      }
+.tcg-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
 
-    }
+/* The signature green / red border — applied to the whole
+   card box, driven by whether ANY variant is obtained. */
+.tcg-card.obtained {
+  border: 3px solid #4caf50;
+}
+
+.tcg-card.not-obtained {
+  border: 3px solid #d9534f;
+}
+
+.card-name {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.card-set {
+  margin: 0.25rem 0;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+body.dark-mode .card-set {
+  color: var(--accent-color);
+}
+
+.card-number {
+  margin: 0 0 0.75rem;
+  font-size: 0.95rem;
+}
+
+
+/* ================================
+   Variants (a card can have 1+)
+   ================================ */
+
+.card-variants {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.variant-item {
+  display: flex;
+  gap: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+}
+
+body.dark-mode .variant-item {
+  border-top-color: #555;
+}
+
+.card-variants .variant-item:first-child {
+  padding-top: 0;
+  border-top: none;
+}
+
+.variant-image-wrapper {
+  flex: 0 0 96px;
+  width: 96px;
+  aspect-ratio: 2.5 / 3.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #eeeeee;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+body.dark-mode .variant-image-wrapper {
+  background: #1e1e1e;
+}
+
+.variant-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.card-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.variant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.variant-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.variant-type {
+  font-size: 1rem;
+}
+
+
+/* ================================
+   Ownership Status
+   ================================ */
+
+.ownership-status {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.status-obtained {
+  background: #d9f2dc;
+  color: #236b2c;
+}
+
+.status-not-obtained {
+  background: #f8dddd;
+  color: #8a2525;
+}
+
+body.dark-mode .status-obtained {
+  background: #244d2a;
+  color: #b9efc0;
+}
+
+body.dark-mode .status-not-obtained {
+  background: #542727;
+  color: #ffbcbc;
+}
+
+
+/* ================================
+   Acquisition Info / Features / Notes
+   ================================ */
+
+.acquisition-info,
+.card-features,
+.card-notes {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.acquisition-info p {
+  margin: 0.2rem 0;
+}
+
+.acquisition-label,
+.features-label,
+.notes-label {
+  font-weight: bold;
+}
+
+.features-list,
+.notes-list {
+  margin: 0.2rem 0 0;
+  padding-left: 1.1rem;
+}
+
+
+/* ================================
+   Mobile Adjustments
+   ================================ */
+
+@media (max-width: 600px) {
+
+  .collection-hero h2 {
+    font-size: 2rem;
+  }
+
+  .collection-grid {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .tcg-card {
+    padding: 0.75rem;
+  }
+
+  .variant-image-wrapper {
+    flex-basis: 76px;
+    width: 76px;
+  }
+
+  .card-name {
+    font-size: 1.1rem;
+  }
+
+  .ownership-status {
+    font-size: 0.7rem;
+  }
+
+}
