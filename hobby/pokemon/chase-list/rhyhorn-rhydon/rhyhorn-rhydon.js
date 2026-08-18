@@ -163,7 +163,7 @@ const rhyhornCards = [
     image: "/images/pokemon/rhyhorn-rhydon/team-magmas-rhyhorn-68-95.jpeg",
     obtained: true,
     obtainedDate: "2025-08-05",
-    obtainedLocation: "Online (Cardhaven Games),
+    obtainedLocation: "Online (Cardhaven Games)",
     features: [],
     notes: []
   },
