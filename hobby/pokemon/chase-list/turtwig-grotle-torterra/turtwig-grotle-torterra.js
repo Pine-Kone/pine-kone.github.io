@@ -460,7 +460,7 @@ const turtwigGrotleTorterraCards = [
       {
         type: "Standard",
         image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-7-172.jpeg",
-        obtained: false,
+        obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
         features: [],
