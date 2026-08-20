@@ -16,7 +16,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-159-198.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-159-198.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -33,7 +33,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-160-198.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-160-198.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -50,7 +50,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-166-193.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-166-193.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -67,7 +67,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-167-193.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-167-193.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -76,7 +76,7 @@ const tandemausMausholdCards = [
       },
       {
         type: "Reverse Holo",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-167-193-reverse-holo.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-167-193-reverse-holo.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -93,7 +93,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-153-182.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-153-182.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -110,7 +110,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-154-182.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-154-182.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -119,7 +119,7 @@ const tandemausMausholdCards = [
       },
       {
         type: "Reverse Holo",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-154-182-reverse-holo.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-154-182-reverse-holo.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -136,7 +136,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-73-91.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-73-91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -153,7 +153,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-209-91.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-209-91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -170,7 +170,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/tandemaus-157-191.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-157-191.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -187,7 +187,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-161-198.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-161-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -196,7 +196,7 @@ const tandemausMausholdCards = [
       },
       {
         type: "Reverse Holo",
-        image: "/images/pokemon/tandemaus-maushold/maushold-161-198-reverse-holo.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-161-198-reverse-holo.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -213,7 +213,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-168-193.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-168-193.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -230,7 +230,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-226-198.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-226-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -247,7 +247,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-ex-155-182.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-ex-155-182.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -264,7 +264,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-ex-233-182.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-ex-233-182.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -281,7 +281,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-74-91.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-74-91.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -298,7 +298,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-210-91-shiny.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-210-91-shiny.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -315,7 +315,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/maushold-158-191.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-158-191.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -332,7 +332,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/tandemaus-maushold/pikachu-088.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/pikachu-088.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: "Ammon, Idaho (Wal-Mart)",
