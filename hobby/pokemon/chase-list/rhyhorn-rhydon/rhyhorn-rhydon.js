@@ -45,7 +45,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-90-130.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-90-130.jpeg",
         obtained: true,
         obtainedDate: "2025-08-05",
         obtainedLocation: "Online (Cardhaven Games)",
@@ -62,7 +62,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/brocks-rhyhorn-22-132.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/brocks-rhyhorn-22-132.jpeg",
         obtained: true,
         obtainedDate: "2025-08-05",
         obtainedLocation: "Online (Cardhaven Games)",
@@ -173,7 +173,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/team-magmas-rhyhorn-68-95.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/team-magmas-rhyhorn-68-95.jpeg",
         obtained: true,
         obtainedDate: "2025-08-05",
         obtainedLocation: "Online (Cardhaven Games)",
@@ -258,7 +258,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-60-146.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-60-146.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -275,7 +275,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-74-160.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-74-160.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -309,7 +309,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-65-147.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-65-147.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -369,7 +369,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-96-202.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-96-202.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -386,7 +386,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-97-202.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-97-202.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -403,7 +403,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-89-196.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-89-196.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -446,7 +446,7 @@ const rhyhornCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhyhorn-74-142.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhyhorn-74-142.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -494,7 +494,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-59-130.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-59-130.jpeg",
         obtained: true,
         obtainedDate: "2025-08-05",
         obtainedLocation: "Online (Cardhaven Games)",
@@ -511,7 +511,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/brocks-rhydon-2-132.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/brocks-rhydon-2-132.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
@@ -528,7 +528,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/vending-machine-set-3-031.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/vending-machine-set-3-031.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -545,7 +545,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/vs-035.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/vs-035.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -562,7 +562,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/skyridge-029.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/skyridge-029.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -579,7 +579,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/team-magmas-rhydon-11-95.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/team-magmas-rhydon-11-95.jpeg",
         obtained: true,
         obtainedDate: "2026-08-12",
         obtainedLocation: "Bellingham, Washington (Cardhaven Games)",
@@ -596,7 +596,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/ex-team-magma-vs-team-aqua-022.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/ex-team-magma-vs-team-aqua-022.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -613,7 +613,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/ex-hidden-legends-046.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/ex-hidden-legends-046.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -630,7 +630,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/ex-emerald-019.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/ex-emerald-019.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -647,7 +647,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-60-130.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-60-130.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -664,7 +664,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/supreme-victors-080.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/supreme-victors-080.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -681,7 +681,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/xy-061.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/xy-061.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -698,7 +698,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/primal-clash-075.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/primal-clash-075.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -715,7 +715,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/xy-promo-113.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/xy-promo-113.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -732,7 +732,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-66-147.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-66-147.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -749,7 +749,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/unbroken-bonds-094.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/unbroken-bonds-094.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -766,7 +766,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-98-202.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-98-202.jpeg",
         obtained: true,
         obtainedDate: "2026-08-11",
         obtainedLocation: "Lynden, Washington (Gems & Games)",
@@ -783,7 +783,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-90=196.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-90=196.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -800,7 +800,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/rhydon-112-165.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-112-165.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
@@ -817,7 +817,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/rhyhorn-rhydon/stellar-crown-075.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/stellar-crown-075.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
