@@ -2,42 +2,12 @@
 
 /*
  * Turtwig, Grotle & Torterra Collection Data
- *
- * obtained:
- *   true  = card/variant is in my collection
- *   false = card/variant is still on my chase list
- *
- * obtainedDate:
- *   YYYY-MM-DD
- *
- * obtainedLocation:
- *   Where I obtained the card
- *
- * features:
- *   Structured characteristics of the physical card
- *
- * notes:
- *   Free-form notes about the specific card
- *
- * variants:
- *   Used when a card has multiple collectible variations.
- *
- *   Each variation can have its own:
- *     - type
- *     - image
- *     - obtained status
- *     - date
- *     - location
- *     - features
- *     - notes
+ * =============================================
+ * See /scripts/hobby/pokemon/chase-list/chase-list-common.js for the
+ * card/variant shape and field descriptions.
  */
 
-
 const turtwigGrotleTorterraCards = [
-
-  /* ================================
-     TURTWIG
-     ================================ */
 
   {
     name: "Turtwig",
@@ -363,11 +333,6 @@ const turtwigGrotleTorterraCards = [
     ]
   },
 
-
-  /* ================================
-     GROTLE
-     ================================ */
-
   {
     name: "Grotle",
     set: "Diamond and Pearl",
@@ -537,11 +502,6 @@ const turtwigGrotleTorterraCards = [
       }
     ]
   },
-
-
-  /* ================================
-     TORTERRA
-     ================================ */
 
   {
     name: "Torterra",
@@ -768,241 +728,26 @@ const turtwigGrotleTorterraCards = [
 
 
 /* ====================================
-   Render Collection
-   ==================================== */
-
-function renderCollection() {
-
-  const grid = document.getElementById("card-grid");
-
-  let totalCards = 0;
-  let obtainedCards = 0;
-
-  grid.innerHTML = "";
-
-
-  turtwigGrotleTorterraCards.forEach((card) => {
-
-    /*
-     * Each card can contain multiple variants.
-     * Count each variant individually.
-     */
-    const variants = card.variants || [];
-
-    totalCards += variants.length;
-
-    obtainedCards += variants.filter(
-      variant => variant.obtained
-    ).length;
-
-
-    const cardElement = document.createElement("article");
-
-    const cardObtained =
-      variants.some(variant => variant.obtained);
-
-
-    cardElement.className =
-      `tcg-card ${cardObtained ? "obtained" : "not-obtained"}`;
-
-
-    const variantsHTML = variants.map((variant) => {
-
-      const statusText =
-        variant.obtained
-          ? "✓ Obtained"
-          : "○ Still Chasing";
-
-
-      const statusClass =
-        variant.obtained
-          ? "status-obtained"
-          : "status-not-obtained";
-
-
-      const imageHTML = variant.image
-        ? `
-          <img
-            class="variant-image"
-            src="${variant.image}"
-            alt="${card.name} — ${card.set} ${card.number} — ${variant.type}"
-            loading="lazy"
-          >
-        `
-        : `
-          <div class="card-image-placeholder">
-            Image not added yet.
-          </div>
-        `;
-
-
-      const acquisitionHTML =
-        variant.obtained
-          ? `
-            <div class="acquisition-info">
-
-              <p>
-                <span class="acquisition-label">
-                  Date:
-                </span>
-
-                ${variant.obtainedDate || "Not recorded"}
-              </p>
-
-              <p>
-                <span class="acquisition-label">
-                  Location:
-                </span>
-
-                ${variant.obtainedLocation || "Not recorded"}
-              </p>
-
-            </div>
-          `
-          : "";
-
-
-      const featuresHTML =
-        variant.features &&
-        variant.features.length > 0
-          ? `
-            <div class="card-features">
-
-              <p class="features-label">
-                Features:
-              </p>
-
-              <ul class="features-list">
-
-                ${variant.features
-                  .map(feature => `<li>${feature}</li>`)
-                  .join("")}
-
-              </ul>
-
-            </div>
-          `
-          : "";
-
-
-      const notesHTML =
-        variant.notes &&
-        variant.notes.length > 0
-          ? `
-            <div class="card-notes">
-
-              <p class="notes-label">
-                Notes:
-              </p>
-
-              <ul class="notes-list">
-
-                ${variant.notes
-                  .map(note => `<li>${note}</li>`)
-                  .join("")}
-
-              </ul>
-
-            </div>
-          `
-          : "";
-
-
-      return `
-        <div class="variant">
-
-          <div class="variant-name">
-            ${variant.type}
-          </div>
-
-          ${imageHTML}
-
-          <div class="variant-status">
-            <span class="ownership-status ${statusClass}">
-              ${statusText}
-            </span>
-          </div>
-
-          ${acquisitionHTML}
-
-          ${featuresHTML}
-
-          ${notesHTML}
-
-        </div>
-      `;
-
-    }).join("");
-
-
-    cardElement.innerHTML = `
-
-      <div class="card-info">
-
-        <h3 class="card-name">
-          ${card.name}
-        </h3>
-
-        <p class="card-set">
-          ${card.set}
-        </p>
-
-        <p class="card-number">
-          ${card.number}
-        </p>
-
-        <div class="card-variants">
-
-          <p class="variants-label">
-            Variations:
-          </p>
-
-          ${variantsHTML}
-
-        </div>
-
-      </div>
-
-    `;
-
-
-    grid.appendChild(cardElement);
-
-  });
-
-
-  const remainingCards =
-    totalCards - obtainedCards;
-
-
-  const completion =
-    totalCards === 0
-      ? 0
-      : Math.round(
-          (obtainedCards / totalCards) * 100
-        );
-
-
-  document.getElementById("total-cards").textContent =
-    totalCards;
-
-  document.getElementById("obtained-cards").textContent =
-    obtainedCards;
-
-  document.getElementById("remaining-cards").textContent =
-    remainingCards;
-
-  document.getElementById("completion-percent").textContent =
-    `${completion}%`;
-
-}
-
-
-/* ====================================
    Start Page
    ==================================== */
 
-document.addEventListener(
-  "DOMContentLoaded",
-  renderCollection
-);
+document.addEventListener("DOMContentLoaded", () => {
+
+  renderChaseListPage({
+
+    groups: [
+      { gridId: "card-grid", cards: turtwigGrotleTorterraCards }
+    ],
+
+    statsIds: {
+      total: "total-cards",
+      obtained: "obtained-cards",
+      remaining: "remaining-cards",
+      percent: "completion-percent"
+    },
+
+    filterId: "collection-filter"
+
+  });
+
+});
