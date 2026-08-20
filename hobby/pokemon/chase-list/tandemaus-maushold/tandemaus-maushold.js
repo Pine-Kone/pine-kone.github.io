@@ -332,7 +332,7 @@ const tandemausMausholdCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/chase-list/tandemaus-maushold/pikachu-088.jpeg",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/pikachu-088-has-maushold.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: "Ammon, Idaho (Wal-Mart)",
