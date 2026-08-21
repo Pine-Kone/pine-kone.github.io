@@ -1,0 +1,142 @@
+/* ============================================================
+   Trainer Tales — Shared Styles
+   Used by /hobby/pokemon/trainer-tales/ and every story page
+   under it.
+   ============================================================ */
+
+.tales-hero {
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+  background: var(--background-color);
+}
+
+.tales-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tales-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.tales-list-section {
+  padding: 2rem 1rem 4rem;
+  background: #f0f0f0;
+}
+
+body.dark-mode .tales-list-section {
+  background: #2a2a2a;
+}
+
+.tales-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.tale-card {
+  display: block;
+  background: var(--background-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tale-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.tale-card .tale-date {
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+body.dark-mode .tale-card .tale-date {
+  color: var(--accent-color);
+}
+
+.tale-card h3 {
+  margin: 0.35rem 0 0.5rem;
+  font-size: 1.3rem;
+}
+
+.tale-card .tale-excerpt {
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+
+/* ================================
+   Individual Tale Page
+   ================================ */
+
+.tale-article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 4rem;
+}
+
+.tale-article .tale-date {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+body.dark-mode .tale-article .tale-date {
+  color: var(--accent-color);
+}
+
+.tale-article h2 {
+  font-size: 2.2rem;
+  margin: 0 0 1.5rem;
+}
+
+.tale-article p {
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
+}
+
+.tale-article .tale-pokemon-tag {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.tale-article .tale-pokemon-tag:hover {
+  background: var(--accent-color);
+}
+
+
+@media (max-width: 600px) {
+
+  .tales-hero h2 {
+    font-size: 2rem;
+  }
+
+  .tales-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tale-article h2 {
+    font-size: 1.7rem;
+  }
+
+}
