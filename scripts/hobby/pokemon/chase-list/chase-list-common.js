@@ -107,7 +107,7 @@ function chaseListRenderVariant(card, variant) {
     : "";
 
   return `
-    <div class="variant-item ${variant.obtained ? "obtained" : "not-obtained"}">
+    <div class="variant-item">
 
       <div class="variant-image-wrapper">
         ${imageHTML}
@@ -133,17 +133,17 @@ function chaseListRenderVariant(card, variant) {
 
 /* ====================================
    Render a single card (name / set /
-   number + whichever of its variants
-   are currently visible under the
-   active filter)
+   number + all of its variants)
    ==================================== */
 
-function chaseListRenderCard(card, variantsToRender) {
+function chaseListRenderCard(card) {
+
+  const cardObtained = chaseListCardHasObtainedVariant(card);
 
   const cardElement = document.createElement("article");
-  cardElement.className = "tcg-card";
+  cardElement.className = `tcg-card ${cardObtained ? "obtained" : "not-obtained"}`;
 
-  const variantsHTML = variantsToRender
+  const variantsHTML = card.variants
     .map((variant) => chaseListRenderVariant(card, variant))
     .join("");
 
@@ -203,21 +203,15 @@ function renderChaseListPage(config) {
 
       group.cards.forEach((card) => {
 
-        // Stats always reflect the FULL collection, regardless of
-        // the active filter — each variant counts on its own.
         totalVariants += card.variants.length;
         obtainedVariants += card.variants.filter((variant) => variant.obtained).length;
 
-        // The filter operates per-variant too: a card with one
-        // obtained variant and one still-chasing variant shows only
-        // the matching variant(s), not the whole card as "obtained".
-        let variantsToShow = card.variants;
-        if (filter === "obtained") variantsToShow = card.variants.filter((v) => v.obtained);
-        if (filter === "chasing") variantsToShow = card.variants.filter((v) => !v.obtained);
+        const cardObtained = chaseListCardHasObtainedVariant(card);
 
-        if (variantsToShow.length === 0) return;
+        if (filter === "obtained" && !cardObtained) return;
+        if (filter === "chasing" && cardObtained) return;
 
-        grid.appendChild(chaseListRenderCard(card, variantsToShow));
+        grid.appendChild(chaseListRenderCard(card));
 
       });
 
