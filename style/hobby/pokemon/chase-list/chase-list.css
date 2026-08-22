@@ -176,7 +176,7 @@ body.dark-mode .collection-section {
 }
 
 .tcg-card.partial {
-  border: 3px solid #f0ad4e;
+  border: 3px solid #e08e00;
 }
 
 .tcg-card.not-obtained {
@@ -201,6 +201,45 @@ body.dark-mode .card-set {
 .card-number {
   margin: 0 0 0.75rem;
   font-size: 0.95rem;
+}
+
+.completion-badge {
+  display: inline-block;
+  margin: -0.35rem 0 0.75rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+
+.completion-badge.obtained {
+  background: #d9f2dc;
+  color: #236b2c;
+}
+
+.completion-badge.partial {
+  background: #fdecd3;
+  color: #8a5a00;
+}
+
+.completion-badge.not-obtained {
+  background: #f8dddd;
+  color: #8a2525;
+}
+
+body.dark-mode .completion-badge.obtained {
+  background: #244d2a;
+  color: #b9efc0;
+}
+
+body.dark-mode .completion-badge.partial {
+  background: #4d3a1a;
+  color: #ffcf80;
+}
+
+body.dark-mode .completion-badge.not-obtained {
+  background: #542727;
+  color: #ffbcbc;
 }
 
 
