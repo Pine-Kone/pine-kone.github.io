@@ -43,6 +43,21 @@ function chaseListCardHasObtainedVariant(card) {
   return card.variants.some((variant) => variant.obtained);
 }
 
+/*
+ * A card's border color reflects how much of it is done:
+ *   "complete" -> every known variant is obtained (green)
+ *   "partial"  -> at least one, but not all, variants obtained (orange)
+ *   "none"     -> no variants obtained yet (red)
+ */
+function chaseListCardCompletionState(card) {
+  const total = card.variants.length;
+  const obtainedCount = card.variants.filter((variant) => variant.obtained).length;
+
+  if (obtainedCount === 0) return "none";
+  if (obtainedCount === total) return "complete";
+  return "partial";
+}
+
 function chaseListEscape(value) {
   return String(value);
 }
@@ -133,17 +148,28 @@ function chaseListRenderVariant(card, variant) {
 
 /* ====================================
    Render a single card (name / set /
-   number + all of its variants)
+   number + whichever of its variants
+   are currently visible under the
+   active filter)
    ==================================== */
 
-function chaseListRenderCard(card) {
+function chaseListRenderCard(card, variantsToRender) {
 
-  const cardObtained = chaseListCardHasObtainedVariant(card);
+  const completionState = chaseListCardCompletionState(card);
+  const completionClass =
+    completionState === "complete" ? "obtained" :
+    completionState === "partial" ? "partial" :
+    "not-obtained";
 
   const cardElement = document.createElement("article");
-  cardElement.className = `tcg-card ${cardObtained ? "obtained" : "not-obtained"}`;
+  cardElement.className = `tcg-card ${completionClass}`;
 
-  const variantsHTML = card.variants
+  const completionLabel =
+    completionState === "complete" ? "✓ Complete" :
+    completionState === "partial" ? "◐ Partial" :
+    "○ Still Chasing";
+
+  const variantsHTML = variantsToRender
     .map((variant) => chaseListRenderVariant(card, variant))
     .join("");
 
@@ -153,6 +179,7 @@ function chaseListRenderCard(card) {
       <h3 class="card-name">${card.name}</h3>
       <p class="card-set">${card.set}</p>
       <p class="card-number">${card.number}</p>
+      <span class="completion-badge ${completionClass}">${completionLabel}</span>
 
       <div class="card-variants">
         ${variantsHTML}
@@ -203,15 +230,21 @@ function renderChaseListPage(config) {
 
       group.cards.forEach((card) => {
 
+        // Stats always reflect the FULL collection, regardless of
+        // the active filter — each variant counts on its own.
         totalVariants += card.variants.length;
         obtainedVariants += card.variants.filter((variant) => variant.obtained).length;
 
-        const cardObtained = chaseListCardHasObtainedVariant(card);
+        // The filter operates per-variant too: a card with one
+        // obtained variant and one still-chasing variant shows only
+        // the matching variant(s), not the whole card as "obtained".
+        let variantsToShow = card.variants;
+        if (filter === "obtained") variantsToShow = card.variants.filter((v) => v.obtained);
+        if (filter === "chasing") variantsToShow = card.variants.filter((v) => !v.obtained);
 
-        if (filter === "obtained" && !cardObtained) return;
-        if (filter === "chasing" && cardObtained) return;
+        if (variantsToShow.length === 0) return;
 
-        grid.appendChild(chaseListRenderCard(card));
+        grid.appendChild(chaseListRenderCard(card, variantsToShow));
 
       });
 
