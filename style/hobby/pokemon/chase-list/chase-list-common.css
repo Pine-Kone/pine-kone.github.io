@@ -164,6 +164,11 @@ function chaseListRenderCard(card, variantsToRender) {
   const cardElement = document.createElement("article");
   cardElement.className = `tcg-card ${completionClass}`;
 
+  const completionLabel =
+    completionState === "complete" ? "✓ Complete" :
+    completionState === "partial" ? "◐ Partial" :
+    "○ Still Chasing";
+
   const variantsHTML = variantsToRender
     .map((variant) => chaseListRenderVariant(card, variant))
     .join("");
@@ -174,6 +179,7 @@ function chaseListRenderCard(card, variantsToRender) {
       <h3 class="card-name">${card.name}</h3>
       <p class="card-set">${card.set}</p>
       <p class="card-number">${card.number}</p>
+      <span class="completion-badge ${completionClass}">${completionLabel}</span>
 
       <div class="card-variants">
         ${variantsHTML}
