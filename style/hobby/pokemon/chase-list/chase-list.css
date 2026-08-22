@@ -166,6 +166,23 @@ body.dark-mode .collection-section {
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
+/* Card-level completion border — driven by how many of the card's
+   known variants are obtained:
+     all obtained     -> green  (.obtained)
+     some obtained    -> orange (.partial)
+     none obtained    -> red    (.not-obtained) */
+.tcg-card.obtained {
+  border: 3px solid #4caf50;
+}
+
+.tcg-card.partial {
+  border: 3px solid #f0ad4e;
+}
+
+.tcg-card.not-obtained {
+  border: 3px solid #d9534f;
+}
+
 .card-name {
   margin: 0;
   font-size: 1.25rem;
@@ -203,16 +220,11 @@ body.dark-mode .card-set {
   padding: 0.75rem;
   border-radius: 0.6rem;
   background: var(--background-color);
+  border: 1px solid #ddd;
 }
 
-/* The signature green / red border — applied per variant, since
-   owning one printing of a card doesn't mean you own them all. */
-.variant-item.obtained {
-  border: 3px solid #4caf50;
-}
-
-.variant-item.not-obtained {
-  border: 3px solid #d9534f;
+body.dark-mode .variant-item {
+  border-color: #444;
 }
 
 .variant-image-wrapper {
@@ -222,13 +234,8 @@ body.dark-mode .card-set {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #eeeeee;
   border-radius: 0.5rem;
   overflow: hidden;
-}
-
-body.dark-mode .variant-image-wrapper {
-  background: #1e1e1e;
 }
 
 .variant-image-wrapper img {
@@ -247,6 +254,12 @@ body.dark-mode .variant-image-wrapper {
   padding: 0.5rem;
   font-size: 0.8rem;
   color: #777;
+  background: #eeeeee;
+  border-radius: 0.5rem;
+}
+
+body.dark-mode .card-image-placeholder {
+  background: #1e1e1e;
 }
 
 .variant-info {
