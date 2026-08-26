@@ -78,6 +78,9 @@ function chaseListRenderVariant(card, variant) {
         src="${variant.image}"
         alt="${chaseListEscape(card.name)} — ${chaseListEscape(card.set)} ${chaseListEscape(card.number)} — ${chaseListEscape(variant.type)}"
         loading="lazy"
+        decoding="async"
+        width="180"
+        height="248"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       >
       <div class="card-image-placeholder" style="display:none;">
