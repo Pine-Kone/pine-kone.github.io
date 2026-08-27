@@ -7,45 +7,35 @@
   <link rel="stylesheet" href="style/main.css" />
 </head>
 <body>
-  <header>
-    <h1>Hans M. Haroldsen, MTax, MBA</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/portfolio/">Portfolio</a></li>
-        <li><a href="/library/">Library</a></li>
-        <li><a href="/hobby/">Hobbies</a></li>
-        <li><a href="https://youtube.com/@rarecandymindset?si=ucd7i97Zyu1Jm-pX" target="_blank">YouTube</a></li>
-        <li><a href="/about/">About Me</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header data-site-header data-title="Hans M. Haroldsen, MTax, MBA"></header>
 
-  <section class="hero">
-    <h2>Welcome to My Site</h2>
-    <p>Explore my work and passions across tech, writing, and design.</p>
-    <a class="button" href="#explore">Start Exploring</a>
+  <section class="hero hero-flex">
+    <!--
+      Headshot placeholder: swap this .avatar-placeholder div out for
+      <img src="/images/headshot.jpg" alt="Hans M. Haroldsen" class="hero-photo" />
+      once the LinkedIn photo is ready to use.
+    -->
+    <div class="avatar-placeholder" aria-hidden="true">HH</div>
+    <div class="hero-text">
+      <h2>Hi, I'm Hans.</h2>
+      <p>I'm a data-driven accounting and analytics professional who likes turning messy processes into tools people actually enjoy using — and outside of work, I write, read, chase Pokémon cards, and try to keep my faith and my family at the center of it all.</p>
+      <p class="recruiter-note">👋 Recruiter? <a href="/portfolio/">My Career</a> is the fastest way to see what I do and how I work.</p>
+    </div>
   </section>
 
   <section class="explore" id="explore">
-    <h3>Explore My Work</h3>
+    <h3>Explore My Site</h3>
     <div class="card-grid">
-      <a href="/portfolio/" class="card">📁 Professional Portfolio</a>
-      <a href="/library/" class="card">📚 Library & Annotations</a>
-      <a href="/hobby/" class="card">📁 Hobby Portfolio</a>
+      <a href="/portfolio/" class="card">💼 My Career</a>
+      <a href="/library/" class="card">📚 My Reading &amp; Writing</a>
+      <a href="/hobby/" class="card">🎮 My Hobbies</a>
       <a href="https://youtube.com/@rarecandymindset?si=ucd7i97Zyu1Jm-pX" target="_blank" class="card">🎥 YouTube Channel</a>
     </div>
   </section>
 
-  <section class="about">
-    <h3>About Me</h3>
-    <p>I'm Hans, a data-driven professional with a background in accounting and analytics. I love building efficient tools, automating processes, and diving deep into learning. I hold degrees from BYU-Idaho and Idaho State University—and I'm a diehard PokéFan.</p>
-  </section>
-
-  <footer>
-    <p>© 2025 Hans M. Haroldsen</p>
-  </footer>
+  <footer data-site-footer></footer>
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
