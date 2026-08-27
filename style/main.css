@@ -194,6 +194,11 @@ body.dark-mode .button-secondary:hover {
   background: var(--section-background-color);
 }
 
+.explore h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
