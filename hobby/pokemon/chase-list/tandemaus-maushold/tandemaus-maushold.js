@@ -68,9 +68,9 @@ const tandemausMausholdCards = [
       {
         type: "Standard",
         image: "/images/pokemon/chase-list/tandemaus-maushold/tandemaus-167-193.jpeg",
-        obtained: false,
-        obtainedDate: null,
-        obtainedLocation: null,
+        obtained: true,
+        obtainedDate: 2026-08-11,
+        obtainedLocation: "Home",
         features: [],
         notes: []
       },
