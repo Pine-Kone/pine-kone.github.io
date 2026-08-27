@@ -80,6 +80,114 @@ nav a:hover {
   background: #cc6300;
 }
 
+.hero-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.hero-flex .hero-text {
+  max-width: 480px;
+}
+
+.hero-flex h2 {
+  font-size: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-photo,
+.avatar-placeholder {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.hero-photo {
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-color);
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: 3px solid var(--accent-color);
+}
+
+.recruiter-note {
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.recruiter-note a {
+  color: var(--accent-color);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.recruiter-note a:hover {
+  text-decoration: underline;
+}
+
+.cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.25rem;
+}
+
+.cta-row .button {
+  margin-top: 0;
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+}
+
+.button-secondary:hover {
+  background: var(--primary-color);
+  color: white;
+}
+
+body.dark-mode .button-secondary {
+  color: white;
+  border-color: white;
+}
+
+body.dark-mode .button-secondary:hover {
+  background: white;
+  color: var(--primary-color);
+}
+
+@media (max-width: 600px) {
+  .hero-flex {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-flex .hero-text {
+    max-width: 100%;
+  }
+
+  header {
+    padding-right: 3.75rem;
+    padding-left: 3.75rem;
+  }
+
+  header h1 {
+    font-size: 1.3rem;
+  }
+}
+
 .explore {
   padding: 2rem 1rem;
   text-align: center;
