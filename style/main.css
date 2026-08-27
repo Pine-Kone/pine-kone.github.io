@@ -106,6 +106,13 @@ nav a:hover {
   flex-shrink: 0;
 }
 
+.hero-photo-portrait {
+  width: 200px;
+  height: 280px;
+  border-radius: 1rem;
+  border: 3px solid var(--accent-color);
+}
+
 .hero-photo {
   object-fit: cover;
 }
@@ -176,6 +183,21 @@ body.dark-mode .button-secondary:hover {
 
   .hero-flex .hero-text {
     max-width: 100%;
+    display: contents;
+  }
+
+  .hero-heading {
+    order: 1;
+    margin-bottom: 1rem;
+  }
+
+  .hero-photo {
+    order: 2;
+    margin: 0 auto 1.25rem;
+  }
+
+  .hero-text p {
+    order: 3;
   }
 
   header {
