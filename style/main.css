@@ -779,6 +779,8 @@ body.dark-mode .info-card:hover {
 @media (min-width: 601px) {
   .diploma-row {
     max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .diploma-img {
@@ -815,6 +817,10 @@ body.dark-mode .info-card:hover {
   flex-wrap: wrap;
   text-align: center;
   margin-top: 0.75rem;
+}
+
+.wg-column {
+  width: 130px;
 }
 
 .wg-column h5 {
@@ -926,8 +932,8 @@ body.dark-mode .info-card:hover {
 }
 
 .cpa-badge-img {
-  width: 60px;
-  height: 90px;
+  width: 70px;
+  height: 105px;
   border-radius: 0.6rem;
   object-fit: contain;
   background: white;
@@ -952,10 +958,22 @@ body.dark-mode .info-card:hover {
 }
 
 .cpa-badge-img.small {
-  width: 40px;
-  height: 60px;
+  width: 50px;
+  height: 75px;
   border-width: 2px;
   border-radius: 0.4rem;
+}
+
+@media (min-width: 601px) {
+  .cpa-badge-img {
+    width: 82px;
+    height: 123px;
+  }
+
+  .cpa-badge-img.small {
+    width: 68px;
+    height: 102px;
+  }
 }
 
 .cpa-badge.passed {
