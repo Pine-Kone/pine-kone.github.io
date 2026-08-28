@@ -1,19 +1,20 @@
 // Master Resume filter/rank/search tool.
 // Click a category chip to add it to the priority list (click order = rank
 // order). Type a custom keyword and press Enter/click Add to add it to that
-// same priority list. Bullets re-sort live: matches your #1 priority first,
-// then #2, etc. Bullets matching none of your picks sink to the bottom and
-// are shown grayed out rather than hidden. A custom keyword matches bullet
-// text, job title, and company name (case-insensitive).
+// same priority list. Bullets re-sort live within each role: matches your
+// #1 priority first, then #2, etc. Bullets matching none of your picks
+// sink to the bottom of their role and are shown dimmed rather than hidden.
+// A custom keyword matches bullet text, job title, and company name.
+// Category tags are hidden by default; a "Show Tags" toggle reveals them.
 
 (function () {
   const rankList = []; // ordered list of { type: 'category'|'keyword', value: string }
+  let tagsVisible = false;
 
   function matchesRankItem(bullet, roleEntry, rankItem) {
     if (rankItem.type === "category") {
       return bullet.categories.includes(rankItem.value);
     }
-    // custom keyword: match bullet text, role title, or company
     const needle = rankItem.value.toLowerCase();
     return (
       bullet.text.toLowerCase().includes(needle) ||
@@ -23,8 +24,6 @@
   }
 
   function scoreBullet(bullet, roleEntry) {
-    // Lower score sorts first. Each rank position contributes 0 (match) or 1
-    // (no match), most significant first -> lexicographic priority sort.
     let score = 0;
     let matchedAny = false;
     for (let i = 0; i < rankList.length; i++) {
@@ -69,48 +68,80 @@
     });
   }
 
+  function renderRoleBlock(roleEntry) {
+    const scored = roleEntry.bullets.map((b) => ({
+      bullet: b,
+      ...scoreBullet(b, roleEntry),
+    }));
+
+    if (rankList.length > 0) {
+      scored.sort((a, b) => a.score - b.score);
+    }
+
+    const roleBlock = document.createElement("div");
+    roleBlock.className = "resume-role-block";
+
+    const logoHtml = roleEntry.logo
+      ? `<img src="${roleEntry.logo}" alt="${roleEntry.company} logo" class="company-logo">`
+      : "";
+
+    roleBlock.innerHTML = `
+      <div class="resume-role-header">
+        ${logoHtml}
+        <div>
+          <h3>${roleEntry.role}</h3>
+          <p class="resume-role-meta">${roleEntry.company}${roleEntry.location ? " \u2014 " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
+        </div>
+      </div>
+    `;
+
+    const ul = document.createElement("ul");
+    ul.className = "resume-bullet-list";
+
+    scored.forEach(({ bullet, matchedAny }) => {
+      const li = document.createElement("li");
+      li.className = "resume-bullet";
+      if (rankList.length > 0 && !matchedAny) {
+        li.classList.add("resume-bullet-dim");
+      }
+      const tags = bullet.categories
+        .map((c) => `<span class="bullet-tag">${c}</span>`)
+        .join("");
+      li.innerHTML = `<span class="bullet-text">${bullet.text}</span><span class="bullet-tags">${tags}</span>`;
+      ul.appendChild(li);
+    });
+
+    roleBlock.appendChild(ul);
+    return roleBlock;
+  }
+
   function renderResume() {
     const container = document.getElementById("resume-list");
     container.innerHTML = "";
+    container.classList.toggle("show-tags", tagsVisible);
 
-    MASTER_RESUME_DATA.forEach((roleEntry) => {
-      const scored = roleEntry.bullets.map((b) => ({
-        bullet: b,
-        ...scoreBullet(b, roleEntry),
-      }));
-
-      if (rankList.length > 0) {
-        scored.sort((a, b) => a.score - b.score);
-      }
-
-      const roleBlock = document.createElement("div");
-      roleBlock.className = "resume-role-block";
-      roleBlock.innerHTML = `
-        <div class="resume-role-header">
-          <h3>${roleEntry.role}</h3>
-          <p class="resume-role-meta">${roleEntry.company} \u2014 ${roleEntry.location} &bull; ${roleEntry.dateRange}</p>
-        </div>
-      `;
-
-      const ul = document.createElement("ul");
-      ul.className = "resume-bullet-list";
-
-      scored.forEach(({ bullet, matchedAny }) => {
-        const li = document.createElement("li");
-        li.className = "resume-bullet";
-        if (rankList.length > 0 && !matchedAny) {
-          li.classList.add("resume-bullet-dim");
-        }
-        const tags = bullet.categories
-          .map((c) => `<span class="bullet-tag">${c}</span>`)
-          .join("");
-        li.innerHTML = `<span class="bullet-text">${bullet.text}</span><span class="bullet-tags">${tags}</span>`;
-        ul.appendChild(li);
+    const sections = [...new Set(MASTER_RESUME_DATA.map((r) => r.section))];
+    sections.forEach((sectionName) => {
+      const sectionEl = document.createElement("div");
+      sectionEl.className = "resume-section";
+      sectionEl.innerHTML = `<h2 class="resume-section-title">${sectionName}</h2>`;
+      MASTER_RESUME_DATA.filter((r) => r.section === sectionName).forEach((roleEntry) => {
+        sectionEl.appendChild(renderRoleBlock(roleEntry));
       });
-
-      roleBlock.appendChild(ul);
-      container.appendChild(roleBlock);
+      container.appendChild(sectionEl);
     });
+
+    if (MASTER_RESUME_SKILLS && MASTER_RESUME_SKILLS.length) {
+      const skillsSection = document.createElement("div");
+      skillsSection.className = "resume-section";
+      skillsSection.innerHTML = `
+        <h2 class="resume-section-title">Skills &amp; Certifications</h2>
+        <ul class="resume-bullet-list resume-skills-list">
+          ${MASTER_RESUME_SKILLS.map((s) => `<li class="resume-bullet"><span class="bullet-text">${s}</span></li>`).join("")}
+        </ul>
+      `;
+      container.appendChild(skillsSection);
+    }
   }
 
   function renderAll() {
@@ -159,6 +190,13 @@
     document.getElementById("clear-priorities-btn").addEventListener("click", () => {
       rankList.length = 0;
       renderAll();
+    });
+
+    const showTagsToggle = document.getElementById("show-tags-toggle");
+    showTagsToggle.addEventListener("click", () => {
+      tagsVisible = !tagsVisible;
+      showTagsToggle.textContent = tagsVisible ? "\u2212 Hide Tags" : "+ Show Tags";
+      renderResume();
     });
 
     renderAll();
