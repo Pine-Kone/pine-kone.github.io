@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master Resume | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
+</head>
+<body>
+  <header data-site-header data-title="Master Resume" data-nav="breadcrumb" data-back-href="/portfolio/" data-back-label="My Career"></header>
+
+  <section class="hero">
+    <h2>Master Resume</h2>
+    <p class="hero-blurb">
+      A more complete version of my resume than you'll find on LinkedIn. Pick the skills that
+      matter most for what you're looking for, in priority order, and the content below will
+      re-sort to show what's most relevant first.
+    </p>
+  </section>
+
+  <section class="resume-tool">
+    <div class="resume-controls">
+      <h3>Filter &amp; Prioritize</h3>
+      <p class="resume-controls-hint">Click categories in the order that matters most to you. Add your own keyword too.</p>
+
+      <div id="category-chips" class="category-chips"></div>
+
+      <div class="keyword-row">
+        <input type="text" id="keyword-input" placeholder="Add a custom keyword…" aria-label="Add a custom keyword">
+        <button type="button" id="keyword-add-btn" class="button button-secondary">Add</button>
+      </div>
+
+      <div id="rank-list" class="rank-list"></div>
+
+      <button type="button" id="clear-priorities-btn" class="clear-priorities-btn">Clear all priorities</button>
+    </div>
+
+    <div id="resume-list" class="resume-list"></div>
+  </section>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+  <script src="/scripts/portfolio/master-resume-data.js"></script>
+  <script src="/scripts/portfolio/master-resume.js"></script>
+</body>
+</html>
