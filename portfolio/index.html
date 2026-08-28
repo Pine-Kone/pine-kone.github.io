@@ -3,51 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio | Hans M. Haroldsen</title>
+  <title>My Career | Hans M. Haroldsen</title>
   <link rel="stylesheet" href="/style/main.css" />
 </head>
 <body>
-  <header>
-    <h1>Portfolio</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/portfolio/">Portfolio</a></li>
-        <li><a href="/library/">Library</a></li>
-        <li><a href="/hobby/">Hobbies</a></li>
-        <li><a href="https://youtube.com/@rarecandymindset?si=ucd7i97Zyu1Jm-pX" target="_blank">YouTube</a></li>
-        <li><a href="/about/">About Me</a></li>
-      </ul>
-    </nav>
-  </header>
+  <header data-site-header data-title="My Career"></header>
 
-  <section class="explore">
-    <h2>My Work</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Client Review & Engagement Tool</h3>
-        <p>A Power BI & Power Automate solution that streamlines service review and automates client letters.</p>
-        <a href="#" target="_blank">View More</a>
-      </div>
-
-      <div class="card">
-        <h3>ShareFile API Integration</h3>
-        <p>Python & Power Automate solution for secure document handling and folder automation.</p>
-        <a href="#" target="_blank">GitHub Repo</a>
-      </div>
-
-      <div class="card">
-        <h3>Shortcut-Based Time Tracker</h3>
-        <p>Built using iOS Shortcuts, Scriptable, and CSV logs for simplified productivity tracking.</p>
-        <a href="#" target="_blank">Explore Shortcut</a>
-      </div>
-    </div>
+  <section class="hero">
+    <h2>Turning Data Into Decisions</h2>
+    <p class="hero-blurb">
+      I'm an MBA, MTax, and CPA candidate who builds accounting and data teams the tools they
+      actually need — reporting that doesn't require a manual, and processes that don't fall apart
+      the moment someone's on vacation.
+    </p>
   </section>
 
-  <footer>
-    <p>© 2025 Hans M. Haroldsen</p>
-  </footer>
+  <!-- EDUCATION HIGHLIGHT -->
+  <section class="career-highlight">
+    <h3>Education</h3>
+    <div class="diploma-row">
+      <img src="/images/education/mba-placeholder.jpg" alt="MBA diploma, Idaho State University" class="diploma-img">
+      <img src="/images/education/mtax-placeholder.jpg" alt="Master of Taxation diploma, Idaho State University" class="diploma-img">
+      <img src="/images/education/bs-accounting-placeholder.jpg" alt="BS Accounting diploma, BYU-Idaho" class="diploma-img">
+    </div>
+    <p class="career-highlight-blurb">
+      Two master's degrees from Idaho State University (MBA, Finance emphasis; MTax, Individual/Corporate/Estate
+      Tax emphasis) and a BS in Accounting from BYU-Idaho. Along the way I built a handful of school
+      projects I'm still proud of.
+    </p>
+    <a class="button" href="/portfolio/projects/#school-projects">See My School Projects →</a>
+  </section>
+
+  <!-- CURRENT WORK HIGHLIGHT -->
+  <section class="career-highlight career-highlight-alt">
+    <h3>Current Work</h3>
+    <p class="career-highlight-blurb">Data Analytics Manager at Cooper Norman, since June 2023. A few highlights:</p>
+    <ul class="highlight-bullets">
+      <li>Re-engineered an audit project tracking dashboard, cutting refresh time from over an hour to under a minute</li>
+      <li>Built automated Power BI paginated reporting workflows distributing client packages to ~3,500 clients spanning ~7,500 entities</li>
+      <li>Collaborate with ~20 partners and service line leads to translate operational needs into actionable reporting</li>
+      <li>Integrated data across 7+ platforms (Practice CS, GoFileRoom, UltraTax, QuickBooks Online, and more) using SQL, Power Query, and Power Automate</li>
+    </ul>
+    <a class="button" href="/portfolio/master-resume/">See My Full Resume →</a>
+  </section>
+
+  <!-- CPA HIGHLIGHT -->
+  <section class="career-highlight">
+    <h3>CPA Exam Journey</h3>
+    <div class="cpa-mini-line">
+      <img src="/images/cpa/far-badge.png" alt="FAR badge" class="cpa-badge-img small studying">
+      <img src="/images/cpa/aud-badge.png" alt="AUD badge" class="cpa-badge-img small upcoming">
+      <img src="/images/cpa/tax-badge.png" alt="TAX badge" class="cpa-badge-img small upcoming">
+      <img src="/images/cpa/isc-badge.png" alt="ISC badge" class="cpa-badge-img small upcoming">
+    </div>
+    <p class="career-highlight-blurb">Currently studying for FAR — my first section.</p>
+    <a class="button" href="/portfolio/cpa-exam-journey/">Read About My CPA Journey →</a>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="career-highlight career-highlight-alt">
+    <h3>Portfolio</h3>
+    <p class="career-highlight-blurb">Projects, code snippets, and the professional Shortcuts I use to keep work moving.</p>
+    <a class="button" href="/portfolio/projects/">Explore My Portfolio →</a>
+  </section>
+
+  <footer data-site-footer></footer>
+
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
