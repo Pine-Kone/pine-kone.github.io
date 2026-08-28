@@ -537,7 +537,8 @@ body.dark-mode .category-chip.active {
   opacity: 1;
 }
 
-.clear-priorities-btn {
+.clear-priorities-btn,
+.show-tags-toggle {
   background: none;
   border: none;
   color: var(--primary-color);
@@ -547,12 +548,45 @@ body.dark-mode .category-chip.active {
   padding: 0;
 }
 
-body.dark-mode .clear-priorities-btn {
+.resume-controls-buttons {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+body.dark-mode .clear-priorities-btn,
+body.dark-mode .show-tags-toggle {
   color: var(--accent-color);
+}
+
+.resume-section-title {
+  font-size: 1.4rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.4rem;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.resume-section:first-child .resume-section-title {
+  margin-top: 0;
 }
 
 .resume-role-block {
   margin-bottom: 2rem;
+}
+
+.resume-role-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.company-logo {
+  width: 64px;
+  height: 44px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .resume-role-header h3 {
@@ -563,13 +597,17 @@ body.dark-mode .clear-priorities-btn {
   font-size: 0.85rem;
   opacity: 0.7;
   margin-top: 0;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0;
 }
 
 .resume-bullet-list {
-  list-style: none;
-  padding: 0;
+  list-style: disc;
+  padding-left: 1.4rem;
   margin: 0;
+}
+
+.resume-skills-list {
+  list-style: disc;
 }
 
 .resume-bullet {
@@ -577,13 +615,16 @@ body.dark-mode .clear-priorities-btn {
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid var(--section-background-color);
-  transition: opacity 0.3s;
+  padding: 0.5rem 0;
+  transition: color 0.3s;
 }
 
 .resume-bullet-dim {
-  opacity: 0.4;
+  color: #767676;
+}
+
+body.dark-mode .resume-bullet-dim {
+  color: #999;
 }
 
 .bullet-text {
@@ -592,12 +633,16 @@ body.dark-mode .clear-priorities-btn {
 }
 
 .bullet-tags {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   gap: 0.3rem;
   flex-shrink: 0;
   max-width: 160px;
   justify-content: flex-end;
+}
+
+#resume-list.show-tags .bullet-tags {
+  display: flex;
 }
 
 .bullet-tag {
@@ -731,11 +776,26 @@ body.dark-mode .info-card:hover {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
+@media (min-width: 601px) {
+  .diploma-row {
+    max-width: 480px;
+  }
+
+  .diploma-img {
+    width: 220px;
+    height: 165px;
+  }
+}
+
 .diploma-caption {
   font-size: 0.85rem;
   line-height: 1.35;
   opacity: 0.85;
   margin: 0;
+}
+
+.how-i-work-block h4 {
+  text-align: center;
 }
 
 .how-i-work-block {
@@ -762,6 +822,24 @@ body.dark-mode .info-card:hover {
   font-size: 0.9rem;
   text-transform: uppercase;
   opacity: 0.7;
+}
+
+.wg-geniuses h5 {
+  color: #4caf50;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.wg-competencies h5 {
+  color: #e08e00;
+  opacity: 1;
+  font-weight: bold;
+}
+
+.wg-frustrations h5 {
+  color: #d9534f;
+  opacity: 1;
+  font-weight: bold;
 }
 
 .mbti-type {
@@ -848,10 +926,11 @@ body.dark-mode .info-card:hover {
 }
 
 .cpa-badge-img {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 60px;
+  height: 90px;
+  border-radius: 0.6rem;
+  object-fit: contain;
+  background: white;
   border: 3px solid #ccc;
   filter: grayscale(100%);
   opacity: 0.55;
@@ -873,9 +952,10 @@ body.dark-mode .info-card:hover {
 }
 
 .cpa-badge-img.small {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 60px;
   border-width: 2px;
+  border-radius: 0.4rem;
 }
 
 .cpa-badge.passed {
