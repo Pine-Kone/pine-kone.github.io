@@ -416,16 +416,17 @@ body.dark-mode .card:hover {
 
 @media (min-width: 901px) {
   .resume-tool {
-    max-width: 1100px;
+    max-width: 1200px;
     display: flex;
     align-items: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .resume-controls {
-    width: 300px;
+    width: 230px;
     flex-shrink: 0;
     margin-bottom: 0;
+    padding: 1.25rem;
     position: sticky;
     top: 1rem;
   }
@@ -868,7 +869,7 @@ body.dark-mode .info-card:hover {
 
 @media (min-width: 601px) {
   .working-genius-row {
-    margin-top: 0.35rem;
+    margin-top: 0.2rem;
   }
 
   .mbti-type {
@@ -881,10 +882,15 @@ body.dark-mode .info-card:hover {
 }
 
 .wg-column h5 {
-  margin-bottom: 0.4rem;
+  margin-top: 0;
+  margin-bottom: 0.3rem;
   font-size: 0.9rem;
   text-transform: uppercase;
   opacity: 0.7;
+}
+
+.wg-column p {
+  margin: 0;
 }
 
 .wg-geniuses h5 {
