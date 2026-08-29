@@ -81,7 +81,7 @@ const MASTER_RESUME_DATA = [
     section: "Work Experience",
     role: "Staff Accountant",
     company: "Smith, Kunz & Associates",
-    logo: "/images/companies/smith-kunz-logo.png",
+    logo: "/images/companies/smith-kunz-logo.jpg",
     location: "Idaho Falls, ID",
     dateRange: { start: { month: 1, year: 2017 }, end: { month: 6, year: 2023 } },
     bullets: [
