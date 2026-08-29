@@ -1,7 +1,7 @@
 "use strict";
 
 /*
- * Chase List — Shared Rendering Engine
+ * Chase List - Shared Rendering Engine
  * =====================================
  *
  * Used by every page under /hobby/pokemon/chase-list/<group>/.
@@ -29,7 +29,7 @@
  *
  * Every card has at least one variant. A card with only one
  * printing still uses a variants array with a single "Standard"
- * entry — this keeps every page's data and rendering logic
+ * entry - this keeps every page's data and rendering logic
  * identical, whether or not that card happens to have alternate
  * printings.
  */
@@ -76,7 +76,7 @@ function chaseListRenderVariant(card, variant) {
     ? `
       <img
         src="${variant.image}"
-        alt="${chaseListEscape(card.name)} — ${chaseListEscape(card.set)} ${chaseListEscape(card.number)} — ${chaseListEscape(variant.type)}"
+        alt="${chaseListEscape(card.name)} - ${chaseListEscape(card.set)} ${chaseListEscape(card.number)} - ${chaseListEscape(variant.type)}"
         loading="lazy"
         decoding="async"
         width="180"
@@ -205,13 +205,13 @@ function chaseListRenderCard(card, variantsToRender) {
        // add a second entry here for pages that split
        // into multiple species sections, e.g. Rhyhorn & Rhydon
      ],
-     statsIds: {                 // optional — omit to skip stats
+     statsIds: {                 // optional - omit to skip stats
        total:     "total-cards",
        obtained:  "obtained-cards",
        remaining: "remaining-cards",
        percent:   "completion-percent"
      },
-     filterId: "collection-filter"   // optional — omit to skip filtering
+     filterId: "collection-filter"   // optional - omit to skip filtering
    }
 */
 
@@ -234,7 +234,7 @@ function renderChaseListPage(config) {
       group.cards.forEach((card) => {
 
         // Stats always reflect the FULL collection, regardless of
-        // the active filter — each variant counts on its own.
+        // the active filter - each variant counts on its own.
         totalVariants += card.variants.length;
         obtainedVariants += card.variants.filter((variant) => variant.obtained).length;
 
