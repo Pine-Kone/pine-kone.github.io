@@ -15,7 +15,7 @@ body.dark-mode {
 }
 
 body {
-  font-family: system-ui, sans-serif;
+  font-family: "Times New Roman", Times, Georgia, serif;
   margin: 0;
   background: var(--background-color);
   color: var(--text-color);
@@ -289,6 +289,49 @@ footer {
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.footer-inner p {
+  margin: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  position: absolute;
+  right: 0;
+}
+
+.footer-social-link {
+  color: white;
+  opacity: 0.85;
+  display: inline-flex;
+  transition: opacity 0.2s;
+}
+
+.footer-social-link:hover {
+  opacity: 1;
+}
+
+@media (max-width: 500px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .footer-social {
+    position: static;
+  }
 }
 
 .card h3 {
