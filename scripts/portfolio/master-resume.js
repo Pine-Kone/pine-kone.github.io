@@ -75,15 +75,22 @@
   }
 
   function roleHeaderHtml(roleEntry) {
-    const logoHtml = roleEntry.logo
-      ? `<img src="${roleEntry.logo}" alt="${roleEntry.company} logo" class="company-logo">`
-      : "";
+    let logoHtml = "";
+    if (roleEntry.logo) {
+      const img = `<img src="${roleEntry.logo}" alt="${roleEntry.company} logo" class="company-logo">`;
+      logoHtml = roleEntry.website
+        ? `<a href="${roleEntry.website}" target="_blank" rel="noopener" aria-label="${roleEntry.company} website">${img}</a>`
+        : img;
+    }
+    const companyHtml = roleEntry.website
+      ? `<a href="${roleEntry.website}" target="_blank" rel="noopener" class="company-link">${roleEntry.company}</a>`
+      : roleEntry.company;
     return `
       <div class="resume-role-header">
         ${logoHtml}
         <div>
           <h3>${roleEntry.role}</h3>
-          <p class="resume-role-meta">${roleEntry.company}${roleEntry.location ? " - " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
+          <p class="resume-role-meta">${companyHtml}${roleEntry.location ? " - " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
         </div>
       </div>
     `;
