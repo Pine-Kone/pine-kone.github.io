@@ -3,7 +3,7 @@
 // order). Type a custom keyword and press Enter/click Add to add it to that
 // same priority list. When priorities are selected, matching bullets stay
 // grouped under their role in priority order at the top of the page, and
-// every bullet that matches none of your picks — from any role — pools
+// every bullet that matches none of your picks - from any role - pools
 // together in a single "Everything Else" section at the very bottom,
 // rather than just sinking within its own role. A custom keyword matches
 // bullet text, job title, and company name. Category tags are hidden by
@@ -40,7 +40,7 @@
     const el = document.getElementById("rank-list");
     el.innerHTML = "";
     if (rankList.length === 0) {
-      el.innerHTML = '<span class="rank-list-empty">No priorities selected yet \u2014 showing default order.</span>';
+      el.innerHTML = '<span class="rank-list-empty">No priorities selected yet - showing default order.</span>';
       return;
     }
     rankList.forEach((item, i) => {
@@ -83,7 +83,7 @@
         ${logoHtml}
         <div>
           <h3>${roleEntry.role}</h3>
-          <p class="resume-role-meta">${roleEntry.company}${roleEntry.location ? " \u2014 " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
+          <p class="resume-role-meta">${roleEntry.company}${roleEntry.location ? " - " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
         </div>
       </div>
     `;
@@ -180,7 +180,7 @@
           li.innerHTML = `
             <span class="bullet-text">
               ${bullet.text}
-              <span class="bullet-source">${roleEntry.role} \u2014 ${roleEntry.company}</span>
+              <span class="bullet-source">${roleEntry.role} - ${roleEntry.company}</span>
             </span>
             <span class="bullet-tags">${bulletTagsHtml(bullet)}</span>
           `;
