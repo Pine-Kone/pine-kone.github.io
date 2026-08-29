@@ -1,13 +1,13 @@
 // Master Resume data. Each bullet is tagged with the skill categories it
 // belongs to (a bullet can belong to more than one). Add new roles or
-// bullets here — the page and its filter/rank tool read this file directly.
+// bullets here - the page and its filter/rank tool read this file directly.
 //
 // DATES: store exact start/end as { month, year }. If you only know the
 // year, omit month. If a role is ongoing, use { present: true } for the
 // end date. If you don't have exact dates at all, use { display: "..." }
-// with whatever text you do want shown (e.g. "Sometime 2015") — it bypasses
+// with whatever text you do want shown (e.g. "Sometime 2015") - it bypasses
 // the month/year formatting entirely. formatDateRange() below turns any of
-// these into a clean "Mon. YYYY – Mon. YYYY" display string.
+// these into a clean "Mon. YYYY - Mon. YYYY" display string.
 
 const MASTER_RESUME_MONTHS = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
 
@@ -21,7 +21,7 @@ function formatResumeDatePart(part) {
 
 function formatResumeDateRange(range) {
   if (!range) return "";
-  return `${formatResumeDatePart(range.start)} \u2013 ${formatResumeDatePart(range.end)}`;
+  return `${formatResumeDatePart(range.start)} - ${formatResumeDatePart(range.end)}`;
 }
 
 const MASTER_RESUME_DATA = [
@@ -59,7 +59,7 @@ const MASTER_RESUME_DATA = [
     section: "Work Experience",
     role: "Data Analytics and Reporting Specialist",
     company: "Mountain View Hospital",
-    logo: "/images/companies/mountain-view-hospital-logo.jpg",
+    logo: "/images/companies/mountain-view-hospital-logo.png",
     location: "Idaho Falls, ID",
     dateRange: { start: { month: 8, year: 2021 }, end: { month: 6, year: 2023 } },
     bullets: [
@@ -81,7 +81,7 @@ const MASTER_RESUME_DATA = [
     section: "Work Experience",
     role: "Staff Accountant",
     company: "Smith, Kunz & Associates",
-    logo: "/images/companies/smith-kunz-logo.jpg",
+    logo: "/images/companies/smith-kunz-logo.png",
     location: "Idaho Falls, ID",
     dateRange: { start: { month: 1, year: 2017 }, end: { month: 6, year: 2023 } },
     bullets: [
@@ -127,7 +127,7 @@ const MASTER_RESUME_SKILLS = [
   "Proficient with Microsoft Power Platform and Microsoft Office applications",
   "Fluent in Spanish",
   "Eagle Scout",
-  "CPA Candidate — examinations in progress",
+  "CPA Candidate - examinations in progress",
 ];
 
 const MASTER_RESUME_CATEGORIES = [
