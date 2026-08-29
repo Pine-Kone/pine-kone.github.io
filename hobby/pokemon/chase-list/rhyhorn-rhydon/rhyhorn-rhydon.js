@@ -7,7 +7,7 @@
  * card/variant shape and field descriptions.
  *
  * This page tracks two species, so it uses two grids that share one
- * set of overall stats — see the "groups" array passed below.
+ * set of overall stats - see the "groups" array passed below.
  */
 
 const rhyhornCards = [
