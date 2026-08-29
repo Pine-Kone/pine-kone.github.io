@@ -9,53 +9,24 @@
 <body>
   <header data-site-header data-title="Portfolio" data-nav="breadcrumb" data-back-href="/portfolio/" data-back-label="My Career"></header>
 
-  <section class="explore">
-    <h2>Professional Projects</h2>
-    <p class="coming-soon-note">Full write-ups for these are still in progress - check back soon for links and details.</p>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Client Review & Engagement Tool</h3>
-        <p>A Power BI & Power Automate solution that streamlines service review and automates client letters.</p>
-        <span class="badge-soon">Details coming soon</span>
-      </div>
-
-      <div class="card">
-        <h3>ShareFile API Integration</h3>
-        <p>Python & Power Automate solution for secure document handling and folder automation.</p>
-        <span class="badge-soon">Details coming soon</span>
-      </div>
-
-      <div class="card">
-        <h3>Shortcut-Based Time Tracker</h3>
-        <p>Built using iOS Shortcuts, Scriptable, and CSV logs for simplified productivity tracking.</p>
-        <span class="badge-soon">Details coming soon</span>
-      </div>
-    </div>
+  <section class="hero">
+    <h2>My Portfolio</h2>
+    <p class="hero-blurb">
+      A mix of professional projects, school work, data & analytics builds, and code snippets.
+      Filter by tool to find what you're looking for.
+    </p>
+    <div id="tool-chips" class="category-chips portfolio-tool-chips"></div>
   </section>
 
-  <section class="explore explore-alt">
-    <h2>School Projects</h2>
-    <p class="coming-soon-note">Projects from my MBA, MTax, and BS Accounting coursework - still being written up.</p>
-    <div class="card-grid">
-      <div class="card">
-        <span class="badge-soon">Coming soon</span>
-      </div>
-    </div>
-  </section>
+  <div id="portfolio-items"></div>
 
   <section class="explore">
-    <h2>More to Explore</h2>
+    <h3>See Also</h3>
     <div class="info-card-grid">
-      <a href="/hobby/code-snippets/" class="info-card">
-        <span class="info-card-icon">💻</span>
-        <h3>Code Snippets</h3>
-        <p>Small tools and demos I've built along the way.</p>
-      </a>
-
       <a href="/hobby/shortcuts/" class="info-card">
         <span class="info-card-icon">⚙️</span>
-        <h3>Professional Shortcuts</h3>
-        <p>iOS Shortcuts I use to keep work moving - CPA study tools and more.</p>
+        <h3>All Shortcuts</h3>
+        <p>The full list of iOS Shortcuts I use, professional and personal.</p>
       </a>
     </div>
   </section>
@@ -65,5 +36,7 @@
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
   <script src="/scripts/site-chrome.js"></script>
+  <script src="/scripts/portfolio/portfolio-items-data.js"></script>
+  <script src="/scripts/portfolio/portfolio-items.js"></script>
 </body>
 </html>
