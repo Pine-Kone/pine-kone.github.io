@@ -1,6 +1,8 @@
 // Portfolio page filter tool. Click a tool chip to toggle it as an active
 // filter (multi-select). With no filters active, every project shows. With
 // filters active, only projects using at least one selected tool show.
+// Each card displays once, grouped under its primary section (sections[0]);
+// any additional sections show as a small "Also:" tag on the card itself.
 
 (function () {
   const activeTools = new Set();
@@ -36,14 +38,23 @@
     const container = document.getElementById("portfolio-items");
     container.innerHTML = "";
 
-    const sections = [...new Set(PORTFOLIO_ITEMS.map((i) => i.section))];
+    // Primary section order = first-appearance order of sections[0] across items.
+    const sections = [];
+    PORTFOLIO_ITEMS.forEach((i) => {
+      const primary = i.sections[0];
+      if (!sections.includes(primary)) sections.push(primary);
+    });
+
+    let anySectionRendered = false;
+
     sections.forEach((sectionName) => {
       const items = PORTFOLIO_ITEMS.filter((i) => {
-        if (i.section !== sectionName) return false;
+        if (i.sections[0] !== sectionName) return false;
         if (activeTools.size === 0) return true;
         return i.tools.some((t) => activeTools.has(t));
       });
       if (items.length === 0) return;
+      anySectionRendered = true;
 
       const sectionEl = document.createElement("div");
       sectionEl.className = "portfolio-section";
@@ -55,18 +66,31 @@
       items.forEach((item) => {
         const card = document.createElement("div");
         card.className = "portfolio-item-card";
+        if (item.image) card.classList.add("has-image");
+
+        const imageHtml = item.image
+          ? `<img src="${item.image}" alt="${item.title}" class="portfolio-item-image">`
+          : "";
         const statusBadge =
           item.status === "coming-soon"
             ? '<span class="badge-soon">Coming soon</span>'
             : "";
+        const extraSections = item.sections.slice(1);
+        const alsoInHtml = extraSections.length
+          ? `<p class="portfolio-also-in">Also: ${extraSections.join(", ")}</p>`
+          : "";
+        const isFileLink = item.link && /\.(xlsx|pbix|zip|pdf|sql)$/i.test(item.link);
         const linkHtml =
           item.status === "live" && item.link
-            ? `<a href="${item.link}" class="button button-secondary portfolio-item-link">View</a>`
+            ? `<a href="${item.link}" class="button button-secondary portfolio-item-link"${isFileLink ? "" : ""}>${isFileLink ? "Download" : "View"}</a>`
             : "";
+
         card.innerHTML = `
+          ${imageHtml}
           <h3>${item.title}</h3>
           <p>${item.description}</p>
           <div class="tool-badges">${toolBadgesHtml(item.tools)}</div>
+          ${alsoInHtml}
           ${statusBadge}
           ${linkHtml}
         `;
@@ -77,7 +101,7 @@
       container.appendChild(sectionEl);
     });
 
-    if (sections.every((s) => PORTFOLIO_ITEMS.filter((i) => i.section === s && (activeTools.size === 0 || i.tools.some((t) => activeTools.has(t)))).length === 0)) {
+    if (!anySectionRendered) {
       container.innerHTML = '<p class="portfolio-no-results">No projects match the selected tools.</p>';
     }
   }
