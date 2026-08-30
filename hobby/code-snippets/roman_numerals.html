@@ -2,7 +2,8 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<title>Roman Numerals</title>
+<title>Roman Numerals | Hans M. Haroldsen</title>
+<link rel="stylesheet" href="/style/main.css" />
 <script type="text/javascript">
 "use strict";
 
@@ -145,10 +146,89 @@ function numbers() {
 }
 </script>
 </head>
-
 <body>
-Enter an integer less than 4000: <input type="text" id="arabic">
-<button type="button" onclick="numbers()">Click</button>
-<div id="output"></div>
+  <header data-site-header data-title="Roman Numerals" data-nav="breadcrumb" data-back-href="/hobby/code-snippets/" data-back-label="Code Snippets"></header>
+
+  <section class="hero">
+    <p>Enter an integer less than 4000: <input type="text" id="arabic"></p>
+    <button type="button" onclick="numbers()">Click</button>
+    <div id="output"></div>
+  </section>
+
+  <section class="walkthrough-section">
+    <h3>How It Works</h3>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">function numbers() {
+  var arabic = parseInt(document.getElementById('arabic').value);
+  var roman = "";</div>
+      <div class="walkthrough-explanation">
+        <h4>Getting started</h4>
+        <p>First things first: grab whatever was typed into the input box. <code>parseInt()</code> converts that text into an actual number we can do math with - text alone can't be compared or subtracted. Then <code>roman</code> starts out as an empty string. We're going to build the Roman numeral one piece at a time and keep tacking letters onto the end of it.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">if (arabic >= 3000) {
+  roman += "MMM";
+  arabic -= 3000;
+}
+else if (arabic >= 2000) {
+  roman += "MM";
+  arabic -= 2000;
+}
+else if (arabic >= 1000) {
+  roman += "M";
+  arabic -= 1000;
+}</div>
+      <div class="walkthrough-explanation">
+        <h4>The 1000's digit - and the pattern the whole function repeats</h4>
+        <p>This is the shape the entire function follows, over and over: start with the biggest chunk that could possibly fit, and work your way down. If there's enough left for three thousands, add "MMM" and subtract 3000. If not, check for two, then one. Since M is the Roman numeral for 1000, and this tool only handles numbers under 4000, three M's is as high as we ever need to go.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">if (arabic >= 900) {
+  roman += "CM";
+  arabic -= 900;
+}
+else if (arabic >= 800) {
+  roman += "DCCC";
+  arabic -= 800;
+}
+// ...continues down through 500, 400, 300, 200, 100</div>
+      <div class="walkthrough-explanation">
+        <h4>The 100's digit - where it gets a little clever</h4>
+        <p>Same idea as before, but now we run into Roman numerals' "subtractive notation" - shortcuts for numbers that would otherwise take a lot of letters to write. Instead of writing 900 as nine C's in a row, Romans wrote "CM," meaning "100 short of 1000." Same logic gives us "CD" for 400 (100 short of 500). Everything else in this block (800, 700, 600, 300, 200, 100) is just straightforward addition, the same as the 1000's block above.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">if (arabic >= 90) {
+  roman += "XC";
+  arabic -= 90;
+}
+// ...and again for the 1's digit:
+// if (arabic >= 9) { roman += "IX"; ... }</div>
+      <div class="walkthrough-explanation">
+        <h4>The 10's and 1's digits</h4>
+        <p>These two blocks are honestly just the 100's block shrunk down - same subtractive shortcuts (XC for 90, IV for 4), same "check the biggest option first" pattern, just working with X's and I's instead of C's and M's. Once you understand one block, you understand all four - they're really the same idea applied at four different scales.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">document.getElementById('output').innerHTML = roman;</div>
+      <div class="walkthrough-explanation">
+        <h4>Showing the result</h4>
+        <p>By the time we reach this line, all four digit-place checks have run, and <code>roman</code> holds the complete converted numeral. This last line just drops that finished string onto the page for you to see.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
