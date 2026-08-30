@@ -761,6 +761,97 @@ body.dark-mode .bullet-tag {
     justify-content: flex-start;
   }
 }
+.sql-file-list-label {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.sql-file-list {
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.sql-file-list > li {
+  margin-bottom: 0.5rem;
+}
+
+.sql-file-list a {
+  font-family: monospace;
+}
+
+.walkthrough-section {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+.walkthrough-block {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.75rem;
+}
+
+.walkthrough-code {
+  flex: 1;
+  min-width: 0;
+  background: #1e1e2e;
+  color: #e5e5e5;
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  font-family: "Courier New", monospace;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.walkthrough-explanation {
+  flex: 1;
+  min-width: 0;
+}
+
+.walkthrough-explanation h4 {
+  margin-top: 0;
+  margin-bottom: 0.4rem;
+}
+
+.walkthrough-explanation p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 750px) {
+  .walkthrough-block {
+    flex-direction: column;
+  }
+
+  .walkthrough-code {
+    width: 100%;
+  }
+}
+
+.project-data-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem 3rem;
+}
+
+.project-data-block {
+  margin-bottom: 2rem;
+}
+
+.project-data-block h4 {
+  margin-bottom: 0.3rem;
+}
+
+.project-data-block p {
+  margin-top: 0;
+  opacity: 0.85;
+}
+
 .portfolio-tool-chips {
   justify-content: center;
   max-width: 700px;
@@ -799,6 +890,21 @@ body.dark-mode .bullet-tag {
   margin: 0;
   font-size: 0.9rem;
   line-height: 1.4;
+}
+
+.portfolio-item-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.portfolio-also-in {
+  font-size: 0.75rem;
+  opacity: 0.65;
+  font-style: italic;
+  margin: 0;
 }
 
 .tool-badges {
