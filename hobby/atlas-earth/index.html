@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atlas Earth | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
+</head>
+<body>
+  <header data-site-header data-title="Atlas Earth" data-nav="breadcrumb" data-back-href="/hobby/" data-back-label="Hobbies"></header>
 
+  <section class="hero">
+    <h2>🌎 Atlas Earth</h2>
+    <p class="hero-blurb">
+      Atlas Earth is a location-based app where you buy small parcels of virtual land tied to
+      real-world locations, each one earning virtual rent over time. It's a fun side hobby - and
+      a good excuse to dig into the data behind it.
+    </p>
+    <p class="placeholder-flag">⚠️ Staged placeholder - send me your own take on why you play/what you enjoy about it and I'll swap this in.</p>
+  </section>
+
+  <section class="project-data-section">
+    <h3>The Data</h3>
+
+    <div class="project-data-block">
+      <h4>SQL Dataset</h4>
+      <p>A SQL database I built to model Atlas Earth activity - schema, reference/lookup data, and my own purchase history. There are a number of individual scripts, so grab the whole set at once or pick what you need:</p>
+      <div class="card-grid">
+        <a href="/files/atlas-earth/atlas-earth-sql.zip" class="card">🗄️ Download All (.zip)</a>
+      </div>
+
+      <p class="sql-file-list-label">Individual files:</p>
+      <ul class="sql-file-list">
+        <li><strong>Schema</strong>
+          <ul>
+            <li><a href="/files/atlas-earth/sql/atlas-earth-schema.sql">atlas-earth-schema.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/atlas-earth-schema-full.sql">atlas-earth-schema-full.sql</a></li>
+          </ul>
+        </li>
+        <li><strong>Reference / Lookup Data</strong>
+          <ul>
+            <li><a href="/files/atlas-earth/sql/insert-countries.sql">insert-countries.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-states.sql">insert-states.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-cities.sql">insert-cities.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-plot-types.sql">insert-plot-types.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-plot-type-rates.sql">insert-plot-type-rates.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-passport-tiers.sql">insert-passport-tiers.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-ad-multiplier-schedules.sql">insert-ad-multiplier-schedules.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-ad-multiplier-tiers.sql">insert-ad-multiplier-tiers.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-passport-boost-schedules.sql">insert-passport-boost-schedules.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-passport-boost-tiers.sql">insert-passport-boost-tiers.sql</a></li>
+          </ul>
+        </li>
+        <li><strong>My Purchase Data</strong>
+          <ul>
+            <li><a href="/files/atlas-earth/sql/insert-purchased-plots.sql">insert-purchased-plots.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/insert-purchased-passports.sql">insert-purchased-passports.sql</a></li>
+            <li><a href="/files/atlas-earth/sql/plots-purchased-notes.sql">plots-purchased-notes.sql</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+
+    <div class="project-data-block">
+      <h4>Power BI Report</h4>
+      <p>I don't have the license to embed this report live, so here's the underlying file plus a few screenshots instead.</p>
+      <div class="card-grid">
+        <a href="/files/atlas-earth/atlas-earth.pbix" class="card">📊 Download .pbix File</a>
+        <div class="card">
+          🖼️ Report Screenshots
+          <br><span class="badge-soon">Coming soon</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+</body>
+</html>
