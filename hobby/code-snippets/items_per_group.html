@@ -2,7 +2,8 @@
 <html lang="en-us">
 <head>
 <meta charset="utf-8">
-<title>Team Recommendations</title>
+<title>Team Recommendations | Hans M. Haroldsen</title>
+<link rel="stylesheet" href="/style/main.css" />
 <script type="text/javascript">
 "use strict";
 
@@ -30,11 +31,55 @@ document.getElementById('output').innerHTML = largeTeams + " teams with " + larg
 }
 </script>
 </head>
-
 <body>
-Number of students <input type="text" id="Students"><br>
-Number of teams <input type="text" id="Teams"><br>
-<button type="button" onclick="calcTeams()">Teams</button>
-<div id="output"></div>
+  <header data-site-header data-title="Team Recommendations" data-nav="breadcrumb" data-back-href="/hobby/code-snippets/" data-back-label="Code Snippets"></header>
+
+  <section class="hero">
+    <p>Number of students <input type="text" id="Students"></p>
+    <p>Number of teams <input type="text" id="Teams"></p>
+    <button type="button" onclick="calcTeams()">Teams</button>
+    <div id="output"></div>
+  </section>
+
+  <section class="walkthrough-section">
+    <h3>How It Works</h3>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">var studs = parseInt(document.getElementById('Students').value);
+var teams = parseInt(document.getElementById('Teams').value);</div>
+      <div class="walkthrough-explanation">
+        <h4>Getting started</h4>
+        <p>Grabs the two numbers you typed in - the total number of students, and how many teams you want to split them into.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">var smallTeamSize = Math.floor(studs/teams);
+var largeTeamSize = smallTeamSize + 1;
+var largeTeams = studs % teams;
+var smallTeams = teams - largeTeams;</div>
+      <div class="walkthrough-explanation">
+        <h4>The actual problem: splitting people evenly</h4>
+        <p>Say you've got 23 students and want 5 teams. 23 &divide; 5 = 4.6 - but you can't have 0.6 of a person on a team. <code>Math.floor()</code> rounds that down to 4, which becomes our "small" team size. But 5 teams &times; 4 students = only 20 - there are 3 students left over. Those 3 need a home too, so they each get folded into a team that's one bigger (<code>largeTeamSize</code>, which is just <code>smallTeamSize + 1</code>). The remainder operator (<code>%</code>) tells us exactly how many students are left over - and that's also exactly how many "large" teams we need, since each large team absorbs one extra student. Whatever teams are left (<code>teams - largeTeams</code>) stay at the smaller size.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">document.getElementById('output').innerHTML =
+  largeTeams + " teams with " + largeTeamSize +
+  " students and " + smallTeams + " teams with " +
+  smallTeamSize + " students.";</div>
+      <div class="walkthrough-explanation">
+        <h4>Showing the result</h4>
+        <p>Stitches all four numbers into a plain-English sentence and displays it. For the 23-students-into-5-teams example: "3 teams with 5 students and 2 teams with 4 students" - and sure enough, 3&times;5 + 2&times;4 = 23. Nobody's left out, and every team is as close to even as the numbers allow.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
