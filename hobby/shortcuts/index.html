@@ -3,31 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shortcuts</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      background: #eef;
-      padding: 2rem;
-    }
-    h1 {
-      font-size: 2rem;
-      color: #333;
-    }
-    a {
-      color: #007acc;
-      text-decoration: none;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <title>Shortcuts | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
 </head>
 <body>
-  <h1>Shortcuts Page</h1>
-  <p>This is where my iOS Shortcut projects or notes can go.</p>
-  <p><a href="https://hans-m-haroldsen.com/">← Back to Home</a></p>
-  <script src="/scripts/light-dark-toggle.js"></script>
+  <header data-site-header data-title="Shortcuts" data-nav="breadcrumb" data-back-href="/hobby/" data-back-label="Hobbies"></header>
+
+  <section class="hero">
+    <h2>iOS Shortcuts</h2>
+    <p class="hero-blurb">
+      A mix of professional and personal iOS Shortcuts I use day to day. Each one links to a
+      detail page with the shortcut itself, screenshots of how it's built, and a walkthrough of
+      the flow.
+    </p>
+  </section>
+
+  <section class="explore">
+    <h3>Professional</h3>
+    <div class="info-card-grid">
+      <a href="/hobby/shortcuts/arrival-time/" class="info-card">
+        <span class="info-card-icon">🕐</span>
+        <h3>Arrival Time</h3>
+        <p>Logs when I arrive at work, helping me keep my timecard clean and accurate.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="explore explore-alt">
+    <h3>Personal</h3>
+    <p class="coming-soon-note">Detail pages for these are still in progress.</p>
+    <div class="card-grid">
+      <div class="card">Log Your Calories <br><span class="badge-soon">Coming soon</span></div>
+      <div class="card">Quote-o-the Day <br><span class="badge-soon">Coming soon</span></div>
+      <div class="card">Random Dad Joke <br><span class="badge-soon">Coming soon</span></div>
+      <div class="card">Regenerate Hamstring Timer <br><span class="badge-soon">Coming soon</span></div>
+      <div class="card">Regenerate Hamstring Timer w/Countdown <br><span class="badge-soon">Coming soon</span></div>
+      <div class="card">Assistive Touch Assistant <br><span class="badge-soon">Coming soon</span></div>
+    </div>
+  </section>
+
+  <footer data-site-footer></footer>
+
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
