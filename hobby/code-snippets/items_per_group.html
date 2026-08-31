@@ -19,12 +19,12 @@
 */
 
 function calcTeams() {
-var studs = parseInt(document.getElementById('Students').value);
+var items = parseInt(document.getElementById('Students').value);
 var groups = parseInt(document.getElementById('Teams').value);
 
-var smallTeamSize = Math.floor(studs/groups);
+var smallTeamSize = Math.floor(items/groups);
 var largeTeamSize = smallTeamSize + 1;
-var largeTeams = studs % groups;
+var largeTeams = items % groups;
 var smallTeams = groups - largeTeams;
 
 document.getElementById('output').innerHTML = largeTeams + " groups with " + largeTeamSize + " items and " + smallTeams + " groups with " + smallTeamSize + " items.";
@@ -45,7 +45,7 @@ document.getElementById('output').innerHTML = largeTeams + " groups with " + lar
     <h3>How It Works</h3>
 
     <div class="walkthrough-block">
-      <div class="walkthrough-code">var studs = parseInt(document.getElementById('Students').value);
+      <div class="walkthrough-code">var items = parseInt(document.getElementById('Students').value);
 var groups = parseInt(document.getElementById('Teams').value);</div>
       <div class="walkthrough-explanation">
         <h4>Getting started</h4>
@@ -54,9 +54,9 @@ var groups = parseInt(document.getElementById('Teams').value);</div>
     </div>
 
     <div class="walkthrough-block">
-      <div class="walkthrough-code">var smallTeamSize = Math.floor(studs/groups);
+      <div class="walkthrough-code">var smallTeamSize = Math.floor(items/groups);
 var largeTeamSize = smallTeamSize + 1;
-var largeTeams = studs % groups;
+var largeTeams = items % groups;
 var smallTeams = groups - largeTeams;</div>
       <div class="walkthrough-explanation">
         <h4>The actual problem: splitting people evenly</h4>
