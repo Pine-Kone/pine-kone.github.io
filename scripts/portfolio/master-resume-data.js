@@ -36,7 +36,7 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Developed data transformation process to provide account mapping solutions to convert Italian accounting data into U.S. GAAP reporting formats",
-        categories: ["Accounting", "Data Analytics"],
+        categories: ["Accounting", "Data Analytics", "Accounting"],
       },
       {
         text: "Integrated data across Practice CS, GoFileRoom, ShareFile, UltraTax, RightSignature, QuickBooks Online, Jetpack Workflow and other software using Excel, Power Query, SQL, Power BI, REST APIs, Power Automate, Fivetran, and other related tools",
@@ -52,6 +52,38 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Re-engineered audit project tracking dashboard by replacing inefficient full-database cross join with targeted logic and methodology, reducing refresh time from over an hour to less than a minute",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Led cross-functional process improvement initiatives integrating SQL, Power BI, Power Automate, and APIs for four service lines",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Built Power BI Paginated Reports and automated annual reporting workflows to distribute client packages to ~3,500 clients, spanning ~7,500 entities",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Assisted in data cleaning and data integrity of NAICS codes across ~9,000 entities",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Pioneered method to safely insert data into Practice CS, creating opportunity to make tens of thousands of updates to the database",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Developed a process to upload timecard info, joining SharePoint, Excel, PCS, and Power Automate, and ShareFile",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Oversaw and implemented twenty Power BI reports across four distinct service lines",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Reduced report processing times by 10–20 minutes each across four report processes by revising query code and eliminating unnecessary steps",
+        categories: ["Data Analytics", "Business Intelligence"],
+      },
+      {
+        text: "Utilized Power BI, Fivetran and Snowflake providing insight into key business metrics for 22 business clients, and internal usage",
         categories: ["Data Analytics", "Business Intelligence"],
       },
     ],
