@@ -338,6 +338,21 @@ const tandemausMausholdCards = [
         obtainedLocation: "Ammon, Idaho (Wal-Mart)",
         features: ["Full Art"],
         notes: ["Features Maushold in the artwork."]
+      },
+
+  {
+    name: "Pikachu ex",
+    set: "30th Celebration",
+    number: "149 / 128",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/pikachu-149-128-has-maushold.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: ["Full Art"],
+        notes: ["Features Maushold in the artwork."]
       }
     ]
   }
