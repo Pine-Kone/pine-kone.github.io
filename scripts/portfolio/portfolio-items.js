@@ -75,10 +75,6 @@
           item.status === "coming-soon"
             ? '<span class="badge-soon">Coming soon</span>'
             : "";
-        const extraSections = item.sections.slice(1);
-        const alsoInHtml = extraSections.length
-          ? `<p class="portfolio-also-in">Also: ${extraSections.join(", ")}</p>`
-          : "";
         const isFileLink = item.link && /\.(xlsx|pbix|zip|pdf|sql)$/i.test(item.link);
         const linkHtml =
           item.status === "live" && item.link
@@ -90,7 +86,6 @@
           <h3>${item.title}</h3>
           <p>${item.description}</p>
           <div class="tool-badges">${toolBadgesHtml(item.tools)}</div>
-          ${alsoInHtml}
           ${statusBadge}
           ${linkHtml}
         `;
