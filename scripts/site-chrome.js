@@ -16,6 +16,7 @@
 
 (function () {
   const LANG_SWITCH_ENABLED = false;
+  const SITE_NAME = "Hans M. Haroldsen, MTax, MBA";
 
   const MAIN_NAV_LINKS = [
     { href: "/", label: "Home" },
@@ -45,7 +46,8 @@
   }
 
   function renderHeader(headerEl) {
-    const title = headerEl.getAttribute("data-title") || "Hans M. Haroldsen";
+    const rawTitle = headerEl.getAttribute("data-title") || SITE_NAME;
+    const title = rawTitle === SITE_NAME ? rawTitle : `${SITE_NAME} | ${rawTitle}`;
     const subtitle = headerEl.getAttribute("data-subtitle");
     const navType = headerEl.getAttribute("data-nav") || "main";
 
