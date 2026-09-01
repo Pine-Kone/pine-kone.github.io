@@ -783,7 +783,7 @@ const rhydonCards = [
     variants: [
       {
         type: "Standard",
-        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-90=196.jpeg",
+        image: "/images/pokemon/chase-list/rhyhorn-rhydon/rhydon-90-196.jpeg",
         obtained: true,
         obtainedDate: null,
         obtainedLocation: null,
