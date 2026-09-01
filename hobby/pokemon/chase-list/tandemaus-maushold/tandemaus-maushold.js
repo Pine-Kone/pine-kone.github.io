@@ -338,7 +338,9 @@ const tandemausMausholdCards = [
         obtainedLocation: "Ammon, Idaho (Wal-Mart)",
         features: ["Full Art"],
         notes: ["Features Maushold in the artwork."]
-      },
+      }
+    ]
+  },
 
   {
     name: "Pikachu ex",
