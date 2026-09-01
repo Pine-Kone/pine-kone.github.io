@@ -2,9 +2,8 @@
 // page can filter by tool.
 //
 // SECTIONS: the first entry in "sections" is where the card physically
-// displays (its primary home). Any additional entries are shown as a small
-// "Also: X" tag on the card itself, rather than duplicating the card into
-// another section - so nothing appears twice on the page.
+// displays (its primary home). Any additional entries are used for grouping
+// only - they are not displayed as a label on the card.
 //
 // IMAGE: "image" is optional. Set it to an image path for a blog-style
 // thumbnail at the top of the card, or leave it null/omit it entirely for a
@@ -23,7 +22,7 @@ const PORTFOLIO_TOOL_ICONS = {
 
 const PORTFOLIO_ITEMS = [
   {
-    sections: ["Data & Analytics"],
+    sections: ["Data Projects"],
     title: "CPA Study Tracker",
     description: "A Power BI report tracking my CPA exam study progress.",
     tools: ["Power BI"],
@@ -32,19 +31,10 @@ const PORTFOLIO_ITEMS = [
     image: null,
   },
   {
-    sections: ["Data & Analytics"],
-    title: "Atlas Earth SQL Dataset",
-    description: "A SQL dataset built around my Atlas Earth activity. Also featured on my Atlas Earth page.",
-    tools: ["SQL"],
-    link: "/hobby/atlas-earth/",
-    status: "live",
-    image: null,
-  },
-  {
-    sections: ["Data & Analytics"],
-    title: "Atlas Earth Power BI Report",
-    description: "A Power BI report visualizing my Atlas Earth data. Also featured on my Atlas Earth page.",
-    tools: ["Power BI"],
+    sections: ["Data Projects"],
+    title: "Atlas Earth Dataset & Power BI Report",
+    description: "A SQL dataset and Power BI report built around my Atlas Earth activity. Also featured on my Atlas Earth page.",
+    tools: ["SQL", "Power BI"],
     link: "/hobby/atlas-earth/",
     status: "live",
     image: null,
@@ -52,7 +42,7 @@ const PORTFOLIO_ITEMS = [
   {
     sections: ["Code Snippets", "School Projects"],
     title: "Roman Numerals Converter",
-    description: "Converts an entered number into its Roman numeral equivalent.",
+    description: "Converts a number entered that is less than 4000 to its Roman numeral equivalent.",
     tools: ["JavaScript"],
     link: "/hobby/code-snippets/roman_numerals.html",
     status: "live",
@@ -60,8 +50,8 @@ const PORTFOLIO_ITEMS = [
   },
   {
     sections: ["Code Snippets", "School Projects"],
-    title: "Team Recommendations",
-    description: "Calculates how many teams (and leftover members) result from splitting a group of students.",
+    title: "Items per Group Calculator",
+    description: "Calculates how many groups (and leftover members) result from splitting a set of items as evenly as possible.",
     tools: ["JavaScript"],
     link: "/hobby/code-snippets/items_per_group.html",
     status: "live",
@@ -90,7 +80,7 @@ const PORTFOLIO_ITEMS = [
     title: "Insanity Calorie Calculator",
     description: "An Excel spreadsheet built to estimate calorie burn for Insanity workout sessions.",
     tools: ["Excel"],
-    link: "/files/excel/insanity-calorie-calculator.xlsx",
+    link: "/portfolio/projects/excel/insanity-calorie-calculator/",
     status: "live",
     image: null,
   },
@@ -99,7 +89,7 @@ const PORTFOLIO_ITEMS = [
     title: "Is My Social Security Taxable?",
     description: "An Excel spreadsheet that walks through IRS rules to estimate how much of a person's Social Security benefits are taxable.",
     tools: ["Excel"],
-    link: "/files/excel/social-security-taxable-calculator.xlsx",
+    link: "/portfolio/projects/excel/social-security-taxable-calculator/",
     status: "live",
     image: null,
   },
@@ -108,7 +98,7 @@ const PORTFOLIO_ITEMS = [
     title: "Excel Formulas Demo",
     description: "A spreadsheet demonstrating a number of useful Excel formulas in action.",
     tools: ["Excel"],
-    link: "/files/excel/excel-formulas-demo.xlsx",
+    link: "/portfolio/projects/excel/excel-formulas-demo/",
     status: "live",
     image: null,
   },
