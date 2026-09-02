@@ -124,6 +124,67 @@ body.dark-mode .collection-controls select {
 
 
 /* ================================
+   Species Jump Nav (used on pages
+   with multiple species sections,
+   letting a visitor jump straight
+   to one, e.g. Turtwig / Grotle /
+   Torterra)
+   ================================ */
+
+.species-jump-nav {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: var(--background-color);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .species-jump-nav {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.species-jump-nav a {
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.species-jump-nav a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+body.dark-mode .species-jump-nav a {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+body.dark-mode .species-jump-nav a:hover {
+  background: var(--accent-color);
+  color: #1a1a1a;
+}
+
+/*
+ * Offsets the jump target so a fixed/sticky header (if any) doesn't
+ * cover the section heading right after jumping. Harmless even with
+ * no sticky header.
+ */
+.species-section {
+  scroll-margin-top: 4.5rem;
+}
+
+
+/* ================================
    Card Grid
    ================================ */
 
