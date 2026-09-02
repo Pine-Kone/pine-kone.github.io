@@ -1,8 +1,9 @@
 // Portfolio page filter tool. Click a tool chip to toggle it as an active
 // filter (multi-select). With no filters active, every project shows. With
 // filters active, only projects using at least one selected tool show.
-// Each card displays once, grouped under its primary section (sections[0]);
-// any additional sections show as a small "Also:" tag on the card itself.
+// Each card displays once, grouped under its primary section (sections[0]).
+// Within a section, items with a "subsection" are further grouped under a
+// smaller sub-heading (e.g. Shortcuts -> Professional / Personal).
 
 (function () {
   const activeTools = new Set();
@@ -34,6 +35,42 @@
     });
   }
 
+  function buildCard(item) {
+    const card = document.createElement("div");
+    card.className = "portfolio-item-card";
+    if (item.image) card.classList.add("has-image");
+
+    const imageHtml = item.image
+      ? `<img src="${item.image}" alt="${item.title}" class="portfolio-item-image">`
+      : "";
+    const statusBadge =
+      item.status === "coming-soon"
+        ? '<span class="badge-soon">Coming soon</span>'
+        : "";
+    const isFileLink = item.link && /\.(xlsx|pbix|zip|pdf|sql)$/i.test(item.link);
+    const linkHtml =
+      item.status === "live" && item.link
+        ? `<a href="${item.link}" class="button button-secondary portfolio-item-link">${isFileLink ? "Download" : "View"}</a>`
+        : "";
+
+    card.innerHTML = `
+      ${imageHtml}
+      <h3>${item.title}</h3>
+      <p>${item.description}</p>
+      <div class="tool-badges">${toolBadgesHtml(item.tools)}</div>
+      ${statusBadge}
+      ${linkHtml}
+    `;
+    return card;
+  }
+
+  function buildGrid(items) {
+    const grid = document.createElement("div");
+    grid.className = "card-grid portfolio-card-grid";
+    items.forEach((item) => grid.appendChild(buildCard(item)));
+    return grid;
+  }
+
   function renderItems() {
     const container = document.getElementById("portfolio-items");
     container.innerHTML = "";
@@ -60,39 +97,27 @@
       sectionEl.className = "portfolio-section";
       sectionEl.innerHTML = `<h2 class="resume-section-title">${sectionName}</h2>`;
 
-      const grid = document.createElement("div");
-      grid.className = "card-grid portfolio-card-grid";
+      const hasSubsections = items.some((i) => i.subsection);
+      if (hasSubsections) {
+        const subsections = [];
+        items.forEach((i) => {
+          const sub = i.subsection || "";
+          if (!subsections.includes(sub)) subsections.push(sub);
+        });
+        subsections.forEach((subName) => {
+          const subItems = items.filter((i) => (i.subsection || "") === subName);
+          if (subName) {
+            const subHeader = document.createElement("h3");
+            subHeader.className = "portfolio-subsection-title";
+            subHeader.textContent = subName;
+            sectionEl.appendChild(subHeader);
+          }
+          sectionEl.appendChild(buildGrid(subItems));
+        });
+      } else {
+        sectionEl.appendChild(buildGrid(items));
+      }
 
-      items.forEach((item) => {
-        const card = document.createElement("div");
-        card.className = "portfolio-item-card";
-        if (item.image) card.classList.add("has-image");
-
-        const imageHtml = item.image
-          ? `<img src="${item.image}" alt="${item.title}" class="portfolio-item-image">`
-          : "";
-        const statusBadge =
-          item.status === "coming-soon"
-            ? '<span class="badge-soon">Coming soon</span>'
-            : "";
-        const isFileLink = item.link && /\.(xlsx|pbix|zip|pdf|sql)$/i.test(item.link);
-        const linkHtml =
-          item.status === "live" && item.link
-            ? `<a href="${item.link}" class="button button-secondary portfolio-item-link"${isFileLink ? "" : ""}>${isFileLink ? "Download" : "View"}</a>`
-            : "";
-
-        card.innerHTML = `
-          ${imageHtml}
-          <h3>${item.title}</h3>
-          <p>${item.description}</p>
-          <div class="tool-badges">${toolBadgesHtml(item.tools)}</div>
-          ${statusBadge}
-          ${linkHtml}
-        `;
-        grid.appendChild(card);
-      });
-
-      sectionEl.appendChild(grid);
       container.appendChild(sectionEl);
     });
 
