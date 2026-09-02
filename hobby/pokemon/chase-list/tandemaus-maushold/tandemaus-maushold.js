@@ -7,7 +7,7 @@
  * card/variant shape and field descriptions.
  */
 
-const tandemausMausholdCards = [
+const tandemausCards = [
 
   {
     name: "Tandemaus",
@@ -178,7 +178,12 @@ const tandemausMausholdCards = [
         notes: []
       }
     ]
-  },
+  }
+
+];
+
+
+const mausholdCards = [
 
   {
     name: "Maushold",
@@ -371,7 +376,8 @@ document.addEventListener("DOMContentLoaded", () => {
   renderChaseListPage({
 
     groups: [
-      { gridId: "card-grid", cards: tandemausMausholdCards }
+      { gridId: "tandemaus-grid", cards: tandemausCards },
+      { gridId: "maushold-grid", cards: mausholdCards }
     ],
 
     statsIds: {
