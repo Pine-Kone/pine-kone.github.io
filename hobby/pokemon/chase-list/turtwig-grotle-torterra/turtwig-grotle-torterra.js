@@ -7,7 +7,7 @@
  * card/variant shape and field descriptions.
  */
 
-const turtwigGrotleTorterraCards = [
+const turtwigCards = [
 
   {
     name: "Turtwig",
@@ -331,7 +331,12 @@ const turtwigGrotleTorterraCards = [
         notes: []
       }
     ]
-  },
+  }
+
+];
+
+
+const grotleCards = [
 
   {
     name: "Grotle",
@@ -501,7 +506,12 @@ const turtwigGrotleTorterraCards = [
         notes: []
       }
     ]
-  },
+  }
+
+];
+
+
+const torterraCards = [
 
   {
     name: "Torterra",
@@ -736,7 +746,9 @@ document.addEventListener("DOMContentLoaded", () => {
   renderChaseListPage({
 
     groups: [
-      { gridId: "card-grid", cards: turtwigGrotleTorterraCards }
+      { gridId: "turtwig-grid", cards: turtwigCards },
+      { gridId: "grotle-grid", cards: grotleCards },
+      { gridId: "torterra-grid", cards: torterraCards }
     ],
 
     statsIds: {
