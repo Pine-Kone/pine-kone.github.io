@@ -131,7 +131,7 @@ const PORTFOLIO_ITEMS = [
   {
     sections: ["Shortcuts"],
     subsection: "Professional",
-    title: "When \\"Messenger\\" Is Opened",
+    title: "When \"Messenger\" Is Opened",
     description: "CPA-study related automation triggered by opening Messenger.",
     tools: ["Apple Shortcuts"],
     link: "/hobby/shortcuts/when-messenger-is-opened/",
