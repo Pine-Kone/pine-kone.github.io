@@ -313,7 +313,7 @@ const MASTER_RESUME_DATA = [
         roles: ["Hot Shot Coordinator"],
       },
       {
-        text: "Coached a team of 7-11 representatives in world class customer service techniques through one-on-one and group training, raising the team's scorecard score from 278.42 to 380.40 (a 37% improvement) in six months",
+        text: "Coached a team of 7-11 representatives in world class customer service techniques through one-on-one and group training, raising the team's scorecard score from 278.42 to 380.40 (a 36.6% improvement) in six months",
         categories: ["Leadership"],
         roles: ["Hot Shot Coordinator"],
       },
@@ -349,7 +349,7 @@ const MASTER_RESUME_DATA = [
         categories: ["Leadership"],
       },
       {
-        text: "Served as the primary trainer for evening-shift Express Verification, developing new specialists and supervisors from other teams on the strict rules surrounding verbally binding agreements",
+        text: "Trained and developed new Express Verification Specialists regarding the strict rules surrounding verbally binding agreements",
         categories: ["Leadership"],
       },
       {
