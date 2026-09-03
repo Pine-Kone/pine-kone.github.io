@@ -364,9 +364,11 @@ const MASTER_RESUME_DATA = [
   },
   {
     section: "Volunteer Experience",
-    company: "Local Religious Organization",
+    company: "The Church of Jesus Christ of Latter-day Saints",
+    // TODO: save a logo to /images/companies/church-of-jesus-christ-logo.png and
+    // set `logo` to that path.
     logo: null,
-    website: null,
+    website: "https://www.churchofjesuschrist.org",
     location: "",
     roles: [
       { title: "Volunteer Financial Clerk", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
