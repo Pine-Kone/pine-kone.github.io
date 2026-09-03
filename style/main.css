@@ -676,6 +676,48 @@ body.dark-mode .show-tags-toggle {
   margin-bottom: 0;
 }
 
+/* Title progression at a single employer: each role listed with its own
+   date range under the company name. */
+.resume-role-list {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+}
+
+.resume-role-list li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+  line-height: 1.5;
+}
+
+.resume-role-title {
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.resume-role-dates {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* Subheading used when an employer's bullets are scoped per role. */
+.resume-subrole {
+  margin: 1rem 0 0.35rem;
+  font-size: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.resume-subrole-dates {
+  font-size: 0.8rem;
+  font-weight: normal;
+  opacity: 0.7;
+}
+
 .resume-bullet-list {
   list-style: disc;
   padding-left: 1.4rem;
