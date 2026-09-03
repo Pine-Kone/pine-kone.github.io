@@ -329,6 +329,66 @@ const MASTER_RESUME_DATA = [
   },
   {
     section: "Work Experience",
+    company: "The Pines at Hemming Village",
+    logo: null,
+    website: null,
+    location: "Rexburg, ID",
+    roles: [
+      { title: "On-Site Maintenance Manager", dateRange: { start: { month: 12, year: 2014 }, end: { month: 7, year: 2018 } } },
+    ],
+    bullets: [
+      {
+        text: "Coordinated with the head manager to complete maintenance requests across 24 apartments and 4 houses within 24 hours",
+        categories: [],
+      },
+      {
+        text: "Resolved tenant housing concerns directly, escalating to management when issues involved school compliance requirements",
+        categories: [],
+      },
+      {
+        text: "Participated in the planning and execution of two annual seasonal community events to build community among residents",
+        categories: [],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
+    company: "Allred Gemco, Inc.",
+    logo: null,
+    website: null,
+    location: "",
+    roles: [
+      { title: "General Labor and Farm Hand", dateRange: { start: { month: 5, year: 2016 }, end: { month: 9, year: 2016 } } },
+    ],
+    bullets: [
+      {
+        text: "Stacked 18+ pallets of sod daily, assisted with tree removals, and completed lawn-care tasks",
+        categories: [],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
+    company: "Shelley Acoustics",
+    logo: null,
+    website: null,
+    location: "",
+    roles: [
+      { title: "Ceiling Tile Installation and Demolition", dateRange: { start: { month: 3, year: 2014 }, end: { month: 7, year: 2015 } } },
+    ],
+    bullets: [
+      {
+        text: "Hung support wire, installed suspended ceiling grid, and cut tile to fit around fixtures and ductwork on active construction sites",
+        categories: [],
+      },
+      {
+        text: "Worked independently and in teams of 2-5 to complete ceiling installations ahead of contractor deadlines",
+        categories: [],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
     company: "Melaleuca: The Wellness Company",
     logo: "/images/companies/melaleuca-logo.png",
     website: "https://www.melaleuca.com",
@@ -355,6 +415,26 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Recognized as a Star Performer in July 2011",
+        categories: [],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
+    company: "S & K Farms",
+    logo: null,
+    website: null,
+    location: "",
+    roles: [
+      { title: "Grain, Pea and Potato Crop Maintenance", dateRange: { start: { month: 4, year: 2010 }, end: { month: 10, year: 2010 } } },
+    ],
+    bullets: [
+      {
+        text: "Worked with the farm crew on cultivation and harvest of grain, pea, and potato crops",
+        categories: [],
+      },
+      {
+        text: "Moved irrigation pipe across assigned crop fields",
         categories: [],
       },
     ],
