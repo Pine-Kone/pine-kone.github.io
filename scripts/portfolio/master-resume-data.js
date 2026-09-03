@@ -259,9 +259,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Work Experience",
     company: "Melaleuca: The Wellness Company",
-    // TODO: save a Melaleuca logo to /images/companies/melaleuca-logo.png and
-    // set `logo` to that path.
-    logo: null,
+    logo: "/images/companies/melaleuca-logo.png",
     website: "https://www.melaleuca.com",
     location: "Idaho Falls, ID",
     roles: [
@@ -332,8 +330,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Work Experience",
     company: "Melaleuca: The Wellness Company",
-    // TODO: same logo file as the later Melaleuca entry above.
-    logo: null,
+    logo: "/images/companies/melaleuca-logo.png",
     website: "https://www.melaleuca.com",
     location: "Idaho Falls, ID",
     roles: [
@@ -479,6 +476,10 @@ const MASTER_RESUME_DATA = [
       },
     ],
     bullets: [
+      {
+        text: "Developed Spanish fluency over two years of full-time service conducted in Spanish",
+        categories: [],
+      },
       {
         text: "Established lesson plans to help others achieve and elevate personal goals",
         categories: ["Leadership"],
