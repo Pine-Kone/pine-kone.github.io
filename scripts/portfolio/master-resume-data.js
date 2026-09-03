@@ -1,13 +1,36 @@
 // Master Resume data. Each bullet is tagged with the skill categories it
-// belongs to (a bullet can belong to more than one). Add new roles or
+// belongs to (a bullet can belong to more than one). Add new employers or
 // bullets here - the page and its filter/rank tool read this file directly.
+//
+// STRUCTURE: one entry per EMPLOYER, not per role. Each employer carries a
+// `roles` array so a title progression at one company stays a single block
+// with the logo shown once and no bullet text duplicated.
+//
+//   roles: [{ title, altTitle?, dateRange }]  - list most recent first.
+//   altTitle is for companies whose internal job titles don't read clearly
+//   to outside recruiters; it renders as "Real Title (Plain-English Title)".
+//
+// BULLET SCOPE: a bullet with no `roles` key applies to the whole tenure at
+// that employer and renders once in a shared list. A bullet with
+// `roles: ["Some Title"]` belongs only to those roles and renders under a
+// per-role subheading. Use shared bullets when the work stayed the same
+// across a title change; use scoped bullets when the work actually changed.
 //
 // DATES: store exact start/end as { month, year }. If you only know the
 // year, omit month. If a role is ongoing, use { present: true } for the
 // end date. If you don't have exact dates at all, use { display: "..." }
 // with whatever text you do want shown (e.g. "Sometime 2015") - it bypasses
-// the month/year formatting entirely. formatDateRange() below turns any of
-// these into a clean "Mon. YYYY - Mon. YYYY" display string.
+// the month/year formatting entirely. formatResumeDateRange() below turns any
+// of these into a clean "Mon. YYYY - Mon. YYYY" display string, and
+// formatResumeEmployerSpan() derives the overall tenure from the roles array.
+//
+// UNKNOWN BOUNDARIES: when you know one end of a role but not the other -
+// typically the month one title handed off to the next - omit the unknown
+// side entirely rather than guessing at it. A range with only a start renders
+// as "from Apr. 2015"; only an end renders as "through Aug. 2018". The
+// employer's overall span still comes out right, because the missing boundary
+// is covered by the neighbouring role. Mark those roles `datesPending: true`
+// so they are easy to grep for once the real dates are confirmed.
 
 const MASTER_RESUME_MONTHS = ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."];
 
@@ -21,22 +44,62 @@ function formatResumeDatePart(part) {
 
 function formatResumeDateRange(range) {
   if (!range) return "";
-  return `${formatResumeDatePart(range.start)} - ${formatResumeDatePart(range.end)}`;
+  const start = formatResumeDatePart(range.start);
+  const end = formatResumeDatePart(range.end);
+  if (start && end) return `${start} - ${end}`;
+  if (start) return `from ${start}`;
+  if (end) return `through ${end}`;
+  return "";
+}
+
+// Sortable number for a date part, so the overall employer span can be
+// derived instead of maintained by hand. Free-text { display } dates can't
+// be compared, so they return null and are skipped.
+function resumeDateValue(part) {
+  if (!part) return null;
+  if (part.present) return Number.POSITIVE_INFINITY;
+  if (!part.year) return null;
+  return part.year * 12 + ((part.month || 1) - 1);
+}
+
+// Earliest start and latest end across every role at an employer.
+function formatResumeEmployerSpan(roles) {
+  if (!roles || roles.length === 0) return "";
+  if (roles.length === 1) return formatResumeDateRange(roles[0].dateRange);
+
+  let earliestStart = null;
+  let latestEnd = null;
+  roles.forEach((r) => {
+    const range = r.dateRange || {};
+    const s = resumeDateValue(range.start);
+    const e = resumeDateValue(range.end);
+    if (s !== null && (earliestStart === null || s < resumeDateValue(earliestStart))) earliestStart = range.start;
+    if (e !== null && (latestEnd === null || e > resumeDateValue(latestEnd))) latestEnd = range.end;
+  });
+  if (!earliestStart || !latestEnd) return formatResumeDateRange(roles[roles.length - 1].dateRange);
+  return `${formatResumeDatePart(earliestStart)} - ${formatResumeDatePart(latestEnd)}`;
+}
+
+// Display title for a role, folding in the plain-English alternate if present.
+function formatResumeRoleTitle(role) {
+  if (!role) return "";
+  return role.altTitle ? `${role.title} (${role.altTitle})` : role.title;
 }
 
 const MASTER_RESUME_DATA = [
   {
     section: "Work Experience",
-    role: "Data Analytics Manager",
     company: "Cooper Norman",
     logo: "/images/companies/cooper-norman-logo.png",
     website: "https://coopernorman.com",
     location: "Idaho Falls, ID",
-    dateRange: { start: { month: 6, year: 2023 }, end: { present: true } },
+    roles: [
+      { title: "Data Analytics Manager", dateRange: { start: { month: 6, year: 2023 }, end: { present: true } } },
+    ],
     bullets: [
       {
         text: "Developed data transformation process to provide account mapping solutions to convert Italian accounting data into U.S. GAAP reporting formats",
-        categories: ["Accounting", "Data Analytics", "Accounting"],
+        categories: ["Accounting", "Data Analytics"],
       },
       {
         text: "Integrated data across Practice CS, GoFileRoom, ShareFile, UltraTax, RightSignature, QuickBooks Online, Jetpack Workflow and other software using Excel, Power Query, SQL, Power BI, REST APIs, Power Automate, Fivetran, and other related tools",
@@ -79,7 +142,7 @@ const MASTER_RESUME_DATA = [
         categories: ["Data Analytics", "Business Intelligence"],
       },
       {
-        text: "Reduced report processing times by 10–20 minutes each across four report processes by revising query code and eliminating unnecessary steps",
+        text: "Reduced report processing times by 10-20 minutes each across four report processes by revising query code and eliminating unnecessary steps",
         categories: ["Data Analytics", "Business Intelligence"],
       },
       {
@@ -90,12 +153,13 @@ const MASTER_RESUME_DATA = [
   },
   {
     section: "Work Experience",
-    role: "Data Analytics and Reporting Specialist",
     company: "Mountain View Hospital",
     logo: "/images/companies/mountain-view-hospital-logo.jpg",
     website: "https://www.mountainviewhospital.org",
     location: "Idaho Falls, ID",
-    dateRange: { start: { month: 8, year: 2021 }, end: { month: 6, year: 2023 } },
+    roles: [
+      { title: "Data Analytics and Reporting Specialist", dateRange: { start: { month: 8, year: 2021 }, end: { month: 6, year: 2023 } } },
+    ],
     bullets: [
       {
         text: "Developed recurring KPI reporting process across 29 key performance indicators using Business Objects software, supporting monthly and ad-hoc analysis for healthcare leadership",
@@ -113,34 +177,92 @@ const MASTER_RESUME_DATA = [
   },
   {
     section: "Work Experience",
-    role: "Staff Accountant",
     company: "Smith, Kunz & Associates",
     logo: "/images/companies/smith-kunz-logo.jpg",
     website: "https://www.smithkunz.com",
     location: "Idaho Falls, ID",
-    dateRange: { start: { month: 1, year: 2017 }, end: { month: 6, year: 2023 } },
+    roles: [
+      { title: "Seasonal Tax Accountant", dateRange: { start: { month: 8, year: 2021 }, end: { month: 6, year: 2023 } } },
+      { title: "Staff Accountant", dateRange: { start: { month: 9, year: 2019 }, end: { month: 8, year: 2021 } } },
+      { title: "Tax Intern", dateRange: { start: { month: 1, year: 2016 }, end: { month: 9, year: 2019 } } },
+    ],
     bullets: [
       {
-        text: "Served as the primary Spanish-speaking tax associate in the Idaho Falls office, communicating primarily with Spanish-speaking clients to prepare U.S. individual income tax returns",
-        categories: ["Taxation", "Accounting"],
-      },
-      {
-        text: "Advised small business owners on IRS payroll tax regulations, filing requirements, and compliance best practices to support accurate and timely reporting",
-        categories: ["Taxation", "Accounting"],
+        text: "Created and organized bookkeeping spreadsheets and records for small business owners, improving reporting accuracy and decision-making",
+        categories: ["Accounting"],
       },
       {
         text: "Consulted with business owners of LLCs, partnerships, and S-corporations on entity structure, compliance considerations, and operational planning",
         categories: ["Taxation", "Accounting", "Leadership"],
       },
+      {
+        text: "Assisted individuals and small business owners with U.S. tax compliance and tax planning strategies",
+        categories: ["Taxation", "Accounting"],
+      },
+      {
+        text: "Developed foundation of financial analysis, data accuracy and regulatory compliance through preparation of individual and small business tax filings",
+        categories: ["Taxation", "Accounting", "Data Analytics"],
+      },
+      {
+        text: "Advised small business owners on IRS payroll tax regulations, filing requirements, and compliance best practices to support accurate and timely payroll reporting",
+        categories: ["Taxation", "Accounting"],
+      },
+      {
+        text: "Conducted approximately 95% of client meetings in Spanish, preparing U.S. individual income tax returns for Spanish-speaking clients",
+        categories: ["Taxation", "Accounting"],
+      },
+      {
+        text: "Prepared correspondence for taxpayers addressed to the Internal Revenue Service to resolve tax issues",
+        categories: ["Taxation"],
+      },
+      {
+        text: "Advised individual clients on the tax implications of Traditional versus Roth IRA contributions to support informed retirement savings decisions",
+        categories: ["Taxation"],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
+    company: "Citizens Community Bank",
+    // TODO: save the bank's logo to /images/companies/citizens-community-bank-logo.png
+    // and set `logo` to that path.
+    logo: null,
+    website: "https://www.ccb-idaho.com",
+    location: "Idaho Falls, ID",
+    roles: [
+      // Started as a Teller and moved into the accounting/data role; the month
+      // of that transition still needs pinning down.
+      { title: "Accounting Operations Clerk", dateRange: { end: { month: 9, year: 2019 } }, datesPending: true },
+      { title: "Teller", dateRange: { start: { month: 10, year: 2018 } }, datesPending: true },
+    ],
+    bullets: [
+      {
+        text: "Programmed reports using Cognos Analytics and Excel to provide bank growth data to management",
+        categories: ["Data Analytics", "Business Intelligence"],
+        roles: ["Accounting Operations Clerk"],
+      },
+      {
+        text: "Conducted market research of 20+ local banks and credit unions to help Citizens set more competitive interest rates",
+        categories: ["Data Analytics"],
+        roles: ["Accounting Operations Clerk"],
+      },
+      {
+        text: "Compiled data from 14+ thousand customers to help determine potential new bank locations",
+        categories: ["Data Analytics", "Business Intelligence"],
+        roles: ["Accounting Operations Clerk"],
+      },
+      // Teller bullets to be added - see the Teller role above.
     ],
   },
   {
     section: "Volunteer Experience",
-    role: "Volunteer Financial Clerk",
     company: "Local Religious Organization",
     logo: null,
+    website: null,
     location: "",
-    dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } },
+    roles: [
+      { title: "Volunteer Financial Clerk", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
+    ],
     bullets: [
       {
         text: "Validated reimbursement requests to confirm appropriate authorizations were obtained",

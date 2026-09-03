@@ -2,34 +2,65 @@
 // Click a category chip to add it to the priority list (click order = rank
 // order). Type a custom keyword and press Enter/click Add to add it to that
 // same priority list. When priorities are selected, matching bullets stay
-// grouped under their role in priority order at the top of the page, and
-// every bullet that matches none of your picks - from any role - pools
+// grouped under their employer in priority order at the top of the page, and
+// every bullet that matches none of your picks - from any employer - pools
 // together in a single "Everything Else" section at the very bottom,
-// rather than just sinking within its own role. A custom keyword matches
-// bullet text, job title, and company name. Category tags are hidden by
-// default; a "Show Tags" toggle reveals them.
+// rather than just sinking within its own employer. A custom keyword matches
+// bullet text, every job title held at that employer, and company name.
+// Category tags are hidden by default; a "Show Tags" toggle reveals them.
+//
+// Data shape note: MASTER_RESUME_DATA is one entry per EMPLOYER, each with a
+// `roles` array. A bullet with no `roles` key is shared across the whole
+// tenure; a bullet with `roles: ["Title"]` renders under that role's
+// subheading. See master-resume-data.js for the full contract.
 
 (function () {
   const rankList = []; // ordered list of { type: 'category'|'keyword', value: string }
   let tagsVisible = false;
 
-  function matchesRankItem(bullet, roleEntry, rankItem) {
+  function entryRoles(entry) {
+    return entry.roles || [];
+  }
+
+  function primaryRoleTitle(entry) {
+    const roles = entryRoles(entry);
+    return roles.length ? roles[0].title : "";
+  }
+
+  // Which role name to show beside a bullet in the "Everything Else" pool.
+  // A shared bullet at a multi-role employer belongs to the whole tenure, not
+  // to the most recent title, so it gets no role label at all.
+  function bulletRoleLabel(entry, bullet) {
+    if (bullet.roles && bullet.roles.length) return bullet.roles.join(" / ");
+    const roles = entryRoles(entry);
+    return roles.length === 1 ? roles[0].title : "";
+  }
+
+  // True when at least one bullet is scoped to specific roles, which switches
+  // the employer block from one flat list to per-role subgroups.
+  function hasRoleScopedBullets(entry) {
+    return entry.bullets.some((b) => b.roles && b.roles.length);
+  }
+
+  function matchesRankItem(bullet, entry, rankItem) {
     if (rankItem.type === "category") {
       return bullet.categories.includes(rankItem.value);
     }
     const needle = rankItem.value.toLowerCase();
-    return (
-      bullet.text.toLowerCase().includes(needle) ||
-      roleEntry.role.toLowerCase().includes(needle) ||
-      roleEntry.company.toLowerCase().includes(needle)
+    if (bullet.text.toLowerCase().includes(needle)) return true;
+    if (entry.company.toLowerCase().includes(needle)) return true;
+    return entryRoles(entry).some(
+      (r) =>
+        r.title.toLowerCase().includes(needle) ||
+        (r.altTitle && r.altTitle.toLowerCase().includes(needle))
     );
   }
 
-  function scoreBullet(bullet, roleEntry) {
+  function scoreBullet(bullet, entry) {
     let score = 0;
     let matchedAny = false;
     for (let i = 0; i < rankList.length; i++) {
-      const matched = matchesRankItem(bullet, roleEntry, rankList[i]);
+      const matched = matchesRankItem(bullet, entry, rankList[i]);
       if (matched) matchedAny = true;
       score = score * 2 + (matched ? 0 : 1);
     }
@@ -46,7 +77,7 @@
     rankList.forEach((item, i) => {
       const pill = document.createElement("span");
       pill.className = "rank-pill";
-      pill.innerHTML = `${i + 1}. ${item.value} <button type="button" aria-label="Remove ${item.value}">\u2715</button>`;
+      pill.innerHTML = `${i + 1}. ${item.value} <button type="button" aria-label="Remove ${item.value}">✕</button>`;
       pill.querySelector("button").addEventListener("click", () => {
         rankList.splice(i, 1);
         renderAll();
@@ -74,71 +105,119 @@
     return bullet.categories.map((c) => `<span class="bullet-tag">${c}</span>`).join("");
   }
 
-  function roleHeaderHtml(roleEntry) {
+  // One role: the title leads, company/location/dates sit underneath (the
+  // familiar resume look). Multiple roles: the company leads with the overall
+  // tenure, and each title is listed with its own date range below it.
+  function employerHeaderHtml(entry) {
+    const roles = entryRoles(entry);
+
     let logoHtml = "";
-    if (roleEntry.logo) {
-      const img = `<img src="${roleEntry.logo}" alt="${roleEntry.company} logo" class="company-logo">`;
-      logoHtml = roleEntry.website
-        ? `<a href="${roleEntry.website}" target="_blank" rel="noopener" aria-label="${roleEntry.company} website">${img}</a>`
+    if (entry.logo) {
+      const img = `<img src="${entry.logo}" alt="${entry.company} logo" class="company-logo">`;
+      logoHtml = entry.website
+        ? `<a href="${entry.website}" target="_blank" rel="noopener" aria-label="${entry.company} website">${img}</a>`
         : img;
     }
-    const companyHtml = roleEntry.website
-      ? `<a href="${roleEntry.website}" target="_blank" rel="noopener" class="company-link">${roleEntry.company}</a>`
-      : roleEntry.company;
+    const companyHtml = entry.website
+      ? `<a href="${entry.website}" target="_blank" rel="noopener" class="company-link">${entry.company}</a>`
+      : entry.company;
+
+    if (roles.length <= 1) {
+      const role = roles[0];
+      return `
+        <div class="resume-role-header">
+          ${logoHtml}
+          <div>
+            <h3>${formatResumeRoleTitle(role)}</h3>
+            <p class="resume-role-meta">${companyHtml}${entry.location ? " - " + entry.location : ""} &bull; ${formatResumeDateRange(role && role.dateRange)}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    const roleLines = roles
+      .map(
+        (r) => `
+          <li>
+            <span class="resume-role-title">${formatResumeRoleTitle(r)}</span>
+            <span class="resume-role-dates">${formatResumeDateRange(r.dateRange)}</span>
+          </li>`
+      )
+      .join("");
+
     return `
       <div class="resume-role-header">
         ${logoHtml}
         <div>
-          <h3>${roleEntry.role}</h3>
-          <p class="resume-role-meta">${companyHtml}${roleEntry.location ? " - " + roleEntry.location : ""} &bull; ${formatResumeDateRange(roleEntry.dateRange)}</p>
+          <h3>${companyHtml}</h3>
+          <p class="resume-role-meta">${entry.location ? entry.location + " &bull; " : ""}${formatResumeEmployerSpan(roles)}</p>
+          <ul class="resume-role-list">${roleLines}</ul>
         </div>
       </div>
     `;
   }
 
-  // Top region: each role, showing only bullets that match at least one
-  // selected priority, sorted by tier. A role with zero matches is skipped
-  // entirely (its bullets show up in the bottom pool instead).
-  function renderTopRoleBlock(roleEntry) {
-    const scored = roleEntry.bullets
-      .map((b) => ({ bullet: b, ...scoreBullet(b, roleEntry) }))
-      .filter((s) => s.matchedAny)
-      .sort((a, b) => a.score - b.score);
-
-    if (scored.length === 0) return null;
-
-    const roleBlock = document.createElement("div");
-    roleBlock.className = "resume-role-block";
-    roleBlock.innerHTML = roleHeaderHtml(roleEntry);
-
+  function buildBulletList(bullets) {
     const ul = document.createElement("ul");
     ul.className = "resume-bullet-list";
-    scored.forEach(({ bullet }) => {
+    bullets.forEach((bullet) => {
       const li = document.createElement("li");
       li.className = "resume-bullet";
       li.innerHTML = `<span class="bullet-text">${bullet.text}</span><span class="bullet-tags">${bulletTagsHtml(bullet)}</span>`;
       ul.appendChild(li);
     });
-    roleBlock.appendChild(ul);
-    return roleBlock;
+    return ul;
   }
 
-  // Default (no priorities selected): render every role normally, no dimming.
-  function renderDefaultRoleBlock(roleEntry) {
-    const roleBlock = document.createElement("div");
-    roleBlock.className = "resume-role-block";
-    roleBlock.innerHTML = roleHeaderHtml(roleEntry);
+  // Builds one employer block from whatever bullets should be visible. When
+  // the employer has role-scoped bullets, shared bullets render first, then
+  // each role's own bullets under a subheading. Empty groups are skipped.
+  function buildEmployerBlock(entry, visibleBullets) {
+    if (visibleBullets.length === 0) return null;
 
-    const ul = document.createElement("ul");
-    ul.className = "resume-bullet-list";
-    roleEntry.bullets.forEach((bullet) => {
-      const li = document.createElement("li");
-      li.className = "resume-bullet";
-      li.innerHTML = `<span class="bullet-text">${bullet.text}</span><span class="bullet-tags">${bulletTagsHtml(bullet)}</span>`;
-      ul.appendChild(li);
+    const block = document.createElement("div");
+    block.className = "resume-role-block";
+    block.innerHTML = employerHeaderHtml(entry);
+
+    if (!hasRoleScopedBullets(entry)) {
+      block.appendChild(buildBulletList(visibleBullets));
+      return block;
+    }
+
+    const shared = visibleBullets.filter((b) => !b.roles || !b.roles.length);
+    if (shared.length) block.appendChild(buildBulletList(shared));
+
+    entryRoles(entry).forEach((role) => {
+      const forRole = visibleBullets.filter((b) => b.roles && b.roles.includes(role.title));
+      if (!forRole.length) return;
+      // Dates are deliberately omitted here - the header's role list above
+      // already carries the full timeline, including roles with no bullets yet.
+      const heading = document.createElement("h4");
+      heading.className = "resume-subrole";
+      heading.textContent = formatResumeRoleTitle(role);
+      block.appendChild(heading);
+      block.appendChild(buildBulletList(forRole));
     });
-    roleBlock.appendChild(ul);
-    return roleBlock;
+
+    return block;
+  }
+
+  // Top region: each employer, showing only bullets that match at least one
+  // selected priority, sorted by tier. An employer with zero matches is
+  // skipped entirely (its bullets show up in the bottom pool instead).
+  function renderTopEmployerBlock(entry) {
+    const scored = entry.bullets
+      .map((b) => ({ bullet: b, ...scoreBullet(b, entry) }))
+      .filter((s) => s.matchedAny)
+      .sort((a, b) => a.score - b.score)
+      .map((s) => s.bullet);
+
+    return buildEmployerBlock(entry, scored);
+  }
+
+  // Default (no priorities selected): render every employer normally.
+  function renderDefaultEmployerBlock(entry) {
+    return buildEmployerBlock(entry, entry.bullets);
   }
 
   function renderResume() {
@@ -154,8 +233,8 @@
       sectionEl.className = "resume-section";
       sectionEl.innerHTML = `<h2 class="resume-section-title">${sectionName}</h2>`;
       let anyRendered = false;
-      MASTER_RESUME_DATA.filter((r) => r.section === sectionName).forEach((roleEntry) => {
-        const block = filtering ? renderTopRoleBlock(roleEntry) : renderDefaultRoleBlock(roleEntry);
+      MASTER_RESUME_DATA.filter((r) => r.section === sectionName).forEach((entry) => {
+        const block = filtering ? renderTopEmployerBlock(entry) : renderDefaultEmployerBlock(entry);
         if (block) {
           sectionEl.appendChild(block);
           anyRendered = true;
@@ -164,14 +243,14 @@
       if (anyRendered) container.appendChild(sectionEl);
     });
 
-    // Bottom pool: every non-matching bullet from every role, across all
+    // Bottom pool: every non-matching bullet from every employer, across all
     // sections, gathered into one "Everything Else" area.
     if (filtering) {
       const leftovers = [];
-      MASTER_RESUME_DATA.forEach((roleEntry) => {
-        roleEntry.bullets.forEach((bullet) => {
-          const { matchedAny } = scoreBullet(bullet, roleEntry);
-          if (!matchedAny) leftovers.push({ bullet, roleEntry });
+      MASTER_RESUME_DATA.forEach((entry) => {
+        entry.bullets.forEach((bullet) => {
+          const { matchedAny } = scoreBullet(bullet, entry);
+          if (!matchedAny) leftovers.push({ bullet, entry });
         });
       });
 
@@ -181,13 +260,13 @@
         leftoverSection.innerHTML = `<h2 class="resume-section-title">Everything Else</h2>`;
         const ul = document.createElement("ul");
         ul.className = "resume-bullet-list";
-        leftovers.forEach(({ bullet, roleEntry }) => {
+        leftovers.forEach(({ bullet, entry }) => {
           const li = document.createElement("li");
           li.className = "resume-bullet resume-bullet-dim";
           li.innerHTML = `
             <span class="bullet-text">
               ${bullet.text}
-              <span class="bullet-source">${roleEntry.role} - ${roleEntry.company}</span>
+              <span class="bullet-source">${bulletRoleLabel(entry, bullet) ? bulletRoleLabel(entry, bullet) + " - " : ""}${entry.company}</span>
             </span>
             <span class="bullet-tags">${bulletTagsHtml(bullet)}</span>
           `;
@@ -262,7 +341,7 @@
     const showTagsToggle = document.getElementById("show-tags-toggle");
     showTagsToggle.addEventListener("click", () => {
       tagsVisible = !tagsVisible;
-      showTagsToggle.textContent = tagsVisible ? "\u2212 Hide Tags" : "+ Show Tags";
+      showTagsToggle.textContent = tagsVisible ? "− Hide Tags" : "+ Show Tags";
       renderResume();
     });
 
