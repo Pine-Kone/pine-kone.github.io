@@ -99,11 +99,11 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Developed data transformation process to provide account mapping solutions to convert Italian accounting data into U.S. GAAP reporting formats",
-        categories: ["Accounting", "Data Analytics"],
+        categories: ["Accounting", "Data Analytics", "Automation & Process Improvement"],
       },
       {
         text: "Integrated data across Practice CS, GoFileRoom, ShareFile, UltraTax, RightSignature, QuickBooks Online, Jetpack Workflow and other software using Excel, Power Query, SQL, Power BI, REST APIs, Power Automate, Fivetran, and other related tools",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Data Analytics", "Automation & Process Improvement"],
       },
       {
         text: "Conducted external compensation benchmarking using Bureau of Labor Statistics occupational wage data to evaluate internal salary positioning",
@@ -111,43 +111,43 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Collaborated with ~20 partners and service line leads to understand needs, clarify reporting objectives, and deliver actionable insights for decision making",
-        categories: ["Leadership", "Business Intelligence"],
+        categories: ["Leadership", "Business Intelligence", "Consulting"],
       },
       {
         text: "Re-engineered audit project tracking dashboard by replacing inefficient full-database cross join with targeted logic and methodology, reducing refresh time from over an hour to less than a minute",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence", "Automation & Process Improvement"],
       },
       {
         text: "Led cross-functional process improvement initiatives integrating SQL, Power BI, Power Automate, and APIs for four service lines",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Leadership", "Automation & Process Improvement"],
       },
       {
         text: "Built Power BI Paginated Reports and automated annual reporting workflows to distribute client packages to ~3,500 clients, spanning ~7,500 entities",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence", "Automation & Process Improvement"],
       },
       {
         text: "Assisted in data cleaning and data integrity of NAICS codes across ~9,000 entities",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Data Analytics"],
       },
       {
         text: "Pioneered method to safely insert data into Practice CS, creating opportunity to make tens of thousands of updates to the database",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Data Analytics", "Automation & Process Improvement"],
       },
       {
         text: "Developed a process to upload timecard info, joining SharePoint, Excel, PCS, and Power Automate, and ShareFile",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Automation & Process Improvement"],
       },
       {
         text: "Oversaw and implemented twenty Power BI reports across four distinct service lines",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence", "Leadership"],
       },
       {
         text: "Reduced report processing times by 10-20 minutes each across four report processes by revising query code and eliminating unnecessary steps",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Automation & Process Improvement", "Business Intelligence"],
       },
       {
         text: "Utilized Power BI, Fivetran and Snowflake providing insight into key business metrics for 22 business clients, and internal usage",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence"],
       },
     ],
   },
@@ -163,15 +163,15 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Developed recurring KPI reporting process across 29 key performance indicators using Business Objects software, supporting monthly and ad-hoc analysis for healthcare leadership",
-        categories: ["Data Analytics", "Business Intelligence", "Leadership"],
+        categories: ["Business Intelligence", "Data Analytics"],
       },
       {
         text: "Transformed, and modeled report data within Power BI across four dashboards published monthly to 70+ southeast Idaho clinics and hospitals for their aid in providing quality experience",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence", "Data Analytics"],
       },
       {
         text: "Coordinated with team of ~20 individuals to assess clinic needs and provide data to support informed strategies",
-        categories: ["Leadership", "Data Analytics"],
+        categories: ["Leadership", "Business Intelligence", "Consulting"],
       },
     ],
   },
@@ -193,23 +193,23 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Consulted with business owners of LLCs, partnerships, and S-corporations on entity structure, compliance considerations, and operational planning",
-        categories: ["Taxation", "Accounting", "Leadership"],
+        categories: ["Taxation", "Accounting", "Consulting"],
       },
       {
         text: "Assisted individuals and small business owners with U.S. tax compliance and tax planning strategies",
-        categories: ["Taxation", "Accounting"],
+        categories: ["Taxation", "Consulting"],
       },
       {
         text: "Developed foundation of financial analysis, data accuracy and regulatory compliance through preparation of individual and small business tax filings",
-        categories: ["Taxation", "Accounting", "Data Analytics"],
+        categories: ["Taxation", "Accounting", "Data Analytics", "Audit & Compliance"],
       },
       {
         text: "Advised small business owners on IRS payroll tax regulations, filing requirements, and compliance best practices to support accurate and timely payroll reporting",
-        categories: ["Taxation", "Accounting"],
+        categories: ["Taxation", "Audit & Compliance", "Consulting"],
       },
       {
         text: "Conducted approximately 95% of client meetings in Spanish, preparing U.S. individual income tax returns for Spanish-speaking clients",
-        categories: ["Taxation", "Accounting"],
+        categories: ["Taxation", "Customer Service", "Bilingual (Spanish)"],
       },
       {
         text: "Prepared correspondence for taxpayers addressed to the Internal Revenue Service to resolve tax issues",
@@ -217,7 +217,7 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Advised individual clients on the tax implications of Traditional versus Roth IRA contributions to support informed retirement savings decisions",
-        categories: ["Taxation"],
+        categories: ["Taxation", "Consulting"],
       },
     ],
   },
@@ -236,7 +236,7 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Programmed reports using Cognos Analytics and Excel to provide bank growth data to management",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Business Intelligence"],
         roles: ["Accounting Operations Clerk"],
       },
       {
@@ -246,7 +246,7 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Compiled data from 14+ thousand customers to help determine potential new bank locations",
-        categories: ["Data Analytics", "Business Intelligence"],
+        categories: ["Data Analytics"],
         roles: ["Accounting Operations Clerk"],
       },
       // Teller bullets to be added - see the Teller role above.
@@ -287,22 +287,22 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Recognized as a Top Performer within the customer service department in September 2014",
-        categories: [],
+        categories: ["Customer Service"],
         roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
       },
       {
         text: "Resolved order and internet issues and placed orders for English- and Spanish-speaking customers",
-        categories: [],
+        categories: ["Customer Service", "Bilingual (Spanish)"],
         roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
       },
       {
         text: "Promoted customer retention through accurate information entry, client rapport, and applied knowledge of company policies",
-        categories: [],
+        categories: ["Customer Service"],
         roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
       },
       {
         text: "Handled 25-75 customer calls per shift, resolving sales and enrollment requests",
-        categories: [],
+        categories: ["Customer Service"],
         roles: ["U.S. Spanish & Mexico Hot Shot"],
       },
       {
@@ -312,17 +312,17 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Coached a team of 7-11 representatives in world class customer service techniques through one-on-one and group training, raising the team's scorecard score from 278.42 to 380.40 (a 36.6% improvement) in six months",
-        categories: ["Leadership"],
+        categories: ["Leadership", "Training & Development", "Customer Service"],
         roles: ["Hot Shot Coordinator"],
       },
       {
         text: "Trained and reviewed team member performance to ensure proper application of company policies across the U.S., Canada, and Mexico",
-        categories: ["Leadership"],
+        categories: ["Leadership", "Training & Development", "Audit & Compliance"],
         roles: ["Hot Shot Coordinator"],
       },
       {
         text: "Utilized fluency in Spanish to help team members employ company policies for the U.S., Canada, and Mexico",
-        categories: ["Leadership"],
+        categories: ["Training & Development", "Leadership", "Bilingual (Spanish)"],
         roles: ["Hot Shot Coordinator"],
       },
     ],
@@ -339,15 +339,15 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Coordinated with the head manager to complete maintenance requests across 24 apartments and 4 houses within 24 hours",
-        categories: [],
+        categories: ["Leadership", "Skilled Trades & Manual Labor"],
       },
       {
         text: "Resolved tenant housing concerns directly, escalating to management when issues involved school compliance requirements",
-        categories: [],
+        categories: ["Customer Service", "Audit & Compliance"],
       },
       {
         text: "Participated in the planning and execution of two annual seasonal community events to build community among residents",
-        categories: [],
+        categories: ["Customer Service"],
       },
     ],
   },
@@ -363,7 +363,7 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Stacked 18+ pallets of sod daily, assisted with tree removals, and completed lawn-care tasks",
-        categories: [],
+        categories: ["Skilled Trades & Manual Labor"],
       },
     ],
   },
@@ -379,11 +379,11 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Hung support wire, installed suspended ceiling grid, and cut tile to fit around fixtures and ductwork on active construction sites",
-        categories: [],
+        categories: ["Skilled Trades & Manual Labor"],
       },
       {
         text: "Worked independently and in teams of 2-5 to complete ceiling installations ahead of contractor deadlines",
-        categories: [],
+        categories: ["Skilled Trades & Manual Labor"],
       },
     ],
   },
@@ -399,23 +399,23 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Guided new customers through legally binding verbal enrollment contracts, confirming terms and completing verification",
-        categories: [],
+        categories: ["Customer Service", "Audit & Compliance"],
       },
       {
         text: "Created an Express Verification training guide to improve instruction for the position",
-        categories: ["Leadership"],
+        categories: ["Training & Development"],
       },
       {
         text: "Trained and developed new Express Verification Specialists regarding the strict rules surrounding verbally binding agreements",
-        categories: ["Leadership"],
+        categories: ["Training & Development", "Audit & Compliance"],
       },
       {
         text: "Recognized as a Top Performer within the department on three separate occasions",
-        categories: [],
+        categories: ["Customer Service"],
       },
       {
         text: "Recognized as a Star Performer in July 2011",
-        categories: [],
+        categories: ["Customer Service"],
       },
     ],
   },
@@ -431,11 +431,11 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Worked with the farm crew on cultivation and harvest of grain, pea, and potato crops",
-        categories: [],
+        categories: ["Skilled Trades & Manual Labor"],
       },
       {
         text: "Moved irrigation pipe across assigned crop fields",
-        categories: [],
+        categories: ["Skilled Trades & Manual Labor"],
       },
     ],
   },
@@ -451,7 +451,7 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Validated reimbursement requests to confirm appropriate authorizations were obtained",
-        categories: ["Accounting"],
+        categories: ["Accounting", "Audit & Compliance"],
       },
       {
         text: "Processed reimbursements and assisted in reimbursement distribution",
@@ -459,23 +459,23 @@ const MASTER_RESUME_DATA = [
       },
       {
         text: "Compiled annual budget requests from stake auxiliary leaders, presented consolidated recommendations to the stake president, and recorded approved budgets in the church financial system",
-        categories: ["Accounting", "Leadership"],
+        categories: ["Accounting", "Leadership", "Consulting"],
       },
       {
         text: "Monitored monthly spending against budgeted amounts for stake auxiliaries, notifying leaders when their funds were running tight, over budget, or still available to use",
-        categories: ["Accounting"],
+        categories: ["Accounting", "Data Analytics", "Leadership"],
       },
       {
         text: "Reviewed monthly expenditures with the stake president, covering both stake finances and budget activity across all seven wards",
-        categories: ["Accounting", "Leadership"],
+        categories: ["Accounting", "Leadership", "Audit & Compliance"],
       },
       {
         text: "Followed up with clerks across the stake's seven wards to confirm ward-level budget submissions were completed and uploaded",
-        categories: ["Accounting", "Leadership"],
+        categories: ["Leadership", "Audit & Compliance"],
       },
       {
         text: "Served as the stake's point of contact for ward-level budget questions",
-        categories: ["Accounting"],
+        categories: ["Customer Service", "Accounting"],
       },
     ],
   },
@@ -498,15 +498,15 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Safeguarded member donations by independently auditing receipt and reporting processes across the stake's seven wards for compliance with church policy",
-        categories: ["Accounting"],
+        categories: ["Audit & Compliance", "Accounting"],
       },
       {
         text: "Identified reporting deficiencies during audits and documented areas of improvement with corresponding correction plans",
-        categories: ["Accounting"],
+        categories: ["Audit & Compliance"],
       },
       {
         text: "Reviewed confidential donation records while maintaining member confidentiality",
-        categories: ["Accounting"],
+        categories: ["Audit & Compliance", "Accounting"],
       },
     ],
   },
@@ -522,23 +522,23 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Oversaw the protection of member donations by ensuring contributions were processed in compliance with church financial policy",
-        categories: ["Accounting"],
+        categories: ["Audit & Compliance", "Accounting"],
       },
       {
         text: "Oversaw confidential member donation records under strict church confidentiality policy",
-        categories: ["Accounting"],
+        categories: ["Audit & Compliance", "Accounting"],
       },
       {
         text: "Compiled annual budget requests from ward auxiliary leaders, presented consolidated recommendations to the bishop, and recorded approved budgets in the church financial system",
-        categories: ["Accounting", "Leadership"],
+        categories: ["Accounting", "Leadership", "Consulting"],
       },
       {
         text: "Monitored monthly spending against budgeted amounts, notifying auxiliary leaders when their funds were running tight, over budget, or still available to use",
-        categories: ["Accounting"],
+        categories: ["Accounting", "Data Analytics", "Leadership"],
       },
       {
         text: "Reviewed monthly expenditures with the bishop to confirm spending aligned with expectations",
-        categories: ["Accounting", "Leadership"],
+        categories: ["Accounting", "Leadership", "Audit & Compliance"],
       },
     ],
   },
@@ -558,15 +558,15 @@ const MASTER_RESUME_DATA = [
     bullets: [
       {
         text: "Developed Spanish fluency over two years of full-time service conducted in Spanish",
-        categories: [],
+        categories: ["Bilingual (Spanish)"],
       },
       {
         text: "Established lesson plans to help others achieve and elevate personal goals",
-        categories: ["Leadership"],
+        categories: ["Training & Development"],
       },
       {
         text: "Prepared and taught weekly meetings to fellow volunteers to increase expertise, productivity, and care",
-        categories: ["Leadership"],
+        categories: ["Training & Development", "Leadership"],
       },
       {
         text: "Planned and conducted a daily schedule of appointments, coordinating independently with numerous contacts and fellow volunteers",
@@ -588,5 +588,40 @@ const MASTER_RESUME_CATEGORIES = [
   "Taxation",
   "Data Analytics",
   "Business Intelligence",
+  "Automation & Process Improvement",
+  "Audit & Compliance",
+  "Consulting",
   "Leadership",
+  "Training & Development",
+  "Customer Service",
+  "Bilingual (Spanish)",
+  "Skilled Trades & Manual Labor",
 ];
+
+// Shown to visitors so they know what each filter actually selects.
+const MASTER_RESUME_CATEGORY_DEFINITIONS = {
+  "Accounting":
+    "Recording, reconciling, and reporting financial information",
+  "Taxation":
+    "Tax preparation, planning, and advisory work for individuals and businesses",
+  "Data Analytics":
+    "Finding the answer - analyzing, cleaning, researching, and investigating data",
+  "Business Intelligence":
+    "Delivering answers repeatedly - dashboards, published reports, and KPI systems",
+  "Automation & Process Improvement":
+    "Making work faster or removing it entirely - automation, optimization, re-engineered processes",
+  "Audit & Compliance":
+    "Verifying that rules were followed - audits, controls, regulatory compliance, safeguarding funds and records",
+  "Consulting":
+    "Advising a client or decision-maker who makes the final call - assessing needs, evaluating options, recommending a course of action",
+  "Leadership":
+    "Directing work through other people - coordinating teams, managing stakeholders, owning outcomes across groups",
+  "Training & Development":
+    "Building other people's capability - teaching, coaching, onboarding, creating training materials",
+  "Customer Service":
+    "Direct service to customers, clients, or residents - resolving issues, retention, being the point of contact",
+  "Bilingual (Spanish)":
+    "Work carried out in Spanish - client meetings, customer support, and supporting Spanish-speaking colleagues",
+  "Skilled Trades & Manual Labor":
+    "Hands-on physical work - construction, installation, maintenance, agricultural labor",
+};
