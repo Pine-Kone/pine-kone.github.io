@@ -22,9 +22,12 @@
   <section class="resume-tool">
     <div class="resume-controls">
       <h3>Filter &amp; Prioritize</h3>
-      <p class="resume-controls-hint">Click categories in the order that matters most to you. Add your own keyword too.</p>
+      <p class="resume-controls-hint">Click a category once to prioritize it, again to push it down instead. Click order sets the ranking. Add your own keyword too.</p>
 
       <div id="category-chips" class="category-chips"></div>
+
+      <button type="button" id="definitions-toggle" class="definitions-toggle">What do these mean?</button>
+      <dl id="category-definitions" class="category-definitions" hidden></dl>
 
       <div class="keyword-row">
         <input type="text" id="keyword-input" placeholder="Add a custom keyword…" aria-label="Add a custom keyword">
