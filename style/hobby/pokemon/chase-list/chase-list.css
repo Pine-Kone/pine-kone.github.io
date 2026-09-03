@@ -133,10 +133,10 @@ body.dark-mode .collection-controls select {
 
 .species-jump-nav {
   display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 1rem;
+  padding: 1.1rem 1rem 1.35rem;
   background: var(--background-color);
   position: sticky;
   top: 0;
@@ -146,6 +146,22 @@ body.dark-mode .collection-controls select {
 
 body.dark-mode .species-jump-nav {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+.species-jump-nav-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.species-jump-nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .species-jump-nav a {
@@ -180,7 +196,7 @@ body.dark-mode .species-jump-nav a:hover {
  * no sticky header.
  */
 .species-section {
-  scroll-margin-top: 4.5rem;
+  scroll-margin-top: 5.5rem;
 }
 
 
