@@ -371,7 +371,7 @@ const MASTER_RESUME_DATA = [
     website: "https://www.churchofjesuschrist.org",
     location: "",
     roles: [
-      { title: "Volunteer Financial Clerk", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
+      { title: "Assistant Stake Clerk of Finance", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
     ],
     bullets: [
       {
@@ -383,8 +383,115 @@ const MASTER_RESUME_DATA = [
         categories: ["Accounting"],
       },
       {
-        text: "Maintained and managed area budget and annual budget proposals",
+        text: "Compiled annual budget requests from stake auxiliary leaders, presented consolidated recommendations to the stake president, and recorded approved budgets in the church financial system",
         categories: ["Accounting", "Leadership"],
+      },
+      {
+        text: "Monitored monthly spending against budgeted amounts for stake auxiliaries, notifying leaders when their funds were running tight, over budget, or still available to use",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Reviewed monthly expenditures with the stake president, covering both stake finances and budget activity across all seven wards",
+        categories: ["Accounting", "Leadership"],
+      },
+      {
+        text: "Followed up with clerks across the stake's seven wards to confirm ward-level budget submissions were completed and uploaded",
+        categories: ["Accounting", "Leadership"],
+      },
+      {
+        text: "Served as the stake's point of contact for ward-level budget questions",
+        categories: ["Accounting"],
+      },
+    ],
+  },
+  // The four Church roles are separate entries rather than one block: they span
+  // 2012-2025 with a five-year gap, and Hans considers them distinct callings
+  // rather than a progression within one position.
+  {
+    section: "Volunteer Experience",
+    company: "The Church of Jesus Christ of Latter-day Saints",
+    logo: null,
+    website: "https://www.churchofjesuschrist.org",
+    location: "",
+    roles: [
+      {
+        title: "Stake Auditor",
+        altTitle: "Volunteer Auditor",
+        dateRange: { start: { month: 5, year: 2021 }, end: { month: 8, year: 2022 } },
+      },
+    ],
+    bullets: [
+      {
+        text: "Safeguarded member donations by independently auditing ward receipt and reporting processes for compliance with church policy",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Identified reporting deficiencies during audits and documented areas of improvement with corresponding correction plans",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Reviewed confidential donation records across ward units while maintaining member confidentiality",
+        categories: ["Accounting"],
+      },
+    ],
+  },
+  {
+    section: "Volunteer Experience",
+    company: "The Church of Jesus Christ of Latter-day Saints",
+    logo: null,
+    website: "https://www.churchofjesuschrist.org",
+    location: "",
+    roles: [
+      { title: "Assistant Ward Clerk of Finance", dateRange: { start: { month: 10, year: 2014 }, end: { month: 4, year: 2016 } } },
+    ],
+    bullets: [
+      {
+        text: "Oversaw the protection of member donations by ensuring contributions were processed in compliance with church financial policy",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Oversaw confidential member donation records under strict church confidentiality policy",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Compiled annual budget requests from ward auxiliary leaders, presented consolidated recommendations to the bishop, and recorded approved budgets in the church financial system",
+        categories: ["Accounting", "Leadership"],
+      },
+      {
+        text: "Monitored monthly spending against budgeted amounts, notifying auxiliary leaders when their funds were running tight, over budget, or still available to use",
+        categories: ["Accounting"],
+      },
+      {
+        text: "Reviewed monthly expenditures with the bishop to confirm spending aligned with expectations",
+        categories: ["Accounting", "Leadership"],
+      },
+    ],
+  },
+  {
+    section: "Volunteer Experience",
+    company: "The Church of Jesus Christ of Latter-day Saints",
+    logo: null,
+    website: "https://www.churchofjesuschrist.org",
+    location: "",
+    roles: [
+      {
+        title: "Full-time Missionary",
+        altTitle: "Full-time Volunteer Representative",
+        dateRange: { start: { month: 2, year: 2012 }, end: { month: 2, year: 2014 } },
+      },
+    ],
+    bullets: [
+      {
+        text: "Established lesson plans to help others achieve and elevate personal goals",
+        categories: ["Leadership"],
+      },
+      {
+        text: "Prepared and taught weekly meetings to fellow volunteers to increase expertise, productivity, and care",
+        categories: ["Leadership"],
+      },
+      {
+        text: "Planned and conducted a daily schedule of appointments, coordinating independently with numerous contacts and fellow volunteers",
+        categories: ["Leadership"],
       },
     ],
   },
