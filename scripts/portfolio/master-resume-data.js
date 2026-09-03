@@ -356,7 +356,7 @@ const MASTER_RESUME_DATA = [
     company: "Allred Gemco, Inc.",
     logo: null,
     website: null,
-    location: "",
+    location: "Sugar City, ID",
     roles: [
       { title: "General Labor and Farm Hand", dateRange: { start: { month: 5, year: 2016 }, end: { month: 9, year: 2016 } } },
     ],
@@ -372,7 +372,7 @@ const MASTER_RESUME_DATA = [
     company: "Shelley Acoustics",
     logo: null,
     website: null,
-    location: "",
+    location: "Shelley, ID",
     roles: [
       { title: "Ceiling Tile Installation and Demolition", dateRange: { start: { month: 3, year: 2014 }, end: { month: 7, year: 2015 } } },
     ],
@@ -424,7 +424,7 @@ const MASTER_RESUME_DATA = [
     company: "S & K Farms",
     logo: null,
     website: null,
-    location: "",
+    location: "Shelley, ID",
     roles: [
       { title: "Grain, Pea and Potato Crop Maintenance", dateRange: { start: { month: 4, year: 2010 }, end: { month: 10, year: 2010 } } },
     ],
