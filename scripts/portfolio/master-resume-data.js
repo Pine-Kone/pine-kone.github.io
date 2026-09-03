@@ -365,9 +365,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
-    // TODO: save a logo to /images/companies/church-of-jesus-christ-logo.png and
-    // set `logo` to that path.
-    logo: null,
+    logo: "/images/companies/church-of-jesus-christ-logo.png",
     website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Idaho Falls, ID",
     roles: [
@@ -410,7 +408,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
-    logo: null,
+    logo: "/images/companies/church-of-jesus-christ-logo.png",
     website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Idaho Falls, ID",
     roles: [
@@ -438,7 +436,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
-    logo: null,
+    logo: "/images/companies/church-of-jesus-christ-logo.png",
     website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Rexburg, ID",
     roles: [
@@ -470,7 +468,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
-    logo: null,
+    logo: "/images/companies/church-of-jesus-christ-logo.png",
     website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Comodoro Rivadavia, Chubut, Argentina",
     roles: [
