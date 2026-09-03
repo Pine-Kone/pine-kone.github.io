@@ -224,9 +224,7 @@ const MASTER_RESUME_DATA = [
   {
     section: "Work Experience",
     company: "Citizens Community Bank",
-    // TODO: save the bank's logo to /images/companies/citizens-community-bank-logo.png
-    // and set `logo` to that path.
-    logo: null,
+    logo: "/images/companies/citizens-community-bank-logo.png",
     website: "https://www.ccb-idaho.com",
     location: "Idaho Falls, ID",
     roles: [
@@ -252,6 +250,116 @@ const MASTER_RESUME_DATA = [
         roles: ["Accounting Operations Clerk"],
       },
       // Teller bullets to be added - see the Teller role above.
+    ],
+  },
+  // Melaleuca is split into two entries because the two stints are separated
+  // by a full-time volunteer mission (Feb. 2012 - Feb. 2014). Combining them
+  // would imply eight unbroken years and would sort the 2010 role next to the
+  // 2018 one.
+  {
+    section: "Work Experience",
+    company: "Melaleuca: The Wellness Company",
+    // TODO: save a Melaleuca logo to /images/companies/melaleuca-logo.png and
+    // set `logo` to that path.
+    logo: null,
+    website: "https://www.melaleuca.com",
+    location: "Idaho Falls, ID",
+    roles: [
+      { title: "Hot Shot", dateRange: { start: { month: 8, year: 2018 }, end: { month: 10, year: 2018 } } },
+      {
+        title: "Hot Shot Coordinator",
+        altTitle: "Sales Team Coordinator",
+        dateRange: { end: { month: 8, year: 2018 } },
+        datesPending: true,
+      },
+      {
+        title: "U.S. Spanish & Mexico Hot Shot",
+        dateRange: { start: { month: 4, year: 2015 } },
+        datesPending: true,
+      },
+      {
+        title: "U.S. Spanish & Mexico Customer Service Specialist",
+        dateRange: { start: { month: 3, year: 2014 }, end: { month: 4, year: 2015 } },
+      },
+    ],
+    // Scoping rule: Customer Service covers everything a Hot Shot does, but not
+    // the reverse - so sales and enrollment work is scoped to the Hot Shot
+    // roles and everything else to Customer Service. The final Hot Shot stint
+    // is a wind-down of the same job and carries no separate bullets.
+    bullets: [
+      {
+        text: "Recognized as a Top Performer within the customer service department in September 2014",
+        categories: [],
+        roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
+      },
+      {
+        text: "Resolved order and internet issues and placed orders for English- and Spanish-speaking customers",
+        categories: [],
+        roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
+      },
+      {
+        text: "Promoted customer retention through accurate information entry, client rapport, and applied knowledge of company policies",
+        categories: [],
+        roles: ["U.S. Spanish & Mexico Customer Service Specialist"],
+      },
+      {
+        text: "Handled 25-75 customer calls per shift, resolving sales and enrollment requests",
+        categories: [],
+        roles: ["U.S. Spanish & Mexico Hot Shot"],
+      },
+      {
+        text: "Analyzed team scorecard data in Excel to assess performance and determine strategy for team improvement",
+        categories: ["Data Analytics", "Leadership"],
+        roles: ["Hot Shot Coordinator"],
+      },
+      {
+        text: "Coached a team of 7-11 representatives in world class customer service techniques through one-on-one and group training, raising the team's scorecard score from 278.42 to 380.40 (a 37% improvement) in six months",
+        categories: ["Leadership"],
+        roles: ["Hot Shot Coordinator"],
+      },
+      {
+        text: "Trained and reviewed team member performance to ensure proper application of company policies across the U.S., Canada, and Mexico",
+        categories: ["Leadership"],
+        roles: ["Hot Shot Coordinator"],
+      },
+      {
+        text: "Utilized fluency in Spanish to help team members employ company policies for the U.S., Canada, and Mexico",
+        categories: ["Leadership"],
+        roles: ["Hot Shot Coordinator"],
+      },
+    ],
+  },
+  {
+    section: "Work Experience",
+    company: "Melaleuca: The Wellness Company",
+    // TODO: same logo file as the later Melaleuca entry above.
+    logo: null,
+    website: "https://www.melaleuca.com",
+    location: "Idaho Falls, ID",
+    roles: [
+      { title: "Express Verification Specialist", dateRange: { start: { month: 8, year: 2010 }, end: { month: 12, year: 2011 } } },
+    ],
+    bullets: [
+      {
+        text: "Guided new customers through legally binding verbal enrollment contracts, confirming terms and completing verification",
+        categories: [],
+      },
+      {
+        text: "Created an Express Verification training guide to improve instruction for the position",
+        categories: ["Leadership"],
+      },
+      {
+        text: "Served as the primary trainer for evening-shift Express Verification, developing new specialists and supervisors from other teams on the strict rules surrounding verbally binding agreements",
+        categories: ["Leadership"],
+      },
+      {
+        text: "Recognized as a Top Performer within the department on three separate occasions",
+        categories: [],
+      },
+      {
+        text: "Recognized as a Star Performer in July 2011",
+        categories: [],
+      },
     ],
   },
   {
