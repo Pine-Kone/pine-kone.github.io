@@ -547,6 +547,60 @@ body.dark-mode .category-chip.active {
   background: var(--accent-color);
 }
 
+/* Third chip state: exclude. Bullets carrying this category still show, they
+   just rank below their peers - so the styling reads as "pushed down", not
+   "switched off". */
+.category-chip.excluded {
+  background: #8c8c8c;
+  border-color: #6f6f6f;
+  color: white;
+}
+
+.category-chip.excluded .chip-rank-badge {
+  color: #6f6f6f;
+}
+
+body.dark-mode .category-chip.excluded {
+  background: #5a5a5a;
+  border-color: #7a7a7a;
+}
+
+.rank-pill-exclude {
+  background: #8c8c8c;
+}
+
+body.dark-mode .rank-pill-exclude {
+  background: #5a5a5a;
+}
+
+.definitions-toggle {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-bottom: 0.9rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--accent-color);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.category-definitions {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+}
+
+.category-definitions dt {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.category-definitions dd {
+  margin: 0 0 0.15rem;
+  opacity: 0.85;
+}
+
 .keyword-row {
   display: flex;
   gap: 0.6rem;
