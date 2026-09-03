@@ -369,7 +369,7 @@ const MASTER_RESUME_DATA = [
     // set `logo` to that path.
     logo: null,
     website: "https://www.churchofjesuschrist.org",
-    location: "",
+    location: "Idaho Falls, ID",
     roles: [
       { title: "Assistant Stake Clerk of Finance", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
     ],
@@ -412,7 +412,7 @@ const MASTER_RESUME_DATA = [
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
     website: "https://www.churchofjesuschrist.org",
-    location: "",
+    location: "Idaho Falls, ID",
     roles: [
       {
         title: "Stake Auditor",
@@ -422,7 +422,7 @@ const MASTER_RESUME_DATA = [
     ],
     bullets: [
       {
-        text: "Safeguarded member donations by independently auditing ward receipt and reporting processes for compliance with church policy",
+        text: "Safeguarded member donations by independently auditing receipt and reporting processes across the stake's seven wards for compliance with church policy",
         categories: ["Accounting"],
       },
       {
@@ -430,7 +430,7 @@ const MASTER_RESUME_DATA = [
         categories: ["Accounting"],
       },
       {
-        text: "Reviewed confidential donation records across ward units while maintaining member confidentiality",
+        text: "Reviewed confidential donation records while maintaining member confidentiality",
         categories: ["Accounting"],
       },
     ],
@@ -440,7 +440,7 @@ const MASTER_RESUME_DATA = [
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
     website: "https://www.churchofjesuschrist.org",
-    location: "",
+    location: "Rexburg, ID",
     roles: [
       { title: "Assistant Ward Clerk of Finance", dateRange: { start: { month: 10, year: 2014 }, end: { month: 4, year: 2016 } } },
     ],
@@ -472,7 +472,7 @@ const MASTER_RESUME_DATA = [
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
     website: "https://www.churchofjesuschrist.org",
-    location: "",
+    location: "Comodoro Rivadavia, Chubut, Argentina",
     roles: [
       {
         title: "Full-time Missionary",
