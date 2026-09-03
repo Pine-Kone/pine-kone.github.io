@@ -1,6 +1,8 @@
 // Master Resume filter/rank/search tool.
 // Click a category chip to add it to the priority list (click order = rank
-// order). Type a custom keyword and press Enter/click Add to add it to that
+// order). Click it a second time to switch that category to EXCLUDE: bullets
+// carrying it still appear, but rank below their peers instead of above them.
+// A third click clears it. Type a custom keyword and press Enter/click Add to add it to that
 // same priority list. When priorities are selected, matching bullets stay
 // grouped under their employer in priority order at the top of the page, and
 // every bullet that matches none of your picks - from any employer - pools
@@ -56,15 +58,28 @@
     );
   }
 
+  // Each priority contributes one bit to the sort key, most significant first,
+  // so lower scores sort higher. An INCLUDE priority rewards a match; an
+  // EXCLUDE priority penalises one. That keeps excluded bullets visible and
+  // ungreyed - they simply fall below peers that don't carry the tag.
   function scoreBullet(bullet, entry) {
     let score = 0;
-    let matchedAny = false;
+    let matchedInclude = false;
+    let anyInclude = false;
     for (let i = 0; i < rankList.length; i++) {
-      const matched = matchesRankItem(bullet, entry, rankList[i]);
-      if (matched) matchedAny = true;
-      score = score * 2 + (matched ? 0 : 1);
+      const item = rankList[i];
+      const matched = matchesRankItem(bullet, entry, item);
+      if (item.mode === "exclude") {
+        score = score * 2 + (matched ? 1 : 0);
+      } else {
+        anyInclude = true;
+        if (matched) matchedInclude = true;
+        score = score * 2 + (matched ? 0 : 1);
+      }
     }
-    return { score, matchedAny };
+    // With only exclusions selected, nothing is being asked for - so everything
+    // stays in the main list and the excluded bullets just sink within it.
+    return { score, matchedAny: anyInclude ? matchedInclude : true };
   }
 
   function renderRankList() {
@@ -76,8 +91,9 @@
     }
     rankList.forEach((item, i) => {
       const pill = document.createElement("span");
-      pill.className = "rank-pill";
-      pill.innerHTML = `${i + 1}. ${item.value} <button type="button" aria-label="Remove ${item.value}">✕</button>`;
+      pill.className = "rank-pill" + (item.mode === "exclude" ? " rank-pill-exclude" : "");
+      const prefix = item.mode === "exclude" ? "−" : `${i + 1}.`;
+      pill.innerHTML = `${prefix} ${item.value} <button type="button" aria-label="Remove ${item.value}">✕</button>`;
       pill.querySelector("button").addEventListener("click", () => {
         rankList.splice(i, 1);
         renderAll();
@@ -90,10 +106,13 @@
     document.querySelectorAll(".category-chip").forEach((chip) => {
       const value = chip.getAttribute("data-category");
       const idx = rankList.findIndex((r) => r.type === "category" && r.value === value);
-      chip.classList.toggle("active", idx !== -1);
+      const item = idx === -1 ? null : rankList[idx];
+      const excluded = !!item && item.mode === "exclude";
+      chip.classList.toggle("active", idx !== -1 && !excluded);
+      chip.classList.toggle("excluded", excluded);
       const badge = chip.querySelector(".chip-rank-badge");
       if (idx !== -1) {
-        badge.textContent = idx + 1;
+        badge.textContent = excluded ? "−" : idx + 1;
         badge.style.display = "inline-flex";
       } else {
         badge.style.display = "none";
@@ -304,10 +323,16 @@
       chip.className = "category-chip";
       chip.setAttribute("data-category", cat);
       chip.innerHTML = `<span class="chip-rank-badge"></span>${cat}`;
+      if (typeof MASTER_RESUME_CATEGORY_DEFINITIONS !== "undefined" && MASTER_RESUME_CATEGORY_DEFINITIONS[cat]) {
+        chip.title = MASTER_RESUME_CATEGORY_DEFINITIONS[cat];
+      }
+      // off -> include -> exclude -> off
       chip.addEventListener("click", () => {
         const idx = rankList.findIndex((r) => r.type === "category" && r.value === cat);
         if (idx === -1) {
-          rankList.push({ type: "category", value: cat });
+          rankList.push({ type: "category", value: cat, mode: "include" });
+        } else if (rankList[idx].mode === "include") {
+          rankList[idx].mode = "exclude";
         } else {
           rankList.splice(idx, 1);
         }
@@ -316,12 +341,26 @@
       chipContainer.appendChild(chip);
     });
 
+    // Definitions panel - so a visitor knows what each filter actually selects.
+    const defsEl = document.getElementById("category-definitions");
+    const defsToggle = document.getElementById("definitions-toggle");
+    if (defsEl && defsToggle && typeof MASTER_RESUME_CATEGORY_DEFINITIONS !== "undefined") {
+      defsEl.innerHTML = MASTER_RESUME_CATEGORIES.map(
+        (c) => `<dt>${c}</dt><dd>${MASTER_RESUME_CATEGORY_DEFINITIONS[c] || ""}</dd>`
+      ).join("");
+      defsToggle.addEventListener("click", () => {
+        const showing = !defsEl.hidden;
+        defsEl.hidden = showing;
+        defsToggle.textContent = showing ? "What do these mean?" : "Hide definitions";
+      });
+    }
+
     const keywordInput = document.getElementById("keyword-input");
     const keywordAddBtn = document.getElementById("keyword-add-btn");
     function addKeyword() {
       const val = keywordInput.value.trim();
       if (!val) return;
-      rankList.push({ type: "keyword", value: val });
+      rankList.push({ type: "keyword", value: val, mode: "include" });
       keywordInput.value = "";
       renderAll();
     }

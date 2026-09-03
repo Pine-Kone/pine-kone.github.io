@@ -249,7 +249,21 @@ const MASTER_RESUME_DATA = [
         categories: ["Data Analytics"],
         roles: ["Accounting Operations Clerk"],
       },
-      // Teller bullets to be added - see the Teller role above.
+      {
+        text: "Processed deposits, withdrawals, transfers, and check cashing, handling cash and vault operations",
+        categories: ["Accounting"],
+        roles: ["Teller"],
+      },
+      {
+        text: "Verified customer identity and check endorsements and watched for fraud indicators before completing transactions",
+        categories: ["Audit & Compliance"],
+        roles: ["Teller"],
+      },
+      {
+        text: "Served walk-in customers face to face throughout each shift, completing transactions and answering questions",
+        categories: ["Customer Service"],
+        roles: ["Teller"],
+      },
     ],
   },
   // Melaleuca is split into two entries because the two stints are separated
