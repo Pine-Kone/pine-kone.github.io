@@ -368,7 +368,7 @@ const MASTER_RESUME_DATA = [
     // TODO: save a logo to /images/companies/church-of-jesus-christ-logo.png and
     // set `logo` to that path.
     logo: null,
-    website: "https://www.churchofjesuschrist.org",
+    website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Idaho Falls, ID",
     roles: [
       { title: "Assistant Stake Clerk of Finance", dateRange: { start: { month: 9, year: 2022 }, end: { month: 11, year: 2025 } } },
@@ -411,7 +411,7 @@ const MASTER_RESUME_DATA = [
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
-    website: "https://www.churchofjesuschrist.org",
+    website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Idaho Falls, ID",
     roles: [
       {
@@ -439,7 +439,7 @@ const MASTER_RESUME_DATA = [
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
-    website: "https://www.churchofjesuschrist.org",
+    website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Rexburg, ID",
     roles: [
       { title: "Assistant Ward Clerk of Finance", dateRange: { start: { month: 10, year: 2014 }, end: { month: 4, year: 2016 } } },
@@ -471,7 +471,7 @@ const MASTER_RESUME_DATA = [
     section: "Volunteer Experience",
     company: "The Church of Jesus Christ of Latter-day Saints",
     logo: null,
-    website: "https://www.churchofjesuschrist.org",
+    website: "https://www.churchofjesuschrist.org/?lang=eng",
     location: "Comodoro Rivadavia, Chubut, Argentina",
     roles: [
       {
