@@ -136,9 +136,9 @@
       </${tag}>`;
   }
 
-  // One shape for every employer: the company leads, then each role it covers
-  // sits beneath with its own dates. No overall span on the company line - the
-  // roles themselves carry the timeline, and the master resume lists them all.
+  // One shape for every employer: the company leads with its location pushed
+  // right, then each role sits beneath with its dates in the same right-hand
+  // column. No overall span on the company line - the roles carry the timeline.
   function employerHeaderHtml(entry) {
     let logoHtml = "";
     if (entry.logo) {
@@ -154,8 +154,10 @@
     return `
       ${logoHtml}
       <div class="resume-employer-body">
-        <h3 class="resume-company-name">${companyHtml}</h3>
-        ${entry.location ? `<p class="resume-role-meta">${entry.location}</p>` : ""}
+        <div class="resume-title-line resume-company-line">
+          <h3 class="resume-company-name">${companyHtml}</h3>
+          <span class="resume-title-dates resume-location">${entry.location || ""}</span>
+        </div>
       </div>
     `;
   }
