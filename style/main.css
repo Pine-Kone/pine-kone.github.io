@@ -695,6 +695,12 @@ body.dark-mode .show-tags-toggle {
   margin-bottom: 2rem;
 }
 
+/* The theme toggle is fixed to the top-right of the viewport, so right-aligned
+   dates need clearance or it sits on top of them as the page scrolls. */
+.resume-role-block .resume-title-line {
+  padding-right: 3.25rem;
+}
+
 .resume-role-header {
   display: flex;
   align-items: center;
@@ -730,46 +736,59 @@ body.dark-mode .show-tags-toggle {
   margin-bottom: 0;
 }
 
-/* Title progression at a single employer: each role listed with its own
-   date range under the company name. */
+/* Role title on the left, dates pushed to the right on the same line - the
+   layout used on the printed resume. Wraps to two lines on narrow screens. */
+.resume-title-line {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  box-sizing: border-box;
+}
+
+.resume-title-line h3 {
+  margin: 0;
+}
+
+.resume-title-text {
+  font-weight: bold;
+}
+
+.resume-title-dates {
+  font-weight: bold;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0.75;
+}
+
+.resume-role-headtext {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Title progression where every bullet is shared across the roles: the titles
+   are listed together under the company, each with its own dates. */
 .resume-role-list {
   list-style: none;
   margin: 0.35rem 0 0;
   padding: 0;
 }
 
-.resume-role-list li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem;
-  line-height: 1.5;
-}
-
-.resume-role-title {
-  font-weight: bold;
+.resume-role-list .resume-role-line {
+  line-height: 1.6;
   font-size: 0.95rem;
 }
 
-.resume-role-dates {
-  font-size: 0.8rem;
-  opacity: 0.7;
-}
-
-/* Subheading used when an employer's bullets are scoped per role. */
+/* Subheading used when an employer's bullets are scoped per role - each title
+   heads its own bullet list and carries its own dates. */
 .resume-subrole {
-  margin: 1rem 0 0.35rem;
+  margin: 1.1rem 0 0.4rem;
   font-size: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.5rem;
 }
 
-.resume-subrole-dates {
-  font-size: 0.8rem;
+.resume-subrole .resume-title-dates {
   font-weight: normal;
-  opacity: 0.7;
 }
 
 .resume-bullet-list {
