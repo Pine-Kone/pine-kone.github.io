@@ -226,7 +226,7 @@ const MASTER_RESUME_DATA = [
     company: "Citizens Community Bank",
     logo: "/images/companies/citizens-community-bank-logo.png",
     website: "https://www.ccb-idaho.com",
-    location: "Idaho Falls, ID",
+    location: "Pocatello, ID",
     roles: [
       // Started as a Teller and moved into the accounting/data role. Hans
       // prepared the resume for that internal move on 7 Mar. 2019, which puts
@@ -346,8 +346,8 @@ const MASTER_RESUME_DATA = [
   {
     section: "Work Experience",
     company: "The Pines at Hemming Village",
-    logo: null,
-    website: null,
+    logo: "/images/companies/hemming-village-logo.png",
+    website: "https://hemmingvillage.com",
     location: "Rexburg, ID",
     roles: [
       { title: "On-Site Maintenance Manager", dateRange: { start: { month: 12, year: 2014 }, end: { month: 7, year: 2018 } } },

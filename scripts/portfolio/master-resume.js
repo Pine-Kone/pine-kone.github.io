@@ -136,16 +136,35 @@
       </${tag}>`;
   }
 
+  // Initials for the monogram tile that stands in for a missing logo.
+  // Corporate suffixes and joining words are dropped so "Allred Gemco, Inc."
+  // reads AG and "S & K Farms" reads SK.
+  const MONOGRAM_SKIP = ["the", "at", "of", "and", "a", "&", "inc", "llc", "ltd", "co", "corp", "company"];
+
+  function companyInitials(name) {
+    const words = String(name)
+      .split(/[\s,]+/)
+      .map((w) => w.replace(/[^A-Za-z&]/g, ""))
+      .filter((w) => w && MONOGRAM_SKIP.indexOf(w.toLowerCase()) === -1);
+    return words.slice(0, 2).map((w) => w.charAt(0).toUpperCase()).join("");
+  }
+
   // One shape for every employer: the company leads with its location pushed
   // right, then each role sits beneath with its dates in the same right-hand
   // column. No overall span on the company line - the roles carry the timeline.
   function employerHeaderHtml(entry) {
+    // Every entry reserves the same logo-width column, logo or not, so the
+    // company name lines up whether or not that employer has a mark on file.
     let logoHtml = "";
     if (entry.logo) {
       const img = `<img src="${entry.logo}" alt="${entry.company} logo" class="company-logo">`;
       logoHtml = entry.website
         ? `<a href="${entry.website}" target="_blank" rel="noopener" aria-label="${entry.company} website">${img}</a>`
         : img;
+    } else {
+      // No logo on file: a tinted monogram tile keeps the column filled and the
+      // company names aligned. aria-hidden because the name follows it in text.
+      logoHtml = `<span class="company-logo company-logo-placeholder" aria-hidden="true">${companyInitials(entry.company)}</span>`;
     }
     const companyHtml = entry.website
       ? `<a href="${entry.website}" target="_blank" rel="noopener" class="company-link">${entry.company}</a>`
