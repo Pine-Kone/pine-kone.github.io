@@ -706,9 +706,16 @@ body.dark-mode .show-tags-toggle {
 }
 
 /* The theme toggle is fixed to the top-right of the viewport, so right-aligned
-   dates need clearance or it sits on top of them as the page scrolls. */
+   dates need clearance or it sits on top of them as the page scrolls. On very
+   narrow screens that reserve costs more than it buys, so it shrinks. */
 .resume-role-block .resume-title-line {
   padding-right: 3.25rem;
+}
+
+@media (max-width: 480px) {
+  .resume-role-block .resume-title-line {
+    padding-right: 2.5rem;
+  }
 }
 
 .company-logo {
@@ -724,9 +731,20 @@ body.dark-mode .show-tags-toggle {
   margin: 0 0 0.1rem;
 }
 
+/* Location shares the employer line, sitting in the same right-hand column the
+   role dates use so the two form one aligned edge. */
+.resume-title-dates.resume-location {
+  font-weight: normal;
+  font-style: italic;
+  /* Dates never wrap, but a long location must - "Comodoro Rivadavia, Chubut,
+     Argentina" would otherwise force the page sideways on small phones. The
+     doubled class beats the nowrap on .resume-title-dates. */
+  white-space: normal;
+  text-align: right;
+}
+
 /* First role sits close under the employer; later ones get breathing room. */
-.resume-role-meta + .resume-subrole,
-.resume-company-name + .resume-subrole {
+.resume-company-line + .resume-subrole {
   margin-top: 0.55rem;
 }
 
@@ -756,6 +774,13 @@ body.dark-mode .show-tags-toggle {
   justify-content: space-between;
   gap: 0.25rem 1rem;
   box-sizing: border-box;
+}
+
+/* Flex items default to min-content width and refuse to shrink, which pushed
+   long locations off the edge on narrow phones. */
+.resume-title-line > * {
+  min-width: 0;
+  overflow-wrap: break-word;
 }
 
 .resume-title-line h3 {
