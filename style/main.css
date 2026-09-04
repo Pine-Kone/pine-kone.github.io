@@ -725,6 +725,29 @@ body.dark-mode .show-tags-toggle {
   flex-shrink: 0;
 }
 
+/* Employers with no logo on file still reserve the same 64x44 column so the
+   company names all share one left edge. A monogram of the company's initials
+   on a tinted accent tile reads as intentional rather than as a missing image,
+   and the low opacity keeps the real logos carrying the visual weight. */
+.company-logo-placeholder {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(240, 124, 0, 0.14); /* fallback for no color-mix */
+  background: color-mix(in srgb, var(--accent-color) 14%, transparent);
+  color: var(--accent-color);
+  border-radius: 4px;
+  font-size: 1.05rem;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  line-height: 1;
+}
+
+body.dark-mode .company-logo-placeholder {
+  background: rgba(255, 169, 77, 0.16);
+  background: color-mix(in srgb, var(--accent-color) 16%, transparent);
+}
+
 /* The employer leads each block, a step larger than the role headings under it. */
 .resume-company-name {
   font-size: 1.35rem;
