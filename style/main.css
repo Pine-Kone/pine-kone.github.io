@@ -758,7 +758,7 @@ body.dark-mode .company-logo-placeholder {
    role dates use so the two form one aligned edge. */
 .resume-title-dates.resume-location {
   font-weight: normal;
-  font-style: italic;
+  font-size: 1.05rem;
   /* Dates never wrap, but a long location must - "Comodoro Rivadavia, Chubut,
      Argentina" would otherwise force the page sideways on small phones. The
      doubled class beats the nowrap on .resume-title-dates. */
