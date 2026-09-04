@@ -228,10 +228,12 @@ const MASTER_RESUME_DATA = [
     website: "https://www.ccb-idaho.com",
     location: "Idaho Falls, ID",
     roles: [
-      // Started as a Teller and moved into the accounting/data role; the month
-      // of that transition still needs pinning down.
-      { title: "Accounting Operations Clerk", dateRange: { end: { month: 9, year: 2019 } }, datesPending: true },
-      { title: "Teller", dateRange: { start: { month: 10, year: 2018 } }, datesPending: true },
+      // Started as a Teller and moved into the accounting/data role. Hans
+      // prepared the resume for that internal move on 7 Mar. 2019, which puts
+      // the change in late March or early April - so the boundary is recorded
+      // as "Spring 2019" rather than guessing at a month.
+      { title: "Accounting Operations Clerk", dateRange: { start: { display: "Spring 2019" }, end: { month: 9, year: 2019 } } },
+      { title: "Teller", dateRange: { start: { month: 10, year: 2018 }, end: { display: "Spring 2019" } } },
     ],
     bullets: [
       {
