@@ -320,7 +320,7 @@ const MASTER_RESUME_DATA = [
       {
         text: "Handled 25-75 customer calls per shift, resolving sales and enrollment requests",
         categories: ["Customer Service"],
-        roles: ["U.S. Spanish & Mexico Hot Shot"],
+        roles: ["U.S. Spanish & Mexico Wellness Hot Shot"],
       },
       {
         text: "Analyzed team scorecard data in Excel to assess performance and determine strategy for team improvement",
