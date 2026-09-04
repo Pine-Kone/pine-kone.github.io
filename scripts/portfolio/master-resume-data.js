@@ -279,17 +279,18 @@ const MASTER_RESUME_DATA = [
     website: "https://www.melaleuca.com",
     location: "Idaho Falls, ID",
     roles: [
-      { title: "Hot Shot", dateRange: { start: { month: 8, year: 2018 }, end: { month: 10, year: 2018 } } },
+      { title: "U.S. Spanish & Mexico Wellness Hot Shot",
+       altTitle: "Sales and Enrollments Specialist",
+       dateRange: { start: { month: 6, year: 2018 }, end: { month: 10, year: 2018 } } },
       {
         title: "Hot Shot Coordinator",
         altTitle: "Sales Team Coordinator",
-        dateRange: { end: { month: 8, year: 2018 } },
-        datesPending: true,
+        dateRange: { start: { month: 8, year: 2017 }, end: { month: 6, year: 2018 } },
       },
       {
-        title: "U.S. Spanish & Mexico Hot Shot",
-        dateRange: { start: { month: 4, year: 2015 } },
-        datesPending: true,
+        title: "U.S. Spanish & Mexico Wellness Hot Shot",
+        altTitle: "Sales and Enrollments Specialist",
+        dateRange: { start: { month: 4, year: 2015 }, end: { month: 8, year: 2017 } },
       },
       {
         title: "U.S. Spanish & Mexico Customer Service Specialist",
@@ -410,7 +411,7 @@ const MASTER_RESUME_DATA = [
     website: "https://www.melaleuca.com",
     location: "Idaho Falls, ID",
     roles: [
-      { title: "Express Verification Specialist", dateRange: { start: { month: 8, year: 2010 }, end: { month: 12, year: 2011 } } },
+      { title: "Express Verification Specialist", dateRange: { start: { month: 8, year: 2010 }, end: { month: 1, year: 2012 } } },
     ],
     bullets: [
       {
