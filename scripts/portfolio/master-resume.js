@@ -124,9 +124,24 @@
     return bullet.categories.map((c) => `<span class="bullet-tag">${c}</span>`).join("");
   }
 
-  // One role: the title leads, company/location/dates sit underneath (the
-  // familiar resume look). Multiple roles: the company leads with the overall
-  // tenure, and each title is listed with its own date range below it.
+  // Title and dates share a line, dates pushed right - matching the layout of
+  // Hans's actual resume.
+  function titleLineHtml(titleHtml, dates, opts) {
+    const o = opts || {};
+    const tag = o.tag || "div";
+    const cls = "resume-title-line" + (o.className ? " " + o.className : "");
+    return `<${tag} class="${cls}">
+        <span class="resume-title-text">${titleHtml}</span>
+        <span class="resume-title-dates">${dates}</span>
+      </${tag}>`;
+  }
+
+  // Three shapes, driven by the data:
+  //   1 role                     -> title + dates, company/location beneath
+  //   many roles, shared bullets -> company + span, then each title with its
+  //                                 own dates (the bullets belong to them all)
+  //   many roles, scoped bullets -> company + span only; each title heads its
+  //                                 own bullet list further down
   function employerHeaderHtml(entry) {
     const roles = entryRoles(entry);
 
@@ -146,31 +161,36 @@
       return `
         <div class="resume-role-header">
           ${logoHtml}
-          <div>
-            <h3>${formatResumeRoleTitle(role)}</h3>
-            <p class="resume-role-meta">${companyHtml}${entry.location ? " - " + entry.location : ""} &bull; ${formatResumeDateRange(role && role.dateRange)}</p>
+          <div class="resume-role-headtext">
+            ${titleLineHtml(`<h3>${formatResumeRoleTitle(role)}</h3>`, formatResumeDateRange(role && role.dateRange))}
+            <p class="resume-role-meta">${companyHtml}${entry.location ? " - " + entry.location : ""}</p>
           </div>
         </div>
       `;
     }
 
-    const roleLines = roles
-      .map(
-        (r) => `
-          <li>
-            <span class="resume-role-title">${formatResumeRoleTitle(r)}</span>
-            <span class="resume-role-dates">${formatResumeDateRange(r.dateRange)}</span>
-          </li>`
-      )
-      .join("");
+    let roleListHtml = "";
+    if (!hasRoleScopedBullets(entry)) {
+      roleListHtml =
+        '<ul class="resume-role-list">' +
+        roles
+          .map((r) =>
+            titleLineHtml(formatResumeRoleTitle(r), formatResumeDateRange(r.dateRange), {
+              tag: "li",
+              className: "resume-role-line",
+            })
+          )
+          .join("") +
+        "</ul>";
+    }
 
     return `
       <div class="resume-role-header">
         ${logoHtml}
-        <div>
-          <h3>${companyHtml}</h3>
-          <p class="resume-role-meta">${entry.location ? entry.location + " &bull; " : ""}${formatResumeEmployerSpan(roles)}</p>
-          <ul class="resume-role-list">${roleLines}</ul>
+        <div class="resume-role-headtext">
+          ${titleLineHtml(`<h3>${companyHtml}</h3>`, formatResumeEmployerSpan(roles))}
+          ${entry.location ? `<p class="resume-role-meta">${entry.location}</p>` : ""}
+          ${roleListHtml}
         </div>
       </div>
     `;
@@ -208,12 +228,15 @@
 
     entryRoles(entry).forEach((role) => {
       const forRole = visibleBullets.filter((b) => b.roles && b.roles.includes(role.title));
-      if (!forRole.length) return;
-      // Dates are deliberately omitted here - the header's role list above
-      // already carries the full timeline, including roles with no bullets yet.
+      // Skip a role with no matching bullets only while filtering; in the
+      // default view an empty role still belongs in the timeline.
+      if (!forRole.length && rankList.length) return;
+      // Each title heads its own bullet list and carries its own dates.
       const heading = document.createElement("h4");
-      heading.className = "resume-subrole";
-      heading.textContent = formatResumeRoleTitle(role);
+      heading.className = "resume-subrole resume-title-line";
+      heading.innerHTML =
+        `<span class="resume-title-text">${formatResumeRoleTitle(role)}</span>` +
+        `<span class="resume-title-dates">${formatResumeDateRange(role.dateRange)}</span>`;
       block.appendChild(heading);
       block.appendChild(buildBulletList(forRole));
     });
