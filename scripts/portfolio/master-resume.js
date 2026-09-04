@@ -136,15 +136,10 @@
       </${tag}>`;
   }
 
-  // Three shapes, driven by the data:
-  //   1 role                     -> title + dates, company/location beneath
-  //   many roles, shared bullets -> company + span, then each title with its
-  //                                 own dates (the bullets belong to them all)
-  //   many roles, scoped bullets -> company + span only; each title heads its
-  //                                 own bullet list further down
+  // One shape for every employer: the company leads, then each role it covers
+  // sits beneath with its own dates. No overall span on the company line - the
+  // roles themselves carry the timeline, and the master resume lists them all.
   function employerHeaderHtml(entry) {
-    const roles = entryRoles(entry);
-
     let logoHtml = "";
     if (entry.logo) {
       const img = `<img src="${entry.logo}" alt="${entry.company} logo" class="company-logo">`;
@@ -156,44 +151,23 @@
       ? `<a href="${entry.website}" target="_blank" rel="noopener" class="company-link">${entry.company}</a>`
       : entry.company;
 
-    if (roles.length <= 1) {
-      const role = roles[0];
-      return `
-        <div class="resume-role-header">
-          ${logoHtml}
-          <div class="resume-role-headtext">
-            ${titleLineHtml(`<h3>${formatResumeRoleTitle(role)}</h3>`, formatResumeDateRange(role && role.dateRange))}
-            <p class="resume-role-meta">${companyHtml}${entry.location ? " - " + entry.location : ""}</p>
-          </div>
-        </div>
-      `;
-    }
-
-    let roleListHtml = "";
-    if (!hasRoleScopedBullets(entry)) {
-      roleListHtml =
-        '<ul class="resume-role-list">' +
-        roles
-          .map((r) =>
-            titleLineHtml(formatResumeRoleTitle(r), formatResumeDateRange(r.dateRange), {
-              tag: "li",
-              className: "resume-role-line",
-            })
-          )
-          .join("") +
-        "</ul>";
-    }
-
     return `
-      <div class="resume-role-header">
-        ${logoHtml}
-        <div class="resume-role-headtext">
-          ${titleLineHtml(`<h3>${companyHtml}</h3>`, formatResumeEmployerSpan(roles))}
-          ${entry.location ? `<p class="resume-role-meta">${entry.location}</p>` : ""}
-          ${roleListHtml}
-        </div>
+      ${logoHtml}
+      <div class="resume-employer-body">
+        <h3 class="resume-company-name">${companyHtml}</h3>
+        ${entry.location ? `<p class="resume-role-meta">${entry.location}</p>` : ""}
       </div>
     `;
+  }
+
+  // A role heading: title on the left, its dates pushed right.
+  function roleHeadingEl(role) {
+    const h = document.createElement("h4");
+    h.className = "resume-subrole resume-title-line";
+    h.innerHTML =
+      `<span class="resume-title-text">${formatResumeRoleTitle(role)}</span>` +
+      `<span class="resume-title-dates">${formatResumeDateRange(role.dateRange)}</span>`;
+    return h;
   }
 
   function buildBulletList(bullets) {
@@ -208,37 +182,39 @@
     return ul;
   }
 
-  // Builds one employer block from whatever bullets should be visible. When
-  // the employer has role-scoped bullets, shared bullets render first, then
-  // each role's own bullets under a subheading. Empty groups are skipped.
+  // Builds one employer block. Every role gets its own heading with its dates;
+  // bullets scoped to a role sit under that role's heading, and bullets shared
+  // across the whole tenure sit under the stacked headings that share them.
   function buildEmployerBlock(entry, visibleBullets) {
     if (visibleBullets.length === 0) return null;
 
     const block = document.createElement("div");
     block.className = "resume-role-block";
     block.innerHTML = employerHeaderHtml(entry);
+    // Roles and bullets go inside the text column beside the logo, so they line
+    // up under the employer name instead of hanging to its left.
+    const body = block.querySelector(".resume-employer-body");
 
+    const roles = entryRoles(entry);
+
+    // No bullet is scoped to a role, so every role shares the same list: stack
+    // the headings together, then print the bullets once beneath them.
     if (!hasRoleScopedBullets(entry)) {
-      block.appendChild(buildBulletList(visibleBullets));
+      roles.forEach((role) => body.appendChild(roleHeadingEl(role)));
+      body.appendChild(buildBulletList(visibleBullets));
       return block;
     }
 
     const shared = visibleBullets.filter((b) => !b.roles || !b.roles.length);
-    if (shared.length) block.appendChild(buildBulletList(shared));
+    if (shared.length) body.appendChild(buildBulletList(shared));
 
-    entryRoles(entry).forEach((role) => {
+    roles.forEach((role) => {
       const forRole = visibleBullets.filter((b) => b.roles && b.roles.includes(role.title));
-      // Skip a role with no matching bullets only while filtering; in the
+      // While filtering, a role with no surviving bullets is dropped; in the
       // default view an empty role still belongs in the timeline.
       if (!forRole.length && rankList.length) return;
-      // Each title heads its own bullet list and carries its own dates.
-      const heading = document.createElement("h4");
-      heading.className = "resume-subrole resume-title-line";
-      heading.innerHTML =
-        `<span class="resume-title-text">${formatResumeRoleTitle(role)}</span>` +
-        `<span class="resume-title-dates">${formatResumeDateRange(role.dateRange)}</span>`;
-      block.appendChild(heading);
-      block.appendChild(buildBulletList(forRole));
+      body.appendChild(roleHeadingEl(role));
+      if (forRole.length) body.appendChild(buildBulletList(forRole));
     });
 
     return block;
