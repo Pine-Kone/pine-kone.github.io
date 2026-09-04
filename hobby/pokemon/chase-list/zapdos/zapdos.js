@@ -887,6 +887,23 @@ const zapdosCards = [
         notes: []
       }
     ]
+  },
+
+  {
+    name: "Pikachu ex",
+    set: "30th Celebration",
+    number: "150 / 128",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/chase-list/zapdos/pikachu-ex-150-128-has-zapdos.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
   }
 
 ];
