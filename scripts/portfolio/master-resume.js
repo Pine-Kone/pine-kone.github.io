@@ -229,8 +229,13 @@
     const shared = visibleBullets.filter((b) => !b.roles || !b.roles.length);
     if (shared.length) body.appendChild(buildBulletList(shared));
 
+    // A bullet renders under only the first matching role heading (roles are
+    // listed most-recent-first), so a title that recurs after a promotion
+    // doesn't repeat the same bullets under every occurrence.
+    const alreadyRendered = new Set();
     roles.forEach((role) => {
-      const forRole = visibleBullets.filter((b) => b.roles && b.roles.includes(role.title));
+      const forRole = visibleBullets.filter((b) => b.roles && b.roles.includes(role.title) && !alreadyRendered.has(b));
+    forRole.forEach((b) => alreadyRendered.add(b));
       // While filtering, a role with no surviving bullets is dropped; in the
       // default view an empty role still belongs in the timeline.
       if (!forRole.length && rankList.length) return;
