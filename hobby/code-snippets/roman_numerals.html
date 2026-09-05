@@ -22,7 +22,17 @@
   body::before {
     content: "";
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    /* Mobile browsers resize the visible viewport as their address bar
+       collapses/expands on scroll. "inset: 0" (and plain 100vh) track that
+       live size, so a fixed element sized off it visibly jumps bigger mid-
+       scroll. 100svh locks to the *smallest* viewport (toolbar fully shown)
+       and never changes, which stops the jump; the 100vh line above it is
+       just a fallback for older browsers that don't know svh yet. */
+    height: 100vh;
+    height: 100svh;
     background-image: url('/images/code-snippets/roman-numerals-tablet.jpeg');
     background-repeat: no-repeat;
     background-position: center;
