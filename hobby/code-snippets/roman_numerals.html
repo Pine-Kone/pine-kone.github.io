@@ -27,12 +27,12 @@
     right: 0;
     /* Mobile browsers resize the visible viewport as their address bar
        collapses/expands on scroll. "inset: 0" (and plain 100vh) track that
-       live size, so a fixed element sized off it visibly jumps bigger mid-
-       scroll. 100svh locks to the *smallest* viewport (toolbar fully shown)
-       and never changes, which stops the jump; the 100vh line above it is
-       just a fallback for older browsers that don't know svh yet. */
+       live size, so a fixed element sized off it visibly jumps mid-scroll.
+       100lvh locks to the *largest* viewport (toolbar fully collapsed) and
+       never changes, which stops the jump; the 100vh line above it is just
+       a fallback for older browsers that don't know lvh yet. */
     height: 100vh;
-    height: 100svh;
+    height: 100lvh;
     background-image: url('/images/code-snippets/roman-numerals-tablet.jpeg');
     background-repeat: no-repeat;
     background-position: center;
