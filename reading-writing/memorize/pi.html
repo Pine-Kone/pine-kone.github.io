@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digits of Pi Memorization</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    .pi-wrapper {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 0.5rem;
+      line-height: 2;
+      text-align: center;
+    }
+
+    .pi-digits {
+      font-family: "Courier New", monospace;
+      font-size: 1.5rem;
+      letter-spacing: 0.15em;
+      word-break: break-all;
+    }
+
+    .pi-digit {
+      display: inline-block;
+      padding: 0.1em 0.2em;
+    }
+
+    .pi-digit.memorized {
+      color: #1a7a2a;
+      font-weight: bold;
+    }
+
+    .pi-digit.unmemorized {
+      color: #999;
+    }
+
+    .pi-stats {
+      max-width: 600px;
+      margin: 1rem auto 2rem;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+
+    .pi-stats .memorized-count {
+      color: #1a7a2a;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Digits of Pi Memorization</h1>
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/reading-writing/">My Reading &amp; Writing</a></li>
+        <li><a href="/reading-writing/memorize/">Back to Memorize Index</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h2>The Ratio of a Circle's Circumference to Its Diameter</h2>
+    <p>My running goal: memorize more digits of Pi. Green = memorized, gray = still to go.</p>
+  </section>
+
+  <div class="pi-stats">
+    <span class="memorized-count">20</span> of 300 digits memorized
+  </div>
+
+  <div class="pi-wrapper">
+    <div class="pi-digits" id="pi-digits"></div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Hans M. Haroldsen</p>
+  </footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script>
+    // First 300 digits of Pi (not rounded)
+    const PI_DIGITS = "3.14159265358979323846264338327950288419716939937510582097494459230781640628620899862803482534211706798214808651328230664709384460955058223172535940812848111745028410270193852110555964462294895493038196442881097566593344612847564823378678316527120190914564856692346034861045432664821339360726024914127";
+    const MEMORIZED_COUNT = 20;
+
+    const container = document.getElementById('pi-digits');
+    let digitIndex = 0;
+    for (const ch of PI_DIGITS) {
+      const span = document.createElement('span');
+      span.classList.add('pi-digit');
+      if (ch === '.') {
+        span.textContent = '.';
+        // The decimal point doesn't count as a digit; leave it neutral
+      } else {
+        digitIndex++;
+        span.textContent = ch;
+        if (digitIndex <= MEMORIZED_COUNT) {
+          span.classList.add('memorized');
+        } else {
+          span.classList.add('unmemorized');
+        }
+      }
+      container.appendChild(span);
+    }
+  </script>
+</body>
+</html>
