@@ -38,15 +38,7 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>[Book Title]</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/reading-writing/">Back to My Reading &amp; Writing</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header data-site-header data-title="[Book Title]" data-nav="breadcrumb" data-back-href="/reading-writing/" data-back-label="My Reading &amp; Writing"></header>
 
   <section class="annotation-wrapper">
     <h2>Notes & Annotations</h2>
@@ -69,11 +61,10 @@
     <p>[Write how you plan to apply the insights from this book in your life or work]</p>
   </section>
 
-  <footer>
-    <p>© 2025 Hans M. Haroldsen</p>
-  </footer>
+    <footer data-site-footer></footer>
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
