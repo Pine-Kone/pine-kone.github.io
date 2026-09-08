@@ -96,16 +96,7 @@
 
 <body>
 
-  <header>
-    <h1>Pokémon</h1>
-
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/hobby/">Back to Hobbies</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header data-site-header data-title="Pokémon" data-nav="breadcrumb" data-back-href="/hobby/" data-back-label="Hobbies"></header>
 
   <main>
 
@@ -220,13 +211,12 @@
 
   </main>
 
-  <footer>
-    <p>© 2026 Hans M. Haroldsen</p>
-  </footer>
+    <footer data-site-footer></footer>
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
 
   <script src="/scripts/light-dark-toggle.js"></script>
 
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
