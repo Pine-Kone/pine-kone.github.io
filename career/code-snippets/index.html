@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code Snippets | Hobbies</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    .snippet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .snippet-card {
+      background: var(--primary-color);
+      color: white;
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      max-width: 320px;
+      width: 100%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+      text-decoration: none;
+    }
+
+    .snippet-card:hover {
+      background: var(--accent-color);
+    }
+
+    .snippet-card h3 {
+      margin-top: 0;
+    }
+
+    .snippet-card p {
+      margin-bottom: 0;
+    }
+  </style>
+</head>
+<body>
+    <header data-site-header data-title="Code Snippets" data-nav="breadcrumb" data-back-href="/hobby/" data-back-label="Hobbies"></header>
+
+  <main class="snippet-grid">
+      <a href="/career/code-snippets/runaway-button.html" class="snippet-card">
+      <h3>Runaway Button</h3>
+      <p>A playful snippet where the button avoids your mouse. Originally built for a college assignment.</p>
+    </a>
+
+      <a href="/career/code-snippets/items-per-group.html" class="snippet-card">
+      <h3>Items per Group Calculator</h3>
+      <p>A handy utility to divide items into even groups. Useful for inventory or teaching planning.</p>
+    </a>
+
+      <a href="/career/code-snippets/roman-numerals.html" class="snippet-card">
+      <h3>Roman Numeral Converter</h3>
+      <p>Convert between integers and Roman numerals. Great for logic and regex practice.</p>
+    </a>
+  </main>
+
+    <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+</body>
+</html>

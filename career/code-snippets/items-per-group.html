@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+<meta charset="utf-8">
+<title>Items per Group Calculator | Hans M. Haroldsen</title>
+<link rel="stylesheet" href="/style/main.css" />
+<script type="text/javascript">
+"use strict";
+
+/*Input: Total number of items, number of groups
+*Processing:
+*	smallTeamSize = floor(total/groups)
+*	largeTeamSize = smallTeamSize + 1
+*	largeTeams = total items % groups
+*	smallTeams = Teams - largeTeams
+*Output:
+*		___ groups with ___ members and
+*		___ groups with ___ members
+*/
+
+function calcTeams() {
+var items = parseInt(document.getElementById('Students').value);
+var groups = parseInt(document.getElementById('Teams').value);
+
+var smallTeamSize = Math.floor(items/groups);
+var largeTeamSize = smallTeamSize + 1;
+var largeTeams = items % groups;
+var smallTeams = groups - largeTeams;
+
+document.getElementById('output').innerHTML = largeTeams + " groups with " + largeTeamSize + " items and " + smallTeams + " groups with " + smallTeamSize + " items.";
+}
+</script>
+</head>
+<body>
+  <header data-site-header data-title="Items per Group Calculator" data-nav="breadcrumb" data-back-href="/career/code-snippets/" data-back-label="Code Snippets"></header>
+
+  <section class="hero">
+    <p>Number of items <input type="text" id="Students"></p>
+    <p>Number of groups <input type="text" id="Teams"></p>
+    <button type="button" onclick="calcTeams()">Teams</button>
+    <div id="output"></div>
+  </section>
+
+  <section class="walkthrough-section">
+    <h3>How It Works</h3>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">var items = parseInt(document.getElementById('Students').value);
+var groups = parseInt(document.getElementById('Teams').value);</div>
+      <div class="walkthrough-explanation">
+        <h4>Getting started</h4>
+        <p>Grabs the two numbers you typed in - the total number of items, and how many groups you want to split them into.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">var smallTeamSize = Math.floor(items/groups);
+var largeTeamSize = smallTeamSize + 1;
+var largeTeams = items % groups;
+var smallTeams = groups - largeTeams;</div>
+      <div class="walkthrough-explanation">
+        <h4>The actual problem: splitting people evenly</h4>
+        <p>Say you've got 23 items and want 5 groups. 23 &divide; 5 = 4.6 - but you can't have 0.6 of a person on a group. <code>Math.floor()</code> rounds that down to 4, which becomes our "small" group size. But 5 groups &times; 4 items = only 20 - there are 3 items left over. Those 3 need a home too, so they each get folded into a group that's one bigger (<code>largeTeamSize</code>, which is just <code>smallTeamSize + 1</code>). The remainder operator (<code>%</code>) tells us exactly how many items are left over - and that's also exactly how many "large" groups we need, since each large group absorbs one extra item. Whatever groups are left (<code>groups - largeTeams</code>) stay at the smaller size.</p>
+      </div>
+    </div>
+
+    <div class="walkthrough-block">
+      <div class="walkthrough-code">document.getElementById('output').innerHTML =
+  largeTeams + " groups with " + largeTeamSize +
+  " items and " + smallTeams + " groups with " +
+  smallTeamSize + " items.";</div>
+      <div class="walkthrough-explanation">
+        <h4>Showing the result</h4>
+        <p>Stitches all four numbers into a plain-English sentence and displays it. For the 23-items-into-5-groups example: "3 groups with 5 items and 2 groups with 4 items" - and sure enough, 3&times;5 + 2&times;4 = 23. Nobody's left out, and every group is as close to even as the numbers allow.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+</body>
+</html>
