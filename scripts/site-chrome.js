@@ -20,7 +20,7 @@
 
   const MAIN_NAV_LINKS = [
     { href: "/", label: "Home" },
-    { href: "/portfolio/", label: "My Career" },
+    { href: "/career/", label: "My Career" },
     { href: "/reading-writing/", label: "My Reading &amp; Writing" },
     { href: "/hobby/", label: "My Hobbies" },
     { href: "https://youtube.com/@rarecandymindset?si=ucd7i97Zyu1Jm-pX", label: "YouTube", external: true },
