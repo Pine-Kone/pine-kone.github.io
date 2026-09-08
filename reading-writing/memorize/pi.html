@@ -51,16 +51,7 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Digits of Pi Memorization</h1>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/reading-writing/">My Reading &amp; Writing</a></li>
-        <li><a href="/reading-writing/memorize/">Back to Memorize Index</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header data-site-header data-title="Digits of Pi" data-nav="breadcrumb" data-back-href="/reading-writing/memorize/" data-back-label="Memorize Index"></header>
 
   <section class="hero">
     <h2>The Ratio of a Circle's Circumference to Its Diameter</h2>
@@ -75,9 +66,7 @@
     <div class="pi-digits" id="pi-digits"></div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Hans M. Haroldsen</p>
-  </footer>
+    <footer data-site-footer></footer>
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
@@ -106,5 +95,6 @@
       container.appendChild(span);
     }
   </script>
+  <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
