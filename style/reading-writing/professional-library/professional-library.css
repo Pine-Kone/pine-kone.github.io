@@ -1,0 +1,92 @@
+.book-profile-hero {
+    padding: 3rem 1rem 2rem;
+    text-align: center;
+    background: var(--background-color);
+}
+
+.book-profile-cover {
+    width: 180px;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.25rem;
+}
+
+.book-profile-hero h2 {
+    margin-bottom: 0.25rem;
+}
+
+.book-profile-author {
+    font-style: italic;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+.book-profile-stats-section {
+    padding: 0.5rem 1rem 2rem;
+    text-align: center;
+}
+
+.book-profile-stats {
+    display: flex;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.book-profile-stat {
+    background: var(--primary-color);
+    color: white;
+    border-radius: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    min-width: 130px;
+}
+
+.book-profile-stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.8;
+}
+
+.book-profile-stat-value {
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-top: 0.3rem;
+}
+
+.book-profile-insight-section {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 1.5rem 1.5rem;
+    text-align: center;
+    line-height: 1.6;
+}
+
+.book-profile-links {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    padding-bottom: 3rem;
+}
+
+.book-profile-link {
+    background: var(--accent-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s;
+}
+
+.book-profile-link:hover {
+    background: #cc6300;
+}
+
+body.dark-mode .book-profile-stat {
+    background: #2a2a2a;
+}
