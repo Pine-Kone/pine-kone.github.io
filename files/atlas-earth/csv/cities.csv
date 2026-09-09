@@ -1,0 +1,92 @@
+cityID,cityName,stateID,countryID
+1,Idaho Falls,43,1
+2,Billings,41,1
+3,Bozeman,41,1
+4,West Yellowstone,41,1
+5,Shelley,43,1
+6,Ucon,43,1
+7,Ammon,43,1
+8,Rigby,43,1
+9,Iona,43,1
+10,Swan Valley,43,1
+11,Irwin,43,1
+12,Alpine,44,1
+13,Thayne,44,1
+14,Afton,44,1
+15,Chubbuck,43,1
+16,Dubois,43,1
+17,Deer Lodge County,41,1
+18,Missoula,41,1
+19,Superior,41,1
+20,Wallace,43,1
+21,Osburn,43,1
+22,Post Falls,43,1
+23,Spokane Valley,42,1
+24,Spokane,42,1
+25,Moses Lake,42,1
+26,Lynden,42,1
+27,Bellingham,42,1
+28,Moore,43,1
+29,Mackay,43,1
+30,Clayton,43,1
+31,Stanley,43,1
+32,Challis,43,1
+33,Arco,43,1
+34,Butte City,43,1
+35,Heyburn,43,1
+36,Burley,43,1
+37,Jerome,43,1
+38,Boise,43,1
+39,Garden City,43,1
+40,Salt Lake City,45,1
+41,Sandy,45,1
+42,Draper,45,1
+43,Lindon,45,1
+44,Inkom,43,1
+45,Arimo,43,1
+46,Downey,43,1
+47,Phoenix,48,1
+48,Scottsdale,48,1
+49,Tempe,48,1
+50,Mesa,48,1
+51,Gilbert,48,1
+52,Chandler,48,1
+53,Glendale,48,1
+54,Peoria,48,1
+55,Youngtown,48,1
+56,El Mirage,48,1
+57,Surprise,48,1
+58,Litchfield Park,48,1
+59,Goodyear,48,1
+60,Avondale,48,1
+61,Ririe,43,1
+62,Wells,36,1
+63,Elko,36,1
+64,Eureka County,36,1
+65,Winnemucca,36,1
+66,Fernley,36,1
+67,Wadsworth,36,1
+68,Sparks,36,1
+69,Reno,36,1
+70,Verdi-Mogul,36,1
+71,Storey County,36,1
+72,Lovelock,36,1
+73,Battle Mountain,36,1
+74,Carlin,36,1
+75,Hollister,43,1
+76,Ashton,43,1
+77,Big Timber,41,1
+78,Laurel,41,1
+79,Columbus,41,1
+80,Livingston,41,1
+81,Belgrade,41,1
+82,Rexburg,43,1
+83,Menan,43,1
+84,Lewisville,43,1
+85,Basalt,43,1
+86,Sugar City,43,1
+87,Teton,43,1
+88,St. Anthony,43,1
+89,Blackfoot,43,1
+90,Pocatello,43,1
+91,American Falls,43,1

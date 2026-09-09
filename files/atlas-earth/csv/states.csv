@@ -1,0 +1,51 @@
+stateID,countryID,abbreviation,stateName
+1,1,DE,Delaware
+2,1,PA,Pennsylvania
+3,1,NJ,New Jersey
+4,1,GA,Georgia
+5,1,CT,Connecticut
+6,1,MA,Massachusetts
+7,1,MD,Maryland
+8,1,SC,South Carolina
+9,1,NH,New Hampshire
+10,1,VA,Virginia
+11,1,NY,New York
+12,1,NC,North Carolina
+13,1,RI,Rhode Island
+14,1,VT,Vermont
+15,1,KY,Kentucky
+16,1,TN,Tennessee
+17,1,OH,Ohio
+18,1,LA,Louisiana
+19,1,IN,Indiana
+20,1,MS,Mississippi
+21,1,IL,Illinois
+22,1,AL,Alabama
+23,1,ME,Maine
+24,1,MO,Missouri
+25,1,AR,Arkansas
+26,1,MI,Michigan
+27,1,FL,Florida
+28,1,TX,Texas
+29,1,IA,Iowa
+30,1,WI,Wisconsin
+31,1,CA,California
+32,1,MN,Minnesota
+33,1,OR,Oregon
+34,1,KS,Kansas
+35,1,WV,West Virginia
+36,1,NV,Nevada
+37,1,NE,Nebraska
+38,1,CO,Colorado
+39,1,ND,North Dakota
+40,1,SD,South Dakota
+41,1,MT,Montana
+42,1,WA,Washington
+43,1,ID,Idaho
+44,1,WY,Wyoming
+45,1,UT,Utah
+46,1,OK,Oklahoma
+47,1,NM,New Mexico
+48,1,AZ,Arizona
+49,1,AK,Alaska
+50,1,HI,Hawaii
