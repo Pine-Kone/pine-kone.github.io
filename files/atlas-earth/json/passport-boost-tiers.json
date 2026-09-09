@@ -1,0 +1,44 @@
+[
+  {
+    "tierID": 1,
+    "scheduleID": 1,
+    "minBadges": 0,
+    "maxBadges": 0,
+    "boostRate": 0.0
+  },
+  {
+    "tierID": 2,
+    "scheduleID": 1,
+    "minBadges": 1,
+    "maxBadges": 10,
+    "boostRate": 0.05
+  },
+  {
+    "tierID": 3,
+    "scheduleID": 1,
+    "minBadges": 11,
+    "maxBadges": 30,
+    "boostRate": 0.1
+  },
+  {
+    "tierID": 4,
+    "scheduleID": 1,
+    "minBadges": 31,
+    "maxBadges": 60,
+    "boostRate": 0.15
+  },
+  {
+    "tierID": 5,
+    "scheduleID": 1,
+    "minBadges": 61,
+    "maxBadges": 100,
+    "boostRate": 0.2
+  },
+  {
+    "tierID": 6,
+    "scheduleID": 1,
+    "minBadges": 101,
+    "maxBadges": 9999,
+    "boostRate": 0.25
+  }
+]

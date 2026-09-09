@@ -1,0 +1,14 @@
+[
+  {
+    "passportTierID": 1,
+    "passportTierName": "City"
+  },
+  {
+    "passportTierID": 2,
+    "passportTierName": "State"
+  },
+  {
+    "passportTierID": 3,
+    "passportTierName": "Country"
+  }
+]

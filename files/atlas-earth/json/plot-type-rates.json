@@ -1,0 +1,34 @@
+[
+  {
+    "plotRateID": 1,
+    "plotTypeID": 1,
+    "effectiveDate": "2022-09-21",
+    "expirationDate": null,
+    "spawnPercent": 0.5,
+    "earningPerSecond": 1.11e-09
+  },
+  {
+    "plotRateID": 2,
+    "plotTypeID": 2,
+    "effectiveDate": "2022-09-21",
+    "expirationDate": null,
+    "spawnPercent": 0.3,
+    "earningPerSecond": 1.6e-09
+  },
+  {
+    "plotRateID": 3,
+    "plotTypeID": 3,
+    "effectiveDate": "2022-09-21",
+    "expirationDate": null,
+    "spawnPercent": 0.15,
+    "earningPerSecond": 2.2e-09
+  },
+  {
+    "plotRateID": 4,
+    "plotTypeID": 4,
+    "effectiveDate": "2022-09-21",
+    "expirationDate": null,
+    "spawnPercent": 0.05,
+    "earningPerSecond": 4.4e-09
+  }
+]

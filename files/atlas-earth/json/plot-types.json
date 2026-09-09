@@ -1,0 +1,18 @@
+[
+  {
+    "plotTypeID": 1,
+    "plotTypeName": "Common"
+  },
+  {
+    "plotTypeID": 2,
+    "plotTypeName": "Rare"
+  },
+  {
+    "plotTypeID": 3,
+    "plotTypeName": "Epic"
+  },
+  {
+    "plotTypeID": 4,
+    "plotTypeName": "Legendary"
+  }
+]

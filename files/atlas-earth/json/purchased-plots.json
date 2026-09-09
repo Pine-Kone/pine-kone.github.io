@@ -1,0 +1,1343 @@
+[
+  {
+    "plotNumber": 1,
+    "purchaseDate": "2022-09-21",
+    "plotTypeID": 1,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 2,
+    "purchaseDate": "2022-09-22",
+    "plotTypeID": 1,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 3,
+    "purchaseDate": "2022-09-23",
+    "plotTypeID": 1,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 4,
+    "purchaseDate": "2022-09-24",
+    "plotTypeID": 2,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 5,
+    "purchaseDate": "2022-09-25",
+    "plotTypeID": 2,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 6,
+    "purchaseDate": "2022-09-26",
+    "plotTypeID": 2,
+    "cityID": null,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Home"
+  },
+  {
+    "plotNumber": 7,
+    "purchaseDate": "2022-09-27",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 8,
+    "purchaseDate": "2022-09-28",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 9,
+    "purchaseDate": "2022-09-29",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 10,
+    "purchaseDate": "2022-09-30",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 11,
+    "purchaseDate": "2022-10-02",
+    "plotTypeID": 2,
+    "cityID": 2,
+    "stateID": 41,
+    "countryID": 1,
+    "plotNotes": "Kim & Steve's place"
+  },
+  {
+    "plotNumber": 12,
+    "purchaseDate": "2022-10-03",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 13,
+    "purchaseDate": "2022-10-04",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 14,
+    "purchaseDate": "2022-10-05",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 15,
+    "purchaseDate": "2022-10-06",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 16,
+    "purchaseDate": "2022-10-07",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 17,
+    "purchaseDate": "2022-10-08",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 18,
+    "purchaseDate": "2022-10-09",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 19,
+    "purchaseDate": "2022-10-10",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 20,
+    "purchaseDate": "2022-10-11",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 21,
+    "purchaseDate": "2022-10-12",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 22,
+    "purchaseDate": "2022-10-13",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 23,
+    "purchaseDate": "2022-10-14",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 24,
+    "purchaseDate": "2022-10-15",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 25,
+    "purchaseDate": "2022-10-16",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 26,
+    "purchaseDate": "2022-10-17",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 27,
+    "purchaseDate": "2022-10-18",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 28,
+    "purchaseDate": "2022-10-19",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 29,
+    "purchaseDate": "2022-10-20",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 30,
+    "purchaseDate": "2022-10-21",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 31,
+    "purchaseDate": "2022-10-22",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 32,
+    "purchaseDate": "2022-10-24",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 33,
+    "purchaseDate": "2022-10-25",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 34,
+    "purchaseDate": "2022-10-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 35,
+    "purchaseDate": "2022-10-27",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 36,
+    "purchaseDate": "2022-10-28",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 37,
+    "purchaseDate": "2022-10-29",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 38,
+    "purchaseDate": "2022-11-01",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 39,
+    "purchaseDate": "2022-11-02",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 40,
+    "purchaseDate": "2022-11-03",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 41,
+    "purchaseDate": "2022-11-04",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 42,
+    "purchaseDate": "2022-11-05",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 43,
+    "purchaseDate": "2022-11-06",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 44,
+    "purchaseDate": "2022-11-07",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 45,
+    "purchaseDate": "2022-11-08",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 46,
+    "purchaseDate": "2022-11-09",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 47,
+    "purchaseDate": "2022-11-12",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 48,
+    "purchaseDate": "2022-11-14",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 49,
+    "purchaseDate": "2022-11-15",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 50,
+    "purchaseDate": "2022-11-16",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 51,
+    "purchaseDate": "2022-11-17",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 52,
+    "purchaseDate": "2022-11-18",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 53,
+    "purchaseDate": "2022-11-21",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 54,
+    "purchaseDate": "2022-11-22",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 55,
+    "purchaseDate": "2022-11-23",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 56,
+    "purchaseDate": "2022-11-25",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 57,
+    "purchaseDate": "2022-11-28",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 58,
+    "purchaseDate": "2022-11-28",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 59,
+    "purchaseDate": "2022-11-30",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 60,
+    "purchaseDate": "2022-12-01",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 61,
+    "purchaseDate": "2022-12-03",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 62,
+    "purchaseDate": "2022-12-06",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 63,
+    "purchaseDate": "2022-12-07",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 64,
+    "purchaseDate": "2022-12-08",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 65,
+    "purchaseDate": "2022-12-09",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 66,
+    "purchaseDate": "2022-12-10",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 67,
+    "purchaseDate": "2022-12-12",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 68,
+    "purchaseDate": "2022-12-14",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 69,
+    "purchaseDate": "2022-12-16",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "*Date guesstimated"
+  },
+  {
+    "plotNumber": 70,
+    "purchaseDate": "2022-12-17",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 71,
+    "purchaseDate": "2022-12-19",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 72,
+    "purchaseDate": "2022-12-20",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 73,
+    "purchaseDate": "2022-12-20",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": null
+  },
+  {
+    "plotNumber": 74,
+    "purchaseDate": "2022-12-21",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Minifigure Mania"
+  },
+  {
+    "plotNumber": 75,
+    "purchaseDate": "2022-12-23",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Soccer ball statue by the soccer complex"
+  },
+  {
+    "plotNumber": 76,
+    "purchaseDate": "2022-12-24",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Rosemark"
+  },
+  {
+    "plotNumber": 77,
+    "purchaseDate": "2022-12-25",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "ICCU intersection on the way to Kim's place"
+  },
+  {
+    "plotNumber": 78,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 79,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 80,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 81,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 82,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 83,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 84,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 85,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 86,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 87,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 88,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 89,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 90,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 91,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 92,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 93,
+    "purchaseDate": "2022-12-26",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Destinations Inn"
+  },
+  {
+    "plotNumber": 94,
+    "purchaseDate": "2022-12-27",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 95,
+    "purchaseDate": "2022-12-29",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 96,
+    "purchaseDate": "2022-12-30",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 97,
+    "purchaseDate": "2022-12-31",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Indian statue by Fred Meyer"
+  },
+  {
+    "plotNumber": 98,
+    "purchaseDate": "2023-01-02",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 99,
+    "purchaseDate": "2023-01-03",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 100,
+    "purchaseDate": "2023-01-04",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 101,
+    "purchaseDate": "2023-01-05",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 102,
+    "purchaseDate": "2023-01-06",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 103,
+    "purchaseDate": "2023-01-07",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Madelyn's friends' baby shower house"
+  },
+  {
+    "plotNumber": 104,
+    "purchaseDate": "2023-01-08",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 105,
+    "purchaseDate": "2023-01-09",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 106,
+    "purchaseDate": "2023-01-10",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 107,
+    "purchaseDate": "2023-01-11",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 108,
+    "purchaseDate": "2023-01-12",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 109,
+    "purchaseDate": "2023-01-13",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 110,
+    "purchaseDate": "2023-01-13",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Idaho Falls Temple"
+  },
+  {
+    "plotNumber": 111,
+    "purchaseDate": "2023-01-15",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "ICCU intersection on the way to Kim's place"
+  },
+  {
+    "plotNumber": 112,
+    "purchaseDate": "2023-01-16",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 113,
+    "purchaseDate": "2023-01-17",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Indian statue by Fred Meyer"
+  },
+  {
+    "plotNumber": 114,
+    "purchaseDate": "2023-01-18",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 115,
+    "purchaseDate": "2023-01-19",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 116,
+    "purchaseDate": "2023-01-19",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 117,
+    "purchaseDate": "2023-01-21",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Coldwell Banker Tomlinson, close to the tractor statue"
+  },
+  {
+    "plotNumber": 118,
+    "purchaseDate": "2023-01-22",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Lincoln Stake Building"
+  },
+  {
+    "plotNumber": 119,
+    "purchaseDate": "2023-01-23",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 120,
+    "purchaseDate": "2023-01-24",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 121,
+    "purchaseDate": "2023-01-25",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 122,
+    "purchaseDate": "2023-01-26",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 123,
+    "purchaseDate": "2023-01-28",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Coldwell Banker Tomlinson, close to the tractor statue"
+  },
+  {
+    "plotNumber": 124,
+    "purchaseDate": "2023-01-29",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Lincoln Stake Building"
+  },
+  {
+    "plotNumber": 125,
+    "purchaseDate": "2023-02-07",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 126,
+    "purchaseDate": "2023-02-08",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 127,
+    "purchaseDate": "2023-02-09",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 128,
+    "purchaseDate": "2023-02-10",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 129,
+    "purchaseDate": "2023-02-11",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Smith, Kunz & Associates"
+  },
+  {
+    "plotNumber": 130,
+    "purchaseDate": "2023-02-12",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Lincoln Stake Building"
+  },
+  {
+    "plotNumber": 131,
+    "purchaseDate": "2023-02-13",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "ICCU intersection of Taco Time and Arctic Circle"
+  },
+  {
+    "plotNumber": 132,
+    "purchaseDate": "2023-02-15",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Browning Law"
+  },
+  {
+    "plotNumber": 133,
+    "purchaseDate": "2023-02-16",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 134,
+    "purchaseDate": "2023-02-18",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Smith, Kunz & Associates"
+  },
+  {
+    "plotNumber": 135,
+    "purchaseDate": "2023-02-18",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "ICCU intersection on the way to Kim's place"
+  },
+  {
+    "plotNumber": 136,
+    "purchaseDate": "2023-02-21",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 137,
+    "purchaseDate": "2023-02-23",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 138,
+    "purchaseDate": "2023-02-24",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 139,
+    "purchaseDate": "2023-02-25",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Smith, Kunz & Associates"
+  },
+  {
+    "plotNumber": 140,
+    "purchaseDate": "2023-02-27",
+    "plotTypeID": 4,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 141,
+    "purchaseDate": "2023-02-27",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 142,
+    "purchaseDate": "2023-02-27",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Lincoln Stake Building"
+  },
+  {
+    "plotNumber": 143,
+    "purchaseDate": "2023-03-01",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Lincoln Stake Building"
+  },
+  {
+    "plotNumber": 144,
+    "purchaseDate": "2023-03-03",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 145,
+    "purchaseDate": "2023-03-06",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 146,
+    "purchaseDate": "2023-03-06",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 147,
+    "purchaseDate": "2023-03-08",
+    "plotTypeID": 2,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Energy Way"
+  },
+  {
+    "plotNumber": 148,
+    "purchaseDate": "2023-03-17",
+    "plotTypeID": 1,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Fred Meyer"
+  },
+  {
+    "plotNumber": 149,
+    "purchaseDate": "2023-03-17",
+    "plotTypeID": 3,
+    "cityID": 1,
+    "stateID": 43,
+    "countryID": 1,
+    "plotNotes": "Indian Statue by Fred Meyer"
+  }
+]

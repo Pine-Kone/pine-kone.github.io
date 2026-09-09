@@ -1,0 +1,86 @@
+[
+  {
+    "tierID": 1,
+    "scheduleID": 1,
+    "minPlots": 1,
+    "maxPlots": 150,
+    "multiplierAmount": 30
+  },
+  {
+    "tierID": 2,
+    "scheduleID": 1,
+    "minPlots": 151,
+    "maxPlots": 220,
+    "multiplierAmount": 20
+  },
+  {
+    "tierID": 3,
+    "scheduleID": 1,
+    "minPlots": 221,
+    "maxPlots": 290,
+    "multiplierAmount": 15
+  },
+  {
+    "tierID": 4,
+    "scheduleID": 1,
+    "minPlots": 291,
+    "maxPlots": 365,
+    "multiplierAmount": 12
+  },
+  {
+    "tierID": 5,
+    "scheduleID": 1,
+    "minPlots": 366,
+    "maxPlots": 435,
+    "multiplierAmount": 10
+  },
+  {
+    "tierID": 6,
+    "scheduleID": 1,
+    "minPlots": 436,
+    "maxPlots": 545,
+    "multiplierAmount": 8
+  },
+  {
+    "tierID": 7,
+    "scheduleID": 1,
+    "minPlots": 546,
+    "maxPlots": 625,
+    "multiplierAmount": 7
+  },
+  {
+    "tierID": 8,
+    "scheduleID": 1,
+    "minPlots": 626,
+    "maxPlots": 730,
+    "multiplierAmount": 6
+  },
+  {
+    "tierID": 9,
+    "scheduleID": 1,
+    "minPlots": 731,
+    "maxPlots": 875,
+    "multiplierAmount": 5
+  },
+  {
+    "tierID": 10,
+    "scheduleID": 1,
+    "minPlots": 876,
+    "maxPlots": 1100,
+    "multiplierAmount": 4
+  },
+  {
+    "tierID": 11,
+    "scheduleID": 1,
+    "minPlots": 1101,
+    "maxPlots": 1500,
+    "multiplierAmount": 3
+  },
+  {
+    "tierID": 12,
+    "scheduleID": 1,
+    "minPlots": 1501,
+    "maxPlots": null,
+    "multiplierAmount": 2
+  }
+]

@@ -1,0 +1,548 @@
+[
+  {
+    "cityID": 1,
+    "cityName": "Idaho Falls",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 2,
+    "cityName": "Billings",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 3,
+    "cityName": "Bozeman",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 4,
+    "cityName": "West Yellowstone",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 5,
+    "cityName": "Shelley",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 6,
+    "cityName": "Ucon",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 7,
+    "cityName": "Ammon",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 8,
+    "cityName": "Rigby",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 9,
+    "cityName": "Iona",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 10,
+    "cityName": "Swan Valley",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 11,
+    "cityName": "Irwin",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 12,
+    "cityName": "Alpine",
+    "stateID": 44,
+    "countryID": 1
+  },
+  {
+    "cityID": 13,
+    "cityName": "Thayne",
+    "stateID": 44,
+    "countryID": 1
+  },
+  {
+    "cityID": 14,
+    "cityName": "Afton",
+    "stateID": 44,
+    "countryID": 1
+  },
+  {
+    "cityID": 15,
+    "cityName": "Chubbuck",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 16,
+    "cityName": "Dubois",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 17,
+    "cityName": "Deer Lodge County",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 18,
+    "cityName": "Missoula",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 19,
+    "cityName": "Superior",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 20,
+    "cityName": "Wallace",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 21,
+    "cityName": "Osburn",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 22,
+    "cityName": "Post Falls",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 23,
+    "cityName": "Spokane Valley",
+    "stateID": 42,
+    "countryID": 1
+  },
+  {
+    "cityID": 24,
+    "cityName": "Spokane",
+    "stateID": 42,
+    "countryID": 1
+  },
+  {
+    "cityID": 25,
+    "cityName": "Moses Lake",
+    "stateID": 42,
+    "countryID": 1
+  },
+  {
+    "cityID": 26,
+    "cityName": "Lynden",
+    "stateID": 42,
+    "countryID": 1
+  },
+  {
+    "cityID": 27,
+    "cityName": "Bellingham",
+    "stateID": 42,
+    "countryID": 1
+  },
+  {
+    "cityID": 28,
+    "cityName": "Moore",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 29,
+    "cityName": "Mackay",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 30,
+    "cityName": "Clayton",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 31,
+    "cityName": "Stanley",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 32,
+    "cityName": "Challis",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 33,
+    "cityName": "Arco",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 34,
+    "cityName": "Butte City",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 35,
+    "cityName": "Heyburn",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 36,
+    "cityName": "Burley",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 37,
+    "cityName": "Jerome",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 38,
+    "cityName": "Boise",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 39,
+    "cityName": "Garden City",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 40,
+    "cityName": "Salt Lake City",
+    "stateID": 45,
+    "countryID": 1
+  },
+  {
+    "cityID": 41,
+    "cityName": "Sandy",
+    "stateID": 45,
+    "countryID": 1
+  },
+  {
+    "cityID": 42,
+    "cityName": "Draper",
+    "stateID": 45,
+    "countryID": 1
+  },
+  {
+    "cityID": 43,
+    "cityName": "Lindon",
+    "stateID": 45,
+    "countryID": 1
+  },
+  {
+    "cityID": 44,
+    "cityName": "Inkom",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 45,
+    "cityName": "Arimo",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 46,
+    "cityName": "Downey",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 47,
+    "cityName": "Phoenix",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 48,
+    "cityName": "Scottsdale",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 49,
+    "cityName": "Tempe",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 50,
+    "cityName": "Mesa",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 51,
+    "cityName": "Gilbert",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 52,
+    "cityName": "Chandler",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 53,
+    "cityName": "Glendale",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 54,
+    "cityName": "Peoria",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 55,
+    "cityName": "Youngtown",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 56,
+    "cityName": "El Mirage",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 57,
+    "cityName": "Surprise",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 58,
+    "cityName": "Litchfield Park",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 59,
+    "cityName": "Goodyear",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 60,
+    "cityName": "Avondale",
+    "stateID": 48,
+    "countryID": 1
+  },
+  {
+    "cityID": 61,
+    "cityName": "Ririe",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 62,
+    "cityName": "Wells",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 63,
+    "cityName": "Elko",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 64,
+    "cityName": "Eureka County",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 65,
+    "cityName": "Winnemucca",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 66,
+    "cityName": "Fernley",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 67,
+    "cityName": "Wadsworth",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 68,
+    "cityName": "Sparks",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 69,
+    "cityName": "Reno",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 70,
+    "cityName": "Verdi-Mogul",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 71,
+    "cityName": "Storey County",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 72,
+    "cityName": "Lovelock",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 73,
+    "cityName": "Battle Mountain",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 74,
+    "cityName": "Carlin",
+    "stateID": 36,
+    "countryID": 1
+  },
+  {
+    "cityID": 75,
+    "cityName": "Hollister",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 76,
+    "cityName": "Ashton",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 77,
+    "cityName": "Big Timber",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 78,
+    "cityName": "Laurel",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 79,
+    "cityName": "Columbus",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 80,
+    "cityName": "Livingston",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 81,
+    "cityName": "Belgrade",
+    "stateID": 41,
+    "countryID": 1
+  },
+  {
+    "cityID": 82,
+    "cityName": "Rexburg",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 83,
+    "cityName": "Menan",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 84,
+    "cityName": "Lewisville",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 85,
+    "cityName": "Basalt",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 86,
+    "cityName": "Sugar City",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 87,
+    "cityName": "Teton",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 88,
+    "cityName": "St. Anthony",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 89,
+    "cityName": "Blackfoot",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 90,
+    "cityName": "Pocatello",
+    "stateID": 43,
+    "countryID": 1
+  },
+  {
+    "cityID": 91,
+    "cityName": "American Falls",
+    "stateID": 43,
+    "countryID": 1
+  }
+]
