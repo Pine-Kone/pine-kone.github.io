@@ -4,7 +4,44 @@
 <meta charset="utf-8">
 <title>Items per Group Calculator | Hans M. Haroldsen</title>
 <link rel="stylesheet" href="/style/main.css" />
-<script type="text/javascript">
+  <style>
+    /* Watermark staged (same pattern as the Roman Numerals page): drop an
+    image at the path below and it'll appear faint and fixed behind the
+    whole page. Until that file exists this block is a harmless no-op. */
+    body {
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100vh;
+      height: 100lvh;
+      background-image: url('/images/code-snippets/items-per-group-watermark.jpeg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: auto 100%;
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .intro,
+    .hero,
+    .walkthrough-section {
+      position: relative;
+      z-index: 1;
+      background: transparent;
+    }
+
+    body.dark-mode .hero {
+      background-color: transparent;
+    }
+    </style>
+  <script type="text/javascript">
 "use strict";
 
 /*Input: Total number of items, number of groups
@@ -27,23 +64,23 @@ var largeTeamSize = smallTeamSize + 1;
 var largeTeams = items % groups;
 var smallTeams = groups - largeTeams;
 
-document.getElementById('output').innerHTML = largeTeams + " groups with " + largeTeamSize + " items and " + smallTeams + " groups with " + smallTeamSize + " items.";
+document.getElementById('output').innerHTML = largeTeams === 0 ? (smallTeams + " groups with " + smallTeamSize + " items.") : (largeTeams + " groups with " + largeTeamSize + " items and " + smallTeams + " groups with " + smallTeamSize + " items.");
 }
 </script>
 </head>
 <body>
-  <header data-site-header data-title="Items per Group Calculator" data-nav="breadcrumb" data-back-href="/career/code-snippets/" data-back-label="Code Snippets"></header>
+  <header data-site-header data-title="Items per Group Calculator" data-nav="breadcrumb" data-back-href="/career/projects/" data-back-label="Portfolio"></header>
 
   <section class="intro">
     <h2>About This Tool</h2>
-    <p>Have a pile of things to split up as evenly as possible? Enter how many items you're working with and how many groups you want, and this figures out exactly how many groups end up one item bigger than the rest. Handy for splitting up group projects, portioning out snacks, or dividing any workload where "close enough to even" is what you're after.</p>
-    <p class="placeholder-flag">📝 Edit this blurb to your own voice - it lives above the calculator so visitors know what they're looking at before they start plugging numbers in.</p>
+    <p>Handy for whenever you've got a bunch of things - people, tasks, snacks, whatever - that need to be split into a set number of groups, and you want to know exactly how many should land in each one. Enter your total item count and how many groups you need, and it'll tell you how to divide things up as evenly as possible.</p>
+    
   </section>
 
   <section class="hero">
     <p>Number of items <input type="text" id="Students"></p>
     <p>Number of groups <input type="text" id="Teams"></p>
-    <button type="button" onclick="calcTeams()">Teams</button>
+    <button type="button" onclick="calcTeams()">Get Items Per Group</button>
     <div id="output"></div>
   </section>
 
@@ -71,13 +108,15 @@ var smallTeams = groups - largeTeams;</div>
     </div>
 
     <div class="walkthrough-block">
-      <div class="walkthrough-code">document.getElementById('output').innerHTML =
-  largeTeams + " groups with " + largeTeamSize +
-  " items and " + smallTeams + " groups with " +
-  smallTeamSize + " items.";</div>
+<div class="walkthrough-code">     document.getElementById('output').innerHTML =
+      largeTeams === 0
+      ? smallTeams + " groups with " + smallTeamSize + " items."
+      : largeTeams + " groups with " + largeTeamSize +
+      " items and " + smallTeams + " groups with " +
+      smallTeamSize + " items.";</div>
       <div class="walkthrough-explanation">
         <h4>Showing the result</h4>
-        <p>Stitches all four numbers into a plain-English sentence and displays it. For the 23-items-into-5-groups example: "3 groups with 5 items and 2 groups with 4 items" - and sure enough, 3&times;5 + 2&times;4 = 23. Nobody's left out, and every group is as close to even as the numbers allow.</p>
+        <p>Stitches the numbers into a plain-English sentence and displays it. For the 23-items-into-5-groups example: "3 groups with 5 items and 2 groups with 4 items" - and sure enough, 3&times;5 + 2&times;4 = 23. There's also a special case worth calling out: if the items divide evenly (say, 20 items into 5 groups), <code>largeTeams</code> comes out to 0 - so rather than printing a nonsense "0 groups with ... items" clause, the ternary skips straight to the single even sentence: "5 groups with 4 items."</p>
       </div>
     </div>
   </section>
