@@ -42,6 +42,7 @@
     z-index: 0;
   }
 
+  .intro,
   .hero,
   .walkthrough-section {
     position: relative;
@@ -82,7 +83,7 @@
 function numbers() {
 	var arabic = parseInt(document.getElementById('arabic').value);
 	var roman = "";
-	
+
 	//Compute the 1000's digit.
 	if (arabic >= 3000) {
 		roman += "MMM";
@@ -96,7 +97,7 @@ function numbers() {
 		roman += "M";
 		arabic -= 1000;
 	}
-	
+
 	//Compute the 100's digit.
 	if (arabic >= 900) {
 		roman += "CM";
@@ -134,7 +135,7 @@ function numbers() {
 		roman += "C";
 		arabic -= 100;
 	}
-	
+
 	//Compute the 10's digit.
 	if (arabic >= 90) {
 		roman += "XC";
@@ -172,7 +173,7 @@ function numbers() {
 		roman += "X";
 		arabic -= 10;
 	}
-	
+
 	//Compute the 1's digit.
 	if (arabic >= 9) {
 		roman += "IX";
@@ -216,6 +217,12 @@ function numbers() {
 </head>
 <body>
   <header data-site-header data-title="Roman Numerals" data-nav="breadcrumb" data-back-href="/career/code-snippets/" data-back-label="Code Snippets"></header>
+
+  <section class="intro">
+    <h2>About This Tool</h2>
+    <p>Type any whole number less than 4000 and this converter spits out its Roman numeral - carved onto the page like it came off a monument. Handy for reading movie copyrights, chapter headings, cornerstones, and clock faces where the numerals never quite click.</p>
+    <p class="placeholder-flag">📝 Edit this blurb to your own voice - it lives above the calculator so visitors know what they're looking at before they start plugging numbers in.</p>
+  </section>
 
   <section class="hero">
     <p>Enter an integer less than 4000: <input type="text" id="arabic"></p>
