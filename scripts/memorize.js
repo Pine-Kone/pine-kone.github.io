@@ -1,40 +1,71 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Highlight verses based on their class
-  const verses = document.querySelectorAll(".verse");
-  let memorizedCount = 0;
-  let learningCount = 0;
+  const scripture = document.getElementById("scripture-text");
+  if (!scripture) return;
 
-  verses.forEach(verse => {
+  const verses = Array.from(scripture.querySelectorAll(".verse"));
+  const headers = Array.from(scripture.querySelectorAll(".chapter-header"));
+
+  // Tally up progress
+  let memorizedCount = 0;
+  let inProgressCount = 0;
+
+  verses.forEach((verse) => {
     if (verse.classList.contains("memorized")) {
-      verse.style.backgroundColor = "#c8f7c5"; // light green
       memorizedCount++;
-    } else if (verse.classList.contains("learning")) {
-      verse.style.backgroundColor = "#fff3b0"; // light yellow
-      learningCount++;
+    } else if (verse.classList.contains("in-progress")) {
+      inProgressCount++;
     }
   });
 
-  // Calculate and display progress
   const total = verses.length;
-  const percentMemorized = Math.round((memorizedCount / total) * 100);
-  const percentLearning = Math.round((learningCount / total) * 100);
+  const progressBar = document.getElementById("progress-bar");
+  const progressText = document.getElementById("progress-text");
 
-  document.getElementById("memorized-progress").style.width = percentMemorized + "%";
-  document.getElementById("learning-progress").style.width = percentLearning + "%";
-  document.getElementById("memorized-progress").textContent = percentMemorized + "% Memorized";
-  document.getElementById("learning-progress").textContent = percentLearning + "% Learning";
+  if (progressBar && progressText && total > 0) {
+    const percentMemorized = Math.round((memorizedCount / total) * 100);
+    progressBar.style.width = percentMemorized + "%";
+    progressText.textContent =
+      percentMemorized + "% memorized (" + memorizedCount + " of " + total +
+      " verses)" + (inProgressCount > 0 ? ", " + inProgressCount + " in progress" : "") + ".";
+  }
 
-  // Search functionality
-  const searchBox = document.getElementById("search-box");
-  searchBox.addEventListener("input", () => {
-    const searchTerm = searchBox.value.toLowerCase();
+  // Search + memorized-only filter
+  const searchBox = document.getElementById("search");
+  const filterSelect = document.getElementById("memorize-filter");
 
-    verses.forEach(verse => {
-      if (verse.textContent.toLowerCase().includes(searchTerm)) {
-        verse.style.display = "";
-      } else {
-        verse.style.display = "none";
+  function applyFilters() {
+    const searchTerm = searchBox ? searchBox.value.toLowerCase() : "";
+    const filterValue = filterSelect ? filterSelect.value : "all";
+
+    verses.forEach((verse) => {
+      const matchesSearch = !searchTerm || verse.textContent.toLowerCase().includes(searchTerm);
+      let matchesFilter = true;
+      if (filterValue === "memorized") {
+        matchesFilter = verse.classList.contains("memorized");
+      } else if (filterValue === "not-memorized") {
+        matchesFilter = !verse.classList.contains("memorized");
       }
+      verse.style.display = matchesSearch && matchesFilter ? "" : "none";
     });
-  });
+
+    // A chapter header stays visible only if at least one verse under it
+    // (before the next header) is still visible.
+    headers.forEach((header) => {
+      let node = header.nextElementSibling;
+      let hasVisible = false;
+      while (node && !node.classList.contains("chapter-header")) {
+        if (node.classList.contains("verse") && node.style.display !== "none") {
+          hasVisible = true;
+          break;
+        }
+        node = node.nextElementSibling;
+      }
+      header.style.display = hasVisible ? "" : "none";
+    });
+  }
+
+  if (searchBox) searchBox.addEventListener("input", applyFilters);
+  if (filterSelect) filterSelect.addEventListener("change", applyFilters);
+
+  applyFilters();
 });
