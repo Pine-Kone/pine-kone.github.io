@@ -76,11 +76,8 @@
   <section class="hero">
     <h2>🌎 Atlas Earth</h2>
     <p class="hero-blurb">
-      Atlas Earth is a location-based app where you buy small parcels of virtual land tied to
-      real-world locations, each one earning virtual rent over time. It's a fun side hobby - and
-      a good excuse to dig into the data behind it.
-    </p>
-    <p class="placeholder-flag">⚠️ Staged placeholder - send me your own take on why you play/what you enjoy about it and I'll swap this in.</p>
+Atlas Earth is a location-based idle game - you buy small parcels of virtual land tied to real-world spots, and each one quietly earns you rent every single second, whether you're watching or not. Plots come in four rarities - Common, Rare, Epic, and Legendary - and the rarer the plot, the better the payout: Legendaries spawn about 10 times less often than Commons, but earn roughly 4 times the rent per second. It's a fun, low-effort hobby, and a good excuse to dig into the data behind it.
+    </p>p>
   </section>
 
   <section class="project-data-section">
@@ -175,7 +172,7 @@
 
     <div class="project-data-block">
       <h4>Original SQL Scripts</h4>
-      <p>For completeness - the schema and INSERT scripts that produced everything above.</p>
+      <p>Two versions of the database, for anyone curious how it evolved: the Refactored Schema is the clean, final version - just the normalized CREATE TABLE statements with proper foreign keys, ready to build fresh. The Refactor Draft is the original working file - the first-pass tables plus every INSERT statement of my actual plot and passport purchase history, kept as a record of where the data came from and how the redesign got worked out.</p>
       <div class="card-grid">
         <a href="/files/atlas-earth/sql/atlas-earth-refactored-schema.sql" class="card">🗄️ Refactored Schema (SQL)</a>
         <a href="/files/atlas-earth/sql/atlas-earth-refactor-draft.sql" class="card">🗄️ Refactor Draft + Original Data (SQL)</a>
