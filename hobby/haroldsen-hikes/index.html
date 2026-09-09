@@ -6,6 +6,17 @@
   <title>Haroldsen Hikes | Hans M. Haroldsen</title>
   <link rel="stylesheet" href="/style/main.css" />
   <style>
+    .hikes-counter {
+      display: inline-block;
+      margin: 0.5rem auto 0;
+      padding: 0.5rem 1.25rem;
+      background: var(--primary-color, #14213d);
+      color: #fff;
+      border-radius: 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
     .hikes-grid {
       display: flex;
       flex-wrap: wrap;
@@ -67,6 +78,7 @@
     .hike-stats strong {
       display: inline-block;
       min-width: 6rem;
+      vertical-align: top;
     }
 
     .hike-notes {
@@ -92,29 +104,37 @@
   <section class="hero">
     <h2>🥾 Haroldsen Hikes</h2>
     <p class="hero-blurb">A running log of the hikes Jordyn and I have tackled together - where we went, how it went, and what we thought.</p>
+    <p class="hikes-counter" id="hikes-counter">Loading hike count...</p>
   </section>
 
   <section class="explore">
     <div class="hikes-grid">
+      <!-- To log a repeat visit to a hike we've already done, just add another
+           <span class="hike-date" data-date="YYYY-MM-DD">Month D, YYYY</span>
+           to that card's "Visited:" line, separated by a comma. The counter
+           above updates itself from however many .hike-date spans exist on
+           the page - no need to touch it by hand. -->
 
       <article class="hike-card">
         <h3>Buckskin Morgan Ridge</h3>
-        <p class="hike-meta">📍 Heise, Idaho &middot; 📅 September 6, 2026</p>
+        <p class="hike-meta">📍 Heise, Idaho</p>
         <ul class="hike-stats">
           <li><strong>Distance:</strong> 1.7 mi one way (3.4 mi round trip)</li>
           <li><strong>Time:</strong> 1 hr 30 min round trip</li>
           <li><strong>Rating:</strong> <span class="pending">Coming soon</span></li>
+          <li><strong>Visited:</strong> <span class="hike-date" data-date="2026-09-06">September 6, 2026</span></li>
         </ul>
         <p class="hike-notes"><span class="pending">Trail notes coming soon.</span></p>
       </article>
 
       <article class="hike-card">
         <h3>Hidden Vista Loop &amp; Overlook</h3>
-        <p class="hike-meta">📍 Heise, Idaho &middot; 📅 September 7, 2026</p>
+        <p class="hike-meta">📍 Heise, Idaho</p>
         <ul class="hike-stats">
           <li><strong>Distance:</strong> ~1.32 mi</li>
           <li><strong>Time:</strong> Not recorded</li>
           <li><strong>Rating:</strong> <span class="pending">Coming soon</span></li>
+          <li><strong>Visited:</strong> <span class="hike-date" data-date="2026-09-07">September 7, 2026</span></li>
         </ul>
         <p class="hike-notes">Towards the end there was a fork in the road that actually wasn't marked. Thankfully we'd taken a picture of the map to make sure we went the right way (plus it naturally followed the loop).</p>
       </article>
@@ -126,6 +146,7 @@
 
   <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
   <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/hikes.js"></script>
   <script src="/scripts/site-chrome.js"></script>
 </body>
 </html>
