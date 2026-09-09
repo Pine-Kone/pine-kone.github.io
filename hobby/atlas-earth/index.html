@@ -5,6 +5,70 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Atlas Earth | Hans M. Haroldsen</title>
   <link rel="stylesheet" href="/style/main.css" />
+  <style>
+    .data-table {
+      width: 100%;
+      max-width: 900px;
+      margin: 1.5rem auto;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 0.6rem 0.85rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+    body.dark-mode .data-table th,
+    body.dark-mode .data-table td {
+      border-bottom-color: rgba(255, 255, 255, 0.1);
+    }
+    .data-table th {
+      background: rgba(0, 0, 0, 0.04);
+      font-weight: 700;
+    }
+    body.dark-mode .data-table th {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .data-table td.numeric {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .data-table a {
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .data-table a:hover {
+      text-decoration: underline;
+    }
+    .data-table-wrapper {
+      overflow-x: auto;
+    }
+    .table-group-heading {
+      margin: 1.5rem auto 0.25rem;
+      max-width: 900px;
+      padding-left: 0.5rem;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      opacity: 0.75;
+    }
+    .powerbi-callout {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1.5rem 1.75rem;
+      border-left: 6px solid var(--accent-color, #e07b00);
+      background: rgba(224, 123, 0, 0.06);
+      border-radius: 0.5rem;
+    }
+    body.dark-mode .powerbi-callout {
+      background: rgba(224, 123, 0, 0.12);
+    }
+    .powerbi-callout h4 {
+      margin-top: 0;
+    }
+  </style>
 </head>
 <body>
   <header data-site-header data-title="Atlas Earth" data-nav="breadcrumb" data-back-href="/hobby/" data-back-label="Hobbies"></header>
@@ -21,20 +85,107 @@
 
   <section class="project-data-section">
     <h3>The Data</h3>
+    <p>
+      The Atlas Earth dataset started life in a SQL Server database. To make it usable outside
+      of SQL Server - and to feed live reports on this site - I've published it as JSON and CSV
+      files hosted directly from this repo. Power BI can pull either format straight from a URL
+      with its <em>Get Data &rarr; Web</em> connector, and anyone can download the CSVs directly
+      for their own tinkering.
+    </p>
+
+    <div class="powerbi-callout">
+      <h4>🔌 How I Connect Power BI to the Web</h4>
+      <p>
+        In Power BI Desktop, <em>Get Data &rarr; Web</em>, paste the URL for any JSON or CSV file
+        below, and Power BI handles the rest - typing columns, refreshing on demand, and keeping
+        the report tied to the live source. When the underlying data changes, one click on
+        <em>Refresh</em> pulls the latest.
+      </p>
+      <p class="placeholder-flag">📸 Screenshots of the Power BI web-connection flow coming soon - the walkthrough plus the finished report visuals.</p>
+    </div>
+
+    <p class="table-group-heading">Reference Tables</p>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr><th>Table</th><th class="numeric">Rows</th><th>JSON</th><th>CSV</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Countries</td><td class="numeric">1</td>
+            <td><a href="/files/atlas-earth/json/countries.json">countries.json</a></td>
+            <td><a href="/files/atlas-earth/csv/countries.csv">countries.csv</a></td></tr>
+          <tr><td>States</td><td class="numeric">50</td>
+            <td><a href="/files/atlas-earth/json/states.json">states.json</a></td>
+            <td><a href="/files/atlas-earth/csv/states.csv">states.csv</a></td></tr>
+          <tr><td>Cities</td><td class="numeric">91</td>
+            <td><a href="/files/atlas-earth/json/cities.json">cities.json</a></td>
+            <td><a href="/files/atlas-earth/csv/cities.csv">cities.csv</a></td></tr>
+          <tr><td>PlotTypes</td><td class="numeric">4</td>
+            <td><a href="/files/atlas-earth/json/plot-types.json">plot-types.json</a></td>
+            <td><a href="/files/atlas-earth/csv/plot-types.csv">plot-types.csv</a></td></tr>
+          <tr><td>PassportTiers</td><td class="numeric">3</td>
+            <td><a href="/files/atlas-earth/json/passport-tiers.json">passport-tiers.json</a></td>
+            <td><a href="/files/atlas-earth/csv/passport-tiers.csv">passport-tiers.csv</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-group-heading">Rates &amp; Multipliers (Versioned)</p>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr><th>Table</th><th class="numeric">Rows</th><th>JSON</th><th>CSV</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>PlotTypeRates</td><td class="numeric">4</td>
+            <td><a href="/files/atlas-earth/json/plot-type-rates.json">plot-type-rates.json</a></td>
+            <td><a href="/files/atlas-earth/csv/plot-type-rates.csv">plot-type-rates.csv</a></td></tr>
+          <tr><td>PassportBoostSchedules</td><td class="numeric">1</td>
+            <td><a href="/files/atlas-earth/json/passport-boost-schedules.json">passport-boost-schedules.json</a></td>
+            <td><a href="/files/atlas-earth/csv/passport-boost-schedules.csv">passport-boost-schedules.csv</a></td></tr>
+          <tr><td>PassportBoostTiers</td><td class="numeric">6</td>
+            <td><a href="/files/atlas-earth/json/passport-boost-tiers.json">passport-boost-tiers.json</a></td>
+            <td><a href="/files/atlas-earth/csv/passport-boost-tiers.csv">passport-boost-tiers.csv</a></td></tr>
+          <tr><td>AdMultiplierSchedules</td><td class="numeric">1</td>
+            <td><a href="/files/atlas-earth/json/ad-multiplier-schedules.json">ad-multiplier-schedules.json</a></td>
+            <td><a href="/files/atlas-earth/csv/ad-multiplier-schedules.csv">ad-multiplier-schedules.csv</a></td></tr>
+          <tr><td>AdMultiplierTiers</td><td class="numeric">12</td>
+            <td><a href="/files/atlas-earth/json/ad-multiplier-tiers.json">ad-multiplier-tiers.json</a></td>
+            <td><a href="/files/atlas-earth/csv/ad-multiplier-tiers.csv">ad-multiplier-tiers.csv</a></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="table-group-heading">Transaction Tables</p>
+    <div class="data-table-wrapper">
+      <table class="data-table">
+        <thead>
+          <tr><th>Table</th><th class="numeric">Rows</th><th>JSON</th><th>CSV</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>PurchasedPlots</td><td class="numeric">149</td>
+            <td><a href="/files/atlas-earth/json/purchased-plots.json">purchased-plots.json</a></td>
+            <td><a href="/files/atlas-earth/csv/purchased-plots.csv">purchased-plots.csv</a></td></tr>
+          <tr><td>PurchasedPassports</td><td class="numeric">101</td>
+            <td><a href="/files/atlas-earth/json/purchased-passports.json">purchased-passports.json</a></td>
+            <td><a href="/files/atlas-earth/csv/purchased-passports.csv">purchased-passports.csv</a></td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="project-data-block">
-      <h4>SQL Dataset</h4>
-      <p>A single SQL script that builds the whole database - schema and all the data - in one run.</p>
+      <h4>Original SQL Scripts</h4>
+      <p>For completeness - the schema and INSERT scripts that produced everything above.</p>
       <div class="card-grid">
-        <a href="/files/atlas-earth/sql/atlas-earth-schema-full.sql" class="card">🗄️ Download SQL Script</a>
+        <a href="/files/atlas-earth/sql/atlas-earth-refactored-schema.sql" class="card">🗄️ Refactored Schema (SQL)</a>
+        <a href="/files/atlas-earth/sql/atlas-earth-refactor-draft.sql" class="card">🗄️ Refactor Draft + Original Data (SQL)</a>
       </div>
     </div>
 
     <div class="project-data-block">
-      <h4>Power BI Report</h4>
-      <p>I don't have the license to embed this report live, so here's the underlying file plus a few screenshots instead.</p>
+      <h4>Power BI Report Screenshots</h4>
+      <p>The finished visuals from the Power BI report driven by the data above.</p>
       <div class="card-grid">
-        <a href="/files/atlas-earth/atlas-earth.pbix" class="card">📊 Download .pbix File</a>
         <div class="card">
           🖼️ Report Screenshots
           <br><span class="badge-soon">Coming soon</span>
