@@ -699,6 +699,64 @@ body.dark-mode .show-tags-toggle {
   margin-top: 0;
 }
 
+/* So a jump-nav link lands with the section heading visible rather than
+   tucked up under the fixed theme-toggle button. */
+.resume-section {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Generic "jump to section" nav - same pill-link pattern as the Pokemon
+   chase-list's species-jump-nav, reusable anywhere a page has a handful of
+   named sections/anchors worth jumping straight to. */
+.jump-nav {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 1.5rem;
+  text-align: center;
+}
+
+.jump-nav-label {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.jump-nav-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.jump-nav-links a {
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.jump-nav-links a:hover {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+body.dark-mode .jump-nav-links a {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+body.dark-mode .jump-nav-links a:hover {
+  background: var(--accent-color);
+  color: #1a1a1a;
+}
+
 .resume-role-block {
   display: flex;
   align-items: flex-start;
@@ -1195,6 +1253,13 @@ body.dark-mode .info-card:hover {
   line-height: 1.5;
 }
 
+/* The "See My Portfolio", "My CPA Journey", and "See My Full Resume" links
+   below each highlight blurb - not the general .hero/.cta-row button style,
+   just a first pass at making them stand out more (bold now, size later). */
+.career-highlight .button {
+  font-weight: bold;
+}
+
 .diploma-row {
   display: flex;
   justify-content: center;
@@ -1216,6 +1281,14 @@ body.dark-mode .info-card:hover {
   object-fit: cover;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.diploma-img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  z-index: 2;
 }
 
 @media (min-width: 601px) {
