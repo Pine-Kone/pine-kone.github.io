@@ -593,6 +593,49 @@ const MASTER_RESUME_DATA = [
   },
 ];
 
+// Education entries, most recent first (same convention as the employer
+// list). Each is rendered as its own block - schools with more than one
+// degree on file (Idaho State University) get one block per degree rather
+// than one shared block, since each degree has its own diploma photo.
+const MASTER_RESUME_EDUCATION = [
+  {
+    school: "Idaho State University",
+    website: "https://www.isu.edu",
+    location: "Pocatello, ID",
+    logo: "/images/education/mba.jpeg",
+    degree: "Master of Business Administration",
+    emphasis: "Emphasis in Finance",
+    graduated: { month: 12, year: 2020 },
+  },
+  {
+    school: "Idaho State University",
+    website: "https://www.isu.edu",
+    location: "Pocatello, ID",
+    logo: "/images/education/mtax.jpeg",
+    degree: "Master of Taxation",
+    emphasis: "Emphasis in Individual, Corporate and Estate Tax",
+    graduated: { month: 5, year: 2020 },
+  },
+  {
+    school: "Brigham Young University-Idaho",
+    website: "https://www.byui.edu",
+    location: "Rexburg, ID",
+    logo: "/images/education/bs-accounting.jpeg",
+    degree: "B.S. in Accounting",
+    emphasis: "Emphases in Computer Programming and General Business",
+    graduated: { month: 7, year: 2018 },
+  },
+  {
+    school: "Shelley High School",
+    website: null,
+    location: "Shelley, ID",
+    logo: null,
+    degree: "High School Diploma",
+    emphasis: null,
+    graduated: { year: 2010 },
+  },
+];
+
 const MASTER_RESUME_SKILLS = [
   "Proficient with Microsoft Power Platform and Microsoft Office applications",
   "Fluent in Spanish",

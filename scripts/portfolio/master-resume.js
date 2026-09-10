@@ -203,6 +203,51 @@
     return ul;
   }
 
+  // Turns a section name into the id its jump-nav link points at, e.g.
+  // "Work Experience" -> "work-experience-section".
+  function sectionSlug(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "") + "-section";
+  }
+
+  // One block per degree - laid out just like an employer block (logo,
+  // name, dates) so Education reads as part of the same visual system as
+  // Work/Volunteer Experience. A school with more than one degree on file
+  // (Idaho State University) still gets one block per degree, since each
+  // has its own diploma photo standing in for the "logo".
+  function buildEducationBlock(entry) {
+    const block = document.createElement("div");
+    block.className = "resume-role-block";
+
+    let logoHtml;
+    if (entry.logo) {
+      const img = `<img src="${entry.logo}" alt="${entry.degree} diploma, ${entry.school}" class="company-logo">`;
+      logoHtml = entry.website
+        ? `<a href="${entry.website}" target="_blank" rel="noopener" aria-label="${entry.school} website">${img}</a>`
+        : img;
+    } else {
+      logoHtml = `<span class="company-logo company-logo-placeholder" aria-hidden="true">${companyInitials(entry.school)}</span>`;
+    }
+    const schoolHtml = entry.website
+      ? `<a href="${entry.website}" target="_blank" rel="noopener" class="company-link">${entry.school}</a>`
+      : entry.school;
+
+    block.innerHTML = `
+      ${logoHtml}
+      <div class="resume-employer-body">
+        <div class="resume-title-line resume-company-line">
+          <h3 class="resume-company-name">${schoolHtml}</h3>
+          <span class="resume-title-dates resume-location">${entry.location || ""}</span>
+        </div>
+        <h4 class="resume-subrole resume-title-line">
+          <span class="resume-title-text">${entry.degree}</span>
+          <span class="resume-title-dates">${formatResumeDatePart(entry.graduated)}</span>
+        </h4>
+        ${entry.emphasis ? `<p class="resume-role-meta">${entry.emphasis}</p>` : ""}
+      </div>
+    `;
+    return block;
+  }
+
   // Builds one employer block. Every role gets its own heading with its dates;
   // bullets scoped to a role sit under that role's heading, and bullets shared
   // across the whole tenure sit under the stacked headings that share them.
@@ -270,11 +315,28 @@
     container.classList.toggle("show-tags", tagsVisible);
 
     const filtering = rankList.length > 0;
+
+    // Education leads the page (it never participates in the filter/rank
+    // tool - there's nothing to tag or prioritize about a degree), then
+    // Work Experience and Volunteer Experience in whatever order they first
+    // appear in MASTER_RESUME_DATA, then Skills & Certifications at the end.
+    if (typeof MASTER_RESUME_EDUCATION !== "undefined" && MASTER_RESUME_EDUCATION.length) {
+      const eduSection = document.createElement("div");
+      eduSection.className = "resume-section";
+      eduSection.id = "education-section";
+      eduSection.innerHTML = `<h2 class="resume-section-title">Education</h2>`;
+      MASTER_RESUME_EDUCATION.forEach((entry) => {
+        eduSection.appendChild(buildEducationBlock(entry));
+      });
+      container.appendChild(eduSection);
+    }
+
     const sections = [...new Set(MASTER_RESUME_DATA.map((r) => r.section))];
 
     sections.forEach((sectionName) => {
       const sectionEl = document.createElement("div");
       sectionEl.className = "resume-section";
+      sectionEl.id = sectionSlug(sectionName);
       sectionEl.innerHTML = `<h2 class="resume-section-title">${sectionName}</h2>`;
       let anyRendered = false;
       MASTER_RESUME_DATA.filter((r) => r.section === sectionName).forEach((entry) => {
@@ -324,6 +386,7 @@
     if (MASTER_RESUME_SKILLS && MASTER_RESUME_SKILLS.length) {
       const skillsSection = document.createElement("div");
       skillsSection.className = "resume-section";
+      skillsSection.id = "skills-section";
       skillsSection.innerHTML = `
         <h2 class="resume-section-title">Skills &amp; Certifications</h2>
         <ul class="resume-bullet-list resume-skills-list">
