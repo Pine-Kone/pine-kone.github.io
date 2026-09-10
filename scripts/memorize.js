@@ -77,6 +77,20 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------------
   const bookJumpList = document.getElementById("book-jump-list");
   if (bookJumpList && headers.length) {
+    const jumpNav = bookJumpList.closest(".jump-nav");
+
+    // The jump-nav is sticky, and its height changes as books/chapters
+    // open and close, so a fixed scroll-margin-top (enough for a compact
+    // nav like the Pokemon chase-list's species-jump-nav) isn't enough
+    // here - a page with many books, or an open chapter list, can make
+    // this nav much taller. Track its real height live instead, so a
+    // jump target always lands clear of the nav rather than under it.
+    function recalcStickyOffset() {
+      if (!jumpNav) return;
+      const height = jumpNav.getBoundingClientRect().height;
+      document.documentElement.style.setProperty("--sticky-nav-offset", height + 16 + "px");
+    }
+
     // A header's text is "{Book Name} {Chapter}" (e.g. "1 Nephi 5",
     // "D&C 12"), or just a book/front-matter name with no chapter number
     // ("Introduction", "Articles of Faith 1" still matches - the trailing
@@ -100,6 +114,27 @@ document.addEventListener("DOMContentLoaded", () => {
       book.chapters.push({ label: chapterLabel, id: header.id });
     });
 
+    // Only one book's chapter list is open at a time, and it closes
+    // itself again once a chapter is actually picked - keeps the nav
+    // from turning into a tall wall of pills as you browse around.
+    let openBook = null; // { item, btn, chapterList }
+
+    function closeOpenBook() {
+      if (!openBook) return;
+      openBook.btn.classList.remove("open");
+      openBook.chapterList.hidden = true;
+      openBook.item.classList.remove("expanded");
+      openBook = null;
+    }
+
+    function jumpTo(id) {
+      const target = document.getElementById(id);
+      if (!target) return;
+      recalcStickyOffset();
+      target.scrollIntoView({ behavior: "smooth" });
+      history.replaceState(null, "", "#" + id);
+    }
+
     books.forEach((book) => {
       const item = document.createElement("div");
       item.className = "book-jump-item";
@@ -122,21 +157,43 @@ document.addEventListener("DOMContentLoaded", () => {
           const a = document.createElement("a");
           a.href = "#" + ch.id;
           a.textContent = ch.label;
+          a.addEventListener("click", (e) => {
+            e.preventDefault();
+            closeOpenBook();
+            jumpTo(ch.id);
+          });
           chapterList.appendChild(a);
         });
         item.appendChild(chapterList);
 
         btn.addEventListener("click", (e) => {
           e.preventDefault();
-          const open = btn.classList.toggle("open");
-          chapterList.hidden = !open;
-          if (open) {
-            document.getElementById(book.chapters[0].id).scrollIntoView({ behavior: "smooth" });
+          const wasOpen = openBook && openBook.btn === btn;
+          closeOpenBook();
+          if (!wasOpen) {
+            btn.classList.add("open");
+            chapterList.hidden = false;
+            item.classList.add("expanded");
+            openBook = { item, btn, chapterList };
           }
+          jumpTo(book.chapters[0].id);
+        });
+      } else {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          closeOpenBook();
+          jumpTo(book.chapters[0].id);
         });
       }
 
       bookJumpList.appendChild(item);
+    });
+
+    recalcStickyOffset();
+    let resizeTimer;
+    window.addEventListener("resize", () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(recalcStickyOffset, 150);
     });
   }
 });
