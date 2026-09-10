@@ -312,6 +312,15 @@ footer {
   margin: 0;
 }
 
+/* A little extra credit, pinned to the left edge the same way the social
+   icons are pinned to the right, so the centered copyright line stays put
+   in between. */
+.footer-credit {
+  position: absolute;
+  left: 0;
+  opacity: 0.85;
+}
+
 .footer-social {
   display: flex;
   gap: 0.75rem;
@@ -337,6 +346,7 @@ footer {
     gap: 0.5rem;
   }
 
+  .footer-credit,
   .footer-social {
     position: static;
   }
