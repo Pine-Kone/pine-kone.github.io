@@ -110,6 +110,13 @@
       align-items: center;
     }
 
+    /* Full width once open, so the chapter row breaks onto its own line
+       between this book and the next, rather than stretching the whole
+       row of book buttons it started in. */
+    .book-jump-item.expanded {
+      flex: 1 1 100%;
+    }
+
     .book-jump-book-btn {
       padding: 0.35rem 0.9rem;
       border-radius: 2rem;
@@ -144,9 +151,11 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.3rem;
-      max-width: 280px;
-      margin: 0.5rem 0 0.25rem;
+      gap: 0.25rem;
+      width: 100%;
+      margin: 0.4rem 0 0.15rem;
+      padding-top: 0.4rem;
+      border-top: 1px dashed var(--accent-color);
     }
 
     /* Author styles beat the UA [hidden] rule at equal specificity, so
@@ -158,12 +167,12 @@
     }
 
     .book-jump-chapters a {
-      padding: 0.15rem 0.5rem;
+      padding: 0.1rem 0.45rem;
       border-radius: 1rem;
       border: 1px solid var(--accent-color);
       color: var(--accent-color);
       text-decoration: none;
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
 
     .book-jump-chapters a:hover {
@@ -171,8 +180,11 @@
       color: #fff;
     }
 
+    /* Tracks the sticky jump-nav's live (variable) height - see
+       recalcStickyOffset() in memorize.js - so a jump target always
+       lands clear of the nav instead of under it. */
     .chapter-header {
-      scroll-margin-top: 5.5rem;
+      scroll-margin-top: var(--sticky-nav-offset, 5.5rem);
     }
   </style>
 </head>
