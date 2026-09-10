@@ -90,6 +90,7 @@
     footerEl.innerHTML = `
       <div class="footer-inner">
         <p>&copy; <span id="year"></span> Hans M. Haroldsen</p>
+        <p class="footer-credit">Site created by Hans M. Haroldsen.</p>
         <div class="footer-social">${socialLinksHtml()}</div>
       </div>
     `;
