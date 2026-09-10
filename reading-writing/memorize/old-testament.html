@@ -70,6 +70,94 @@
   font-size: 1rem;
   margin-left: 0.5rem;
 }
+  
+    .jump-nav {
+      max-width: 800px;
+      margin: 1.5rem auto 0;
+      padding: 1rem;
+      background: var(--section-background-color);
+      border-radius: 0.75rem;
+      text-align: center;
+    }
+
+    .jump-nav-label {
+      margin: 0 0 0.6rem;
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
+    .book-jump-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .book-jump-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .book-jump-book-btn {
+      padding: 0.35rem 0.9rem;
+      border-radius: 2rem;
+      border: 1px solid var(--primary-color);
+      background: none;
+      color: var(--primary-color);
+      font-weight: bold;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s ease, color 0.15s ease;
+    }
+
+    .book-jump-book-btn:hover,
+    .book-jump-book-btn.open {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    body.dark-mode .book-jump-book-btn {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    body.dark-mode .book-jump-book-btn:hover,
+    body.dark-mode .book-jump-book-btn.open {
+      background: var(--accent-color);
+      color: #1a1a1a;
+    }
+
+    .book-jump-chapters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.3rem;
+      max-width: 280px;
+      margin: 0.5rem 0 0.25rem;
+    }
+
+    .book-jump-chapters a {
+      padding: 0.15rem 0.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--accent-color);
+      color: var(--accent-color);
+      text-decoration: none;
+      font-size: 0.75rem;
+    }
+
+    .book-jump-chapters a:hover {
+      background: var(--accent-color);
+      color: #fff;
+    }
+
+    .chapter-header {
+      scroll-margin-top: 5.5rem;
+    }
   </style>
 </head>
 <body>
@@ -83,12 +171,17 @@
 
   <div class="controls">
     <input type="text" class="search-box" id="search" placeholder="Search scripture..." />
-    <select id="memorize-filter" class="filter-select"><option value="all">All Verses</option><option value="memorized">Memorized Only</option><option value="not-memorized">Not Yet Memorized</option></select>
+    <select id="memorize-filter" class="filter-select"><option value="all">All Verses</option><option value="memorized">Memorized Only</option></select>
     <div class="progress-container">
       <div id="progress-bar" class="progress-bar memorized" style="width: 0%"></div>
     </div>
     <p id="progress-text"></p>
   </div>
+
+    <nav class="jump-nav" aria-label="Jump to book">
+    <p class="jump-nav-label">Jump to:</p>
+    <div class="book-jump-list" id="book-jump-list"></div>
+  </nav>
 
   <section id="scripture-text">
     <h3 class="chapter-header">Genesis 1</h3>
