@@ -141,6 +141,14 @@
       margin: 0.5rem 0 0.25rem;
     }
 
+    /* Author styles beat the UA [hidden] rule at equal specificity, so
+       .book-jump-chapters's own display:flex above would otherwise win
+       even while the hidden attribute is set - this explicit override
+       is what actually keeps a collapsed book's chapters collapsed. */
+    .book-jump-chapters[hidden] {
+      display: none;
+    }
+
     .book-jump-chapters a {
       padding: 0.15rem 0.5rem;
       border-radius: 1rem;
