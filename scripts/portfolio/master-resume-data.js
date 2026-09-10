@@ -627,12 +627,12 @@ const MASTER_RESUME_EDUCATION = [
   },
   {
     school: "Shelley High School",
-    website: null,
+    website: "https://shs.shelleyschools.org",
     location: "Shelley, ID",
     logo: null,
     degree: "High School Diploma",
     emphasis: null,
-    graduated: { year: 2010 },
+    graduated: { month: 5, year: 2010 },
   },
 ];
 
