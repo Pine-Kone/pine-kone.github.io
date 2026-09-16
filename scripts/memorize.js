@@ -29,12 +29,25 @@ document.addEventListener("DOMContentLoaded", () => {
       " verses)" + (inProgressCount > 0 ? ", " + inProgressCount + " in progress" : "") + ".";
   }
 
-  // Search + memorized-only filter. "Not Yet Memorized" was removed as an
-  // option - at book-length scale (whole books of scripture) comparing
-  // "not yet memorized" against "memorized" isn't a meaningful contrast, so
-  // the only choices left are "everything" or "just what's memorized".
+  // Search + status filter. Three choices: everything, just what's
+  // memorized, or just what's in progress. ("Not Yet Memorized" is
+  // deliberately not offered - at book-length scale, filtering to the
+  // thousands of verses you haven't started isn't a meaningful view.)
+  //
+  // The options are defined here rather than in each page's HTML so this
+  // one shared file is the single source of truth for the dropdown -
+  // adding or renaming a choice updates every scripture page at once,
+  // including the multi-megabyte ones that can't be hand-edited in
+  // GitHub's web editor. Any options hardcoded in the page are replaced.
   const searchBox = document.getElementById("search");
   const filterSelect = document.getElementById("memorize-filter");
+
+  if (filterSelect) {
+    filterSelect.innerHTML =
+      '<option value="all">All Verses</option>' +
+      '<option value="memorized">Memorized Only</option>' +
+      '<option value="in-progress">In Progress Only</option>';
+  }
 
   function applyFilters() {
     const searchTerm = searchBox ? searchBox.value.toLowerCase() : "";
@@ -42,7 +55,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     verses.forEach((verse) => {
       const matchesSearch = !searchTerm || verse.textContent.toLowerCase().includes(searchTerm);
-      const matchesFilter = filterValue !== "memorized" || verse.classList.contains("memorized");
+      let matchesFilter = true;
+      if (filterValue === "memorized") {
+        matchesFilter = verse.classList.contains("memorized");
+      } else if (filterValue === "in-progress") {
+        matchesFilter = verse.classList.contains("in-progress");
+      }
       verse.style.display = matchesSearch && matchesFilter ? "" : "none";
     });
 
