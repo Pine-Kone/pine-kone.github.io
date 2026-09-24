@@ -1,0 +1,229 @@
+/* Bike Commute Tracker - /hobby/bike-commute/ */
+
+.bike-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+  padding: 0 1rem;
+}
+
+.stat-tile {
+  flex: 1 1 14rem;
+  max-width: 18rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-tile[hidden] {
+  display: none;
+}
+
+.stat-tile-main {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  border-top-color: var(--accent-color);
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.85;
+}
+
+.stat-value {
+  margin: 0.25rem 0;
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.stat-value-small {
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+
+.stat-unit {
+  font-size: 1.1rem;
+  font-weight: normal;
+}
+
+.stat-tile-main .stat-value {
+  color: var(--accent-color);
+}
+
+.stat-sub {
+  margin: 0;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* ---------- Landmark comparisons ---------- */
+.landmark-headline {
+  font-size: 1.2rem;
+  max-width: 40rem;
+  margin: 0.75rem auto 1.25rem;
+}
+
+.compare-card {
+  max-width: 34rem;
+  margin: 0 auto 1.5rem;
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.compare-card:empty {
+  display: none;
+}
+
+.next-label {
+  margin: 0 0 0.6rem;
+}
+
+.next-detail {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
+.progress-track {
+  width: 100%;
+  height: 0.9rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent-color);
+  border-radius: 1rem;
+  transition: width 0.8s ease;
+}
+
+.landmark-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 34rem;
+  text-align: left;
+}
+
+.landmark {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.5rem 0.25rem;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+  opacity: 0.6;
+}
+
+.landmark.done,
+.landmark.next {
+  opacity: 1;
+}
+
+.landmark.next .landmark-name {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.landmark-name {
+  flex: 1;
+}
+
+.landmark-dist {
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.compare-note {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  font-style: italic;
+  margin-top: 1rem;
+}
+
+/* ---------- Moon ---------- */
+.bike-moon {
+  text-align: center;
+  padding: 2.5rem 1rem 3rem;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.bike-moon h3 {
+  margin-top: 0;
+}
+
+.bike-moon p {
+  margin: 0.25rem 0;
+}
+
+.moon-percent {
+  font-size: 2.75rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  word-break: break-all;
+}
+
+.moon-track {
+  margin: 1rem 0 0.5rem;
+}
+
+.moon-detail {
+  font-size: 0.95rem;
+  opacity: 0.8;
+}
+
+/* ---------- Dark mode ---------- */
+body.dark-mode .stat-tile,
+body.dark-mode .compare-card {
+  background: #2a2a2a;
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .stat-tile {
+  border-top-color: var(--accent-color);
+}
+
+body.dark-mode .stat-tile-main {
+  background: var(--primary-color);
+}
+
+body.dark-mode .progress-track {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .landmark {
+  border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .moon-percent {
+  color: var(--accent-color);
+}
+
+@media (max-width: 600px) {
+  .stat-tile {
+    max-width: none;
+  }
+
+  .stat-value {
+    font-size: 2.1rem;
+  }
+}
