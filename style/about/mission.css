@@ -1,0 +1,237 @@
+/* My Mission page - /about/mission/ */
+
+/* ---------- Three mission columns ---------- */
+.mission-columns-section {
+  padding: 1rem 1rem 2.5rem;
+}
+
+.mission-columns,
+.story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.mission-column {
+  background: #fff;
+  color: var(--text-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  line-height: 1.55;
+}
+
+.mission-step {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  font-weight: bold;
+}
+
+.mission-column h3 {
+  margin: 0.2rem 0 0.25rem;
+  font-size: 1.35rem;
+  color: var(--primary-color);
+}
+
+.mission-dates {
+  margin: 0 0 0.75rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.mission-pending {
+  font-style: italic;
+  opacity: 0.65;
+}
+
+/* ---------- Story filters ---------- */
+.story-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem 1.5rem;
+  margin: 1.25rem auto 1.75rem;
+}
+
+.story-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.story-filter label {
+  font-weight: bold;
+}
+
+.story-filter select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 0.4rem;
+  background: #fff;
+  color: #222;
+  min-width: 11rem;
+}
+
+/* ---------- Story cards ---------- */
+.story-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.story-card[hidden] {
+  display: none;
+}
+
+.story-card:hover,
+.story-card:focus-visible {
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.16);
+  transform: translateY(-2px);
+}
+
+.story-thumb,
+.story-thumb-placeholder {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.story-thumb-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: linear-gradient(135deg, var(--primary-color), #2d4396);
+  color: var(--accent-color);
+}
+
+.story-card-body {
+  padding: 0.85rem 1rem 1rem;
+}
+
+.story-title {
+  margin: 0 0 0.4rem;
+  font-size: 1.15rem;
+  color: var(--primary-color);
+}
+
+.story-meta {
+  margin: 0;
+  font-size: 0.9rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.story-area-tag {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 1rem;
+  background: var(--accent-color);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.8rem;
+}
+
+.story-when {
+  opacity: 0.75;
+  font-style: italic;
+}
+
+.story-empty {
+  font-style: italic;
+  opacity: 0.7;
+  margin: 1rem 0 0;
+}
+
+/* ---------- Individual story pages ---------- */
+.story-article {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem 3rem;
+  line-height: 1.7;
+  font-size: 1.1rem;
+}
+
+.story-article .story-hero-img {
+  width: 100%;
+  border-radius: 0.75rem;
+  margin: 0 0 1.5rem;
+  display: block;
+}
+
+.story-article h2 {
+  color: var(--primary-color);
+  margin: 0 0 0.5rem;
+  font-size: 2rem;
+}
+
+.story-article .story-meta {
+  margin-bottom: 1.5rem;
+}
+
+/* ---------- Dark mode ---------- */
+body.dark-mode .mission-column,
+body.dark-mode .story-card {
+  background: #2a2a2a;
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+body.dark-mode .mission-column {
+  border-top-color: var(--accent-color);
+}
+
+body.dark-mode .mission-column h3,
+body.dark-mode .story-title,
+body.dark-mode .story-article h2 {
+  color: var(--accent-color);
+}
+
+body.dark-mode .story-area-tag {
+  color: #1e1e1e;
+}
+
+body.dark-mode .story-filter select {
+  background: #2a2a2a;
+  color: #f0f0f0;
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  .mission-columns,
+  .story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .story-filter {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .story-filter select {
+    flex: 1;
+    max-width: 16rem;
+  }
+}
