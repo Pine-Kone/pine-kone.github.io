@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Mission | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <link rel="stylesheet" href="/style/about/mission.css" />
+</head>
+<body>
+  <header data-site-header data-title="My Mission"></header>
+
+  <main class="mission-page">
+    <section class="hero mission-intro">
+      <h2>My Mission</h2>
+      <p class="hero-blurb">I served a two-year mission for The Church of Jesus Christ of Latter-day Saints - and it ended up taking me to three different missions. These are some of the people, places, and moments from those two years.</p>
+      <p class="placeholder-flag">Intro blurb is a placeholder - Hans will rewrite this in his own words.</p>
+    </section>
+
+    <!-- One column per mission, in the order they were served. -->
+    <section class="mission-columns-section">
+      <div class="mission-columns">
+        <article class="mission-column">
+          <p class="mission-step">1st Assignment</p>
+          <h3>Salt Lake City South</h3>
+          <p class="mission-dates">Temporary assignment - waiting on my visa</p>
+          <p>While my visa to Argentina was being processed, I was temporarily reassigned to serve in the Utah Salt Lake City South Mission.</p>
+          <p class="mission-pending">More coming soon.</p>
+        </article>
+        <article class="mission-column">
+          <p class="mission-step">2nd Assignment</p>
+          <h3>Argentina Neuquén</h3>
+          <p class="mission-dates"><span class="mission-pending">Dates coming soon</span></p>
+          <p>My original mission call. Once my visa came through, I finally made it to Argentina and began serving in the Neuquén Mission.</p>
+          <p class="mission-pending">More coming soon.</p>
+        </article>
+        <article class="mission-column">
+          <p class="mission-step">3rd Assignment</p>
+          <h3>Argentina Comodoro Rivadavia</h3>
+          <p class="mission-dates"><span class="mission-pending">Dates coming soon</span></p>
+          <p>When the missionary age was lowered, a wave of new missionaries led to new mission boundaries - and I finished my mission in the newly created Comodoro Rivadavia Mission.</p>
+          <p class="mission-pending">More coming soon.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="explore mission-stories">
+      <h3>Stories from the Field</h3>
+
+      <div class="story-filters">
+        <div class="story-filter">
+          <label for="filter-area">Area</label>
+          <select id="filter-area"><option value="all">All Areas</option></select>
+        </div>
+        <div class="story-filter">
+          <label for="filter-range">Time Range</label>
+          <select id="filter-range"><option value="all">All Time</option></select>
+        </div>
+      </div>
+
+      <!--
+        HOW TO ADD A STORY
+        1. Copy /about/mission/stories/story-template.html to a new file,
+           e.g. /about/mission/stories/first-day-in-neuquen.html, and fill it in.
+        2. Put the thumbnail in /about/mission/stories/images/.
+        3. Paste a card like the one below into the story-grid (newest last or
+           first - your call; the grid doesn't care).
+
+        <a class="story-card" href="/about/mission/stories/first-day-in-neuquen.html"
+           data-area="Neuquén" data-range="2013-early">
+          <img class="story-thumb" src="/about/mission/stories/images/first-day-in-neuquen.jpg" alt="Short description of the photo" />
+          <div class="story-card-body">
+            <h4 class="story-title">First Day in Neuquén</h4>
+            <p class="story-meta"><span class="story-area-tag">Neuquén</span> <span class="story-when">Early 2013</span></p>
+          </div>
+        </a>
+
+        data-area  = the area name exactly as you want it in the Area dropdown.
+        data-range = YYYY-early, YYYY-mid, or YYYY-late (shows as "Early 2013", etc.).
+                     Leave it off if you don't know when it happened - the card
+                     still shows under "All Time".
+        No photo yet? Leave out the <img> and a placeholder block shows instead.
+        The dropdowns build themselves from whatever cards are on the page.
+      -->
+      <div class="story-grid" id="story-grid">
+      </div>
+
+      <p class="story-empty" id="story-empty">Stories coming soon - I'm still digging through journals and photos.</p>
+      <p class="story-empty story-no-match" id="story-no-match" hidden>No stories match those filters yet.</p>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/about/mission.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+</body>
+</html>
