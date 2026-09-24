@@ -25,6 +25,7 @@
     { href: "/hobby/", label: "My Hobbies" },
     { href: "https://youtube.com/@rarecandymindset?si=ucd7i97Zyu1Jm-pX", label: "YouTube", external: true },
     { href: "/about/", label: "About Me" },
+    { href: "/about/mission/", label: "My Mission" },
   ];
 
   function mainNavHtml() {
