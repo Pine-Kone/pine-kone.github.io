@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bike Commute Tracker | Hans M. Haroldsen</title>
+  <link rel="stylesheet" href="/style/main.css" />
+  <link rel="stylesheet" href="/style/hobby/bike-commute.css" />
+</head>
+<body>
+  <!-- Staged page: not linked from the nav or any other page yet. -->
+  <header data-site-header data-title="Bike Commute Tracker"></header>
+
+  <main>
+    <section class="hero">
+      <h2>🚴 Bike Commute Tracker</h2>
+      <p class="hero-blurb">It's 5.9 miles from my front door to my desk at work. Every ride I make gets logged here - and I like to see how far those little trips add up.</p>
+    </section>
+
+    <!-- Every number on this page comes from /files/bike-commute/rides.json.
+         To log a ride, add { "date": "YYYY-MM-DD", "miles": 5.9 } to that file. -->
+    <section class="bike-stats">
+      <div class="stat-tile stat-tile-main">
+        <p class="stat-label" id="ytd-label">Miles This Year</p>
+        <p class="stat-value"><span id="ytd-miles">-</span> <span class="stat-unit">mi</span></p>
+        <p class="stat-sub" id="ytd-rides"></p>
+      </div>
+      <div class="stat-tile" id="total-tile" hidden>
+        <p class="stat-label">All-Time Miles</p>
+        <p class="stat-value"><span id="total-miles">-</span> <span class="stat-unit">mi</span></p>
+        <p class="stat-sub" id="total-rides"></p>
+      </div>
+      <div class="stat-tile">
+        <p class="stat-label">Last Ride</p>
+        <p class="stat-value stat-value-small" id="last-ride">-</p>
+        <p class="stat-sub">5.9 mi each way</p>
+      </div>
+    </section>
+
+    <section class="explore bike-compare">
+      <h3>How Far Is That?</h3>
+      <p class="landmark-headline" id="landmark-headline">Loading rides...</p>
+
+      <div class="compare-card" id="next-landmark"></div>
+
+      <ul class="landmark-list" id="landmark-list"></ul>
+      <p class="compare-note">Distances are straight-line ("as the crow flies") from Idaho Falls.</p>
+    </section>
+
+    <section class="bike-moon">
+      <h3>🌕 Road to the Moon</h3>
+      <p>The Moon is about 238,900 miles away. So far I've biked...</p>
+      <p class="moon-percent" id="moon-percent">-</p>
+      <p>of the way there.</p>
+      <div class="progress-track moon-track"><div class="progress-fill" id="moon-fill"></div></div>
+      <p class="moon-detail" id="moon-detail"></p>
+    </section>
+  </main>
+
+  <footer data-site-footer></footer>
+
+  <button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+  <script src="/scripts/light-dark-toggle.js"></script>
+  <script src="/scripts/hobby/bike-commute.js"></script>
+  <script src="/scripts/site-chrome.js"></script>
+</body>
+</html>
