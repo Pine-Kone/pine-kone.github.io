@@ -33,7 +33,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-17-17-pop-series-6.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -50,7 +50,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-77-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -67,7 +67,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-78-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -84,7 +84,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-17-17-pop-series-8.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -101,7 +101,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-101-127.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -127,7 +127,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-17-17-pop-series-9.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -144,7 +144,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-85-111.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -161,7 +161,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-131-147.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -178,7 +178,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-dp1.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -195,7 +195,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-67-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -212,7 +212,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-1-135.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -229,7 +229,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-6-156.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -246,7 +246,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-7-156.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -289,7 +289,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-gg31-gg70.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -323,7 +323,7 @@ const turtwigCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/turtwig-40.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -345,7 +345,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-49-130.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -362,7 +362,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-37-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -379,7 +379,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-34-dp-p.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -396,7 +396,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-49-127.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -413,7 +413,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-31-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -430,7 +430,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-2-135.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -447,7 +447,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-8-156.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -481,7 +481,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-11-162.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -498,7 +498,7 @@ const grotleCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/grotle-164-162.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -537,7 +537,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-lv-x-122-130.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -554,7 +554,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-30-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -571,7 +571,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-11-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -588,7 +588,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-39-127.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -605,7 +605,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-lv-x-dp9.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -622,7 +622,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-10-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -639,7 +639,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-3-135.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -656,7 +656,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-9-156.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -724,7 +724,7 @@ const torterraCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/turtwig-grotle-torterra/torterra-ex-185-162.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
