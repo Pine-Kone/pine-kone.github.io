@@ -68,6 +68,15 @@ const rhyhornCards = [
         obtainedLocation: "Online (Cardhaven Games)",
         features: [],
         notes: []
+      },
+      {
+        type: "1st Edition",
+        image: null,
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: ["1st Edition"],
+        notes: []
       }
     ]
   },
