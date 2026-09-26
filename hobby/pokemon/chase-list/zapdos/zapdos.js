@@ -20,7 +20,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-16-102.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -37,7 +37,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-15-62.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -88,7 +88,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-23.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -122,7 +122,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-44-147.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -139,7 +139,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-24-47.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -156,7 +156,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-116-112.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -173,7 +173,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/rockets-zapdos-ex-106-109.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -190,7 +190,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-33.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -207,7 +207,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-14-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -224,7 +224,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-48-147.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -241,7 +241,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-150-147.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -258,7 +258,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-12-99.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -275,7 +275,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-8-16.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -292,7 +292,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-41-99.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -309,7 +309,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-48-135.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -343,7 +343,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-23-108.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -377,7 +377,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-42-108.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -394,7 +394,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-40-181.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -411,7 +411,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-24-68.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -428,7 +428,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/moltres-zapdos-articuno-gx-44-68.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -445,7 +445,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/moltres-zapdos-articuno-gx-66-68.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -462,7 +462,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/moltres-zapdos-articuno-gx-69-68.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -479,7 +479,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/moltres-zapdos-articuno-gx-226-173.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -496,7 +496,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-sm145.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -513,7 +513,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-sm159.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -530,7 +530,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/moltres-zapdos-articuno-gx-sm210.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -543,11 +543,11 @@ const zapdosCards = [
   {
     name: "Zapdos",
     set: "Vivid Voltage",
-    number: "48 / 180",
+    number: "48 / 185",
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-48-185.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -573,7 +573,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-v-80-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -590,7 +590,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-v-173-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -607,7 +607,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-v-174-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -624,7 +624,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-82-225.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -641,7 +641,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/rockets-zapdos-15-132.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -658,7 +658,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-v-182-172.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -675,7 +675,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-v-tg19-tg30.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -692,7 +692,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-29-78.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -709,7 +709,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-swsh124.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -726,7 +726,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/galarian-zapdos-swsh283.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -760,7 +760,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-192-165.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -777,7 +777,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-202-165.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -811,7 +811,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/team-rockets-zapdos-70-182.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -828,7 +828,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-ex-49.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -845,7 +845,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-157.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -862,7 +862,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-55-128.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -879,7 +879,7 @@ const zapdosCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/zapdos/zapdos-98.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
