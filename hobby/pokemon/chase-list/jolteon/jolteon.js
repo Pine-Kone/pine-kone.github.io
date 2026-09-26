@@ -25,7 +25,7 @@ const jolteonCards = [
       },
       {
         type: "1st Edition",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-4-64-1st-edition.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -51,7 +51,7 @@ const jolteonCards = [
       },
       {
         type: "1st Edition",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-20-64-1st-edition.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -76,8 +76,8 @@ const jolteonCards = [
         notes: []
       },
       {
-        type: "First Edition",
-        image: null,
+        type: "1st Edition",
+        image: "/images/pokemon/chase-list/jolteon/dark-jolteon-38-82-1st-edition.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -94,7 +94,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/lt-surges-jolteon-28-132.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -111,7 +111,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/light-jolteon-48-105.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -128,7 +128,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jasmines-jolteon-30-141.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -162,7 +162,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-13-144.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -179,7 +179,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-6-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -196,7 +196,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-8-115.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -213,7 +213,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-7-113.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -230,7 +230,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-ex-109-113.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -264,7 +264,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-101-108.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -281,7 +281,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-23-100.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -298,7 +298,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-26-111.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -332,7 +332,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-45-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -349,7 +349,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-37-108.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -366,7 +366,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-34-116.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -383,7 +383,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-bw91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -400,7 +400,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-26-98.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -443,7 +443,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-ex-28a-83.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -460,7 +460,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-23-68.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -477,7 +477,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-70-236.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -494,7 +494,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-42-173.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -511,7 +511,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-gx-sm173.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -528,7 +528,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-47-180.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -562,7 +562,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-v-177-225.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -579,7 +579,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-tg4-tg30.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -596,7 +596,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-swsh94.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -613,7 +613,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-v-swsh151.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -630,7 +630,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-v-swsh183.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -647,7 +647,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-vmax-swsh184.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -664,7 +664,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-135-165.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -690,7 +690,7 @@ const jolteonCards = [
       },
       {
         type: "Pokeball",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-29-131-pokeball.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -716,7 +716,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-ex-30-131.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -742,7 +742,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-ex-153-131.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -776,7 +776,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-64-sv-p.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -793,7 +793,7 @@ const jolteonCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/jolteon/jolteon-1-19.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
