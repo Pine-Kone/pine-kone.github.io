@@ -20,7 +20,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-61-75.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -37,7 +37,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-77-105.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -54,7 +54,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-85-144.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -71,7 +71,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-86-144.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -88,7 +88,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-71-97.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -105,7 +105,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-66-115.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -122,7 +122,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-113-146.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -139,7 +139,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-62-90.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -156,7 +156,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-63-90.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -173,7 +173,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-68-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -190,7 +190,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-4-106.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -207,7 +207,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-15-214.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -224,7 +224,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-8-180.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -258,7 +258,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-4-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -301,7 +301,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-99-91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -361,7 +361,7 @@ const pinecoCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/pineco-61.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -383,7 +383,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-2-75.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -400,7 +400,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-21-75.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -417,7 +417,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/dark-forretress-35-105.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -434,7 +434,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/kogas-forretress-80-141.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -451,7 +451,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-9-144.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -468,7 +468,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-56-144.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -485,7 +485,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-28-97.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -502,7 +502,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-6-115.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -519,7 +519,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-9-17.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -536,7 +536,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/brocks-forretress-11-20.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -553,7 +553,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-28-146.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -570,7 +570,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-61-111.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -587,7 +587,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-3-90.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -604,7 +604,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-13-90.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -621,7 +621,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-5-95.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -638,7 +638,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-60-106.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -655,7 +655,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-124-214.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -672,7 +672,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-114-185.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -715,7 +715,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-ex-5-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -732,7 +732,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-ex-230-198.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -749,7 +749,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-ex-2-91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
@@ -766,7 +766,7 @@ const forretressCards = [
     variants: [
       {
         type: "Standard",
-        image: null,
+        image: "/images/pokemon/chase-list/pineco-forretress/forretress-ex-212-91.jpeg",
         obtained: false,
         obtainedDate: null,
         obtainedLocation: null,
