@@ -9,20 +9,20 @@
 Add one line per ride inside the `[ ]` brackets:
 
 ```json
-{ "date": "2026-09-28", "miles": 5.9, "trip": "round-trip" }
+{ "date": "2026-09-28", "miles": 5.9, "trip-type": "round-trip" }
 ```
 
-| Field   | What it means |
-|---------|---------------|
-| `date`  | The day of the ride, as `YYYY-MM-DD`. |
-| `miles` | The **one-way** distance of the trip. |
-| `trip`  | `"round-trip"` (there and back) or `"one-way"` (only one direction). |
+| Field       | What it means |
+|-------------|---------------|
+| `date`      | The day of the ride, as `YYYY-MM-DD`. |
+| `miles`     | The **one-way** distance of the trip. |
+| `trip-type` | `"round-trip"` (there and back) or `"one-way"` (only one direction). |
 
 ## How the miles are counted
 
 - `"round-trip"` doubles the miles: `5.9` counts as **11.8 mi** and **2 legs**.
 - `"one-way"` counts the miles once: `5.9` counts as **5.9 mi** and **1 leg**.
-- If `trip` is left off, the ride is treated as one-way.
+- If `trip-type` is left off, the ride is treated as one-way.
 
 ## Examples
 
