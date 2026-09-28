@@ -1,9 +1,9 @@
 // Bike Commute Tracker - reads /files/bike-commute/rides.json and builds
 // every number on the page from it. To log a ride, add one line to the JSON:
-//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip": "round-trip" }
-//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip": "one-way" }
+//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip-type": "round-trip" }
+//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip-type": "one-way" }
 // "miles" is the one-way distance. "round-trip" doubles it; "one-way"
-// (or leaving "trip" off) counts it once.
+// (or leaving "trip-type" off) counts it once.
 
 (function () {
   var RIDES_URL = "/files/bike-commute/rides.json";
@@ -61,7 +61,7 @@
     rides = rides
       .filter(function (r) { return r && r.date && !isNaN(Number(r.miles)); })
       .map(function (r) {
-        var roundTrip = String(r.trip || "").toLowerCase() === "round-trip";
+        var roundTrip = String(r["trip-type"] || "").toLowerCase() === "round-trip";
         var base = Number(r.miles);
         return {
           date: String(r.date),
