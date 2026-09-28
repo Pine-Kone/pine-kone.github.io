@@ -18,7 +18,8 @@
     </section>
 
     <!-- Every number on this page comes from /files/bike-commute/rides.json.
-         To log a ride, add { "date": "YYYY-MM-DD", "miles": 5.9 } to that file. -->
+         To log a ride, add { "date": "YYYY-MM-DD", "miles": 5.9, "trip": "round-trip" }
+         (or "one-way") to that file. "miles" is the one-way distance. -->
     <section class="bike-stats">
       <div class="stat-tile stat-tile-main">
         <p class="stat-label" id="ytd-label">Miles This Year</p>
@@ -33,7 +34,7 @@
       <div class="stat-tile">
         <p class="stat-label">Last Ride</p>
         <p class="stat-value stat-value-small" id="last-ride">-</p>
-        <p class="stat-sub">5.9 mi each way</p>
+        <p class="stat-sub" id="last-ride-detail"></p>
       </div>
     </section>
 
