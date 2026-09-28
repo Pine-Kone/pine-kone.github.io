@@ -1,8 +1,9 @@
 // Bike Commute Tracker - reads /files/bike-commute/rides.json and builds
 // every number on the page from it. To log a ride, add one line to the JSON:
-//   { "date": "YYYY-MM-DD", "miles": 5.9 }
-// (One entry per ride. A round trip can be one entry with the combined
-// miles, or two entries on the same date - both work.)
+//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip": "round-trip" }
+//   { "date": "YYYY-MM-DD", "miles": 5.9, "trip": "one-way" }
+// "miles" is the one-way distance. "round-trip" doubles it; "one-way"
+// (or leaving "trip" off) counts it once.
 
 (function () {
   var RIDES_URL = "/files/bike-commute/rides.json";
@@ -47,6 +48,10 @@
     return d.toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
   }
 
+  function countLabel(days, legs) {
+    return days + (days === 1 ? " day" : " days") + " · " + legs + (legs === 1 ? " leg" : " legs");
+  }
+
   function setText(id, text) {
     var el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -55,31 +60,49 @@
   function render(rides) {
     rides = rides
       .filter(function (r) { return r && r.date && !isNaN(Number(r.miles)); })
-      .map(function (r) { return { date: String(r.date), miles: Number(r.miles) }; })
+      .map(function (r) {
+        var roundTrip = String(r.trip || "").toLowerCase() === "round-trip";
+        var base = Number(r.miles);
+        return {
+          date: String(r.date),
+          base: base,
+          roundTrip: roundTrip,
+          legs: roundTrip ? 2 : 1,
+          miles: roundTrip ? base * 2 : base,
+        };
+      })
       .sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
 
     var year = new Date().getFullYear();
     var total = 0;
     var ytd = 0;
     var ytdRides = 0;
+    var ytdLegs = 0;
+    var totalLegs = 0;
     var years = {};
     rides.forEach(function (r) {
       total += r.miles;
+      totalLegs += r.legs;
       var y = Number(r.date.slice(0, 4));
       years[y] = true;
       if (y === year) {
         ytd += r.miles;
         ytdRides++;
+        ytdLegs += r.legs;
       }
     });
     var multiYear = Object.keys(years).length > 1;
 
     setText("ytd-label", year + " Miles");
     setText("ytd-miles", fmtMiles(ytd));
-    setText("ytd-rides", ytdRides + (ytdRides === 1 ? " ride" : " rides"));
+    setText("ytd-rides", countLabel(ytdRides, ytdLegs));
     setText("total-miles", fmtMiles(total));
-    setText("total-rides", rides.length + (rides.length === 1 ? " ride" : " rides"));
-    setText("last-ride", rides.length ? fmtDate(rides[rides.length - 1].date) : "No rides yet");
+    setText("total-rides", countLabel(rides.length, totalLegs));
+    var lastRide = rides[rides.length - 1];
+    setText("last-ride", lastRide ? fmtDate(lastRide.date) : "No rides yet");
+    setText("last-ride-detail", lastRide
+      ? (lastRide.roundTrip ? "Round trip" : "One way") + " - " + fmtMiles(lastRide.miles) + " mi"
+      : "");
 
     // The all-time tile only matters once the log spans more than one year.
     var totalTile = document.getElementById("total-tile");
