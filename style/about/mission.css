@@ -14,6 +14,19 @@
   margin: 0 auto;
 }
 
+/* Four mission phases: 4 across on wide screens, 2x2 on tablets/small laptops. */
+.mission-columns {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  max-width: 1200px;
+}
+
+@media (max-width: 1100px) {
+  .mission-columns {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 900px;
+  }
+}
+
 .mission-column {
   background: #fff;
   color: var(--text-color);
