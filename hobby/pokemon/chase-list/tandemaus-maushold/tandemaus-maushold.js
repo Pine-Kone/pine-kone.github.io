@@ -331,6 +331,40 @@ const mausholdCards = [
   },
 
   {
+    name: "Maushold",
+    set: "30th Celebration",
+    number: "125 / 128",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-125-128.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
+  },
+
+  {
+    name: "Maushold",
+    set: "30th Celebration",
+    number: "146 / 128",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/chase-list/tandemaus-maushold/maushold-146-128.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
+  },
+
+  {
     name: "Pikachu",
     set: "SV Black Star Promos",
     number: "088",
