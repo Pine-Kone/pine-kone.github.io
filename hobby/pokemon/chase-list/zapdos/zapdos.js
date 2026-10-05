@@ -874,6 +874,23 @@ const zapdosCards = [
 
   {
     name: "Zapdos",
+    set: "30th Celebration",
+    number: "133 / 128",
+    variants: [
+      {
+        type: "Standard",
+        image: "/images/pokemon/chase-list/zapdos/zapdos-133-128.jpeg",
+        obtained: false,
+        obtainedDate: null,
+        obtainedLocation: null,
+        features: [],
+        notes: []
+      }
+    ]
+  },
+
+  {
+    name: "Zapdos",
     set: "Mega Promos",
     number: "98",
     variants: [
