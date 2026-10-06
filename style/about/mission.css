@@ -156,14 +156,32 @@
   gap: 0.4rem;
 }
 
+/* Mission = solid accent, Zone = solid primary, Area = outlined. */
+.story-mission-tag,
+.story-zone-tag,
 .story-area-tag {
   display: inline-block;
   padding: 0.1rem 0.6rem;
   border-radius: 1rem;
-  background: var(--accent-color);
-  color: #fff;
+  border: 1px solid transparent;
   font-weight: bold;
   font-size: 0.8rem;
+}
+
+.story-mission-tag {
+  background: var(--accent-color);
+  color: #fff;
+}
+
+.story-zone-tag {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.story-area-tag {
+  background: transparent;
+  border-color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .story-when {
@@ -221,8 +239,18 @@ body.dark-mode .story-article h2 {
   color: var(--accent-color);
 }
 
-body.dark-mode .story-area-tag {
+body.dark-mode .story-mission-tag {
   color: #1e1e1e;
+}
+
+body.dark-mode .story-zone-tag {
+  background: #f0f0f0;
+  color: #1e1e1e;
+}
+
+body.dark-mode .story-area-tag {
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 body.dark-mode .story-filter select {
