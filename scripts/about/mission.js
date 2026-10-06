@@ -1,16 +1,17 @@
 // My Mission page - story grid filters.
-// The Area and Time Range dropdowns build themselves from the story cards'
-// data-area / data-range attributes, so adding a story is just adding a card.
-//   data-area="Neuquén"
+// The Mission, Zone, Area and Time Range dropdowns build themselves from the
+// story cards' data attributes, so adding a story is just adding a card.
+//   data-mission="Neuquén"
+//   data-zone="Centro"          (optional - leave off if unknown)
+//   data-area="Belgrano"        (optional - leave off if unknown)
 //   data-range="2013-early" | "2013-mid" | "2013-late"   (optional)
 
 document.addEventListener("DOMContentLoaded", function () {
   var grid = document.getElementById("story-grid");
-  var areaFilter = document.getElementById("filter-area");
   var rangeFilter = document.getElementById("filter-range");
   var emptyMsg = document.getElementById("story-empty");
   var noMatchMsg = document.getElementById("story-no-match");
-  if (!grid || !areaFilter || !rangeFilter) return;
+  if (!grid || !rangeFilter) return;
 
   var cards = Array.prototype.slice.call(grid.querySelectorAll(".story-card"));
   var PART_ORDER = { early: 1, mid: 2, late: 3 };
@@ -39,52 +40,52 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Build dropdown options from the cards on the page.
-  var areas = [];
-  var ranges = [];
-  cards.forEach(function (card) {
-    var a = card.dataset.area;
-    var r = card.dataset.range;
-    if (a && areas.indexOf(a) === -1) areas.push(a);
-    if (r && ranges.indexOf(r) === -1) ranges.push(r);
-  });
-  areas.sort(function (x, y) { return x.localeCompare(y); });
-  ranges.sort(function (x, y) { return rangeSortKey(x) - rangeSortKey(y); });
+  // Each filter: the <select> plus the card data attribute it reads.
+  var filters = [
+    { el: document.getElementById("filter-mission"), key: "mission" },
+    { el: document.getElementById("filter-zone"), key: "zone" },
+    { el: document.getElementById("filter-area"), key: "area" },
+    { el: rangeFilter, key: "range", label: rangeLabel, sortKey: rangeSortKey }
+  ].filter(function (f) { return f.el; });
 
-  areas.forEach(function (a) {
-    var opt = document.createElement("option");
-    opt.value = a;
-    opt.textContent = a;
-    areaFilter.appendChild(opt);
-  });
-  ranges.forEach(function (r) {
-    var opt = document.createElement("option");
-    opt.value = r;
-    opt.textContent = rangeLabel(r);
-    rangeFilter.appendChild(opt);
+  // Build dropdown options from the cards on the page.
+  filters.forEach(function (f) {
+    var values = [];
+    cards.forEach(function (card) {
+      var v = card.dataset[f.key];
+      if (v && values.indexOf(v) === -1) values.push(v);
+    });
+    if (f.sortKey) {
+      values.sort(function (x, y) { return f.sortKey(x) - f.sortKey(y); });
+    } else {
+      values.sort(function (x, y) { return x.localeCompare(y); });
+    }
+    values.forEach(function (v) {
+      var opt = document.createElement("option");
+      opt.value = v;
+      opt.textContent = f.label ? f.label(v) : v;
+      f.el.appendChild(opt);
+    });
+    // Nothing to filter by yet (e.g. no zones recorded) - grey it out.
+    f.el.disabled = values.length === 0;
   });
 
   if (emptyMsg) emptyMsg.hidden = cards.length > 0;
-  if (cards.length === 0) {
-    areaFilter.disabled = true;
-    rangeFilter.disabled = true;
-  }
 
   function applyFilters() {
-    var area = areaFilter.value;
-    var range = rangeFilter.value;
     var shown = 0;
     cards.forEach(function (card) {
-      var matchesArea = area === "all" || card.dataset.area === area;
-      var matchesRange = range === "all" || card.dataset.range === range;
-      var visible = matchesArea && matchesRange;
+      var visible = filters.every(function (f) {
+        return f.el.value === "all" || card.dataset[f.key] === f.el.value;
+      });
       card.hidden = !visible;
       if (visible) shown++;
     });
     if (noMatchMsg) noMatchMsg.hidden = !(cards.length > 0 && shown === 0);
   }
 
-  areaFilter.addEventListener("change", applyFilters);
-  rangeFilter.addEventListener("change", applyFilters);
+  filters.forEach(function (f) {
+    f.el.addEventListener("change", applyFilters);
+  });
   applyFilters();
 });
