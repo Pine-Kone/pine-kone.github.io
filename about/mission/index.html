@@ -56,6 +56,14 @@
 
       <div class="story-filters">
         <div class="story-filter">
+          <label for="filter-mission">Mission</label>
+          <select id="filter-mission"><option value="all">All Missions</option></select>
+        </div>
+        <div class="story-filter">
+          <label for="filter-zone">Zone</label>
+          <select id="filter-zone"><option value="all">All Zones</option></select>
+        </div>
+        <div class="story-filter">
           <label for="filter-area">Area</label>
           <select id="filter-area"><option value="all">All Areas</option></select>
         </div>
@@ -74,15 +82,24 @@
            first - your call; the grid doesn't care).
 
         <a class="story-card" href="/about/mission/stories/first-day-in-neuquen.html"
-           data-area="Neuquén" data-range="2013-early">
+           data-mission="Neuquén" data-zone="Centro" data-area="Belgrano" data-range="2013-early">
           <img class="story-thumb" src="/about/mission/stories/images/first-day-in-neuquen.jpg" alt="Short description of the photo" />
           <div class="story-card-body">
             <h4 class="story-title">First Day in Neuquén</h4>
-            <p class="story-meta"><span class="story-area-tag">Neuquén</span> <span class="story-when">Early 2013</span></p>
+            <p class="story-meta">
+              <span class="story-mission-tag">Neuquén</span>
+              <span class="story-zone-tag">Centro Zone</span>
+              <span class="story-area-tag">Belgrano Area</span>
+              <span class="story-when">Early 2013</span>
+            </p>
           </div>
         </a>
 
-        data-area  = the area name exactly as you want it in the Area dropdown.
+        data-mission = the mission, exactly as you want it in the Mission dropdown.
+        data-zone    = the zone name (without the word "Zone") for the Zone dropdown.
+        data-area    = the area name (without the word "Area") for the Area dropdown.
+                       Don't know the zone or area yet? Leave that attribute AND its
+                       tag off - the card still shows under "All Zones" / "All Areas".
         data-range = YYYY-early, YYYY-mid, or YYYY-late (shows as "Early 2013", etc.).
                      Leave it off if you don't know when it happened - the card
                      still shows under "All Time".
@@ -90,11 +107,16 @@
         The dropdowns build themselves from whatever cards are on the page.
       -->
       <div class="story-grid" id="story-grid">
+        <!-- Zone unknown for now - add data-zone="..." and a story-zone-tag once confirmed. -->
         <a class="story-card" href="/about/mission/stories/homemade-yogurt.html"
-           data-area="Salt Lake City South">
+           data-mission="Salt Lake City South" data-area="Sandy Crescent" data-range="2012-mid">
           <div class="story-card-body">
             <h4 class="story-title">Homemade Yogurt</h4>
-            <p class="story-meta"><span class="story-area-tag">Salt Lake City South</span></p>
+            <p class="story-meta">
+              <span class="story-mission-tag">Salt Lake City South</span>
+              <span class="story-area-tag">Sandy Crescent Area</span>
+              <span class="story-when">June 2012</span>
+            </p>
           </div>
         </a>
       </div>
