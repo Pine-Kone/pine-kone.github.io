@@ -192,6 +192,10 @@ const MASTER_RESUME_DATA = [
         categories: ["Accounting"],
       },
       {
+        text: "Prepared journal entries in QuickBooks Online from client credit card statements, breaking out transactions to keep credit balances accurate",
+        categories: ["Accounting"],
+      },
+      {
         text: "Consulted with business owners of LLCs, partnerships, and S-corporations on entity structure, compliance considerations, and operational planning",
         categories: ["Taxation", "Accounting", "Consulting"],
       },
