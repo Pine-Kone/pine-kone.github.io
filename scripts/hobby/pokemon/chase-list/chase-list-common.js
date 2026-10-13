@@ -62,6 +62,24 @@ function chaseListEscape(value) {
   return String(value);
 }
 
+/* Serebii lookup links (used where a card has no photo yet)
+   Serebii's card database URLs follow a pattern: the folder is the set
+   name in lowercase with everything but letters, digits and
+   apostrophes removed, and cards are zero-padded to three digits:
+     https://www.serebii.net/card/hiddenfates/024.shtml
+   Numbers that aren't plain digits (SM145, TG19, 28a) have no known
+   pattern, so those link to the set's page instead. */
+function chaseListSerebiiSetUrl(setName) {
+  const folder = String(setName).toLowerCase().replace(/[^a-z0-9']/g, "");
+  return `https://www.serebii.net/card/${folder}/`;
+}
+
+function chaseListSerebiiCardUrl(setName, number) {
+  const match = /^\s*(\d+)\s*(?:\/|$)/.exec(String(number || ""));
+  if (!match) return chaseListSerebiiSetUrl(setName);
+  return `${chaseListSerebiiSetUrl(setName)}${match[1].padStart(3, "0")}.shtml`;
+}
+
 
 /* ====================================
    Render a single variant row
@@ -71,6 +89,15 @@ function chaseListRenderVariant(card, variant) {
 
   const statusText = variant.obtained ? "✓ Obtained" : "○ Still Chasing";
   const statusClass = variant.obtained ? "status-obtained" : "status-not-obtained";
+
+  const serebiiUrl = chaseListSerebiiCardUrl(card.set, card.number);
+  const lookupHTML = (hidden) => `
+      <a class="card-image-placeholder" href="${serebiiUrl}"
+        target="_blank" rel="noopener"
+        title="Look up this card on Serebii"${hidden ? ' style="display:none;"' : ""}>
+        Look up on Serebii ↗
+      </a>
+    `;
 
   const imageHTML = variant.image
     ? `
@@ -83,15 +110,9 @@ function chaseListRenderVariant(card, variant) {
         height="248"
         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
       >
-      <div class="card-image-placeholder" style="display:none;">
-        Image not added yet.
-      </div>
+      ${lookupHTML(true)}
     `
-    : `
-      <div class="card-image-placeholder">
-        Image not added yet.
-      </div>
-    `;
+    : lookupHTML(false);
 
   const acquisitionHTML = variant.obtained
     ? `
