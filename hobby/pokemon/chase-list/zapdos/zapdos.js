@@ -812,11 +812,11 @@ const zapdosCards = [
       {
         type: "Standard",
         image: "/images/pokemon/chase-list/zapdos/team-rockets-zapdos-70-182.jpeg",
-        obtained: false,
-        obtainedDate: null,
-        obtainedLocation: null,
+        obtained: true,
+        obtainedDate: "2026-10-12",
+        obtainedLocation: "Jackson Hole, WY",
         features: [],
-        notes: []
+        notes: ["A gift from my pokemon card collecting brother-in-law!"]
       }
     ]
   },
