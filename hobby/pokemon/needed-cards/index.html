@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Needed Cards by Set | Hans M. Haroldsen</title>
+<link rel="stylesheet" href="/style/main.css" />
+
+<style>
+.needed-hero {
+  padding: 3rem 1rem 2rem;
+  text-align: center;
+  background: var(--background-color);
+}
+
+.needed-hero h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.needed-hero p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.needed-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.needed-stat {
+  min-width: 140px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.needed-stat .needed-stat-value {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.needed-stat .needed-stat-label {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.needed-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 1rem 1.5rem;
+}
+
+.needed-controls label {
+  font-weight: bold;
+}
+
+.needed-controls select {
+  padding: 0.4rem 0.6rem;
+  font-size: 1rem;
+}
+
+.needed-section {
+  padding: 1.5rem 1rem 3rem;
+  background: #f0f0f0;
+}
+
+body.dark-mode .needed-section {
+  background: #2a2a2a;
+}
+
+.needed-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.needed-group-title {
+  margin: 2rem 0 0.25rem;
+  font-size: 1.6rem;
+}
+
+.needed-group-intro {
+  margin: 0 0 1rem;
+  opacity: 0.85;
+}
+
+.needed-set {
+  margin-bottom: 0.75rem;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+body.dark-mode .needed-set {
+  background: #1f1f1f;
+}
+
+.needed-set summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.9rem 1.1rem;
+  cursor: pointer;
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.needed-set summary:hover {
+  background: rgba(128, 128, 128, 0.12);
+}
+
+.needed-set-meta {
+  font-size: 0.9rem;
+  font-weight: normal;
+  opacity: 0.85;
+}
+
+.needed-set-count {
+  padding: 0.15rem 0.6rem;
+  background: var(--primary-color);
+  color: white;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+.needed-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  padding: 0.5rem 1.1rem 1.25rem;
+}
+
+.needed-card {
+  display: flex;
+  flex-direction: column;
+  width: 130px;
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.needed-card:hover {
+  transform: translateY(-3px);
+}
+
+.needed-card-image,
+.needed-card-placeholder {
+  width: 130px;
+  height: 179px;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+}
+
+.needed-card-image {
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.needed-card-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border: 2px dashed rgba(128, 128, 128, 0.6);
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+.needed-card-name {
+  margin-top: 0.4rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  line-height: 1.2;
+}
+
+.needed-card-number,
+.needed-card-variant,
+.needed-card-line {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+.needed-card-variant {
+  font-style: italic;
+}
+
+.needed-empty,
+.needed-loading,
+.needed-error {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.needed-error {
+  color: #b00020;
+}
+</style>
+</head>
+
+<body>
+
+<header data-site-header data-title="Needed Cards by Set" data-nav="breadcrumb" data-back-href="/hobby/pokemon/" data-back-label="Pokémon"></header>
+
+<main>
+
+<section class="needed-hero">
+<h2>Needed Cards by Set</h2>
+<p>
+Every card on my chase list that I don't have yet, grouped by the set
+it comes from, so I know which packs to look for and which cards to
+look for in them. Promos and other special releases are listed at the bottom.
+This page updates itself as I mark cards obtained.
+</p>
+</section>
+
+<section class="needed-summary" id="needed-summary" aria-live="polite"></section>
+
+<section class="needed-controls">
+<label for="needed-line-filter">Pokémon:</label>
+<select id="needed-line-filter">
+<option value="all">All chase lists</option>
+</select>
+
+<label for="needed-sort">Sort sets by:</label>
+<select id="needed-sort">
+<option value="release">Release order</option>
+<option value="most">Most cards needed</option>
+</select>
+</section>
+
+<section class="needed-section">
+<div class="needed-container" id="needed-container">
+<p class="needed-loading">Loading chase lists...</p>
+</div>
+</section>
+
+</main>
+
+<footer data-site-footer></footer>
+
+<button id="theme-toggle" aria-label="Toggle light/dark mode">🌓</button>
+
+<script src="/scripts/light-dark-toggle.js"></script>
+
+<script>
+"use strict";
+
+/*
+ * Needed Cards by Set
+ * ====================
+ * Builds this page from the chase list data files themselves, so it
+ * never needs a separate update:
+ *
+ *   1. Reads the chase-list tiles on /hobby/pokemon/ to discover every
+ *      chase list (each lives at /hobby/pokemon/chase-list/<slug>/ and
+ *      has its data in <slug>.js).
+ *   2. Loads each data file and collects every variant with
+ *      obtained: false.
+ *   3. Groups those by `set` and renders them.
+ *
+ * Adding a new chase list to the landing page adds it here too.
+ * A set that is missing from SET_RELEASES below still shows up - it
+ * just lands in "Other sets" until a release month is added.
+ */
+
+const CHASE_LIST_PREFIX = "/hobby/pokemon/chase-list/";
+
+/* Release month (YYYY-MM) for the main sets. Keys are matched after
+   lower-casing and stripping punctuation, so "Scarlet & Violet" and
+   "Scarlet Violet" can both be listed. */
+const SET_RELEASES = {
+  "Base": "1999-01",
+  "Jungle": "1999-06",
+  "Fossil": "1999-10",
+  "Team Rocket": "2000-04",
+  "Gym Heroes": "2000-08",
+  "Gym Challenge": "2000-10",
+  "VS": "2001-03",
+  "Neo Discovery": "2001-06",
+  "Neo Destiny": "2002-02",
+  "Aquapolis": "2003-01",
+  "Skyridge": "2003-05",
+  "EX Sandstorm": "2003-09",
+  "EX Dragon": "2003-11",
+  "EX Team Magma VS Team Aqua": "2004-03",
+  "EX Hidden Legends": "2004-06",
+  "EX FireRed and Leaf Green": "2004-09",
+  "EX Team Rocket Returns": "2004-11",
+  "EX Deoxys": "2005-02",
+  "EX Emerald": "2005-05",
+  "EX Unseen Forces": "2005-08",
+  "EX Delta Species": "2005-10",
+  "EX Holon Phantoms": "2006-05",
+  "EX Dragon Frontiers": "2006-11",
+  "EX Power Keepers": "2007-02",
+  "Diamond and Pearl": "2007-05",
+  "Great Encounters": "2008-02",
+  "Majestic Dawn": "2008-05",
+  "Legends Awakened": "2008-08",
+  "Stormfront": "2008-11",
+  "Platinum": "2009-02",
+  "Rising Rivals": "2009-05",
+  "Supreme Victors": "2009-08",
+  "Arceus": "2009-11",
+  "Pokemon Rumble": "2009-12",
+  "Unleashed": "2010-05",
+  "Undaunted": "2010-08",
+  "Triumphant": "2010-11",
+  "Call of Legends": "2011-02",
+  "Next Destinies": "2012-02",
+  "Dark Explorers": "2012-05",
+  "Dragons Exalted": "2012-08",
+  "Boundaries Crossed": "2012-11",
+  "Plasma Storm": "2013-02",
+  "Plasma Freeze": "2013-05",
+  "Plasma Blast": "2013-08",
+  "Legendary Treasures": "2013-11",
+  "X Y": "2014-02",
+  "Flashfire": "2014-05",
+  "Primal Clash": "2015-02",
+  "Roaring Skies": "2015-05",
+  "Ancient Origins": "2015-08",
+  "BREAKThrough": "2015-11",
+  "Generations": "2016-02",
+  "Fates Collide": "2016-05",
+  "Evolutions": "2016-11",
+  "Sun Moon": "2017-02",
+  "Crimson Invasion": "2017-11",
+  "Ultra Prism": "2018-02",
+  "Celestial Storm": "2018-08",
+  "Dragon Majesty": "2018-09",
+  "Lost Thunder": "2018-11",
+  "Team Up": "2019-02",
+  "Unbroken Bonds": "2019-05",
+  "Hidden Fates": "2019-08",
+  "Tag All Stars": "2019-10",
+  "Cosmic Eclipse": "2019-11",
+  "Sword Shield": "2020-02",
+  "Champion's Path": "2020-09",
+  "Vivid Voltage": "2020-11",
+  "Chilling Reign": "2021-06",
+  "Evolving Skies": "2021-08",
+  "Celebrations": "2021-10",
+  "Brilliant Stars": "2022-02",
+  "Astral Radiance": "2022-05",
+  "Pokemon GO": "2022-07",
+  "Silver Tempest": "2022-11",
+  "Crown Zenith": "2023-01",
+  "Scarlet & Violet": "2023-03",
+  "Scarlet Violet": "2023-03",
+  "Paldea Evolved": "2023-06",
+  "Obsidian Flames": "2023-08",
+  "151": "2023-09",
+  "Paradox Rift": "2023-11",
+  "Paldean Fates": "2024-01",
+  "Temporal Forces": "2024-03",
+  "Stellar Crown": "2024-09",
+  "Prismatic Evolutions": "2025-01",
+  "Mega Evolution": "2025-09",
+  "30th Celebration": "2026-01",
+  "Storm Emeralda": "2026-06"
+};
+
+/* Anything whose set name matches this is something you can't just
+   buy as a pack, so it goes in the bottom section. */
+const SPECIAL_SET_PATTERN =
+  /promo|vending|pop series|halfdeck|battle strength|starter set|movie/i;
+
+/* ====================================
+   Helpers
+==================================== */
+
+function setKey(name) {
+  return String(name)
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]/g, "");
+}
+
+const RELEASE_BY_KEY = {};
+Object.keys(SET_RELEASES).forEach((name) => {
+  RELEASE_BY_KEY[setKey(name)] = SET_RELEASES[name];
+});
+
+function escapeHTML(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function formatRelease(yyyymm) {
+  const [year, month] = yyyymm.split("-").map(Number);
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  return `${months[month - 1]} ${year}`;
+}
+
+/* ====================================
+   Load every chase list
+==================================== */
+
+async function discoverChaseLists() {
+  const response = await fetch("/hobby/pokemon/");
+  if (!response.ok) throw new Error("Could not read the Pokémon page.");
+
+  const doc = new DOMParser().parseFromString(await response.text(), "text/html");
+  const lists = [];
+
+  doc.querySelectorAll("a.pokemon-card").forEach((tile) => {
+    const href = tile.getAttribute("href") || "";
+    if (!href.startsWith(CHASE_LIST_PREFIX)) return;
+
+    const slug = href.slice(CHASE_LIST_PREFIX.length).replace(/\/+$/, "");
+    if (!slug) return;
+
+    const nameEl = tile.querySelector(".pokemon-name");
+    lists.push({
+      slug,
+      label: nameEl ? nameEl.textContent.trim() : slug,
+      url: href,
+      dataUrl: `${href.replace(/\/?$/, "/")}${slug}.js`
+    });
+  });
+
+  return lists;
+}
+
+/* The data files declare `const xCards = [...]` and register their own
+   page-render listener. Running the file in a function scope gives us
+   the arrays back without rendering anything. */
+async function loadCardArrays(list) {
+  const response = await fetch(list.dataUrl);
+  if (!response.ok) throw new Error(`Could not load ${list.dataUrl}`);
+  const source = await response.text();
+
+  const names = [...source.matchAll(/^const\s+(\w+)\s*=/gm)].map((m) => m[1]);
+  const run = new Function(
+    "renderChaseListPage",
+    `${source}\nreturn { ${names.join(", ")} };`
+  );
+
+  const exported = run(function () {});
+  return Object.keys(exported)
+    .map((key) => exported[key])
+    .filter((value) => Array.isArray(value) && value.length && value[0].variants);
+}
+
+/* ====================================
+   Build the "still needed" index
+==================================== */
+
+function collectNeeded(lists, arraysByList) {
+  const bySet = new Map(); // setKey -> { name, entries: Map }
+
+  lists.forEach((list, index) => {
+    arraysByList[index].forEach((cards) => {
+      cards.forEach((card) => {
+        card.variants.forEach((variant) => {
+          if (variant.obtained) return;
+
+          const key = setKey(card.set);
+          if (!bySet.has(key)) {
+            bySet.set(key, { key, name: card.set, entries: new Map() });
+          }
+          const group = bySet.get(key);
+
+          const entryKey = [card.name, card.number, variant.type].join("|");
+          if (!group.entries.has(entryKey)) {
+            group.entries.set(entryKey, {
+              name: card.name,
+              number: card.number,
+              variantType: variant.type,
+              image: variant.image || null,
+              lists: []
+            });
+          }
+          const entry = group.entries.get(entryKey);
+          if (!entry.image && variant.image) entry.image = variant.image;
+          if (!entry.lists.some((l) => l.slug === list.slug)) {
+            entry.lists.push({ slug: list.slug, label: list.label, url: list.url });
+          }
+        });
+      });
+    });
+  });
+
+  return bySet;
+}
+
+/* ====================================
+   Render
+==================================== */
+
+function renderCard(entry) {
+  const link = entry.lists[0].url;
+  const label = `${entry.name} ${entry.number}`.trim();
+
+  const imageHTML = entry.image
+    ? `<img class="needed-card-image" src="${escapeHTML(entry.image)}"
+         alt="${escapeHTML(label)}" loading="lazy" decoding="async"
+         width="130" height="179"
+         onerror="this.outerHTML='<div class=&quot;needed-card-placeholder&quot;>Image not added yet.</div>'">`
+    : `<div class="needed-card-placeholder">Image not added yet.</div>`;
+
+  const variantHTML = entry.variantType && entry.variantType !== "Standard"
+    ? `<div class="needed-card-variant">${escapeHTML(entry.variantType)}</div>`
+    : "";
+
+  const lineHTML = `<div class="needed-card-line">${entry.lists
+    .map((l) => escapeHTML(l.label))
+    .join(", ")}</div>`;
+
+  return `
+<a class="needed-card" href="${escapeHTML(link)}" title="${escapeHTML(label)}">
+  ${imageHTML}
+  <div class="needed-card-name">${escapeHTML(entry.name)}</div>
+  <div class="needed-card-number">${escapeHTML(entry.number || "")}</div>
+  ${variantHTML}
+  ${lineHTML}
+</a>`;
+}
+
+function renderSet(group, release) {
+  const entries = [...group.entries.values()];
+  const releaseText = release
+    ? `<span class="needed-set-meta">${formatRelease(release)}</span>`
+    : "";
+
+  return `
+<details class="needed-set">
+  <summary>
+    <span>${escapeHTML(group.name)} ${releaseText}</span>
+    <span class="needed-set-count">${entries.length} needed</span>
+  </summary>
+  <div class="needed-cards">
+    ${entries.map(renderCard).join("")}
+  </div>
+</details>`;
+}
+
+function renderPage(state) {
+  const container = document.getElementById("needed-container");
+  const summary = document.getElementById("needed-summary");
+  const lineFilter = document.getElementById("needed-line-filter").value;
+  const sortMode = document.getElementById("needed-sort").value;
+
+  /* Apply the Pokémon filter by pruning each entry's list membership. */
+  const groups = [];
+  state.bySet.forEach((group) => {
+    const entries = new Map();
+    group.entries.forEach((entry, entryKey) => {
+      const lists = lineFilter === "all"
+        ? entry.lists
+        : entry.lists.filter((l) => l.slug === lineFilter);
+      if (lists.length) entries.set(entryKey, { ...entry, lists });
+    });
+    if (entries.size) groups.push({ ...group, entries });
+  });
+
+  const dated = [];
+  const special = [];
+  const other = [];
+
+  groups.forEach((group) => {
+    const release = RELEASE_BY_KEY[group.key];
+    if (SPECIAL_SET_PATTERN.test(group.name)) special.push(group);
+    else if (release) dated.push({ group, release });
+    else other.push(group);
+  });
+
+  if (sortMode === "most") {
+    dated.sort((a, b) => b.group.entries.size - a.group.entries.size ||
+      a.release.localeCompare(b.release));
+  } else {
+    dated.sort((a, b) => a.release.localeCompare(b.release));
+  }
+
+  const byName = (a, b) => a.name.localeCompare(b.name);
+  special.sort(sortMode === "most"
+    ? (a, b) => b.entries.size - a.entries.size || byName(a, b)
+    : byName);
+  other.sort(byName);
+
+  const totalNeeded = groups.reduce((sum, g) => sum + g.entries.size, 0);
+  const packSets = dated.length + other.length;
+  const packNeeded = dated.reduce((s, d) => s + d.group.entries.size, 0) +
+    other.reduce((s, g) => s + g.entries.size, 0);
+
+  summary.innerHTML = `
+<div class="needed-stat"><span class="needed-stat-value">${totalNeeded}</span><span class="needed-stat-label">Cards Still Needed</span></div>
+<div class="needed-stat"><span class="needed-stat-value">${packSets}</span><span class="needed-stat-label">Pack Sets to Hunt</span></div>
+<div class="needed-stat"><span class="needed-stat-value">${packNeeded}</span><span class="needed-stat-label">Needed From Packs</span></div>
+<div class="needed-stat"><span class="needed-stat-value">${totalNeeded - packNeeded}</span><span class="needed-stat-label">Promos &amp; Specials</span></div>`;
+
+  if (!groups.length) {
+    container.innerHTML = `<p class="needed-empty">Nothing left to chase here. 🎉</p>`;
+    return;
+  }
+
+  let html = "";
+
+  if (dated.length) {
+    html += `<h3 class="needed-group-title">Sets (${sortMode === "most" ? "most cards needed first" : "release order"})</h3>`;
+    html += dated.map((d) => renderSet(d.group, d.release)).join("");
+  }
+
+  if (other.length) {
+    html += `<h3 class="needed-group-title">Other Sets</h3>
+<p class="needed-group-intro">Sets I haven't added a release date for yet.</p>`;
+    html += other.map((g) => renderSet(g, null)).join("");
+  }
+
+  if (special.length) {
+    html += `<h3 class="needed-group-title">Promos &amp; Special Releases</h3>
+<p class="needed-group-intro">These don't come in booster packs, so they're singles hunts.</p>`;
+    html += special.map((g) => renderSet(g, null)).join("");
+  }
+
+  container.innerHTML = html;
+}
+
+/* ====================================
+   Start
+==================================== */
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const container = document.getElementById("needed-container");
+
+  try {
+    const lists = await discoverChaseLists();
+    const arraysByList = await Promise.all(lists.map(loadCardArrays));
+    const state = { bySet: collectNeeded(lists, arraysByList) };
+
+    const lineSelect = document.getElementById("needed-line-filter");
+    lists.forEach((list) => {
+      const option = document.createElement("option");
+      option.value = list.slug;
+      option.textContent = list.label;
+      lineSelect.appendChild(option);
+    });
+
+    lineSelect.addEventListener("change", () => renderPage(state));
+    document.getElementById("needed-sort").addEventListener("change", () => renderPage(state));
+
+    renderPage(state);
+  } catch (error) {
+    console.error(error);
+    container.innerHTML =
+      `<p class="needed-error">Sorry, something went wrong loading the chase lists.</p>`;
+  }
+});
+</script>
+
+<script src="/scripts/site-chrome.js"></script>
+</body>
+</html>
