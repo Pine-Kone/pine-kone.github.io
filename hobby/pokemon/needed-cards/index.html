@@ -148,13 +148,18 @@ body.dark-mode .needed-set {
   display: flex;
   flex-direction: column;
   width: 130px;
-  text-decoration: none;
   color: inherit;
   text-align: center;
+}
+
+.needed-card-imagelink {
+  display: block;
+  color: inherit;
+  text-decoration: none;
   transition: transform 0.2s;
 }
 
-.needed-card:hover {
+.needed-card-imagelink:hover {
   transform: translateY(-3px);
 }
 
@@ -176,9 +181,15 @@ body.dark-mode .needed-set {
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  text-align: center;
   border: 2px dashed rgba(128, 128, 128, 0.6);
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.needed-card-imagelink:hover .needed-card-placeholder {
+  border-color: var(--primary-color);
+  opacity: 1;
 }
 
 .needed-card-name {
@@ -197,6 +208,24 @@ body.dark-mode .needed-set {
 
 .needed-card-variant {
   font-style: italic;
+}
+
+.needed-card-line a {
+  color: inherit;
+}
+
+.needed-set-links {
+  width: 100%;
+  margin: 0 0 0.25rem;
+  font-size: 0.9rem;
+}
+
+.needed-set-links a {
+  color: var(--primary-color);
+}
+
+body.dark-mode .needed-set-links a {
+  color: var(--accent-color);
 }
 
 .needed-empty,
@@ -397,6 +426,36 @@ Object.keys(SET_RELEASES).forEach((name) => {
   RELEASE_BY_KEY[setKey(name)] = SET_RELEASES[name];
 });
 
+/* Serebii's card database URLs follow a pattern: the folder is the
+   set name in lowercase with everything but letters, digits and
+   apostrophes removed, and cards are zero-padded to three digits:
+     https://www.serebii.net/card/hiddenfates/024.shtml
+   The set names in the data files come from Serebii, so they line up.
+   Numbers that aren't plain digits (SM145, TG19, 28a) don't have a
+   known pattern, so those cards link to the set page instead. */
+function serebiiSetUrl(setName) {
+  const folder = String(setName).toLowerCase().replace(/[^a-z0-9']/g, "");
+  return `https://www.serebii.net/card/${folder}/`;
+}
+
+function serebiiCardUrl(setName, number) {
+  const match = /^\s*(\d+)\s*(?:\/|$)/.exec(String(number || ""));
+  if (!match) return serebiiSetUrl(setName);
+  return `${serebiiSetUrl(setName)}${match[1].padStart(3, "0")}.shtml`;
+}
+
+/* Used when a card photo is missing or fails to load: swap in the
+   lookup placeholder and point the tile at Serebii. */
+function neededCardImageFailed(img) {
+  const link = img.parentElement;
+  link.href = img.dataset.serebii;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.title = "Look up this card on Serebii";
+  img.outerHTML =
+    `<div class="needed-card-placeholder">Look up on Serebii ↗</div>`;
+}
+
 function escapeHTML(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -484,6 +543,7 @@ function collectNeeded(lists, arraysByList) {
           const entryKey = [card.name, card.number, variant.type].join("|");
           if (!group.entries.has(entryKey)) {
             group.entries.set(entryKey, {
+              set: card.set,
               name: card.name,
               number: card.number,
               variantType: variant.type,
@@ -509,32 +569,40 @@ function collectNeeded(lists, arraysByList) {
 ==================================== */
 
 function renderCard(entry) {
-  const link = entry.lists[0].url;
   const label = `${entry.name} ${entry.number}`.trim();
+  const serebii = serebiiCardUrl(entry.set, entry.number);
 
+  /* With a photo, the image links to the chase page. Without one (or if
+     it fails to load) it becomes a lookup link to Serebii. */
   const imageHTML = entry.image
-    ? `<img class="needed-card-image" src="${escapeHTML(entry.image)}"
-         alt="${escapeHTML(label)}" loading="lazy" decoding="async"
-         width="130" height="179"
-         onerror="this.outerHTML='<div class=&quot;needed-card-placeholder&quot;>Image not added yet.</div>'">`
-    : `<div class="needed-card-placeholder">Image not added yet.</div>`;
+    ? `<a class="needed-card-imagelink" href="${escapeHTML(entry.lists[0].url)}" title="${escapeHTML(label)}">
+         <img class="needed-card-image" src="${escapeHTML(entry.image)}"
+           alt="${escapeHTML(label)}" loading="lazy" decoding="async"
+           width="130" height="179"
+           data-serebii="${escapeHTML(serebii)}"
+           onerror="neededCardImageFailed(this)">
+       </a>`
+    : `<a class="needed-card-imagelink" href="${escapeHTML(serebii)}"
+         target="_blank" rel="noopener" title="Look up this card on Serebii">
+         <div class="needed-card-placeholder">Look up on Serebii &#8599;</div>
+       </a>`;
 
   const variantHTML = entry.variantType && entry.variantType !== "Standard"
     ? `<div class="needed-card-variant">${escapeHTML(entry.variantType)}</div>`
     : "";
 
   const lineHTML = `<div class="needed-card-line">${entry.lists
-    .map((l) => escapeHTML(l.label))
+    .map((l) => `<a href="${escapeHTML(l.url)}">${escapeHTML(l.label)}</a>`)
     .join(", ")}</div>`;
 
   return `
-<a class="needed-card" href="${escapeHTML(link)}" title="${escapeHTML(label)}">
+<div class="needed-card">
   ${imageHTML}
   <div class="needed-card-name">${escapeHTML(entry.name)}</div>
   <div class="needed-card-number">${escapeHTML(entry.number || "")}</div>
   ${variantHTML}
   ${lineHTML}
-</a>`;
+</div>`;
 }
 
 function renderSet(group, release) {
@@ -550,6 +618,9 @@ function renderSet(group, release) {
     <span class="needed-set-count">${entries.length} needed</span>
   </summary>
   <div class="needed-cards">
+    <p class="needed-set-links">
+      <a href="${escapeHTML(serebiiSetUrl(group.name))}" target="_blank" rel="noopener">View ${escapeHTML(group.name)} on Serebii &#8599;</a>
+    </p>
     ${entries.map(renderCard).join("")}
   </div>
 </details>`;
