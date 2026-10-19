@@ -897,11 +897,11 @@ const zapdosCards = [
       {
         type: "Standard",
         image: "/images/pokemon/chase-list/zapdos/zapdos-98.jpeg",
-        obtained: false,
-        obtainedDate: null,
-        obtainedLocation: null,
+        obtained: true,
+        obtainedDate: "2026-10-16",
+        obtainedLocation: "Grand Teton Mall, Idaho Falls, ID",
         features: [],
-        notes: []
+        notes: ["Took the kids to buy a sympathy pack after we got our flu shots."]
       }
     ]
   },
