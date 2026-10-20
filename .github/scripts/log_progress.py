@@ -1,8 +1,9 @@
 """Adds one entry to a site data file. Run by .github/workflows/log-progress.yml.
 
 Reads its inputs from environment variables:
-  KIND   bike-ride | cpa-study | ot-reading
-  VALUE  miles (bike-ride), hours (cpa-study), or chapters like "Job 4-6" (ot-reading)
+  KIND   bike-ride | bike-return | cpa-study | ot-reading
+  VALUE  miles (bike-ride), hours (cpa-study), or chapters like "Job 4-6" (ot-reading);
+         not used for bike-return, which turns that day's one-way ride into a round trip
   TRIP   round-trip | one-way (bike-ride only)
   DATE   YYYY-MM-DD, blank = today in Mountain Time
   NOTE   optional note
@@ -78,6 +79,24 @@ def main():
         rides.sort(key=lambda r: r.get("date", ""))
         write_rides(rides)
         message = f"Log bike ride: {date} {trip} {miles} mi"
+
+    elif kind == "bike-return":
+        with open(RIDES, encoding="utf-8") as f:
+            rides = json.load(f)
+        # Most recent one-way ride on that date becomes a round trip.
+        match = None
+        for r in rides:
+            if r.get("date") == date and str(r.get("trip-type", "one-way")) == "one-way":
+                match = r
+        if match is None:
+            if any(r.get("date") == date for r in rides):
+                fail(f"the ride on {date} is already a round trip")
+            fail(f"no ride logged on {date} yet - log the ride to work first")
+        match["trip-type"] = "round-trip"
+        if note:
+            match["note"] = (match.get("note", "") + " / " + note).strip(" /")
+        write_rides(rides)
+        message = f"Log ride home: {date} is now a round trip ({match.get('miles')} mi each way)"
 
     elif kind in ("cpa-study", "ot-reading"):
         with open(HANS, encoding="utf-8") as f:
