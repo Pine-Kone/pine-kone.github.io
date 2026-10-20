@@ -1,38 +1,66 @@
 // Haroldsen Beast Challenges - one script for the landing page and every
 // challenger page. All numbers come from /files/beast-challenge/<person>.json.
 //
-// Landing page:   <main data-beast-landing>
+// Landing page:    <main data-beast-landing>
 // Challenger page: <main data-beast-person="lucy">
 //
-// ---------- How to log progress (edit the person's JSON file) ----------
-// Reading challenge ("type": "reading") - log where you are, not pages read:
-//   { "date": "YYYY-MM-DD", "book": 2, "page": 145 }
-//   = "on this date Lucy was on page 145 of Book 2". Finished a book? Log its
-//   last page (or page 0 of the next book).
-// Best-effort challenge ("type": "best") - log the best set of the session:
-//   { "date": "YYYY-MM-DD", "value": 3, "note": "after school" }
-// Running-total challenge ("type": "total") - log each chunk, they add up:
-//   { "date": "YYYY-MM-DD", "value": 11.8 }
+// A person's JSON is either ONE challenge (its fields sit at the top level,
+// like lucy.json) or SEVERAL, listed under "challenges": [ ... ] (like
+// hans.json). Each challenge can have an "area" (Spiritual, Social,
+// Intellectual, Physical, Personal Management) and an "emoji".
+//
+// ---------- Challenge types + how to log ----------
+// "reading"  - log where you are, not pages read:
+//              { "date": "YYYY-MM-DD", "book": 2, "page": 145 }
+// "best"     - log the best result of the session (highest one counts):
+//              { "date": "YYYY-MM-DD", "value": 3, "note": "after school" }
+// "total"    - log each chunk, they add up (hours, dollars, miles):
+//              { "date": "YYYY-MM-DD", "value": 1.5 }
+// "pullups"  - log your best set of the workout, and which band (if any):
+//              { "date": "YYYY-MM-DD", "band": "orange", "reps": 6 }
+//              { "date": "YYYY-MM-DD", "band": "none", "reps": 2 }
+//              Only "none" (no band) counts toward the main goal. Band ids
+//              come from the "bands" list (most help first).
+// "time"     - timed runs; log every run, only ones at least "distance"
+//              miles count toward the goal:
+//              { "date": "YYYY-MM-DD", "miles": 3, "time": "31:42" }
+//              "target" is the goal time ("30:00"), "baseline" is optional.
+// "planning" - not locked in yet; shows the "ideas" list.
 //
 // ---------- Milestones ----------
 // Each milestone needs a "title", "desc", and "prize" (pretend dollars),
-// plus ONE of these triggers:
-//   "pages": 1000   (reading) total pages read
-//   "book": 3       (reading) finished that book
-//   "value": 5      (best/total) reached that number
-//   "percent": 50   percent of the main goal
-//   "streak": 7     logged this many days in a row
-//   "sessions": 10  logged this many separate days
-//   "done": "YYYY-MM-DD"  anything else - set the date by hand when it happens
+// plus ONE trigger:
+//   "pages": 1000 / "book": 3     (reading)
+//   "value": 5                    reached that number (unassisted reps for pullups)
+//   "percent": 50                 percent of the main goal
+//   "band": "orange", "reps": 8   (pullups) that many reps on that band or a lighter one
+//   "time": "31:30"               (time) ran the distance at or under that time
+//   "distance": 3                 (time) completed a run at least that long
+//   "streak": 7                   logged this many days in a row
+//   "sessions": 10                logged this many separate days
+//   "done": "YYYY-MM-DD"          anything else - set the date by hand
 //
 // ---------- Side quests ----------
 // "sideQuests": [ { "title": "Plank", "type": "best", "unit": "seconds",
 //                   "target": 120, "log": [ { "date": "...", "value": 45 } ] } ]
+// Money goals: use "type": "total", "prefix": "$", no "unit", and log each
+// deposit as { "date": "YYYY-MM-DD", "value": 2, "note": "chores" }.
+// Optional mini ladder: "milestones": [ { "title": "...", "desc": "...", "value": 5 } ]
 
 (function () {
   var DATA_DIR = "/files/beast-challenge/";
   var PEOPLE = ["lucy", "fletcher", "hans"];
   var DAY_MS = 86400000;
+
+  // Default band ladder - most assistance first. A person or challenge can
+  // override this with its own "bands" list.
+  var DEFAULT_BANDS = [
+    { id: "purple", label: "Purple", color: "#7b3fb5" },
+    { id: "red", label: "Red", color: "#d33a2c" },
+    { id: "orange", label: "Orange", color: "#f07c00" },
+    { id: "dark-green", label: "Dark Green", color: "#1f7a3a" },
+    { id: "light-green", label: "Light Green", color: "#7ccf5a" },
+  ];
 
   // ---------- small helpers ----------
   function parseDate(iso) {
@@ -65,7 +93,27 @@
   }
 
   function fmtPct(p) {
+    if (!isFinite(p) || p <= 0) return "0%";
     return (p >= 100 ? 100 : Math.floor(p * 10) / 10) + "%";
+  }
+
+  // "31:42" -> 1902 seconds. Also accepts "1:02:10" or a plain number of minutes.
+  function parseTime(t) {
+    if (t == null || t === "") return null;
+    if (typeof t === "number") return t * 60;
+    var parts = String(t).split(":").map(Number);
+    if (parts.some(isNaN)) return null;
+    return parts.reduce(function (s, n) { return s * 60 + n; }, 0);
+  }
+
+  function fmtTime(sec) {
+    if (sec == null || !isFinite(sec)) return "-";
+    sec = Math.round(sec);
+    var h = Math.floor(sec / 3600);
+    var m = Math.floor((sec % 3600) / 60);
+    var s = sec % 60;
+    var mm = h ? String(m).padStart(2, "0") : String(m);
+    return (h ? h + ":" : "") + mm + ":" + String(s).padStart(2, "0");
   }
 
   function el(tag, cls, text) {
@@ -76,6 +124,7 @@
   }
 
   function progressBar(pct, extraClass) {
+    pct = isFinite(pct) ? Math.max(0, pct) : 0;
     var track = el("div", "progress-track" + (extraClass ? " " + extraClass : ""));
     track.setAttribute("role", "progressbar");
     track.setAttribute("aria-valuemin", "0");
@@ -92,45 +141,56 @@
     return track;
   }
 
+  function sortByDate(log) {
+    return (log || [])
+      .filter(function (e) { return e && e.date; })
+      .slice()
+      .sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  }
+
   function loadPerson(id) {
     return fetch(DATA_DIR + id + ".json", { cache: "no-cache" }).then(function (res) {
       if (!res.ok) throw new Error("HTTP " + res.status);
       return res.json();
     }).then(function (data) {
       data.id = id;
-      return analyze(data);
+      return analyzePerson(data);
     });
   }
 
   // ---------- the math ----------
 
-  // Turns a challenge's log into a list of day-by-day states:
-  //   { date, value, sessions, streak }
-  function buildTimeline(type, log, books) {
-    var entries = (log || [])
-      .filter(function (e) { return e && e.date; })
-      .slice()
-      .sort(function (a, b) { return a.date < b.date ? -1 : a.date > b.date ? 1 : 0; });
+  // Turns a challenge's log into day-by-day states: { date, value, sessions, streak }.
+  // For "time" challenges, value is the best (lowest) qualifying time in seconds.
+  function buildTimeline(c) {
+    var type = c.type;
+    var books = c.books || [];
+    var entries = sortByDate(c.log);
 
     var cumulativeBefore = [0];
-    (books || []).forEach(function (b, i) {
+    books.forEach(function (b, i) {
       cumulativeBefore[i + 1] = cumulativeBefore[i] + Number(b.pages || 0);
     });
 
     var timeline = [];
-    var value = 0;
+    var value = type === "time" ? null : 0;
     var sessions = 0;
     var streak = 0;
     var prevDate = null;
+    var distance = Number(c.distance || 0);
 
     entries.forEach(function (e) {
-      var v;
       if (type === "reading") {
         var bookIdx = Math.max(1, Math.min(books.length, Number(e.book) || 1));
-        v = cumulativeBefore[bookIdx - 1] + Math.min(Number(e.page) || 0, Number(books[bookIdx - 1].pages));
+        var v = cumulativeBefore[bookIdx - 1] + Math.min(Number(e.page) || 0, Number(books[bookIdx - 1].pages));
         value = Math.max(value, v); // never go backwards if a re-read gets logged
       } else if (type === "total") {
         value += Number(e.value) || 0;
+      } else if (type === "pullups") {
+        if (!e.band || e.band === "none") value = Math.max(value, Number(e.reps) || 0);
+      } else if (type === "time") {
+        var sec = parseTime(e.time);
+        if (sec && Number(e.miles || 0) >= distance) value = value == null ? sec : Math.min(value, sec);
       } else {
         value = Math.max(value, Number(e.value) || 0);
       }
@@ -142,81 +202,189 @@
         prevDate = e.date;
         timeline.push({ date: e.date, value: value, sessions: sessions, streak: streak });
       } else {
-        var last = timeline[timeline.length - 1];
-        last.value = value;
+        timeline[timeline.length - 1].value = value;
       }
     });
 
     return { timeline: timeline, cumulativeBefore: cumulativeBefore, entries: entries };
   }
 
-  function milestoneTrigger(m, target, cumulativeBefore) {
-    if (m.pages != null) return { metric: "value", at: Number(m.pages) };
-    if (m.value != null) return { metric: "value", at: Number(m.value) };
-    if (m.book != null) return { metric: "value", at: cumulativeBefore[Number(m.book)] };
-    if (m.percent != null) return { metric: "value", at: target * Number(m.percent) / 100 };
-    if (m.streak != null) return { metric: "streak", at: Number(m.streak) };
-    if (m.sessions != null) return { metric: "sessions", at: Number(m.sessions) };
-    return { metric: "manual" };
+  function bandRank(bands, id) {
+    if (!id || id === "none") return bands.length; // no band = hardest
+    for (var i = 0; i < bands.length; i++) if (bands[i].id === id) return i;
+    return -1;
   }
 
-  function analyze(d) {
-    var type = d.type || "tbd";
-    var books = d.books || [];
-    var built = buildTimeline(type, d.log, books);
-    var target = type === "reading" ? built.cumulativeBefore[books.length] : Number(d.target || 0);
-    var last = built.timeline[built.timeline.length - 1];
-    var value = last ? last.value : 0;
-    var pct = target > 0 ? (value / target) * 100 : 0;
+  function bandLabel(bands, id) {
+    if (!id || id === "none") return "No band";
+    for (var i = 0; i < bands.length; i++) if (bands[i].id === id) return bands[i].label;
+    return id;
+  }
+
+  // Figures out when (if ever) a milestone was hit, and how close it is now.
+  function evalMilestone(m, c) {
+    var tl = c.timeline;
+    var out = {
+      title: m.title, desc: m.desc, prize: Number(m.prize || 0),
+      metric: "value", at: 0, current: 0, hitDate: null, lowerIsBetter: false,
+    };
+    function firstWhere(fn) {
+      for (var i = 0; i < tl.length; i++) if (fn(tl[i])) return tl[i].date;
+      return null;
+    }
+
+    if (m.done !== undefined && m.pages == null && m.value == null && m.book == null &&
+        m.percent == null && m.streak == null && m.sessions == null && m.band == null &&
+        m.time == null && m.distance == null) {
+      out.metric = "manual";
+      out.hitDate = m.done || null;
+      return out;
+    }
+
+    if (m.band != null) {
+      // Pull-ups on a given band or anything lighter.
+      out.metric = "band";
+      out.at = Number(m.reps || 0);
+      out.bandText = bandLabel(c.bands, m.band);
+      var need = bandRank(c.bands, m.band);
+      c.entries.forEach(function (e) {
+        if (bandRank(c.bands, e.band) >= need) {
+          var reps = Number(e.reps) || 0;
+          out.current = Math.max(out.current, reps);
+          if (!out.hitDate && reps >= out.at) out.hitDate = e.date;
+        }
+      });
+      return out;
+    }
+
+    if (m.time != null) {
+      out.lowerIsBetter = true;
+      out.at = parseTime(m.time);
+      out.current = c.value;
+      out.hitDate = firstWhere(function (s) { return s.value != null && s.value <= out.at; });
+      return out;
+    }
+
+    if (m.distance != null) {
+      out.metric = "distance";
+      out.at = Number(m.distance);
+      c.entries.forEach(function (e) {
+        var mi = Number(e.miles) || 0;
+        out.current = Math.max(out.current, mi);
+        if (!out.hitDate && mi >= out.at) out.hitDate = e.date;
+      });
+      return out;
+    }
+
+    if (m.streak != null || m.sessions != null) {
+      out.metric = m.streak != null ? "streak" : "sessions";
+      out.at = Number(m.streak != null ? m.streak : m.sessions);
+      out.current = m.streak != null ? c.currentStreak : c.sessions;
+      out.hitDate = firstWhere(function (s) { return s[out.metric] >= out.at; });
+      return out;
+    }
+
+    if (m.percent != null && c.type === "time") {
+      // Percent of the way from baseline to target time.
+      out.at = Number(m.percent);
+      out.metric = "percent";
+      out.current = c.pct;
+      var span = c.baseline - c.target;
+      out.hitDate = firstWhere(function (s) {
+        return s.value != null && span > 0 && ((c.baseline - s.value) / span) * 100 >= out.at;
+      });
+      return out;
+    }
+
+    out.at = m.pages != null ? Number(m.pages)
+      : m.value != null ? Number(m.value)
+      : m.book != null ? c.cumulativeBefore[Number(m.book)]
+      : m.percent != null ? c.target * Number(m.percent) / 100 : 0;
+    out.current = c.value;
+    out.hitDate = firstWhere(function (s) { return s.value >= out.at; });
+    return out;
+  }
+
+  // Works out everything about one challenge. "defaults" fills in anything
+  // the challenge doesn't set itself (start, deadline, bands).
+  function analyzeChallenge(raw, defaults) {
+    var c = { raw: raw };
+    c.type = raw.type || "planning";
+    c.books = raw.books || [];
+    c.bands = raw.bands || defaults.bands || DEFAULT_BANDS;
+    c.distance = Number(raw.distance || 0);
+
+    var built = buildTimeline({ type: c.type, books: c.books, log: raw.log, distance: c.distance });
+    c.entries = built.entries;
+    c.timeline = built.timeline;
+    c.cumulativeBefore = built.cumulativeBefore;
+    var last = c.timeline[c.timeline.length - 1];
+    c.sessions = last ? last.sessions : 0;
 
     var t = today();
-    var start = parseDate(d.start) || t;
-    var deadline = parseDate(d.deadline) || new Date(t.getFullYear(), 11, 31);
-    var daysLeft = Math.max(0, daysBetween(t, deadline) + 1); // includes today
-    var spanDays = Math.max(1, daysBetween(start, deadline) + 1);
-    var elapsedDays = Math.min(spanDays, Math.max(0, daysBetween(start, t)));
+    var start = parseDate(raw.start || defaults.start) || t;
+    var deadline = parseDate(raw.deadline || defaults.deadline) || new Date(t.getFullYear(), 11, 31);
+    c.start = raw.start || defaults.start;
+    c.deadline = raw.deadline || defaults.deadline;
+    c.daysLeft = Math.max(0, daysBetween(t, deadline) + 1); // includes today
+    c.spanDays = Math.max(1, daysBetween(start, deadline) + 1);
+    c.elapsedDays = Math.min(c.spanDays, Math.max(0, daysBetween(start, t)));
+
+    if (c.type === "time") {
+      c.target = parseTime(raw.target);
+      c.value = last ? last.value : null;
+      var firstQualifying = c.timeline.filter(function (s) { return s.value != null; })[0];
+      c.baseline = parseTime(raw.baseline) || (firstQualifying ? firstQualifying.value : null);
+      var span = c.baseline != null ? c.baseline - c.target : 0;
+      c.pct = c.value != null && span > 0 ? ((c.baseline - c.value) / span) * 100
+        : c.value != null && c.value <= c.target ? 100 : 0;
+      c.complete = c.value != null && c.value <= c.target;
+    } else {
+      c.target = c.type === "reading" ? c.cumulativeBefore[c.books.length] : Number(raw.target || 0);
+      c.value = last ? last.value : 0;
+      c.pct = c.target > 0 ? (c.value / c.target) * 100 : 0;
+      c.complete = c.target > 0 && c.value >= c.target;
+    }
+    c.pct = Math.max(0, c.pct);
+    c.expected = c.target * (c.elapsedDays / c.spanDays);
 
     // Current streak only counts if the last log was today or yesterday.
-    var currentStreak = 0;
-    if (last && daysBetween(parseDate(last.date), t) <= 1) currentStreak = last.streak;
-    var bestStreak = built.timeline.reduce(function (m, s) { return Math.max(m, s.streak); }, 0);
+    c.currentStreak = last && daysBetween(parseDate(last.date), t) <= 1 ? last.streak : 0;
+    c.bestStreak = c.timeline.reduce(function (m, s) { return Math.max(m, s.streak); }, 0);
 
-    var milestones = (d.milestones || []).map(function (m) {
-      var trig = milestoneTrigger(m, target, built.cumulativeBefore);
-      var hitDate = null;
-      if (trig.metric === "manual") {
-        hitDate = m.done || null;
-      } else {
-        for (var i = 0; i < built.timeline.length; i++) {
-          if (built.timeline[i][trig.metric] >= trig.at) { hitDate = built.timeline[i].date; break; }
-        }
-      }
-      var current = trig.metric === "value" ? value
-        : trig.metric === "streak" ? currentStreak
-        : trig.metric === "sessions" ? (last ? last.sessions : 0) : 0;
-      return {
-        title: m.title, desc: m.desc, prize: Number(m.prize || 0),
-        metric: trig.metric, at: trig.at, current: current, hitDate: hitDate,
-      };
-    });
+    c.milestones = (raw.milestones || []).map(function (m) { return evalMilestone(m, c); });
+    c.prizeTotal = c.milestones.reduce(function (s, m) { return s + m.prize; }, 0) + Number(raw.prizePlaceholder || 0);
+    c.prizeWon = c.milestones.reduce(function (s, m) { return s + (m.hitDate ? m.prize : 0); }, 0);
+    c.nextMilestone = c.milestones.filter(function (m) { return !m.hitDate && m.metric !== "manual"; })[0] || null;
+    return c;
+  }
 
-    var prizeTotal = milestones.reduce(function (s, m) { return s + m.prize; }, 0);
-    var prizeWon = milestones.reduce(function (s, m) { return s + (m.hitDate ? m.prize : 0); }, 0);
-    var nextMilestone = milestones
-      .filter(function (m) { return !m.hitDate && m.metric === "value"; })
-      .sort(function (a, b) { return a.at - b.at; })[0] || null;
+  function analyzePerson(d) {
+    var defaults = { start: d.start, deadline: d.deadline, bands: d.bands };
+    var list = d.challenges ? d.challenges : [d];
+    var p = { raw: d, multi: !!d.challenges };
+    p.challenges = list.map(function (raw) { return analyzeChallenge(raw, defaults); });
+    p.active = p.challenges.filter(function (c) { return c.type !== "planning" && c.type !== "tbd"; });
+    p.prizeTotal = p.challenges.reduce(function (s, c) { return s + c.prizeTotal; }, 0);
+    p.prizeWon = p.challenges.reduce(function (s, c) { return s + c.prizeWon; }, 0);
+    p.pct = p.active.length
+      ? p.active.reduce(function (s, c) { return s + Math.min(100, c.pct); }, 0) / p.active.length : 0;
+    p.complete = p.active.length > 0 && p.active.every(function (c) { return c.complete; });
+    p.daysLeft = p.challenges.length ? p.challenges[0].daysLeft : 0;
+    var nexts = p.active.map(function (c) { return c.nextMilestone; }).filter(Boolean);
+    p.nextMilestone = nexts[0] || null;
+    return p;
+  }
 
-    return {
-      raw: d, type: type, books: books, entries: built.entries, timeline: built.timeline,
-      cumulativeBefore: built.cumulativeBefore, target: target, value: value, pct: pct,
-      complete: target > 0 && value >= target,
-      daysLeft: daysLeft, spanDays: spanDays, elapsedDays: elapsedDays,
-      expected: target * (elapsedDays / spanDays),
-      currentStreak: currentStreak, bestStreak: bestStreak,
-      sessions: last ? last.sessions : 0,
-      milestones: milestones, prizeTotal: prizeTotal, prizeWon: prizeWon,
-      nextMilestone: nextMilestone, deadline: deadline,
-    };
+  // Human-readable "where things stand" line for a challenge.
+  function progressText(c) {
+    var unit = c.raw.unit ? " " + c.raw.unit : "";
+    if (c.type === "time") {
+      if (c.value == null) return "No " + fmtNum(c.distance) + "-mile run logged yet · goal " + fmtTime(c.target);
+      return "Best " + fmtTime(c.value) + " · goal " + fmtTime(c.target);
+    }
+    if (c.type === "pullups") return fmtNum(c.value) + " / " + fmtNum(c.target) + " unassisted pull-ups";
+    return fmtNum(c.value) + " / " + fmtNum(c.target) + unit;
   }
 
   // ---------- landing page ----------
@@ -253,18 +421,23 @@
 
       grid.innerHTML = "";
       people.forEach(function (p) {
+        var d = p.raw;
         var card = el("a", "challenger-card");
-        card.href = "/hobby/beast-challenge/" + p.raw.id + "/";
-        card.appendChild(el("span", "challenger-emoji", p.raw.emoji || "⭐"));
-        card.appendChild(el("h4", "challenger-name", p.raw.name));
-        card.appendChild(el("p", "challenger-goal", p.raw.title));
+        card.href = "/hobby/beast-challenge/" + d.id + "/";
+        card.appendChild(el("span", "challenger-emoji", d.emoji || "⭐"));
+        card.appendChild(el("h4", "challenger-name", d.name));
+        card.appendChild(el("p", "challenger-goal", d.title));
 
-        if (p.type === "tbd") {
+        if (!p.active.length) {
           card.appendChild(el("p", "challenger-status", "Challenge being decided - stay tuned!"));
         } else {
           card.appendChild(progressBar(p.pct));
-          card.appendChild(el("p", "challenger-status",
-            fmtNum(p.value) + " / " + fmtNum(p.target) + " " + (p.raw.unit || "") + " · " + fmtPct(p.pct)));
+          if (p.multi) {
+            card.appendChild(el("p", "challenger-status",
+              p.challenges.length + " challenges · " + fmtPct(p.pct) + " overall"));
+          } else {
+            card.appendChild(el("p", "challenger-status", progressText(p.challenges[0]) + " · " + fmtPct(p.pct)));
+          }
           card.appendChild(el("p", "challenger-prize", fmtMoney(p.prizeWon) + " of " + fmtMoney(p.prizeTotal) + " unlocked"));
           if (p.complete) {
             card.classList.add("is-complete");
@@ -273,7 +446,7 @@
             card.appendChild(el("p", "challenger-next", "Next up: " + p.nextMilestone.title));
           }
         }
-        card.appendChild(el("span", "challenger-link", "See " + p.raw.name + "'s page →"));
+        card.appendChild(el("span", "challenger-link", "See " + d.name + "'s page →"));
         grid.appendChild(card);
       });
     });
@@ -290,76 +463,168 @@
 
   function section(title, cls) {
     var s = el("section", "beast-section" + (cls ? " " + cls : ""));
-    s.appendChild(el("h3", null, title));
+    if (title) s.appendChild(el("h3", null, title));
     return s;
+  }
+
+  function slug(str) {
+    return String(str).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   }
 
   function renderPerson(root, p) {
     var d = p.raw;
-    document.title = d.name + "'s Challenge | Hans M. Haroldsen";
+    document.title = d.name + "'s Challenge" + (p.multi ? "s" : "") + " | Hans M. Haroldsen";
     root.innerHTML = "";
 
     // Hero
     var hero = el("section", "hero beast-hero");
-    hero.appendChild(el("p", "beast-kicker", d.name + "'s Challenge"));
+    hero.appendChild(el("p", "beast-kicker", d.name + "'s Challenge" + (p.multi ? "s" : "")));
     hero.appendChild(el("h2", null, (d.emoji ? d.emoji + " " : "") + d.title));
     if (d.blurb) hero.appendChild(el("p", "hero-blurb", d.blurb));
     hero.appendChild(el("p", "beast-deadline",
       "Deadline: " + fmtDate(d.deadline) + " · " + p.daysLeft + (p.daysLeft === 1 ? " day" : " days") + " left"));
     root.appendChild(hero);
 
-    if (p.type === "tbd") {
-      var tbd = section("Coming Soon", "beast-tbd");
-      tbd.appendChild(el("p", null, "This challenge hasn't been locked in yet. Once it's picked, the tracker, milestones, and prize ladder will show up right here."));
-      root.appendChild(tbd);
-      renderIdeas(root, d.ideas, "Challenge Ideas on the Table");
+    if (!p.multi) {
+      var c = p.challenges[0];
+      if (!p.active.length) {
+        var tbd = section("Coming Soon", "beast-tbd");
+        tbd.appendChild(el("p", null, "This challenge hasn't been locked in yet. Once it's picked, the tracker, milestones, and prize ladder will show up right here."));
+        root.appendChild(tbd);
+        renderIdeas(root, d.ideas, "Challenge Ideas on the Table");
+        return;
+      }
+      renderBigProgress(root, c);
+      renderStats(root, c, true);
+      if (c.type === "reading") renderBookshelf(root, c);
+      if (c.type === "pullups") renderBandLadder(root, c);
+      renderMilestones(root, c, "Milestones & Prize Ladder");
+      renderSideQuests(root, d.sideQuests);
+      renderLog(root, c, "Progress Log");
+      renderIdeas(root, d.ideas, "Idea Board");
       return;
     }
 
-    // Big progress
-    var big = el("section", "beast-progress");
-    var pctText = el("p", "beast-percent", fmtPct(p.pct));
-    big.appendChild(pctText);
-    big.appendChild(progressBar(p.pct, "beast-track"));
-    big.appendChild(el("p", "beast-progress-detail",
-      fmtNum(p.value) + " of " + fmtNum(p.target) + " " + (d.unit || "") +
-      (p.complete ? " - DONE! 🏆" : " - " + fmtNum(p.target - p.value) + " to go")));
-    if (p.complete) big.classList.add("is-complete");
-    root.appendChild(big);
-
-    // Stat tiles
-    var stats = el("section", "beast-stats");
+    // ----- several challenges -----
+    var overview = el("section", "beast-overview");
+    var stats = el("div", "beast-stats");
     stats.appendChild(statTile("Prize Unlocked", fmtMoney(p.prizeWon), "of " + fmtMoney(p.prizeTotal) + " (pretend)", true));
-    if (p.type === "reading" || p.type === "total") {
-      var remaining = Math.max(0, p.target - p.value);
-      var perDay = p.daysLeft > 0 ? remaining / p.daysLeft : remaining;
-      stats.appendChild(statTile("Needed Per Day", p.complete ? "0" : fmtNum(Math.ceil(perDay * 10) / 10),
-        (d.unit || "") + " a day to finish on time"));
-      var diff = p.value - p.expected;
-      var paceLabel = p.complete ? "Finished!" : Math.abs(diff) < 1 ? "Right on pace" :
-        diff > 0 ? fmtNum(diff) + " ahead" : fmtNum(-diff) + " behind";
-      stats.appendChild(statTile("Pace Check", paceLabel, "vs. an even pace from " + fmtDate(d.start)));
-    } else {
-      stats.appendChild(statTile("Personal Best", fmtNum(p.value), (d.unit || "") + " in one set"));
-      stats.appendChild(statTile("Practice Days", String(p.sessions), p.sessions === 1 ? "session logged" : "sessions logged"));
-    }
-    stats.appendChild(statTile("Current Streak", String(p.currentStreak),
-      "days in a row · best " + p.bestStreak));
-    root.appendChild(stats);
+    stats.appendChild(statTile("Overall", fmtPct(p.pct), "average across active challenges"));
+    stats.appendChild(statTile("Challenges", String(p.challenges.length),
+      p.active.length + " active · " + (p.challenges.length - p.active.length) + " in planning"));
+    overview.appendChild(stats);
 
-    if (p.type === "reading") renderBookshelf(root, p);
-    renderMilestones(root, p);
-    renderSideQuests(root, d.sideQuests);
-    renderLog(root, p);
+    var grid = el("div", "challenge-overview-grid");
+    p.challenges.forEach(function (c) {
+      var a = el("a", "challenge-mini" + (c.complete ? " is-complete" : ""));
+      a.href = "#" + slug(c.raw.title);
+      if (c.raw.area) a.appendChild(el("span", "area-tag area-" + slug(c.raw.area), c.raw.area));
+      a.appendChild(el("p", "challenge-mini-title", (c.raw.emoji ? c.raw.emoji + " " : "") + c.raw.title));
+      if (c.type === "planning") {
+        a.appendChild(el("p", "challenge-mini-meta", "Still being planned"));
+      } else {
+        a.appendChild(progressBar(c.pct));
+        a.appendChild(el("p", "challenge-mini-meta", fmtPct(c.pct) + " · " + fmtMoney(c.prizeWon) + " of " + fmtMoney(c.prizeTotal)));
+      }
+      grid.appendChild(a);
+    });
+    overview.appendChild(grid);
+    root.appendChild(overview);
+
+    p.challenges.forEach(function (c) {
+      var wrap = el("section", "challenge-block");
+      wrap.id = slug(c.raw.title);
+      var head = el("div", "challenge-head");
+      if (c.raw.area) head.appendChild(el("span", "area-tag area-" + slug(c.raw.area), c.raw.area));
+      head.appendChild(el("h3", null, (c.raw.emoji ? c.raw.emoji + " " : "") + c.raw.title));
+      if (c.raw.blurb) head.appendChild(el("p", "challenge-blurb", c.raw.blurb));
+      wrap.appendChild(head);
+
+      if (c.type === "planning") {
+        renderIdeas(wrap, c.raw.ideas, "Ideas on the Table", true);
+      } else {
+        renderBigProgress(wrap, c);
+        renderStats(wrap, c, false);
+        if (c.type === "pullups") renderBandLadder(wrap, c);
+        renderMilestones(wrap, c, "Milestones", true);
+        renderLog(wrap, c, "Log", true);
+      }
+      root.appendChild(wrap);
+    });
+
     renderIdeas(root, d.ideas, "Idea Board");
   }
 
-  function renderBookshelf(root, p) {
+  function renderBigProgress(root, c) {
+    var big = el("section", "beast-progress");
+    big.appendChild(el("p", "beast-percent", fmtPct(c.pct)));
+    big.appendChild(progressBar(c.pct, "beast-track"));
+    var detail;
+    if (c.type === "time") {
+      detail = c.value == null
+        ? "Goal: " + fmtNum(c.distance) + " miles in " + fmtTime(c.target) + " or less - log a run to set the baseline"
+        : "Best " + fmtTime(c.value) + " · started at " + fmtTime(c.baseline) + " · goal " + fmtTime(c.target) +
+          (c.complete ? " - DONE! 🏆" : " - " + fmtTime(c.value - c.target) + " to cut");
+    } else {
+      if (c.raw.unit && c.raw.unit.charAt(0) === "%") {
+        // e.g. "% paid off" -> "12% paid off - 88% to go"
+        detail = fmtNum(c.value) + c.raw.unit +
+          (c.complete ? " - DONE! 🏆" : " - " + fmtNum(c.target - c.value) + "% to go");
+      } else {
+        var unit = c.type === "pullups" ? " unassisted pull-ups" : (c.raw.unit ? " " + c.raw.unit : "");
+        detail = fmtNum(c.value) + " of " + fmtNum(c.target) + unit +
+          (c.complete ? " - DONE! 🏆" : " - " + fmtNum(c.target - c.value) + " to go");
+      }
+    }
+    big.appendChild(el("p", "beast-progress-detail", detail));
+    if (c.complete) big.classList.add("is-complete");
+    root.appendChild(big);
+  }
+
+  function renderStats(root, c, showPrize) {
+    var stats = el("section", "beast-stats");
+    var unit = c.raw.unit || "";
+    if (showPrize) stats.appendChild(statTile("Prize Unlocked", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal) + " (pretend)", true));
+    else stats.appendChild(statTile("Prize", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal), true));
+
+    if (c.type === "reading" || c.type === "total") {
+      var remaining = Math.max(0, c.target - c.value);
+      var perDay = c.daysLeft > 0 ? remaining / c.daysLeft : remaining;
+      stats.appendChild(statTile("Needed Per Day", c.complete ? "0" : fmtNum(Math.ceil(perDay * 10) / 10),
+        unit + " a day to finish on time"));
+      var diff = c.value - c.expected;
+      var paceLabel = c.complete ? "Finished!" : Math.abs(diff) < 0.5 ? "On pace" :
+        diff > 0 ? fmtNum(diff) + " ahead" : fmtNum(-diff) + " behind";
+      stats.appendChild(statTile("Pace Check", paceLabel, "vs. an even pace from " + fmtDate(c.start)));
+      stats.appendChild(statTile("Current Streak", String(c.currentStreak), "days in a row · best " + c.bestStreak));
+    } else if (c.type === "pullups") {
+      var lastEntry = c.entries[c.entries.length - 1];
+      stats.appendChild(statTile("Unassisted Best", fmtNum(c.value), "pull-ups in one set"));
+      stats.appendChild(statTile("Workouts", String(c.sessions), c.sessions === 1 ? "day logged" : "days logged"));
+      stats.appendChild(statTile("Last Set", lastEntry ? (Number(lastEntry.reps) || 0) + " reps" : "-",
+        lastEntry ? bandLabel(c.bands, lastEntry.band) + " · " + fmtDate(lastEntry.date) : "nothing logged yet"));
+    } else if (c.type === "time") {
+      var runs = c.entries.length;
+      var miles = c.entries.reduce(function (s, e) { return s + (Number(e.miles) || 0); }, 0);
+      var bestPace = c.value != null && c.distance ? c.value / c.distance : null;
+      stats.appendChild(statTile("Best " + fmtNum(c.distance) + " mi", fmtTime(c.value), "goal " + fmtTime(c.target)));
+      stats.appendChild(statTile("Best Pace", bestPace ? fmtTime(bestPace) : "-",
+        "per mile · goal " + fmtTime(c.target / (c.distance || 1))));
+      stats.appendChild(statTile("Runs Logged", String(runs), fmtNum(miles) + " total miles"));
+    } else {
+      stats.appendChild(statTile("Personal Best", fmtNum(c.value), unit));
+      stats.appendChild(statTile("Days Logged", String(c.sessions), c.sessions === 1 ? "entry" : "entries"));
+      stats.appendChild(statTile("Days Left", String(c.daysLeft), "until " + fmtDate(c.deadline)));
+    }
+    root.appendChild(stats);
+  }
+
+  function renderBookshelf(root, c) {
     var s = section("The Bookshelf", "beast-bookshelf");
     var list = el("ol", "book-list");
-    p.books.forEach(function (b, i) {
-      var startAt = p.cumulativeBefore[i];
-      var read = Math.max(0, Math.min(Number(b.pages), p.value - startAt));
+    c.books.forEach(function (b, i) {
+      var startAt = c.cumulativeBefore[i];
+      var read = Math.max(0, Math.min(Number(b.pages), c.value - startAt));
       var pct = (read / Number(b.pages)) * 100;
       var li = el("li", "book" + (pct >= 100 ? " done" : read > 0 ? " reading" : ""));
       var head = el("div", "book-head");
@@ -375,14 +640,58 @@
     root.appendChild(s);
   }
 
-  function renderMilestones(root, p) {
-    if (!p.milestones.length) return;
-    var s = section("Milestones & Prize Ladder", "beast-milestones");
-    s.appendChild(el("p", "beast-note", "Every milestone unlocks a chunk of the (pretend) prize money. Hit them all and the full prize is yours."));
+  // Best set on each band, from most help to no help.
+  function renderBandLadder(root, c) {
+    var s = el("div", "band-ladder");
+    s.appendChild(el("h4", null, "Band Ladder"));
+    s.appendChild(el("p", "beast-note", "Best set on each band - work down the ladder toward no band at all."));
+    var ul = el("ul", "band-list");
+    var rows = c.bands.concat([{ id: "none", label: "No band", color: "var(--primary-color)" }]);
+    rows.forEach(function (b) {
+      var best = 0;
+      var when = null;
+      c.entries.forEach(function (e) {
+        var id = e.band || "none";
+        if (id === b.id && (Number(e.reps) || 0) > best) { best = Number(e.reps) || 0; when = e.date; }
+      });
+      var li = el("li", "band-row" + (best ? " has-reps" : ""));
+      var sw = el("span", "band-swatch");
+      sw.style.background = b.color || "#999";
+      li.appendChild(sw);
+      li.appendChild(el("span", "band-name", b.label));
+      li.appendChild(el("span", "band-best", best ? best + " reps" : "-"));
+      li.appendChild(el("span", "band-when", when ? fmtDate(when) : ""));
+      ul.appendChild(li);
+    });
+    s.appendChild(ul);
+    root.appendChild(s);
+  }
+
+  function milestoneMeta(m) {
+    if (m.hitDate) return "Unlocked " + fmtDate(m.hitDate);
+    if (m.metric === "manual") return "Checked off by hand when it happens";
+    if (m.lowerIsBetter) return m.current != null ? "Best so far " + fmtTime(m.current) + " · need " + fmtTime(m.at) : "Need " + fmtTime(m.at);
+    if (m.metric === "band") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " reps (" + m.bandText + " or lighter)";
+    if (m.metric === "percent") return fmtPct(m.current) + " / " + fmtNum(m.at) + "%";
+    if (m.metric === "distance") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " mi";
+    return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at);
+  }
+
+  function milestonePct(m) {
+    if (m.metric === "manual" || !m.at) return null;
+    if (m.lowerIsBetter) return null; // time goals: a bar here would be misleading
+    return (m.current / m.at) * 100;
+  }
+
+  function renderMilestones(root, c, title, compact) {
+    if (!c.milestones.length) return;
+    var s = compact ? el("div", "challenge-sub") : section(title, "beast-milestones");
+    if (compact) s.appendChild(el("h4", null, title));
+    else s.appendChild(el("p", "beast-note", "Every milestone unlocks a chunk of the (pretend) prize money. Hit them all and the full prize is yours."));
     var list = el("ul", "milestone-list");
 
     var nextShown = false;
-    p.milestones
+    c.milestones
       .slice()
       .sort(function (a, b) {
         // Done ones first (in the order they happened), then the rest in JSON order.
@@ -398,15 +707,10 @@
         li.appendChild(el("span", "milestone-icon", m.hitDate ? "🏅" : state === "next" ? "🎯" : "🔒"));
         var body = el("div", "milestone-body");
         body.appendChild(el("p", "milestone-title", m.title));
-        body.appendChild(el("p", "milestone-desc", m.desc));
-        if (m.hitDate) {
-          body.appendChild(el("p", "milestone-meta", "Unlocked " + fmtDate(m.hitDate)));
-        } else if (m.metric !== "manual" && m.at > 0) {
-          body.appendChild(progressBar((m.current / m.at) * 100, "milestone-track"));
-          body.appendChild(el("p", "milestone-meta", fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at)));
-        } else {
-          body.appendChild(el("p", "milestone-meta", "Checked off by hand when it happens"));
-        }
+        if (m.desc) body.appendChild(el("p", "milestone-desc", m.desc));
+        var mp = m.hitDate ? null : milestonePct(m);
+        if (mp != null) body.appendChild(progressBar(mp, "milestone-track"));
+        body.appendChild(el("p", "milestone-meta", milestoneMeta(m)));
         li.appendChild(body);
         li.appendChild(el("span", "milestone-prize", "+" + fmtMoney(m.prize)));
         list.appendChild(li);
@@ -421,7 +725,7 @@
     var grid = el("div", "sidequest-grid");
     quests.forEach(function (q) {
       var type = q.type || "best";
-      var built = buildTimeline(type, q.log, []);
+      var built = buildTimeline({ type: type, log: q.log });
       var last = built.timeline[built.timeline.length - 1];
       var value = last ? last.value : 0;
       var target = Number(q.target || 0);
@@ -471,43 +775,53 @@
     root.appendChild(s);
   }
 
-  function renderLog(root, p) {
-    var s = section("Progress Log", "beast-log");
-    if (!p.entries.length) {
+  function renderLog(root, c, title, compact) {
+    var s = compact ? el("div", "challenge-sub") : section(title, "beast-log");
+    if (compact) s.appendChild(el("h4", null, title));
+    if (!c.entries.length) {
       s.appendChild(el("p", "beast-empty", "Nothing logged yet - the first entry is the hardest one. Let's go!"));
       root.appendChild(s);
       return;
     }
+    var unitTitle = c.raw.unit ? c.raw.unit.charAt(0).toUpperCase() + c.raw.unit.slice(1) : "Result";
+    var cols = c.type === "reading" ? ["Date", "Book", "Page", "Total Pages"]
+      : c.type === "total" ? ["Date", "Added", "Running Total", "Note"]
+      : c.type === "pullups" ? ["Date", "Band", "Reps", "Note"]
+      : c.type === "time" ? ["Date", "Miles", "Time", "Pace", "Note"]
+      : ["Date", unitTitle, "Note"];
+
     var table = el("table", "log-table");
-    var head = el("tr");
-    var cols = p.type === "reading" ? ["Date", "Book", "Page", "Total Pages"]
-      : p.type === "total" ? ["Date", "Added", "Running Total", "Note"]
-      : ["Date", p.raw.unit ? p.raw.unit.charAt(0).toUpperCase() + p.raw.unit.slice(1) : "Result", "Note"];
-    cols.forEach(function (c) { head.appendChild(el("th", null, c)); });
     var thead = el("thead");
+    var head = el("tr");
+    cols.forEach(function (h) { head.appendChild(el("th", null, h)); });
     thead.appendChild(head);
     table.appendChild(thead);
 
-    var tbody = el("tbody");
     var running = 0;
-    var rows = p.entries.map(function (e) {
-      var cells;
-      if (p.type === "reading") {
-        var idx = Math.max(1, Math.min(p.books.length, Number(e.book) || 1));
-        var tot = p.cumulativeBefore[idx - 1] + Number(e.page || 0);
-        cells = [fmtDate(e.date), String(idx), String(e.page || 0), fmtNum(tot)];
-      } else if (p.type === "total") {
-        running += Number(e.value) || 0;
-        cells = [fmtDate(e.date), fmtNum(Number(e.value) || 0), fmtNum(running), e.note || ""];
-      } else {
-        cells = [fmtDate(e.date), fmtNum(Number(e.value) || 0), e.note || ""];
+    var rows = c.entries.map(function (e) {
+      if (c.type === "reading") {
+        var idx = Math.max(1, Math.min(c.books.length, Number(e.book) || 1));
+        return [fmtDate(e.date), String(idx), String(e.page || 0), fmtNum(c.cumulativeBefore[idx - 1] + Number(e.page || 0))];
       }
-      return cells;
+      if (c.type === "total") {
+        running += Number(e.value) || 0;
+        return [fmtDate(e.date), fmtNum(Number(e.value) || 0), fmtNum(running), e.note || ""];
+      }
+      if (c.type === "pullups") {
+        return [fmtDate(e.date), bandLabel(c.bands, e.band), String(Number(e.reps) || 0), e.note || ""];
+      }
+      if (c.type === "time") {
+        var sec = parseTime(e.time);
+        var mi = Number(e.miles) || 0;
+        return [fmtDate(e.date), fmtNum(mi), fmtTime(sec), sec && mi ? fmtTime(sec / mi) + "/mi" : "-", e.note || ""];
+      }
+      return [fmtDate(e.date), fmtNum(Number(e.value) || 0), e.note || ""];
     }).reverse(); // newest first
 
+    var tbody = el("tbody");
     rows.forEach(function (cells) {
       var tr = el("tr");
-      cells.forEach(function (c, i) { tr.appendChild(el("td", null, c)).setAttribute("data-label", cols[i]); });
+      cells.forEach(function (txt, i) { tr.appendChild(el("td", null, txt)).setAttribute("data-label", cols[i]); });
       tbody.appendChild(tr);
     });
     table.appendChild(tbody);
@@ -517,9 +831,10 @@
     root.appendChild(s);
   }
 
-  function renderIdeas(root, ideas, title) {
+  function renderIdeas(root, ideas, title, compact) {
     if (!ideas || !ideas.length) return;
-    var s = section(title, "beast-ideas");
+    var s = compact ? el("div", "challenge-sub") : section(title, "beast-ideas");
+    if (compact) s.appendChild(el("h4", null, title));
     s.appendChild(el("p", "beast-note", "Still up for discussion - nothing here is official yet."));
     var ul = el("ul", "idea-list");
     ideas.forEach(function (i) { ul.appendChild(el("li", null, i)); });
