@@ -426,12 +426,45 @@
       var value = last ? last.value : 0;
       var target = Number(q.target || 0);
       var pct = target ? (value / target) * 100 : 0;
-      var card = el("div", "sidequest" + (pct >= 100 ? " done" : ""));
-      card.appendChild(el("h4", null, (pct >= 100 ? "✅ " : "") + q.title));
+      var pre = q.prefix || "";
+      var unit = q.unit ? " " + q.unit : "";
+      function amt(n) { return pre + fmtNum(n) + unit; }
+
+      var card = el("div", "sidequest" + (pct >= 100 ? " done" : "") + (q.milestones && q.milestones.length ? " sidequest-wide" : ""));
+      card.appendChild(el("h4", null, (q.emoji ? q.emoji + " " : "") + (pct >= 100 ? "✅ " : "") + q.title));
       if (q.desc) card.appendChild(el("p", "sidequest-desc", q.desc));
       card.appendChild(progressBar(pct));
       card.appendChild(el("p", "sidequest-meta",
-        fmtNum(value) + " / " + fmtNum(target) + " " + (q.unit || "") + (type === "best" ? " (best)" : "")));
+        amt(value) + " of " + amt(target) + (type === "best" ? " (best)" : "") +
+        (pct >= 100 ? " - DONE!" : " - " + amt(Math.max(0, target - value)) + " to go")));
+
+      // Optional mini milestone ladder for the side quest.
+      if (q.milestones && q.milestones.length) {
+        var ul = el("ul", "milestone-list sidequest-milestones");
+        var nextShown = false;
+        q.milestones
+          .slice()
+          .sort(function (a, b) { return Number(a.value) - Number(b.value); })
+          .forEach(function (m) {
+            var at = Number(m.value);
+            var hit = null;
+            for (var i = 0; i < built.timeline.length; i++) {
+              if (built.timeline[i].value >= at) { hit = built.timeline[i].date; break; }
+            }
+            var state = hit ? "done" : (!nextShown ? "next" : "locked");
+            if (state === "next") nextShown = true;
+            var li = el("li", "milestone " + state);
+            li.appendChild(el("span", "milestone-icon", hit ? "🏅" : state === "next" ? "🎯" : "🔒"));
+            var body = el("div", "milestone-body");
+            body.appendChild(el("p", "milestone-title", m.title));
+            if (m.desc) body.appendChild(el("p", "milestone-desc", m.desc));
+            body.appendChild(el("p", "milestone-meta", hit ? "Unlocked " + fmtDate(hit) : amt(Math.min(value, at)) + " / " + amt(at)));
+            li.appendChild(body);
+            li.appendChild(el("span", "milestone-prize", amt(at)));
+            ul.appendChild(li);
+          });
+        card.appendChild(ul);
+      }
       grid.appendChild(card);
     });
     s.appendChild(grid);
