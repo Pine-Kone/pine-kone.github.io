@@ -764,3 +764,32 @@ body.dark-mode .band-row {
   font-style: italic;
   opacity: 0.75;
 }
+
+/* Counter cards/pages (Bennett) */
+.counter-mini {
+  margin: 0.25rem 0 0;
+  font-size: 2.6rem;
+  font-weight: bold;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+.beast-counter .beast-percent {
+  font-size: 5rem;
+  color: var(--accent-color);
+}
+
+/* Five challengers: 3 then 2 on desktop, centered */
+@media (min-width: 801px) {
+  .challenger-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .challenger-card {
+    grid-column: span 2;
+  }
+
+  .challenger-card:nth-child(4):nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
+}
