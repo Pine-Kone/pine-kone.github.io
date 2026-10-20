@@ -13,13 +13,19 @@
       "band": "none",
       "reps": 0,
       "note": "First workout! 25-second dead hang. Can't quite get a pull-up yet - so close."
+    },
+    {
+      "date": "2026-10-20",
+      "band": "none",
+      "reps": 0,
+      "note": "31-second dead hang - Hang Tough unlocked! Went one extra second just to be sure."
     }
   ],
   "milestones": [
     {
       "title": "Hang Tough",
       "desc": "Dead hang from the bar for 30 seconds.",
-      "done": null,
+      "done": "2026-10-20",
       "prize": 250
     },
     {
@@ -89,6 +95,10 @@
         {
           "date": "2026-10-19",
           "value": 25
+        },
+        {
+          "date": "2026-10-20",
+          "value": 31
         }
       ]
     }
