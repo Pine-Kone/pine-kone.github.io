@@ -37,7 +37,13 @@
       "pages": 759
     }
   ],
-  "log": [],
+  "log": [
+    {
+      "date": "2026-10-19",
+      "book": 1,
+      "page": 6
+    }
+  ],
   "milestones": [
     {
       "title": "Platform 9 3/4",
@@ -114,7 +120,13 @@
       "type": "total",
       "prefix": "$",
       "target": 20,
-      "log": [],
+      "log": [
+        {
+          "date": "2026-10-19",
+          "value": 1,
+          "note": "Already had a dollar saved!"
+        }
+      ],
       "milestones": [
         {
           "title": "First Dollar",
