@@ -32,7 +32,16 @@
 //              A bare book name ("read": "Ezra") counts every listed chapter
 //              in it. Chapters not on the list are ignored. "target" is how
 //              many listed chapters to read by the deadline.
+// "weekly"   - something to do once a week; any entry in a Mon-Sun week
+//              counts that week: { "date": "YYYY-MM-DD", "note": "Dinner + movie" }
+//              "target" is the number of weeks.
+// "counter"  - just counts things up, no goal (Bennett's spills):
+//              { "date": "YYYY-MM-DD", "count": 1, "note": "Milk, kitchen table" }
+//              ("count" defaults to 1.)
 // "planning" - not locked in yet; shows the "ideas" list.
+//
+// Optional "restDays": [0] on a challenge skips those weekdays (0 = Sunday)
+// when working out streaks and the needed-per-day pace.
 //
 // ---------- Milestones ----------
 // Each milestone needs a "title", "desc", and "prize" (pretend dollars),
@@ -45,9 +54,11 @@
 //   "distance": 3                 (time) completed a run at least that long
 //   "streak": 7                   logged this many days in a row
 //   "sessions": 10                logged this many separate days
+//   "weekDays": 6                 logged on this many days within one Mon-Sun week
 //   "bookDone": "1 Kings"         (chapters) every listed chapter in that book
 //                                 (or a list: ["1 Kings", "2 Kings"])
 //   "done": "YYYY-MM-DD"          anything else - set the date by hand
+// Instead of "prize" a milestone can have "reward": "Paper towels" (text only).
 //
 // ---------- Side quests ----------
 // "sideQuests": [ { "title": "Plank", "type": "best", "unit": "seconds",
@@ -58,7 +69,7 @@
 
 (function () {
   var DATA_DIR = "/files/beast-challenge/";
-  var PEOPLE = ["lucy", "fletcher", "hans"];
+  var PEOPLE = ["lucy", "fletcher", "hans", "jordyn", "bennett"];
   var DAY_MS = 86400000;
 
   // Default band ladder - most assistance first. A person or challenge can
@@ -78,6 +89,11 @@
     return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
   }
 
+  function isoToday() {
+    var t = today();
+    return t.getFullYear() + "-" + String(t.getMonth() + 1).padStart(2, "0") + "-" + String(t.getDate()).padStart(2, "0");
+  }
+
   function today() {
     var n = new Date();
     return new Date(n.getFullYear(), n.getMonth(), n.getDate());
@@ -85,6 +101,32 @@
 
   function daysBetween(a, b) {
     return Math.round((b - a) / DAY_MS);
+  }
+
+  // Monday that starts the week a date falls in, as "YYYY-MM-DD".
+  function weekKey(iso) {
+    var d = parseDate(iso);
+    d.setDate(d.getDate() - ((d.getDay() + 6) % 7));
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  }
+
+  function isRest(d, restDays) {
+    return !!restDays && restDays.indexOf(d.getDay()) !== -1;
+  }
+
+  // Counts days from a to b (inclusive) that aren't rest days.
+  function workDays(a, b, restDays) {
+    var n = 0;
+    for (var d = new Date(a); d <= b; d.setDate(d.getDate() + 1)) if (!isRest(d, restDays)) n++;
+    return n;
+  }
+
+  // True when every day strictly between a and b is a rest day.
+  function onlyRestBetween(a, b, restDays) {
+    for (var d = new Date(a.getFullYear(), a.getMonth(), a.getDate() + 1); d < b; d.setDate(d.getDate() + 1)) {
+      if (!isRest(d, restDays)) return false;
+    }
+    return true;
   }
 
   function fmtDate(iso) {
@@ -210,9 +252,16 @@
     var prevDate = null;
     var distance = Number(c.distance || 0);
     var seen = {};
+    var weeks = {};
+    var restDays = c.restDays || null;
 
     entries.forEach(function (e) {
-      if (type === "chapters") {
+      if (type === "weekly") {
+        var wk = weekKey(e.date);
+        if (!weeks[wk]) { weeks[wk] = true; value++; }
+      } else if (type === "counter") {
+        value += e.count != null ? Number(e.count) || 0 : 1;
+      } else if (type === "chapters") {
         e._new = 0;
         chapterKeys(e.read, books).forEach(function (k) {
           if (!seen[k]) { seen[k] = true; value++; e._new++; }
@@ -236,7 +285,8 @@
       if (e.date !== prevDate) {
         sessions++;
         var gap = prevDate ? daysBetween(parseDate(prevDate), parseDate(e.date)) : null;
-        streak = gap === 1 ? streak + 1 : 1;
+        var keepsStreak = gap === 1 || (gap > 1 && restDays && onlyRestBetween(parseDate(prevDate), parseDate(e.date), restDays));
+        streak = keepsStreak ? streak + 1 : 1;
         prevDate = e.date;
         timeline.push({ date: e.date, value: value, sessions: sessions, streak: streak });
       } else {
@@ -244,7 +294,7 @@
       }
     });
 
-    return { timeline: timeline, cumulativeBefore: cumulativeBefore, entries: entries, seen: seen };
+    return { timeline: timeline, cumulativeBefore: cumulativeBefore, entries: entries, seen: seen, weeks: weeks };
   }
 
   function bandRank(bands, id) {
@@ -263,7 +313,7 @@
   function evalMilestone(m, c) {
     var tl = c.timeline;
     var out = {
-      title: m.title, desc: m.desc, prize: Number(m.prize || 0),
+      title: m.title, desc: m.desc, prize: Number(m.prize || 0), reward: m.reward || null,
       metric: "value", at: 0, current: 0, hitDate: null, lowerIsBetter: false,
     };
     function firstWhere(fn) {
@@ -332,6 +382,25 @@
       return out;
     }
 
+    if (m.weekDays != null) {
+      out.metric = "weekDays";
+      out.at = Number(m.weekDays);
+      var perWeek = {};
+      var counted = {};
+      c.entries.forEach(function (e) {
+        var wk = weekKey(e.date);
+        if (counted[e.date]) return;
+        counted[e.date] = true;
+        perWeek[wk] = (perWeek[wk] || 0) + 1;
+        out.current = Math.max(out.current, perWeek[wk]);
+        if (!out.hitDate && perWeek[wk] >= out.at) out.hitDate = e.date;
+      });
+      // Show this week's count while it's still in progress.
+      var thisWeek = perWeek[weekKey(isoToday())] || 0;
+      if (!out.hitDate) out.current = Math.max(thisWeek, out.current);
+      return out;
+    }
+
     if (m.streak != null || m.sessions != null) {
       out.metric = m.streak != null ? "streak" : "sessions";
       out.at = Number(m.streak != null ? m.streak : m.sessions);
@@ -370,7 +439,8 @@
     c.bands = raw.bands || defaults.bands || DEFAULT_BANDS;
     c.distance = Number(raw.distance || 0);
 
-    var built = buildTimeline({ type: c.type, books: c.books, log: raw.log, distance: c.distance });
+    c.restDays = raw.restDays || null;
+    var built = buildTimeline({ type: c.type, books: c.books, log: raw.log, distance: c.distance, restDays: c.restDays });
     c.entries = built.entries;
     c.timeline = built.timeline;
     c.cumulativeBefore = built.cumulativeBefore;
@@ -388,6 +458,15 @@
     c.daysLeft = Math.max(0, daysBetween(t, deadline) + 1); // includes today
     c.spanDays = Math.max(1, daysBetween(start, deadline) + 1);
     c.elapsedDays = Math.min(c.spanDays, Math.max(0, daysBetween(start, t)));
+    if (c.restDays) {
+      // Only count the days that are actually for working on it.
+      var yesterday = new Date(t.getFullYear(), t.getMonth(), t.getDate() - 1);
+      c.workDaysLeft = t <= deadline ? workDays(t, deadline, c.restDays) : 0;
+      c.spanDays = Math.max(1, workDays(start, deadline, c.restDays));
+      c.elapsedDays = Math.min(c.spanDays, start <= yesterday ? workDays(start, yesterday, c.restDays) : 0);
+    } else {
+      c.workDaysLeft = c.daysLeft;
+    }
 
     if (c.type === "time") {
       c.target = parseTime(raw.target);
@@ -409,7 +488,12 @@
     c.expected = c.target * (c.elapsedDays / c.spanDays);
 
     // Current streak only counts if the last log was today or yesterday.
-    c.currentStreak = last && daysBetween(parseDate(last.date), t) <= 1 ? last.streak : 0;
+    c.currentStreak = last && (daysBetween(parseDate(last.date), t) <= 1 ||
+      (c.restDays && onlyRestBetween(parseDate(last.date), t, c.restDays))) ? last.streak : 0;
+    if (c.type === "weekly") {
+      c.weekDone = !!built.weeks[weekKey(isoToday())];
+      c.weeksLeft = Math.max(0, Math.ceil((daysBetween(parseDate(weekKey(isoToday())), deadline) + 1) / 7));
+    }
     c.bestStreak = c.timeline.reduce(function (m, s) { return Math.max(m, s.streak); }, 0);
 
     c.milestones = (raw.milestones || []).map(function (m) { return evalMilestone(m, c); });
@@ -424,7 +508,8 @@
     var list = d.challenges ? d.challenges : [d];
     var p = { raw: d, multi: !!d.challenges };
     p.challenges = list.map(function (raw) { return analyzeChallenge(raw, defaults); });
-    p.active = p.challenges.filter(function (c) { return c.type !== "planning" && c.type !== "tbd"; });
+    p.active = p.challenges.filter(function (c) { return c.type !== "planning" && c.type !== "tbd" && c.type !== "counter"; });
+    p.counterOnly = p.challenges.length > 0 && p.challenges.every(function (c) { return c.type === "counter"; });
     p.prizeTotal = p.challenges.reduce(function (s, c) { return s + c.prizeTotal; }, 0);
     p.prizeWon = p.challenges.reduce(function (s, c) { return s + c.prizeWon; }, 0);
     p.pct = p.active.length
@@ -488,7 +573,14 @@
         card.appendChild(el("h4", "challenger-name", d.name));
         card.appendChild(el("p", "challenger-goal", d.title));
 
-        if (!p.active.length) {
+        if (p.counterOnly) {
+          var cc = p.challenges[0];
+          card.classList.add("is-counter");
+          card.appendChild(el("p", "counter-mini", fmtNum(cc.value)));
+          card.appendChild(el("p", "challenger-status", (cc.raw.unit || "logged") + " so far"));
+          var lastE = cc.entries[cc.entries.length - 1];
+          card.appendChild(el("p", "challenger-next", lastE ? "Most recent: " + fmtDate(lastE.date) : "Nothing yet... suspicious."));
+        } else if (!p.active.length) {
           card.appendChild(el("p", "challenger-status", "Challenge being decided - stay tuned!"));
         } else {
           card.appendChild(progressBar(p.pct));
@@ -547,6 +639,13 @@
 
     if (!p.multi) {
       var c = p.challenges[0];
+      if (c.type === "counter") {
+        renderCounter(root, c);
+        renderMilestones(root, c, "Achievements (Sort Of)");
+        renderLog(root, c, "The Evidence");
+        renderIdeas(root, d.ideas, "Idea Board");
+        return;
+      }
       if (!p.active.length) {
         var tbd = section("Coming Soon", "beast-tbd");
         tbd.appendChild(el("p", null, "This challenge hasn't been locked in yet. Once it's picked, the tracker, milestones, and prize ladder will show up right here."));
@@ -617,6 +716,36 @@
     renderIdeas(root, d.ideas, "Idea Board");
   }
 
+  // For "counter" challenges: no goal, just a running tally.
+  function renderCounter(root, c) {
+    var big = el("section", "beast-progress beast-counter");
+    big.appendChild(el("p", "beast-percent", fmtNum(c.value)));
+    big.appendChild(el("p", "beast-progress-detail", (c.raw.unit || "logged") + " since " + fmtDate(c.start)));
+    root.appendChild(big);
+
+    var t = today();
+    var weekStart = parseDate(weekKey(isoToday()));
+    var thisWeek = 0;
+    var perDay = {};
+    c.entries.forEach(function (e) {
+      var n = e.count != null ? Number(e.count) || 0 : 1;
+      if (parseDate(e.date) >= weekStart) thisWeek += n;
+      perDay[e.date] = (perDay[e.date] || 0) + n;
+    });
+    var worst = null;
+    Object.keys(perDay).forEach(function (k) { if (!worst || perDay[k] > perDay[worst]) worst = k; });
+    var last = c.entries[c.entries.length - 1];
+    var since = last ? daysBetween(parseDate(last.date), t) : null;
+
+    var stats = el("section", "beast-stats");
+    stats.appendChild(statTile("This Week", String(thisWeek), "since Monday", true));
+    stats.appendChild(statTile("Days Since Last", since == null ? "-" : String(since),
+      since == null ? "nothing yet" : since === 0 ? "it happened today" : "dry days in a row"));
+    stats.appendChild(statTile("Messiest Day", worst ? String(perDay[worst]) : "-", worst ? fmtDate(worst) : "TBD"));
+    stats.appendChild(statTile("Days Left", String(c.daysLeft), "to keep counting"));
+    root.appendChild(stats);
+  }
+
   function renderBigProgress(root, c) {
     var big = el("section", "beast-progress");
     big.appendChild(el("p", "beast-percent", fmtPct(c.pct)));
@@ -649,16 +778,21 @@
     if (showPrize) stats.appendChild(statTile("Prize Unlocked", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal) + " (pretend)", true));
     else stats.appendChild(statTile("Prize", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal), true));
 
-    if (c.type === "reading" || c.type === "total" || c.type === "chapters") {
+    if (c.type === "weekly") {
+      stats.appendChild(statTile("This Week", c.weekDone ? "✅ Done" : "Not yet", c.weekDone ? "nice work!" : "the week ends Sunday"));
+      stats.appendChild(statTile("Weeks Left", String(c.weeksLeft), "including this one"));
+      stats.appendChild(statTile("Weeks Done", fmtNum(c.value) + " / " + fmtNum(c.target), "goal by " + fmtDate(c.deadline)));
+    } else if (c.type === "reading" || c.type === "total" || c.type === "chapters") {
       var remaining = Math.max(0, c.target - c.value);
-      var perDay = c.daysLeft > 0 ? remaining / c.daysLeft : remaining;
-      stats.appendChild(statTile("Needed Per Day", c.complete ? "0" : fmtNum(Math.ceil(perDay * 10) / 10),
-        unit + " a day to finish on time"));
+      var perDay = c.workDaysLeft > 0 ? remaining / c.workDaysLeft : remaining;
+      stats.appendChild(statTile(c.restDays ? "Needed Per Study Day" : "Needed Per Day", c.complete ? "0" : fmtNum(Math.ceil(perDay * 10) / 10),
+        unit + (c.restDays ? " per day, " + c.workDaysLeft + " days left (no Sundays)" : " a day to finish on time")));
       var diff = c.value - c.expected;
       var paceLabel = c.complete ? "Finished!" : Math.abs(diff) < 0.5 ? "On pace" :
         diff > 0 ? fmtNum(diff) + " ahead" : fmtNum(-diff) + " behind";
       stats.appendChild(statTile("Pace Check", paceLabel, "vs. an even pace from " + fmtDate(c.start)));
-      stats.appendChild(statTile("Current Streak", String(c.currentStreak), "days in a row · best " + c.bestStreak));
+      stats.appendChild(statTile("Current Streak", String(c.currentStreak),
+        (c.restDays ? "days in a row (Sundays off)" : "days in a row") + " · best " + c.bestStreak));
     } else if (c.type === "pullups") {
       var lastEntry = c.entries[c.entries.length - 1];
       stats.appendChild(statTile("Unassisted Best", fmtNum(c.value), "pull-ups in one set"));
@@ -772,6 +906,7 @@
     if (m.lowerIsBetter) return m.current != null ? "Best so far " + fmtTime(m.current) + " · need " + fmtTime(m.at) : "Need " + fmtTime(m.at);
     if (m.metric === "band") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " reps (" + m.bandText + " or lighter)";
     if (m.metric === "percent") return fmtPct(m.current) + " / " + fmtNum(m.at) + "%";
+    if (m.metric === "weekDays") return "Best week so far: " + fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " days";
     if (m.metric === "bookDone") return fmtNum(m.current) + " / " + fmtNum(m.at) + " chapters";
     if (m.metric === "distance") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " mi";
     return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at);
@@ -787,6 +922,7 @@
     if (!c.milestones.length) return;
     var s = compact ? el("div", "challenge-sub") : section(title, "beast-milestones");
     if (compact) s.appendChild(el("h4", null, title));
+    else if (c.type === "counter") s.appendChild(el("p", "beast-note", "No prize money here - just glory. And paper towels."));
     else s.appendChild(el("p", "beast-note", "Every milestone unlocks a chunk of the (pretend) prize money. Hit them all and the full prize is yours."));
     var list = el("ul", "milestone-list");
 
@@ -812,7 +948,7 @@
         if (mp != null) body.appendChild(progressBar(mp, "milestone-track"));
         body.appendChild(el("p", "milestone-meta", milestoneMeta(m)));
         li.appendChild(body);
-        li.appendChild(el("span", "milestone-prize", "+" + fmtMoney(m.prize)));
+        li.appendChild(el("span", "milestone-prize", m.reward ? m.reward : "+" + fmtMoney(m.prize)));
         list.appendChild(li);
       });
     s.appendChild(list);
@@ -889,6 +1025,8 @@
       : c.type === "pullups" ? ["Date", "Band", "Reps", "Note"]
       : c.type === "time" ? ["Date", "Miles", "Time", "Pace", "Note"]
       : c.type === "chapters" ? ["Date", "Read", "New", "Total"]
+      : c.type === "weekly" ? ["Date", "Week Of", "Note"]
+      : c.type === "counter" ? ["Date", c.raw.unitTitle || "Count", "Note"]
       : ["Date", unitTitle, "Note"];
 
     var table = el("table", "log-table");
@@ -908,6 +1046,8 @@
         running += Number(e.value) || 0;
         return [fmtDate(e.date), fmtNum(Number(e.value) || 0), fmtNum(running), e.note || ""];
       }
+      if (c.type === "weekly") return [fmtDate(e.date), fmtDate(weekKey(e.date)), e.note || ""];
+      if (c.type === "counter") return [fmtDate(e.date), String(e.count != null ? e.count : 1), e.note || ""];
       if (c.type === "chapters") {
         var readText = Array.isArray(e.read) ? e.read.join(", ") : String(e.read || "");
         return [fmtDate(e.date), readText, String(e._new || 0), String(e._total || 0)];
