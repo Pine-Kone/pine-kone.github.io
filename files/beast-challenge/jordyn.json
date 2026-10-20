@@ -1,0 +1,49 @@
+{
+  "name": "Jordyn",
+  "emoji": "🏃‍♀️",
+  "title": "3 Miles in 26:00",
+  "blurb": "Jordyn is chasing the same goal as Hans: 3 miles in 26 minutes or less (an 8:40 mile). Her first timed 3-mile run sets the starting line - then it's a race to the finish.",
+  "type": "time",
+  "distance": 3,
+  "target": "26:00",
+  "start": "2026-10-19",
+  "deadline": "2026-12-31",
+  "log": [],
+  "milestones": [
+    {
+      "title": "Starting Line",
+      "desc": "Log your first timed 3-mile run.",
+      "distance": 3,
+      "prize": 1500
+    },
+    {
+      "title": "Regular",
+      "desc": "Log 12 runs.",
+      "sessions": 12,
+      "prize": 1500
+    },
+    {
+      "title": "Halfway Faster",
+      "desc": "Get halfway from your first time to 26:00.",
+      "percent": 50,
+      "prize": 2000
+    },
+    {
+      "title": "Almost There",
+      "desc": "Run 3 miles in 27:00 or less.",
+      "time": "27:00",
+      "prize": 2000
+    },
+    {
+      "title": "Sub-26",
+      "desc": "Run 3 miles in 26:00 or less. GRAND PRIZE!",
+      "time": "26:00",
+      "prize": 3000
+    }
+  ],
+  "sideQuests": [],
+  "ideas": [
+    "Run together with Hans once a week",
+    "Sign up for a local Turkey Trot 5K"
+  ]
+}

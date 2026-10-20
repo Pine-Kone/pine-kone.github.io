@@ -1,12 +1,13 @@
 {
   "name": "Hans",
   "emoji": "🧭",
-  "title": "Five Areas, Five Challenges",
-  "blurb": "Dad doesn't get off easy. I set goals in five areas of life - Spiritual, Social, Intellectual, Physical, and Personal Management - so I'm taking on a Beast Challenge in each one.",
+  "title": "Six Challenges, Five Areas",
+  "blurb": "Dad doesn't get off easy. I set goals in five areas of life - Spiritual, Social, Intellectual, Physical, and Personal Management - so I'm taking on a Beast Challenge in every one of them.",
   "start": "2026-10-19",
   "deadline": "2026-12-31",
   "challenges": [
     {
+      "id": "ot-reading",
       "area": "Spiritual",
       "emoji": "📜",
       "title": "Old Testament Push",
@@ -466,7 +467,12 @@
           ]
         }
       ],
-      "log": [],
+      "log": [
+        {
+          "date": "2026-10-19",
+          "read": "2 Samuel 24"
+        }
+      ],
       "milestones": [
         {
           "title": "Turning Pages",
@@ -517,43 +523,81 @@
       ]
     },
     {
+      "id": "date-night",
+      "area": "Social",
+      "emoji": "❤️",
+      "title": "Weekly Date with Jordyn",
+      "type": "weekly",
+      "unit": "weeks",
+      "target": 11,
+      "blurb": "A date with Jordyn every single week through the end of the year - 11 weeks, Monday through Sunday. Fancy or simple, it just has to be the two of us.",
+      "log": [],
+      "milestones": [
+        {
+          "title": "First Date",
+          "desc": "Week 1 is in the books.",
+          "value": 1,
+          "prize": 200
+        },
+        {
+          "title": "A Month of Dates",
+          "desc": "4 weeks with a date.",
+          "value": 4,
+          "prize": 350
+        },
+        {
+          "title": "Two Months Strong",
+          "desc": "8 weeks with a date.",
+          "value": 8,
+          "prize": 550
+        },
+        {
+          "title": "Every Week",
+          "desc": "All 11 weeks. CHALLENGE COMPLETE!",
+          "value": 11,
+          "prize": 900
+        }
+      ]
+    },
+    {
+      "id": "cpa-study",
       "area": "Intellectual",
       "emoji": "🎓",
       "title": "CPA Study Hours",
       "type": "total",
       "unit": "hours",
-      "target": 60,
-      "blurb": "60 hours of focused FAR study before December 31 - about 50 minutes a day, with room for the busy holiday weeks.",
+      "target": 90,
+      "blurb": "90 hours of FAR study by December 31: 1.5 hours a study day (30 minutes of flashcards plus an hour in Gleim), Monday through Saturday. Sundays are always off - that's a personal commitment - and the goal leaves a little room for Thanksgiving and Christmas.",
       "log": [],
       "milestones": [
         {
           "title": "Warm-Up",
           "desc": "Log 10 study hours.",
           "value": 10,
+          "prize": 150
+        },
+        {
+          "title": "Full Week",
+          "desc": "Study all 6 days (Monday-Saturday) in one week.",
+          "weekDays": 6,
           "prize": 200
         },
         {
-          "title": "Study Streak",
-          "desc": "Study 7 days in a row.",
-          "streak": 7,
-          "prize": 200
-        },
-        {
-          "title": "Quarter Mile",
-          "desc": "Log 15 study hours.",
-          "value": 15,
+          "title": "Quarter Mark",
+          "desc": "Log 25 study hours.",
+          "value": 25,
           "prize": 200
         },
         {
           "title": "Halfway",
-          "desc": "Log 30 study hours.",
-          "value": 30,
+          "desc": "Log 45 study hours.",
+          "value": 45,
           "prize": 300
         },
         {
           "title": "Home Stretch",
-          "desc": "Log 45 study hours.",
-          "value": 45,
+          "desc": "Log 70 study hours.",
+          "value": 70,
           "prize": 300
         },
         {
@@ -563,14 +607,18 @@
           "prize": 300
         },
         {
-          "title": "Sixty Strong",
-          "desc": "Log 60 study hours. CHALLENGE COMPLETE!",
-          "value": 60,
-          "prize": 500
+          "title": "Ninety Strong",
+          "desc": "Log 90 study hours. CHALLENGE COMPLETE!",
+          "value": 90,
+          "prize": 550
         }
+      ],
+      "restDays": [
+        0
       ]
     },
     {
+      "id": "pullups",
       "area": "Physical",
       "emoji": "💪",
       "title": "Pull-Up Partners",
@@ -640,6 +688,7 @@
       ]
     },
     {
+      "id": "run",
       "area": "Physical",
       "emoji": "🏃",
       "title": "3-Mile Run",
@@ -683,6 +732,7 @@
       "baseline": "27:41"
     },
     {
+      "id": "car",
       "area": "Personal Management",
       "emoji": "🚗",
       "title": "Pay Off the Car",
@@ -727,7 +777,6 @@
   ],
   "ideas": [
     "Social: monthly one-on-one date with each kid, all the way through December",
-    "Social: weekly date night every week until the deadline",
     "Physical: 100 push-ups in a row",
     "Intellectual: memorize 100 digits of Pi (currently at 20)"
   ]

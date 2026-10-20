@@ -1,0 +1,44 @@
+{
+  "name": "Bennett",
+  "emoji": "🥛",
+  "title": "The Great Spill Count",
+  "blurb": "Bennett is too little for a real challenge, so he got the one he's already training for: spilling things. Every cup, glass, and bowl he tips over between now and the end of the year gets counted. There is no goal. There is only the tally.",
+  "type": "counter",
+  "unit": "spills",
+  "unitTitle": "Spills",
+  "start": "2026-10-19",
+  "deadline": "2026-12-31",
+  "log": [],
+  "milestones": [
+    {
+      "title": "First Spill",
+      "desc": "The first one of the challenge.",
+      "value": 1,
+      "reward": "🧻"
+    },
+    {
+      "title": "Double Digits",
+      "desc": "10 spills.",
+      "value": 10,
+      "reward": "🧻🧻"
+    },
+    {
+      "title": "Splash Zone",
+      "desc": "25 spills.",
+      "value": 25,
+      "reward": "🧽"
+    },
+    {
+      "title": "Half a Hundred",
+      "desc": "50 spills.",
+      "value": 50,
+      "reward": "🪣"
+    },
+    {
+      "title": "Spill-ionaire",
+      "desc": "100 spills. We need a mop.",
+      "value": 100,
+      "reward": "🧹"
+    }
+  ]
+}
