@@ -631,6 +631,12 @@
           "band": "none",
           "reps": 1,
           "note": "Starting point"
+        },
+        {
+          "date": "2026-10-20",
+          "band": "purple",
+          "reps": 7,
+          "note": "Brief workout"
         }
       ],
       "milestones": [
