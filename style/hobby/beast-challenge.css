@@ -1,0 +1,549 @@
+/* Haroldsen Beast Challenges - /hobby/beast-challenge/ (landing + challenger pages) */
+
+/* ---------- Shared pieces ---------- */
+.progress-track {
+  width: 100%;
+  height: 0.9rem;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent-color);
+  border-radius: 1rem;
+  transition: width 0.9s ease;
+}
+
+.beast-note {
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.75;
+  margin: 0.25rem auto 1rem;
+}
+
+.beast-empty {
+  font-style: italic;
+  opacity: 0.8;
+  text-align: center;
+}
+
+.beast-section {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.beast-section:nth-of-type(even) {
+  background: var(--section-background-color);
+}
+
+.beast-section h3 {
+  margin-top: 0;
+}
+
+/* ---------- Landing ---------- */
+.beast-kicker {
+  margin: 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-color);
+}
+
+.hero-blurb {
+  max-width: 40rem;
+  margin: 0.5rem auto;
+}
+
+.beast-banner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.beast-banner-tile {
+  flex: 1 1 16rem;
+  max-width: 22rem;
+  background: var(--primary-color);
+  color: #fff;
+  border-top: 5px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 1rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.beast-banner-tile .stat-label {
+  color: #fff;
+}
+
+.countdown-value,
+.pool-value {
+  margin: 0.25rem 0;
+  font-size: 2.6rem;
+  font-weight: bold;
+  line-height: 1.1;
+  color: var(--accent-color);
+}
+
+.pool-sub,
+.countdown-sub {
+  margin: 0 0 0.75rem;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.beast-banner-tile .progress-track {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.challenger-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  max-width: 1000px;
+  margin: 1.25rem auto 0;
+}
+
+.challenger-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  background: #fff;
+  color: var(--text-color);
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 1.25rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.challenger-card:hover,
+.challenger-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--accent-color);
+}
+
+.challenger-card.is-complete {
+  border-color: #2e9e4f;
+}
+
+.challenger-emoji {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.challenger-name {
+  margin: 0.25rem 0 0;
+  font-size: 1.5rem;
+  color: var(--primary-color);
+}
+
+.challenger-goal {
+  margin: 0 0 0.5rem;
+  font-weight: bold;
+  min-height: 2.6em;
+}
+
+.challenger-status,
+.challenger-prize,
+.challenger-next {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+.challenger-prize {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.challenger-next {
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.challenger-link {
+  margin-top: auto;
+  padding-top: 0.75rem;
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.beast-rules {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.beast-rules h3 {
+  text-align: center;
+}
+
+.beast-rules ol {
+  padding-left: 1.5rem;
+  line-height: 1.6;
+}
+
+/* ---------- Challenger page ---------- */
+.beast-hero h2 {
+  margin: 0.25rem 0 0.5rem;
+}
+
+.beast-deadline {
+  display: inline-block;
+  margin-top: 0.75rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 2rem;
+  background: var(--primary-color);
+  color: #fff;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+.beast-progress {
+  max-width: 40rem;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.beast-percent {
+  margin: 0;
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  line-height: 1.1;
+}
+
+.beast-progress.is-complete .beast-percent {
+  color: #2e9e4f;
+}
+
+.beast-track {
+  height: 1.4rem;
+  margin: 0.75rem 0 0.5rem;
+}
+
+.beast-progress-detail {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+.beast-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  padding: 0 1rem;
+}
+
+.stat-tile {
+  flex: 1 1 12rem;
+  max-width: 15rem;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 5px solid var(--accent-color);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+.stat-tile-main {
+  background: var(--primary-color);
+  color: #fff;
+  border-color: var(--primary-color);
+  border-top-color: var(--accent-color);
+}
+
+.stat-label {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: bold;
+  opacity: 0.85;
+}
+
+.stat-value {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.15;
+}
+
+.stat-tile-main .stat-value {
+  color: var(--accent-color);
+}
+
+.stat-sub {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  opacity: 0.8;
+}
+
+/* Bookshelf */
+.book-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 40rem;
+  text-align: left;
+}
+
+.book {
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+  opacity: 0.65;
+}
+
+.book.done,
+.book.reading {
+  opacity: 1;
+}
+
+.book.reading .book-title {
+  font-weight: bold;
+  color: var(--accent-color);
+}
+
+.book.done .progress-fill {
+  background: #2e9e4f;
+}
+
+.book-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.book-title {
+  flex: 1;
+}
+
+.book-pages {
+  white-space: nowrap;
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+.book .progress-track {
+  height: 0.55rem;
+}
+
+/* Milestones */
+.milestone-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 40rem;
+  text-align: left;
+}
+
+.milestone {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  margin-bottom: 0.6rem;
+  background: #fff;
+  border-left: 5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.milestone.done {
+  border-left-color: #2e9e4f;
+}
+
+.milestone.next {
+  border-left-color: var(--accent-color);
+}
+
+.milestone.locked {
+  opacity: 0.7;
+}
+
+.milestone-icon {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.milestone-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.milestone-title {
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.05rem;
+}
+
+.milestone-desc,
+.milestone-meta {
+  margin: 0.15rem 0 0;
+  font-size: 0.92rem;
+}
+
+.milestone-meta {
+  font-style: italic;
+  opacity: 0.8;
+}
+
+.milestone-track {
+  height: 0.5rem;
+  margin-top: 0.4rem;
+}
+
+.milestone-prize {
+  font-weight: bold;
+  white-space: nowrap;
+  color: var(--accent-color);
+}
+
+.milestone.done .milestone-prize {
+  color: #2e9e4f;
+}
+
+/* Side quests */
+.sidequest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sidequest {
+  background: #fff;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.sidequest h4 {
+  margin: 0 0 0.35rem;
+}
+
+.sidequest-desc,
+.sidequest-meta {
+  font-size: 0.9rem;
+  margin: 0.35rem 0;
+}
+
+.sidequest.done .progress-fill {
+  background: #2e9e4f;
+}
+
+/* Log table */
+.log-wrap {
+  max-width: 40rem;
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.log-table th,
+.log-table td {
+  padding: 0.5rem 0.6rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.log-table th {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--primary-color);
+}
+
+/* Ideas */
+.idea-list {
+  max-width: 36rem;
+  margin: 0 auto;
+  text-align: left;
+  line-height: 1.7;
+}
+
+/* ---------- Dark mode ---------- */
+body.dark-mode .challenger-card,
+body.dark-mode .stat-tile,
+body.dark-mode .milestone,
+body.dark-mode .sidequest {
+  background: #2a2a2a;
+  color: #f0f0f0;
+}
+
+body.dark-mode .stat-tile-main {
+  background: var(--primary-color);
+}
+
+body.dark-mode .challenger-name,
+body.dark-mode .beast-percent,
+body.dark-mode .log-table th {
+  color: var(--accent-color);
+}
+
+body.dark-mode .progress-track {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.dark-mode .book,
+body.dark-mode .log-table th,
+body.dark-mode .log-table td {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  .challenger-grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+  }
+
+  .challenger-goal {
+    min-height: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .stat-tile {
+    box-sizing: border-box;
+    flex: 1 1 calc(50% - 0.5rem);
+    max-width: none;
+    padding: 0.85rem 0.6rem;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+  }
+
+  .beast-percent {
+    font-size: 2.75rem;
+  }
+
+  .milestone {
+    flex-wrap: wrap;
+  }
+
+  .milestone-prize {
+    margin-left: 2.25rem;
+  }
+}
