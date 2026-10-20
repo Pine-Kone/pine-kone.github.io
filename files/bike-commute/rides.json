@@ -7,5 +7,6 @@
   { "date": "2026-10-06", "miles": 5.9, "trip-type": "round-trip" },
   { "date": "2026-10-09", "miles": 5.9, "trip-type": "round-trip" },
   { "date": "2026-10-13", "miles": 1, "trip-type": "one-way" },
-  { "date": "2026-10-14", "miles": 5.9, "trip-type": "round-trip" }
+  { "date": "2026-10-14", "miles": 5.9, "trip-type": "round-trip" },
+  { "date": "2026-10-19", "miles": 5.9, "trip-type": "round-trip" }
 ]
