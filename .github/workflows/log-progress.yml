@@ -4,7 +4,9 @@
 # Trigger it from a Shortcut with "Get Contents of URL":
 #   POST https://api.github.com/repos/Pine-Kone/pine-kone.github.io/actions/workflows/log-progress.yml/dispatches
 #   Headers: Authorization: Bearer <fine-grained token>, Accept: application/vnd.github+json
-#   Body:    {"ref":"main","inputs":{"kind":"bike-ride","value":"5.9","trip":"round-trip"}}
+#   Body:    {"ref":"main","inputs":{"kind":"bike-ride","value":"5.9","trip":"one-way"}}
+#   Ride home later that day? {"ref":"main","inputs":{"kind":"bike-return"}}
+#   turns that day's one-way ride into a round trip.
 # The script that does the work is .github/scripts/log_progress.py.
 
 name: Log Progress
@@ -18,11 +20,12 @@ on:
         type: choice
         options:
           - bike-ride
+          - bike-return
           - cpa-study
           - ot-reading
       value:
-        description: "bike-ride: one-way miles (5.9) · cpa-study: hours (1.5) · ot-reading: chapters (Job 4-6, Psalms 3)"
-        required: true
+        description: "bike-ride: one-way miles (5.9) · bike-return: leave blank · cpa-study: hours (1.5) · ot-reading: chapters (Job 4-6, Psalms 3)"
+        required: false
         type: string
       trip:
         description: "bike-ride only"
