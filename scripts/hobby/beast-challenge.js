@@ -74,12 +74,13 @@
 
   // Default band ladder - most assistance first. A person or challenge can
   // override this with its own "bands" list.
+  // "assist" is the manufacturer's range of help, in pounds [min, max].
   var DEFAULT_BANDS = [
-    { id: "purple", label: "Purple", color: "#7b3fb5" },
-    { id: "red", label: "Red", color: "#d33a2c" },
-    { id: "orange", label: "Orange", color: "#f07c00" },
-    { id: "dark-green", label: "Dark Green", color: "#1f7a3a" },
-    { id: "light-green", label: "Light Green", color: "#7ccf5a" },
+    { id: "purple", label: "Purple", color: "#7b3fb5", assist: [60, 170] },
+    { id: "red", label: "Red", color: "#d33a2c", assist: [50, 135] },
+    { id: "orange", label: "Orange", color: "#f07c00", assist: [35, 115] },
+    { id: "dark-green", label: "Dark Green", color: "#1f7a3a", assist: [15, 60] },
+    { id: "light-green", label: "Light Green", color: "#7ccf5a", assist: [5, 30] },
   ];
 
   // ---------- small helpers ----------
@@ -877,7 +878,7 @@
   function renderBandLadder(root, c) {
     var s = el("div", "band-ladder");
     s.appendChild(el("h4", null, "Band Ladder"));
-    s.appendChild(el("p", "beast-note", "Best set on each band - work down the ladder toward no band at all."));
+    s.appendChild(el("p", "beast-note", "Best set on each band - work down the ladder toward no band at all. Each band's pounds of help is its stretch range: the more it stretches, the more it lifts."));
     var ul = el("ul", "band-list");
     var rows = c.bands.concat([{ id: "none", label: "No band", color: "var(--primary-color)" }]);
     rows.forEach(function (b) {
@@ -891,7 +892,11 @@
       var sw = el("span", "band-swatch");
       sw.style.background = b.color || "#999";
       li.appendChild(sw);
-      li.appendChild(el("span", "band-name", b.label));
+      var nameWrap = el("span", "band-name", b.label);
+      var assistText = b.id === "none" ? "0 lb of help - all you"
+        : b.assist ? b.assist[0] + "-" + b.assist[1] + " lb of help" : "";
+      if (assistText) nameWrap.appendChild(el("span", "band-assist", assistText));
+      li.appendChild(nameWrap);
       li.appendChild(el("span", "band-best", best ? best + " reps" : "-"));
       li.appendChild(el("span", "band-when", when ? fmtDate(when) : ""));
       ul.appendChild(li);
