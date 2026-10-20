@@ -756,3 +756,11 @@ body.dark-mode .band-row {
     min-width: 0;
   }
 }
+
+/* Chapter reading list */
+.chapter-left {
+  margin: 0.3rem 0 0;
+  font-size: 0.82rem;
+  font-style: italic;
+  opacity: 0.75;
+}
