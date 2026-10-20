@@ -1,0 +1,31 @@
+{
+  "name": "Fletcher",
+  "emoji": "💪",
+  "title": "10 Unassisted Pull-Ups",
+  "blurb": "No bands, no boost, no kicking. Fletcher is working his way up to 10 clean, unassisted pull-ups in a row before the year is over.",
+  "type": "best",
+  "unit": "pull-ups",
+  "target": 10,
+  "start": "2026-10-19",
+  "deadline": "2026-12-31",
+  "log": [],
+  "milestones": [
+    { "title": "Hang Tough", "desc": "Dead hang from the bar for 30 seconds.", "done": null, "prize": 250 },
+    { "title": "Slow and Strong", "desc": "Do 5 slow negative pull-ups (jump up, lower down for 3+ seconds).", "done": null, "prize": 500 },
+    { "title": "Showing Up", "desc": "Log 10 practice sessions.", "sessions": 10, "prize": 500 },
+    { "title": "First Pull-Up!", "desc": "One clean, unassisted pull-up.", "value": 1, "prize": 1000 },
+    { "title": "Triple Threat", "desc": "3 pull-ups in a row.", "value": 3, "prize": 750 },
+    { "title": "Halfway Hero", "desc": "5 pull-ups in a row.", "value": 5, "prize": 1000 },
+    { "title": "Lucky Seven", "desc": "7 pull-ups in a row.", "value": 7, "prize": 1000 },
+    { "title": "One Away", "desc": "9 pull-ups in a row.", "value": 9, "prize": 1000 },
+    { "title": "Perfect 10", "desc": "10 unassisted pull-ups in a row. GRAND PRIZE!", "value": 10, "prize": 4000 }
+  ],
+  "sideQuests": [],
+  "ideas": [
+    "Hold a plank for 2 minutes",
+    "25 push-ups in a row",
+    "Run a mile without stopping",
+    "Wall sit for 1 minute",
+    "100 jumping jacks without a break"
+  ]
+}

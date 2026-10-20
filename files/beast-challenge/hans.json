@@ -1,0 +1,19 @@
+{
+  "name": "Hans",
+  "emoji": "🧭",
+  "title": "Challenge TBD",
+  "blurb": "Dad's challenge is still being decided. It has to be hard enough that the kids think it's fair.",
+  "type": "tbd",
+  "start": "2026-10-19",
+  "deadline": "2026-12-31",
+  "log": [],
+  "milestones": [],
+  "sideQuests": [],
+  "ideas": [
+    "Pass the FAR section of the CPA exam by December 31",
+    "Bike 300 commute miles by December 31",
+    "Memorize 100 digits of Pi (currently at 20)",
+    "100 push-ups in a row",
+    "Log 100 CPA study hours before the deadline"
+  ]
+}

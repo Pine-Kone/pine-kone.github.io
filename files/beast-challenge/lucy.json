@@ -1,0 +1,41 @@
+{
+  "name": "Lucy",
+  "emoji": "📚",
+  "title": "Read the Entire Harry Potter Series",
+  "blurb": "Seven books. 4,100 pages. One very determined reader. Lucy is taking on the whole Harry Potter series before the clock runs out on 2026.",
+  "type": "reading",
+  "unit": "pages",
+  "start": "2026-10-19",
+  "deadline": "2026-12-31",
+  "books": [
+    { "title": "Harry Potter and the Sorcerer's Stone", "pages": 309 },
+    { "title": "Harry Potter and the Chamber of Secrets", "pages": 341 },
+    { "title": "Harry Potter and the Prisoner of Azkaban", "pages": 435 },
+    { "title": "Harry Potter and the Goblet of Fire", "pages": 734 },
+    { "title": "Harry Potter and the Order of the Phoenix", "pages": 870 },
+    { "title": "Harry Potter and the Half-Blood Prince", "pages": 652 },
+    { "title": "Harry Potter and the Deathly Hallows", "pages": 759 }
+  ],
+  "log": [],
+  "milestones": [
+    { "title": "Platform 9 3/4", "desc": "Read the first 100 pages.", "pages": 100, "prize": 250 },
+    { "title": "Week of Wizardry", "desc": "Read 7 days in a row.", "streak": 7, "prize": 250 },
+    { "title": "Sorted!", "desc": "Finish Book 1. Movie night unlocked!", "book": 1, "prize": 500 },
+    { "title": "Chamber Opened", "desc": "Finish Book 2.", "book": 2, "prize": 500 },
+    { "title": "1,000-Page Club", "desc": "Read 1,000 total pages.", "pages": 1000, "prize": 500 },
+    { "title": "Mischief in Progress", "desc": "Finish Book 3.", "book": 3, "prize": 500 },
+    { "title": "Halfway to Graduation", "desc": "Reach 50% of the whole series.", "percent": 50, "prize": 1000 },
+    { "title": "Triwizard Champion", "desc": "Finish Book 4 - the first really big one.", "book": 4, "prize": 1000 },
+    { "title": "Order Member", "desc": "Finish Book 5 - the longest book in the series.", "book": 5, "prize": 1000 },
+    { "title": "Half-Blood Scholar", "desc": "Finish Book 6.", "book": 6, "prize": 1000 },
+    { "title": "Mischief Managed", "desc": "Finish Book 7 and the whole series. GRAND PRIZE!", "book": 7, "prize": 3500 }
+  ],
+  "sideQuests": [],
+  "ideas": [
+    "Watch each movie as a family right after finishing its book",
+    "Read one chapter out loud to Fletcher (or Dad)",
+    "Draw a favorite scene from each book",
+    "Take a family trivia quiz after each book - Lucy writes the questions",
+    "Try a recipe from the books (pumpkin juice, anyone?)"
+  ]
+}
