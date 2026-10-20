@@ -25,6 +25,13 @@
 //              miles count toward the goal:
 //              { "date": "YYYY-MM-DD", "miles": 3, "time": "31:42" }
 //              "target" is the goal time ("30:00"), "baseline" is optional.
+// "chapters" - a reading list of specific chapters ("books": [{ "book": "Job",
+//              "chapters": [4, 5, 6] }]). Log what you read:
+//              { "date": "YYYY-MM-DD", "read": "Job 4-6" }
+//              { "date": "YYYY-MM-DD", "read": ["Psalms 3", "Psalms 9-11"] }
+//              A bare book name ("read": "Ezra") counts every listed chapter
+//              in it. Chapters not on the list are ignored. "target" is how
+//              many listed chapters to read by the deadline.
 // "planning" - not locked in yet; shows the "ideas" list.
 //
 // ---------- Milestones ----------
@@ -38,6 +45,8 @@
 //   "distance": 3                 (time) completed a run at least that long
 //   "streak": 7                   logged this many days in a row
 //   "sessions": 10                logged this many separate days
+//   "bookDone": "1 Kings"         (chapters) every listed chapter in that book
+//                                 (or a list: ["1 Kings", "2 Kings"])
 //   "done": "YYYY-MM-DD"          anything else - set the date by hand
 //
 // ---------- Side quests ----------
@@ -160,6 +169,27 @@
 
   // ---------- the math ----------
 
+  // For "chapters" challenges: turns "Psalms 9-11" (or a list of those) into
+  // keys like "Psalms|9", keeping only chapters that are on the list.
+  function chapterKeys(read, books) {
+    var refs = Array.isArray(read) ? read : [read];
+    var keys = [];
+    refs.forEach(function (ref) {
+      if (!ref) return;
+      var m = String(ref).trim().match(/^(.*?)\s+(\d+)(?:\s*-\s*(\d+))?$/);
+      var name = (m ? m[1] : String(ref)).trim().toLowerCase();
+      var book = null;
+      for (var i = 0; i < books.length; i++) if (books[i].book.toLowerCase() === name) { book = books[i]; break; }
+      if (!book) return;
+      var from = m ? Number(m[2]) : -Infinity;
+      var to = m ? Number(m[3] || m[2]) : Infinity;
+      book.chapters.forEach(function (ch) {
+        if (ch >= from && ch <= to) keys.push(book.book + "|" + ch);
+      });
+    });
+    return keys;
+  }
+
   // Turns a challenge's log into day-by-day states: { date, value, sessions, streak }.
   // For "time" challenges, value is the best (lowest) qualifying time in seconds.
   function buildTimeline(c) {
@@ -171,6 +201,7 @@
     books.forEach(function (b, i) {
       cumulativeBefore[i + 1] = cumulativeBefore[i] + Number(b.pages || 0);
     });
+    if (type === "chapters") books = books.map(function (b) { return { book: b.book, chapters: b.chapters || [] }; });
 
     var timeline = [];
     var value = type === "time" ? null : 0;
@@ -178,9 +209,16 @@
     var streak = 0;
     var prevDate = null;
     var distance = Number(c.distance || 0);
+    var seen = {};
 
     entries.forEach(function (e) {
-      if (type === "reading") {
+      if (type === "chapters") {
+        e._new = 0;
+        chapterKeys(e.read, books).forEach(function (k) {
+          if (!seen[k]) { seen[k] = true; value++; e._new++; }
+        });
+        e._total = value;
+      } else if (type === "reading") {
         var bookIdx = Math.max(1, Math.min(books.length, Number(e.book) || 1));
         var v = cumulativeBefore[bookIdx - 1] + Math.min(Number(e.page) || 0, Number(books[bookIdx - 1].pages));
         value = Math.max(value, v); // never go backwards if a re-read gets logged
@@ -206,7 +244,7 @@
       }
     });
 
-    return { timeline: timeline, cumulativeBefore: cumulativeBefore, entries: entries };
+    return { timeline: timeline, cumulativeBefore: cumulativeBefore, entries: entries, seen: seen };
   }
 
   function bandRank(bands, id) {
@@ -276,6 +314,24 @@
       return out;
     }
 
+    if (m.bookDone != null) {
+      var names = Array.isArray(m.bookDone) ? m.bookDone : [m.bookDone];
+      var need = [];
+      c.books.forEach(function (b) {
+        if (names.indexOf(b.book) !== -1) b.chapters.forEach(function (ch) { need.push(b.book + "|" + ch); });
+      });
+      out.metric = "bookDone";
+      out.at = need.length;
+      var have = {};
+      c.entries.forEach(function (e) {
+        chapterKeys(e.read, c.books).forEach(function (k) { have[k] = true; });
+        var count = need.filter(function (k) { return have[k]; }).length;
+        out.current = count;
+        if (!out.hitDate && count >= need.length && need.length) out.hitDate = e.date;
+      });
+      return out;
+    }
+
     if (m.streak != null || m.sessions != null) {
       out.metric = m.streak != null ? "streak" : "sessions";
       out.at = Number(m.streak != null ? m.streak : m.sessions);
@@ -318,6 +374,9 @@
     c.entries = built.entries;
     c.timeline = built.timeline;
     c.cumulativeBefore = built.cumulativeBefore;
+    c.seen = built.seen;
+    c.listTotal = c.type === "chapters"
+      ? c.books.reduce(function (s, b) { return s + (b.chapters || []).length; }, 0) : 0;
     var last = c.timeline[c.timeline.length - 1];
     c.sessions = last ? last.sessions : 0;
 
@@ -340,7 +399,8 @@
         : c.value != null && c.value <= c.target ? 100 : 0;
       c.complete = c.value != null && c.value <= c.target;
     } else {
-      c.target = c.type === "reading" ? c.cumulativeBefore[c.books.length] : Number(raw.target || 0);
+      c.target = c.type === "reading" ? c.cumulativeBefore[c.books.length]
+        : c.type === "chapters" ? Number(raw.target || c.listTotal) : Number(raw.target || 0);
       c.value = last ? last.value : 0;
       c.pct = c.target > 0 ? (c.value / c.target) * 100 : 0;
       c.complete = c.target > 0 && c.value >= c.target;
@@ -498,6 +558,7 @@
       renderStats(root, c, true);
       if (c.type === "reading") renderBookshelf(root, c);
       if (c.type === "pullups") renderBandLadder(root, c);
+      if (c.type === "chapters") renderChapterList(root, c);
       renderMilestones(root, c, "Milestones & Prize Ladder");
       renderSideQuests(root, d.sideQuests);
       renderLog(root, c, "Progress Log");
@@ -546,6 +607,7 @@
         renderBigProgress(wrap, c);
         renderStats(wrap, c, false);
         if (c.type === "pullups") renderBandLadder(wrap, c);
+        if (c.type === "chapters") renderChapterList(wrap, c);
         renderMilestones(wrap, c, "Milestones", true);
         renderLog(wrap, c, "Log", true);
       }
@@ -587,7 +649,7 @@
     if (showPrize) stats.appendChild(statTile("Prize Unlocked", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal) + " (pretend)", true));
     else stats.appendChild(statTile("Prize", fmtMoney(c.prizeWon), "of " + fmtMoney(c.prizeTotal), true));
 
-    if (c.type === "reading" || c.type === "total") {
+    if (c.type === "reading" || c.type === "total" || c.type === "chapters") {
       var remaining = Math.max(0, c.target - c.value);
       var perDay = c.daysLeft > 0 ? remaining / c.daysLeft : remaining;
       stats.appendChild(statTile("Needed Per Day", c.complete ? "0" : fmtNum(Math.ceil(perDay * 10) / 10),
@@ -640,6 +702,43 @@
     root.appendChild(s);
   }
 
+  // Book-by-book progress through a chapter reading list.
+  function renderChapterList(root, c) {
+    var s = el("div", "band-ladder chapter-list");
+    s.appendChild(el("h4", null, "The Reading List"));
+    s.appendChild(el("p", "beast-note", c.listTotal + " chapters left on the list overall - the goal is " + fmtNum(c.target) + " of them by " + fmtDate(c.deadline) + "."));
+    var ol = el("ol", "book-list");
+    c.books.forEach(function (b) {
+      var read = b.chapters.filter(function (ch) { return c.seen[b.book + "|" + ch]; }).length;
+      var pct = b.chapters.length ? (read / b.chapters.length) * 100 : 0;
+      var li = el("li", "book" + (pct >= 100 ? " done" : read > 0 ? " reading" : ""));
+      var head = el("div", "book-head");
+      head.appendChild(el("span", "book-icon", pct >= 100 ? "✅" : read > 0 ? "📖" : "📕"));
+      head.appendChild(el("span", "book-title", b.book));
+      head.appendChild(el("span", "book-pages", read + " / " + b.chapters.length));
+      li.appendChild(head);
+      li.appendChild(progressBar(pct));
+      var left = b.chapters.filter(function (ch) { return !c.seen[b.book + "|" + ch]; });
+      if (left.length && left.length < b.chapters.length + 1) {
+        li.appendChild(el("p", "chapter-left", "Left: " + compressChapters(left)));
+      }
+      ol.appendChild(li);
+    });
+    s.appendChild(ol);
+    root.appendChild(s);
+  }
+
+  // [1,2,3,5,7,8] -> "1-3, 5, 7-8"
+  function compressChapters(list) {
+    var out = [];
+    for (var i = 0; i < list.length; i++) {
+      var start = list[i];
+      while (i + 1 < list.length && list[i + 1] === list[i] + 1) i++;
+      out.push(start === list[i] ? String(start) : start + "-" + list[i]);
+    }
+    return out.join(", ");
+  }
+
   // Best set on each band, from most help to no help.
   function renderBandLadder(root, c) {
     var s = el("div", "band-ladder");
@@ -673,6 +772,7 @@
     if (m.lowerIsBetter) return m.current != null ? "Best so far " + fmtTime(m.current) + " · need " + fmtTime(m.at) : "Need " + fmtTime(m.at);
     if (m.metric === "band") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " reps (" + m.bandText + " or lighter)";
     if (m.metric === "percent") return fmtPct(m.current) + " / " + fmtNum(m.at) + "%";
+    if (m.metric === "bookDone") return fmtNum(m.current) + " / " + fmtNum(m.at) + " chapters";
     if (m.metric === "distance") return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at) + " mi";
     return fmtNum(Math.min(m.current, m.at)) + " / " + fmtNum(m.at);
   }
@@ -788,6 +888,7 @@
       : c.type === "total" ? ["Date", "Added", "Running Total", "Note"]
       : c.type === "pullups" ? ["Date", "Band", "Reps", "Note"]
       : c.type === "time" ? ["Date", "Miles", "Time", "Pace", "Note"]
+      : c.type === "chapters" ? ["Date", "Read", "New", "Total"]
       : ["Date", unitTitle, "Note"];
 
     var table = el("table", "log-table");
@@ -806,6 +907,10 @@
       if (c.type === "total") {
         running += Number(e.value) || 0;
         return [fmtDate(e.date), fmtNum(Number(e.value) || 0), fmtNum(running), e.note || ""];
+      }
+      if (c.type === "chapters") {
+        var readText = Array.isArray(e.read) ? e.read.join(", ") : String(e.read || "");
+        return [fmtDate(e.date), readText, String(e._new || 0), String(e._total || 0)];
       }
       if (c.type === "pullups") {
         return [fmtDate(e.date), bandLabel(c.bands, e.band), String(Number(e.reps) || 0), e.note || ""];
