@@ -1,19 +1,237 @@
 {
   "name": "Hans",
   "emoji": "🧭",
-  "title": "Challenge TBD",
-  "blurb": "Dad's challenge is still being decided. It has to be hard enough that the kids think it's fair.",
-  "type": "tbd",
+  "title": "Five Areas, Five Challenges",
+  "blurb": "Dad doesn't get off easy. I set goals in five areas of life - Spiritual, Social, Intellectual, Physical, and Personal Management - so I'm taking on a Beast Challenge in each one.",
   "start": "2026-10-19",
   "deadline": "2026-12-31",
-  "log": [],
-  "milestones": [],
-  "sideQuests": [],
+  "challenges": [
+    {
+      "area": "Spiritual",
+      "emoji": "📜",
+      "title": "Old Testament Push",
+      "type": "planning",
+      "prizePlaceholder": 2000,
+      "blurb": "I started reading the Old Testament four years ago and I'm still working through it. The goal is to make real, measurable progress before the end of the year - details coming soon.",
+      "ideas": [
+        "Finish a specific book (or set of books) by December 31",
+        "Read a set number of chapters (the Old Testament has 929)",
+        "Read every day for the rest of the year - a streak challenge",
+        "Reach a percentage of the whole Old Testament"
+      ]
+    },
+    {
+      "area": "Intellectual",
+      "emoji": "🎓",
+      "title": "CPA Study Hours",
+      "type": "total",
+      "unit": "hours",
+      "target": 60,
+      "blurb": "60 hours of focused FAR study before December 31 - about 50 minutes a day, with room for the busy holiday weeks.",
+      "log": [],
+      "milestones": [
+        {
+          "title": "Warm-Up",
+          "desc": "Log 10 study hours.",
+          "value": 10,
+          "prize": 200
+        },
+        {
+          "title": "Study Streak",
+          "desc": "Study 7 days in a row.",
+          "streak": 7,
+          "prize": 200
+        },
+        {
+          "title": "Quarter Mile",
+          "desc": "Log 15 study hours.",
+          "value": 15,
+          "prize": 200
+        },
+        {
+          "title": "Halfway",
+          "desc": "Log 30 study hours.",
+          "value": 30,
+          "prize": 300
+        },
+        {
+          "title": "Home Stretch",
+          "desc": "Log 45 study hours.",
+          "value": 45,
+          "prize": 300
+        },
+        {
+          "title": "Exam Day",
+          "desc": "Sit for the FAR exam.",
+          "done": null,
+          "prize": 300
+        },
+        {
+          "title": "Sixty Strong",
+          "desc": "Log 60 study hours. CHALLENGE COMPLETE!",
+          "value": 60,
+          "prize": 500
+        }
+      ]
+    },
+    {
+      "area": "Physical",
+      "emoji": "💪",
+      "title": "Pull-Up Partners",
+      "type": "pullups",
+      "target": 6,
+      "blurb": "Training side by side with Fletcher: 6 unassisted pull-ups by the end of the year. I can do 1 today. The bands help me get the reps in while I build strength.",
+      "log": [
+        {
+          "date": "2026-10-19",
+          "band": "none",
+          "reps": 1,
+          "note": "Starting point"
+        }
+      ],
+      "milestones": [
+        {
+          "title": "Orange Belt",
+          "desc": "8 reps on the orange band (or lighter).",
+          "band": "orange",
+          "reps": 8,
+          "prize": 150
+        },
+        {
+          "title": "Green Light",
+          "desc": "8 reps on the dark green band (or lighter).",
+          "band": "dark-green",
+          "reps": 8,
+          "prize": 200
+        },
+        {
+          "title": "Last Band Standing",
+          "desc": "8 reps on the light green band.",
+          "band": "light-green",
+          "reps": 8,
+          "prize": 250
+        },
+        {
+          "title": "Double Up",
+          "desc": "2 unassisted pull-ups.",
+          "value": 2,
+          "prize": 200
+        },
+        {
+          "title": "Hat Trick",
+          "desc": "3 unassisted pull-ups.",
+          "value": 3,
+          "prize": 200
+        },
+        {
+          "title": "Fab Four",
+          "desc": "4 unassisted pull-ups.",
+          "value": 4,
+          "prize": 250
+        },
+        {
+          "title": "High Five",
+          "desc": "5 unassisted pull-ups.",
+          "value": 5,
+          "prize": 250
+        },
+        {
+          "title": "Super Six",
+          "desc": "6 unassisted pull-ups - matching Fletcher's goal. CHALLENGE COMPLETE!",
+          "value": 6,
+          "prize": 500
+        }
+      ]
+    },
+    {
+      "area": "Physical",
+      "emoji": "🏃",
+      "title": "3-Mile Run",
+      "type": "time",
+      "distance": 3,
+      "target": "30:00",
+      "blurb": "Run 3 miles in 30:00 or less (a 10:00 mile pace). The goal time is a placeholder until I log a first test run.",
+      "log": [],
+      "milestones": [
+        {
+          "title": "Go the Distance",
+          "desc": "Run 3 miles, any time.",
+          "distance": 3,
+          "prize": 300
+        },
+        {
+          "title": "Regular",
+          "desc": "Log 12 runs.",
+          "sessions": 12,
+          "prize": 300
+        },
+        {
+          "title": "Halfway Faster",
+          "desc": "Get halfway from your first time to the goal time.",
+          "percent": 50,
+          "prize": 400
+        },
+        {
+          "title": "Almost There",
+          "desc": "Run 3 miles in 31:30 or less.",
+          "time": "31:30",
+          "prize": 400
+        },
+        {
+          "title": "Sub-30",
+          "desc": "Run 3 miles in 30:00 or less. CHALLENGE COMPLETE!",
+          "time": "30:00",
+          "prize": 600
+        }
+      ]
+    },
+    {
+      "area": "Personal Management",
+      "emoji": "🚗",
+      "title": "Pay Off the Car",
+      "type": "best",
+      "unit": "% paid off",
+      "target": 100,
+      "blurb": "Paying off the car is one more step toward being debt free. To keep the dollar amounts private, this one tracks the percent of today's balance that's been paid off.",
+      "log": [],
+      "milestones": [
+        {
+          "title": "First Dent",
+          "desc": "10% of the balance paid off.",
+          "value": 10,
+          "prize": 200
+        },
+        {
+          "title": "Quarter Down",
+          "desc": "25% paid off.",
+          "value": 25,
+          "prize": 300
+        },
+        {
+          "title": "Halfway Home",
+          "desc": "50% paid off.",
+          "value": 50,
+          "prize": 400
+        },
+        {
+          "title": "Final Quarter",
+          "desc": "75% paid off.",
+          "value": 75,
+          "prize": 500
+        },
+        {
+          "title": "Title in Hand",
+          "desc": "100% paid off - the car is ours! CHALLENGE COMPLETE!",
+          "value": 100,
+          "prize": 600
+        }
+      ]
+    }
+  ],
   "ideas": [
-    "Pass the FAR section of the CPA exam by December 31",
-    "Bike 300 commute miles by December 31",
-    "Memorize 100 digits of Pi (currently at 20)",
-    "100 push-ups in a row",
-    "Log 100 CPA study hours before the deadline"
+    "Social: monthly one-on-one date with each kid, all the way through December",
+    "Social: weekly date night every week until the deadline",
+    "Physical: 100 push-ups in a row",
+    "Intellectual: memorize 100 digits of Pi (currently at 20)"
   ]
 }

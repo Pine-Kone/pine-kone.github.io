@@ -1,17 +1,17 @@
 {
   "name": "Fletcher",
   "emoji": "💪",
-  "title": "10 Unassisted Pull-Ups",
-  "blurb": "No bands, no boost, no kicking. Fletcher is working his way up to 10 clean, unassisted pull-ups in a row before the year is over.",
-  "type": "best",
-  "unit": "pull-ups",
-  "target": 10,
+  "title": "6 Unassisted Pull-Ups",
+  "blurb": "No kicking, no boost - just Fletcher and the bar. He's working up to 6 clean, unassisted pull-ups in a row before the year is over, with rest days built in. Beat 6 and the prize pool grows!",
+  "type": "pullups",
+  "target": 6,
   "start": "2026-10-19",
   "deadline": "2026-12-31",
   "log": [
     {
       "date": "2026-10-19",
-      "value": 0,
+      "band": "none",
+      "reps": 0,
       "note": "Baseline test - just barely can't get one yet. So close!"
     }
   ],
@@ -30,7 +30,7 @@
     },
     {
       "title": "Showing Up",
-      "desc": "Log 10 practice sessions.",
+      "desc": "Log 10 workout days.",
       "sessions": 10,
       "prize": 500
     },
@@ -38,37 +38,43 @@
       "title": "First Pull-Up!",
       "desc": "One clean, unassisted pull-up.",
       "value": 1,
+      "prize": 1500
+    },
+    {
+      "title": "Double Up",
+      "desc": "2 pull-ups in a row.",
+      "value": 2,
       "prize": 1000
     },
     {
-      "title": "Triple Threat",
+      "title": "Hat Trick",
       "desc": "3 pull-ups in a row.",
       "value": 3,
-      "prize": 750
+      "prize": 1250
     },
     {
-      "title": "Halfway Hero",
+      "title": "Committed",
+      "desc": "Log 25 workout days.",
+      "sessions": 25,
+      "prize": 500
+    },
+    {
+      "title": "Fab Four",
+      "desc": "4 pull-ups in a row.",
+      "value": 4,
+      "prize": 1000
+    },
+    {
+      "title": "High Five",
       "desc": "5 pull-ups in a row.",
       "value": 5,
       "prize": 1000
     },
     {
-      "title": "Lucky Seven",
-      "desc": "7 pull-ups in a row.",
-      "value": 7,
-      "prize": 1000
-    },
-    {
-      "title": "One Away",
-      "desc": "9 pull-ups in a row.",
-      "value": 9,
-      "prize": 1000
-    },
-    {
-      "title": "Perfect 10",
-      "desc": "10 unassisted pull-ups in a row. GRAND PRIZE!",
-      "value": 10,
-      "prize": 4000
+      "title": "Super Six",
+      "desc": "6 unassisted pull-ups in a row. GRAND PRIZE! (Beat it and we'll add a bonus round.)",
+      "value": 6,
+      "prize": 2500
     }
   ],
   "sideQuests": [],
