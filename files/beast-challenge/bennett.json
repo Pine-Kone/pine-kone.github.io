@@ -8,7 +8,12 @@
   "unitTitle": "Spills",
   "start": "2026-10-19",
   "deadline": "2026-12-31",
-  "log": [],
+  "log": [
+    {
+      "date": "2026-10-19",
+      "note": "Milk at dinner, kitchen"
+    }
+  ],
   "milestones": [
     {
       "title": "First Spill",
