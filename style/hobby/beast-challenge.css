@@ -547,3 +547,26 @@ body.dark-mode .log-table td {
     margin-left: 2.25rem;
   }
 }
+
+/* Side quests with their own milestone ladder take the full row */
+.sidequest-wide {
+  grid-column: 1 / -1;
+  max-width: 40rem;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.sidequest-milestones {
+  margin-top: 1rem;
+}
+
+.sidequest-milestones .milestone {
+  box-shadow: none;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-left-width: 5px;
+}
+
+body.dark-mode .sidequest-milestones .milestone {
+  border-color: rgba(255, 255, 255, 0.12);
+}
