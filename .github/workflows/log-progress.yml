@@ -1,0 +1,80 @@
+# Log Progress - lets an Apple Shortcut (or the Actions tab) add an entry to
+# one of the site's data files without editing JSON by hand.
+#
+# Trigger it from a Shortcut with "Get Contents of URL":
+#   POST https://api.github.com/repos/Pine-Kone/pine-kone.github.io/actions/workflows/log-progress.yml/dispatches
+#   Headers: Authorization: Bearer <fine-grained token>, Accept: application/vnd.github+json
+#   Body:    {"ref":"main","inputs":{"kind":"bike-ride","value":"5.9","trip":"round-trip"}}
+# The script that does the work is .github/scripts/log_progress.py.
+
+name: Log Progress
+
+on:
+  workflow_dispatch:
+    inputs:
+      kind:
+        description: "What to log"
+        required: true
+        type: choice
+        options:
+          - bike-ride
+          - cpa-study
+          - ot-reading
+      value:
+        description: "bike-ride: one-way miles (5.9) · cpa-study: hours (1.5) · ot-reading: chapters (Job 4-6, Psalms 3)"
+        required: true
+        type: string
+      trip:
+        description: "bike-ride only"
+        required: false
+        type: choice
+        default: round-trip
+        options:
+          - round-trip
+          - one-way
+      date:
+        description: "YYYY-MM-DD (leave blank for today, Mountain Time)"
+        required: false
+        type: string
+      note:
+        description: "Optional note"
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: log-progress
+  cancel-in-progress: false
+
+jobs:
+  log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add the entry
+        env:
+          KIND: ${{ inputs.kind }}
+          VALUE: ${{ inputs.value }}
+          TRIP: ${{ inputs.trip }}
+          DATE: ${{ inputs.date }}
+          NOTE: ${{ inputs.note }}
+        run: python3 .github/scripts/log_progress.py
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A files/
+          if git diff --cached --quiet; then
+            echo "Nothing changed."
+            exit 0
+          fi
+          git commit -m "$(cat /tmp/commit-message.txt)"
+          for i in 1 2 3; do
+            git push && exit 0
+            git pull --rebase
+          done
+          exit 1
