@@ -69,7 +69,7 @@
 
 (function () {
   var DATA_DIR = "/files/beast-challenge/";
-  var PEOPLE = ["lucy", "fletcher", "hans", "jordyn", "bennett"];
+  var PEOPLE = ["hans", "jordyn", "lucy", "fletcher", "bennett"];
   var DAY_MS = 86400000;
 
   // Default band ladder - most assistance first. A person or challenge can
