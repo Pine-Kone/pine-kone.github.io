@@ -1,4 +1,4 @@
-{
+#{
   "name": "Hans",
   "emoji": "🧭",
   "title": "Six Challenges, Five Areas",
@@ -490,7 +490,7 @@
         },
         {
           "date": "2026-10-25",
-          "read": "1 Kings 10"
+          "read": ["1 Kings 10", "1 Kings 14"]
         }
       ],
       "milestones": [
