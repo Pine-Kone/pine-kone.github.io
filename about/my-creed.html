@@ -45,6 +45,72 @@
       margin-top: 0;
       color: var(--accent-color);
     }
+
+    /* Hover / tap bubble for scripture references */
+    .creed-area {
+      position: relative;
+    }
+
+    .scripture-ref {
+      color: var(--accent-color);
+      font-weight: 600;
+      border-bottom: 1px dotted var(--accent-color);
+      cursor: help;
+      outline: none;
+    }
+
+    .scripture-bubble {
+      display: none;
+      position: absolute;
+      left: 1rem;
+      right: 1rem;
+      z-index: 50;
+      padding-top: 0.5rem;
+      font-weight: normal;
+      cursor: auto;
+    }
+
+    .scripture-bubble-inner {
+      display: block;
+      background: var(--background-color);
+      color: var(--text-color);
+      border: 2px solid var(--accent-color);
+      border-radius: 0.5rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      padding: 1rem 1.25rem;
+      max-height: 22rem;
+      overflow-y: auto;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .scripture-bubble-inner .bubble-title {
+      display: block;
+      font-weight: 700;
+      margin: 0 0 0.5rem;
+      color: var(--accent-color);
+    }
+
+    .scripture-bubble-inner .bubble-verse {
+      display: block;
+      margin: 0 0 0.5rem;
+    }
+
+    .scripture-bubble-inner sup {
+      color: var(--accent-color);
+      font-weight: 600;
+    }
+
+    .scripture-bubble-inner a {
+      color: var(--accent-color);
+      font-size: 0.85rem;
+    }
+
+    .scripture-ref:hover .scripture-bubble,
+    .scripture-ref:focus .scripture-bubble,
+    .scripture-ref:focus-within .scripture-bubble {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -64,7 +130,22 @@
   <section class="creed-list">
     <div class="creed-area">
       <h3>Spiritual</h3>
-      <p>I love and serve God, and I <i>always remember Him</i>. My heart and my desires are turned to my Heavenly Father. I strive to be Second Coming ready by developing and keeping righteous routines that help my lamp stay trimmed at all times. I strive to be worthy of the Spirit at all times. I am grateful for the Atonement of Jesus Christ, and I show my gratitude by repenting and turning to the Lord as often as needed. I prepare daily to exercise the priesthood, and I read frequently the Oath and Covenant of the priesthood to guide me in making those preparations. I make righteous sacrifices, like choosing to spend time in the scriptures over playing hours of videogames. I am active in the cause of Christ and His desire to bring my family to Zion. I make regular and consistent time for the Lord, especially when it comes to prayer, reading the scriptures, attending the temple, and serving others. In short, I move my life forward with faith in God and with love for my fellow men and women. To live the gospel completely is my mission.</p>
+      <p>I love and serve God, and I <i>always remember Him</i>. My heart and my desires are turned to my Heavenly Father. I strive to be Second Coming ready by developing and keeping righteous routines that help my lamp stay trimmed at all times. I strive to be worthy of the Spirit at all times. I am grateful for the Atonement of Jesus Christ, and I show my gratitude by repenting and turning to the Lord as often as needed. I prepare daily to exercise the priesthood, and I read frequently <span class="scripture-ref" tabindex="0" aria-describedby="oath-covenant-bubble">the Oath and Covenant of the priesthood<span class="scripture-bubble" id="oath-covenant-bubble" role="tooltip"><span class="scripture-bubble-inner">
+          <span class="bubble-title">D&amp;C 84:33&ndash;44 &mdash; The Oath and Covenant of the Priesthood</span>
+          <span class="bubble-verse"><sup>33</sup> For whoso is faithful unto the obtaining these two priesthoods of which I have spoken, and the magnifying their calling, are sanctified by the Spirit unto the renewing of their bodies.</span>
+          <span class="bubble-verse"><sup>34</sup> They become the sons of Moses and of Aaron and the seed of Abraham, and the church and kingdom, and the elect of God.</span>
+          <span class="bubble-verse"><sup>35</sup> And also all they who receive this priesthood receive me, saith the Lord;</span>
+          <span class="bubble-verse"><sup>36</sup> For he that receiveth my servants receiveth me;</span>
+          <span class="bubble-verse"><sup>37</sup> And he that receiveth me receiveth my Father;</span>
+          <span class="bubble-verse"><sup>38</sup> And he that receiveth my Father receiveth my Father’s kingdom; therefore all that my Father hath shall be given unto him.</span>
+          <span class="bubble-verse"><sup>39</sup> And this is according to the oath and covenant which belongeth to the priesthood.</span>
+          <span class="bubble-verse"><sup>40</sup> Therefore, all those who receive the priesthood, receive this oath and covenant of my Father, which he cannot break, neither can it be moved.</span>
+          <span class="bubble-verse"><sup>41</sup> But whoso breaketh this covenant after he hath received it, and altogether turneth therefrom, shall not have forgiveness of sins in this world nor in the world to come.</span>
+          <span class="bubble-verse"><sup>42</sup> And wo unto all those who come not unto this priesthood which ye have received, which I now confirm upon you who are present this day, by mine own voice out of the heavens; and even I have given the heavenly hosts and mine angels charge concerning you.</span>
+          <span class="bubble-verse"><sup>43</sup> And I now give unto you a commandment to beware concerning yourselves, to give diligent heed to the words of eternal life.</span>
+          <span class="bubble-verse"><sup>44</sup> For you shall live by every word that proceedeth forth from the mouth of God.</span>
+          <a href="/reading-writing/memorize/doctrine-and-covenants.html">Open my Doctrine and Covenants memorization page &rarr;</a>
+        </span></span></span> to guide me in making those preparations. I make righteous sacrifices, like choosing to spend time in the scriptures over playing hours of videogames. I am active in the cause of Christ and His desire to bring my family to Zion. I make regular and consistent time for the Lord, especially when it comes to prayer, reading the scriptures, attending the temple, and serving others. In short, I move my life forward with faith in God and with love for my fellow men and women. To live the gospel completely is my mission.</p>
     </div>
 
     <div class="creed-area">
